@@ -2,7 +2,7 @@ Lattice - Team Ares - CSE 403
 Amador (zea@uw), Chalmers (cchalm@uw), Courts (src712@uw), 
 Nash (nashj2@uw), Parker (nnmp@uw), Song (bessieyy@uw)
 
-Release website found at http://evening-plateau-1297.herokuapp.com/
+Release website found at http://lattice-recipes.herokuapp.com/
 
 To get this file, you should have run:
    git clone https://yourusername@code.google.com/p/lattice-recipes/
@@ -51,7 +51,7 @@ Setting up Heroku:
    * Contact us cse403_ares@u.washington.edu to request server access
    * Create Heroku account using the email you sent the request from
    * Install Heroku from toolbelt.heroku.com
-   * $ heroku info --app evening-plateau-1297
+   * $ heroku info --app lattice-recipes
    === evening-plateau-1297
    Addons:        heroku-postgresql:hobby-dev
    Collaborators: aidda42@gmail.com
@@ -60,15 +60,15 @@ Setting up Heroku:
                   ....
                   <your email>
 
-   Git URL:       git@heroku.com:evening-plateau-1297.git
+   Git URL:       git@heroku.com:lattice-recipes.git
    Owner Email:   jakenash23@gmail.com
    Region:        us
    Repo Size:     784k
    Slug Size:     22M
    Stack:         cedar
-   Web URL:       http://evening-plateau-1297.herokuapp.com/
+   Web URL:       http://lattice-recipes.herokuapp.com/
    * After cloning our Google code repository:
-   * $ heroku git:remote --app evening-plateau-1297
+   * $ heroku git:remote --app lattice-recipes
 
 Common Installation Bug Fixes:
    * If you see warning saying no pg_config then:

@@ -8,26 +8,29 @@ To get this file, you should have run:
    git clone https://yourusername@code.google.com/p/lattice-recipes/
 
 Before running or contributing to Lattice, you will need:
-   * Ruby version 2.1.1p76
+   * Ruby version 2.1.1-p76
    * Rails version 4.1.0
-   * Gems listed in Gemfile
+   * Helpful Ruby on Rails Installation Tutorial:
+       * https://gorails.com/setup/ubuntu/14.04
+       * Only follow instructions for Ruby and Rails installation
+       * Make sure to use the correct version Ruby (2.1.1)
+       * We recommend following the rbenv instructions
+   * Gems listed in Gemfile (see below for common installation bug fixes)
    * Heroku (see below for detailed instructions)
 
-Setting up Heroku and such....... (Jake, fill this out please <3)
-
 To deploy a local copy of the website: 
-   * rails server
+   * $ rails server
    * go to localhost:3000 in your browser to view changes
 
 To push to development repository:
-   * git push
+   * $ git push
 
 To push to release repository:
-   * git push heroku
-   * git push (to keep dev repo up to date)
+   * $ git push heroku
+   * $ git push (to keep dev repo up to date)
 
 To execute the test suite:
-   * rake test
+   * $ rake test
 
 Nightly tests...... forthcoming
 
@@ -37,3 +40,35 @@ The Lattice issue tracker can be found and updated at:
 Style and documentation guidelines for this project are detailed here:
    https://github.com/styleguide/ruby (style)
    http://tomdoc.org/ (documentation)
+
+Our repository uses the standard Rails directory structure:
+   http://www.tutorialspoint.com/ruby-on-rails/rails-directory-structure.htm   
+
+Setting up Heroku:
+   * Contact us cse403_ares@u.washington.edu to request server access
+   * Create Heroku account using the email you sent the request from
+   * Install Heroku from toolbelt.heroku.com
+   * $ heroku info --app evening-plateau-1297
+   === evening-plateau-1297
+   Addons:        heroku-postgresql:hobby-dev
+   Collaborators: aidda42@gmail.com
+    		  sam.r.courts@gmail.com
+                  zach.amador@gmail.com
+                  ....
+                  <your email>
+
+   Git URL:       git@heroku.com:evening-plateau-1297.git
+   Owner Email:   jakenash23@gmail.com
+   Region:        us
+   Repo Size:     784k
+   Slug Size:     22M
+   Stack:         cedar
+   Web URL:       http://evening-plateau-1297.herokuapp.com/
+   * After cloning our goolgle code repository:
+   * $ heroku git:remote --app evening-plateau-1297
+
+Common Installation Bug Fixes:
+   * If you see warning saying no pg_config then:
+       * $ sudo apt-get install libpq-dev
+   * If installing missing gems keeps failing, make sure you've done:
+       * $ rbenv rehash

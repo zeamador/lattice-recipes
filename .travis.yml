@@ -1,5 +1,10 @@
 language: ruby
 rvm:
   - "2.1.1"
+notifications:
+  email:
+    - cse403_ares@u.washington.edu
+  on_success: change # default: change
+  on_failure: always # default: always
 # uncomment this line if your project needs to run something other than `rake`:
 # script: bundle exec rspec spec

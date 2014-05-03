@@ -52,7 +52,7 @@ Setting up Heroku:
    * Create Heroku account using the email you sent the request from
    * Install Heroku from toolbelt.heroku.com
    * $ heroku info --app lattice-recipes
-   === evening-plateau-1297
+   === lattice-recipes
    Addons:        heroku-postgresql:hobby-dev
    Collaborators: aidda42@gmail.com
     		  sam.r.courts@gmail.com

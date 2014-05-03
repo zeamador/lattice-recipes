@@ -1,28 +1,27 @@
-== README
+To get this file, you should have run:
+   git clone https://yourusername@code.google.com/p/lattice-recipes/
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Before running or contributing to Lattice, you will need:
+   * Ruby version 2.1.1p76
+   * Rails version 4.1.0
+   * Gems listed in Gemfile
 
-Things you may want to cover:
+To deploy the website, run the following command:
+   rails server
 
-* Ruby version
+How to update actual release version???
 
-* System dependencies
+How to update private version???
 
-* Configuration
+To run the test suite, run.....????
 
-* Database creation
+How to sign up for automated nightly tests???
 
-* Database initialization
+The Lattice issue tracker can be found and updated at:
+   https://code.google.com/p/lattice-recipes/issues/list
 
-* How to run the test suite
+Style and documentation guidelines for this project are detailed here:
+   https://github.com/styleguide/ruby (style)
+   http://tomdoc.org/ (documentation)
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+File structure????

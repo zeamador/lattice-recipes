@@ -26,8 +26,9 @@ To push to development repository:
    * $ git push
 
 To push to release repository:
-   * $ git push heroku
-   * $ git push (to keep dev repo up to date)
+   * $ git pull --rebase heroku master
+   * $ git push heroku master
+   * Only do this when deploying!
 
 To execute the test suite:
    * $ rake test

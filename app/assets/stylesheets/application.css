@@ -15,8 +15,57 @@
  */
 
 body {
-  background-color: #000;
+  background-color: SaddleBrown;
   color: white;
   font-family: helvetica, verdana, arial, sans-serif;
 }
 
+#header {
+  font-size: 80px;
+  font-weight: bold;
+  color: White;
+  text-shadow: 0 0 0.2em Black, 0 0 0.2em Black;
+}
+
+.main-menu {
+  margin: 5px auto 5px auto;
+  width: 100%;
+  height: 40px;
+  background-color: Black;
+}
+
+.main-menu ul {
+  width: 80%;
+  margin: 0 auto 0 auto;
+}
+
+.main-menu ul li {
+  float: left;
+  color: White;
+  padding: 0 20px 0 20px;
+  border-right: 3px solid SaddleBrown;
+  border-left: 3px solid SaddleBrown;
+  height: 40px;
+  list-style: none;
+  display: block;
+  line-height: 35px;
+  text-align: center;
+  cusor: pointer;
+  font-weight: bold;
+}
+
+.main-menu ul li:hover {
+  background-color: BurlyWood;
+}
+
+.main-menu ul li a {
+  text-decoration: none;
+}
+
+.main-menu ul a:visited li:hover {
+  color: Black;
+}
+
+.main-menu ul li a:visited {
+  color: White;
+}

@@ -6,16 +6,22 @@ Before running or contributing to Lattice, you will need:
    * Rails version 4.1.0
    * Gems listed in Gemfile
 
-To deploy the website, run the following command:
+Setting up Heroku and such.......
+
+To deploy a local copy of the website, run the command
    rails server
+Then go to localhost:3000 in your browser.
+
+To push to release to version:
+   git push heroku
+   git push
 
 How to update actual release version???
 
 How to update private version???
 
-To run the test suite, run.....????
-
-How to sign up for automated nightly tests???
+To execute the test suite, run the following command:
+   rake test
 
 The Lattice issue tracker can be found and updated at:
    https://code.google.com/p/lattice-recipes/issues/list

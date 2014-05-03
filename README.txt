@@ -23,6 +23,8 @@ To deploy a local copy of the website:
    * go to localhost:3000 in your browser to view changes
 
 To push to development repository:
+   * after $ git add and $ git commit
+   * $ git pull --rebase
    * $ git push
 
 To push to release repository:
@@ -65,7 +67,7 @@ Setting up Heroku:
    Slug Size:     22M
    Stack:         cedar
    Web URL:       http://evening-plateau-1297.herokuapp.com/
-   * After cloning our goolgle code repository:
+   * After cloning our Google code repository:
    * $ heroku git:remote --app evening-plateau-1297
 
 Common Installation Bug Fixes:

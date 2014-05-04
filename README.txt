@@ -17,7 +17,7 @@ Before working on Lattice, you will need:
        * We recommend following the rbenv instructions
    * Gems listed in Gemfile (see below for common installation bug fixes)
 
-Before contributing to the release version on Lattice, you will also need:
+Before contributing to the release version of Lattice, you will also need:
    * Heroku (see below for detailed instructions)
    * Contact cse403_ares@u.washington.edu to become a contributor to our repo
 

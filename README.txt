@@ -5,9 +5,9 @@ Nash (nashj2@uw), Parker (nnmp@uw), Song (bessieyy@uw)
 Release website found at http://lattice-recipes.herokuapp.com/
 
 To get this file, you should have run:
-   git clone https://yourusername@code.google.com/p/lattice-recipes/
+   $ git clone git@github.com:zeamador/lattice-recipes.git
 
-Before running or contributing to Lattice, you will need:
+Before working on Lattice, you will need:
    * Ruby version 2.1.1-p76
    * Rails version 4.1.0
    * Helpful Ruby on Rails Installation Tutorial:
@@ -16,14 +16,17 @@ Before running or contributing to Lattice, you will need:
        * Make sure to use the correct version Ruby (2.1.1)
        * We recommend following the rbenv instructions
    * Gems listed in Gemfile (see below for common installation bug fixes)
+
+Before contributing to the release version on Lattice, you will also need:
    * Heroku (see below for detailed instructions)
+   * Contact cse403_ares@u.washington.edu to become a contributor to our repo
 
 To deploy a local copy of the website: 
    * $ rails server
    * go to localhost:3000 in your browser to view changes
 
 To push to development repository:
-   * after $ git add and $ git commit
+   * after appropriate $ git add and $ git commit
    * $ git pull --rebase
    * $ git push
 
@@ -31,14 +34,21 @@ To push to release repository:
    * $ git pull --rebase heroku master
    * $ git push heroku master
    * Only do this when deploying!
+   * Make sure dev repo also has these changes!
 
 To execute the test suite:
    * $ rake test
 
-Nightly tests...... forthcoming
+Automated tests:
+   We are using Travis CI for automated testing. It is linked to the GitHub
+   repository and will email the cse403_ares mailing list if a push breaks
+   the build or causes a test to fail. Travis runs every time there is a push
+   to the repository. Once you've gotten permission to push to the repo, you
+   can add your email to the .travis.yml file to get these notifications.
 
 The Lattice issue tracker can be found and updated at:
-   https://code.google.com/p/lattice-recipes/issues/list
+   https://github.com/zeamador/lattice-recipes/issues (issue tracker)
+   https://sites.google.com/site/latticerecipes/reporting-bugs (guidelines)
 
 Style and documentation guidelines for this project are detailed here:
    https://github.com/styleguide/ruby (style)
@@ -51,24 +61,25 @@ Setting up Heroku:
    * Contact us cse403_ares@u.washington.edu to request server access
    * Create Heroku account using the email you sent the request from
    * Install Heroku from toolbelt.heroku.com
-   * $ heroku info --app lattice-recipes
-   === lattice-recipes
-   Addons:        heroku-postgresql:hobby-dev
-   Collaborators: aidda42@gmail.com
-    		  sam.r.courts@gmail.com
-                  zach.amador@gmail.com
-                  ....
-                  <your email>
-
-   Git URL:       git@heroku.com:lattice-recipes.git
-   Owner Email:   jakenash23@gmail.com
-   Region:        us
-   Repo Size:     784k
-   Slug Size:     22M
-   Stack:         cedar
-   Web URL:       http://lattice-recipes.herokuapp.com/
-   * After cloning our Google code repository:
-   * $ heroku git:remote --app lattice-recipes
+   * To double check that this all worked correctly, run
+       * $ heroku info --app lattice-recipes
+       * Which should produce the following output:
+       === lattice-recipes
+       Addons:        heroku-postgresql:hobby-dev
+       Collaborators: aidda42@gmail.com
+        	      sam.r.courts@gmail.com
+                      zach.amador@gmail.com
+                      ....
+                      <your email>
+       Git URL:       git@heroku.com:lattice-recipes.git
+       Owner Email:   jakenash23@gmail.com
+       Region:        us
+       Repo Size:     784k
+       Slug Size:     22M
+       Stack:         cedar
+       Web URL:       http://lattice-recipes.herokuapp.com/
+   * After cloning our repository:
+   * $ heroku git:remote -a lattice-recipes
 
 Common Installation Bug Fixes:
    * If you see warning saying no pg_config then:

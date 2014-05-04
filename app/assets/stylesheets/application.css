@@ -27,6 +27,8 @@ body {
   text-shadow: 0 0 0.2em Black, 0 0 0.2em Black;
 }
 
+/* Main Menu */
+
 .main-menu {
   margin: 5px auto 5px auto;
   width: 100%;
@@ -56,6 +58,7 @@ body {
 
 .main-menu ul li:hover {
   background-color: BurlyWood;
+  color: Black;
 }
 
 .main-menu ul li a {
@@ -68,4 +71,88 @@ body {
 
 .main-menu ul li a:visited {
   color: White;
+}
+
+/* Side Bar */
+
+.side-bar {
+  float: right;
+  width: 26%;
+  color: Black;
+  font-size: 
+}
+
+.user-side-bar {
+  background-color: White;
+  margin-bottom: 10px;
+  border-style: solid;
+  border-width: 1px;
+}
+
+.user-header-side-bar {
+  padding: 0 15px 0 15px;
+  background-color: Black;
+  color: White;
+}
+
+.user-content-side-bar {
+  padding: 0;
+}
+
+.user-content-side-bar ul {
+  margin: 0;
+}
+
+.recent-side-bar {
+  background-color: White;
+  margin-bottom: 10px;
+  border-style: solid;
+  border-width: 1px;
+}
+
+.recent-header-side-bar {
+  padding: 0 15px 0 15px;
+  background-color: Black;
+  color: White;
+}
+
+.recent-content-side-bar {
+  padding: 0;
+}
+
+.recent-content-side-bar ul {
+  margin: 0;
+}
+
+.kitchen-meal-side-bar {
+  background-color: White;
+  margin-bottom: 10px;
+  border-style: solid;
+  border-width: 1px;
+}
+
+.kitchen-meal-header-side-bar {
+  background-color: Black;
+  color: White;
+  padding-left: 15px;
+}
+
+.kitchen-side-bar {
+  padding: 0 15px 0 15px;
+}
+
+.kitchen-side-bar .stove-tops {
+  margin-left: 15px;
+}
+
+.kitchen-side-bar .ovens {
+  margin-left: 15px;
+}
+
+.kitchen-side-bar .microwaves {
+  margin-left: 15px;
+}
+
+.meal-side-bar {
+  padding: 0 15px 0 15px;
 }

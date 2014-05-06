@@ -2,13 +2,17 @@ require 'spec_helper'
 
 describe User do
 
-  before { @user = User.new(name: "Example-User", email: "user@example.com") }
+  before { @user = User.new(name: "Example-User", email: "user@example.com",
+							password: "foobar", password_confirmation: "foobar") }
 
   subject { @user }
 
   it { should respond_to(:name) }
   it { should respond_to(:email) }
   it { should respond_to(:password_digest) }
+  it { should respond_to(:password) }
+  it { should respond_to(:password_confirmation) }
+  it { should respond_to(:authenticate) }
 
   it { should be_valid }
 
@@ -55,7 +59,8 @@ describe User do
 
   describe "when username is already taken" do
     before do
-      user_with_same_name = User.new(name: "Example User", email: "user@ex.com")
+      user_with_same_name = User.new(name: "Example User", email: "user@ex.com",
+									 password: "foobar", password_confirmation: "foobar")
       user_with_same_name.name = @user.name.upcase
       user_with_same_name.save
     end
@@ -65,12 +70,63 @@ describe User do
 
   describe "when email address is already taken" do
     before do
-      user_with_same_email = User.new(name: "Example", email: "user@example.com")
+      user_with_same_email = User.new(name: "Example", email: "user@example.com",
+									  password: "foobar", password_confirmation: "foobar")
       user_with_same_email.email = @user.email.upcase
       user_with_same_email.save
     end
 
     it { should_not be_valid }
+  end
+
+  describe "when password is not present" do
+    before do
+      @user = User.new(name: "Example User", email: "user@example.com",
+                       password: " ", password_confirmation: " ")
+    end
+    it { should_not be_valid }
+  end
+
+  describe "when password doesn't match confirmation" do
+    before { @user.password_confirmation = "mismatch" }
+    it { should_not be_valid }
+  end
+
+  describe "with a password that's too short" do
+    before { @user.password = @user.password_confirmation = "a" * 5 }
+    it { should be_invalid }
+  end
+
+  describe "with a password that's too long" do
+    before { @user.password = @user.password_confirmation = "a" * 21 }
+    it { should be_invalid }
+  end
+
+  describe "return value of authenticate method" do
+    before { @user.save }
+    let(:found_user) { User.find_by(email: @user.email) }
+
+    describe "with valid password" do
+      it { should eq found_user.authenticate(@user.password) }
+    end
+
+    describe "with invalid password" do
+      let(:user_for_invalid_password) { found_user.authenticate("invalid") }
+
+      it { should_not eq user_for_invalid_password }
+      specify { expect(user_for_invalid_password).to be_false }
+    end
+  end
+
+  describe "when password format is invalid" do
+    it "should be invalid" do
+      passwords = %w[" " "Example User"]
+      passwords.each do |invalid_password|
+        @user.password = invalid_password
+        @user.password_confirmation = invalid_password
+        expect(@user).not_to be_valid
+      end
+    end
   end
 
 end

@@ -10,9 +10,11 @@ end
 group :development, :test do
   gem 'sqlite3'
   gem 'rspec-rails'
+  gem 'capybara'
 end
 group :test do
   gem 'rake'
+  gem 'factory_girl_rails'
 end
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'

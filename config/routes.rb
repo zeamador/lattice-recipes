@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get 'users/new'
+  
 
   get 'welcome/index'
 
@@ -57,4 +57,9 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
+
+  # User signup
+  resources :users
+  match '/signup', to: 'users#new', via: 'get'
+
 end

@@ -1,7 +1,10 @@
-#require_relative "./equipment_types.rb"
+# require_relative "./equipment_types.rb"
 
+# Mutable container for the quantities of various equipment items in a user's
+# physical kitchen.
 class Kitchen < ActiveRecord::Base
-  
+  belongs_to :user
+
   # Public: Initialize kitchen with default equipment settings.
   def initialize
     @equipment = { EquipmentTypes::BURNER => 4, EquipmentTypes::OVEN => 1, 

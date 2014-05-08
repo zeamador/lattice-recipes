@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  has_one :kitchen
   
   # Valid username: 
   # 5-20 characters

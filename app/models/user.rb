@@ -6,7 +6,9 @@ class User < ActiveRecord::Base
   # case insensitive
   # unique
   VALID_NAME_REGEX = /\A[a-z\d\-.]+\z/i
-  validates(:name, presence: true, length: { maximum: 20, minimum: 5}, format: { with: VALID_NAME_REGEX }, uniqueness: { case_sensitive: false })
+  validates(:name, presence: true, length: { maximum: 20, minimum: 5}, 
+            format: { with: VALID_NAME_REGEX }, 
+            uniqueness: { case_sensitive: false })
   
   # Valid email:
   # * @ * . *
@@ -14,7 +16,8 @@ class User < ActiveRecord::Base
   # unique
   # in database, save in lowercase
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-  validates(:email, presence: true, format: { with: VALID_EMAIL_REGEX }, uniqueness: { case_sensitive: false })
+  validates(:email, presence: true, format: { with: VALID_EMAIL_REGEX }, 
+            uniqueness: { case_sensitive: false })
   before_save { self.email = email.downcase }
 
   # Valid password:
@@ -23,7 +26,8 @@ class User < ActiveRecord::Base
   
   # check password
   has_secure_password
-  VALID_NAME_REGEX = /\A[a-z\d\-.]+\z/i
-  validates(:password, length: { maximum: 20, minimum: 6 }, format: { with: VALID_NAME_REGEX })
+  VALID_PASSWORD_REGEX = /\A[a-z\d\-.]+\z/i
+  validates(:password, length: { maximum: 20, minimum: 6 }, 
+            format: { with: VALID_PASSWORD_REGEX })
 
 end

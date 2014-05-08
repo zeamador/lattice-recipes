@@ -1,4 +1,4 @@
-require_relative "./equipment_types.rb"
+#require_relative "./equipment_types.rb"
 
 class Kitchen < ActiveRecord::Base
   
@@ -15,10 +15,15 @@ class Kitchen < ActiveRecord::Base
   #
   # Example: my_kitchen[EquipmentTypes::SINK]
   #
-  # Returns quantity of the given equipment type in this kitchen, 
-  # or returns nil if input is not an equipment_type constant
+  # Returns quantity of the given equipment type in this kitchen. 
+  # Raises an exception if input is not an equipment_type constant.
   def [](equipment_type)
-    @equipment[equipment_type]
+    if(!EquipmentTypes.constants.include?(equipment_type))
+      raise "Attempted to access an invalid equipment type"
+    end
+
+    res = @equipment[equipment_type]
+    res ? res : 0     
   end
 
   # Public: Modify quantity of the given equipment type in this kitchen.
@@ -28,15 +33,16 @@ class Kitchen < ActiveRecord::Base
   #
   # Example: my_kitchen[EquipmentTypes::SINK] = 7
   #
-  # Returns the updated quantity of the given equipment type in this kitchen, 
-  # or raises an exception if equipment_type parameter is not a valid
-  # equipment_type constant
+  # Returns the updated quantity of the given equipment type in this kitchen. 
+  # Raises an exception if equipment_type parameter is not a valid
+  # equipment_type constant or if quantity is negative.
   def []=(equipment_type, quantity)
-    if(@equipment.has_key?(equipment_type))
-      @equipment[equipment_type] = quantity
-    else
+    if(!EquipmentTypes.constants.include?(equipment_type))
       raise "Attempted to add invalid equipment type to kitchen"
+    elsif(quantity < 0)
+      raise "Attempted to add negative quantity of an equipment type to kitchen"
     end
-  end
 
+    @equipment[equipment_type] = quantity
+  end
 end

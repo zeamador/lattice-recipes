@@ -1,16 +1,19 @@
+require_relative "./equipment_types.rb"
+
 class Kitchen < ActiveRecord::Base
   
   # Public: Initialize kitchen with default equipment settings.
   def initialize
-    @equipment = { BURNER => 4, OVEN => 1, MICROWAVE => 1, 
-                   SINK => 1, TOASTER => 1 }
+    @equipment = { EquipmentTypes::BURNER => 4, EquipmentTypes::OVEN => 1, 
+                   EquipmentTypes::MICROWAVE => 1, EquipmentTypes::SINK => 1, 
+                   EquipmentTypes::TOASTER => 1 }
   end
 
   # Public: View quantity of the given equipment type in this kitchen.
   #
   # equipment_type - An equipment_types constant.
   #
-  # Example: my_kitchen[SINK]
+  # Example: my_kitchen[EquipmentTypes::SINK]
   #
   # Returns quantity of the given equipment type in this kitchen, 
   # or returns nil if input is not an equipment_type constant
@@ -23,7 +26,7 @@ class Kitchen < ActiveRecord::Base
   # equipment_type - An equipment_types constant.
   # quantity - The new integer equipment quantity.
   #
-  # Example: my_kitchen[SINK] = 7
+  # Example: my_kitchen[EquipmentTypes::SINK] = 7
   #
   # Returns the updated quantity of the given equipment type in this kitchen, 
   # or raises an exception if equipment_type parameter is not a valid

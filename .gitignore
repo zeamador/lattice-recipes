@@ -16,6 +16,7 @@
 /tmp
 
 # Ignore other unneeded files.
+config/secrets.yml
 # (Copied from "The Ruby on Rails Tutorial" by Michael Hartl)
 database.yml
 doc/

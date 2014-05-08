@@ -37,7 +37,7 @@ To push to release repository:
    * Make sure dev repo also has these changes!
 
 To execute the test suite:
-   * $ rake test
+   * $ rspec spec
 
 Automated tests:
    We are using Travis CI for automated testing. It is linked to the GitHub

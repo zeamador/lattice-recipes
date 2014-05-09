@@ -2,7 +2,8 @@ require "set"
 
 # Immutable single recipe
 class Recipe < ActiveRecord::Base
-  has_many :step, :ingredient
+  has_many :step 
+  has_many :ingredient
   belongs_to :user
 
   attr_reader :recipe_id, :title, :ingredients, :final_steps, :secret, :tags

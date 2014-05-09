@@ -15,8 +15,10 @@
 /log/*.log
 /tmp
 
-# Ignore other unneeded files.
+# Ignore secrets file.
 config/secrets.yml
+
+# Ignore other unneeded files.
 # (Copied from "The Ruby on Rails Tutorial" by Michael Hartl)
 database.yml
 doc/

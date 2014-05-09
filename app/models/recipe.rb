@@ -1,5 +1,3 @@
-require "set"
-
 # Immutable single recipe
 class Recipe < ActiveRecord::Base
   has_many :step 

@@ -11,7 +11,8 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)    # Not the final implementation!
     if @user.save
-      redirect_to root_url
+	  flash[:success] = "Welcome to Lattice Recipe, " + @user.name + "!"
+      redirect_to @user
     else
       render 'new'
     end

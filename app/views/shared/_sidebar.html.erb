@@ -1,5 +1,6 @@
 <div class="side-bar">
   <div class="user-side-bar">
+	<% if 1 == 0 %>
     <div class="user-header-side-bar">Welcome, Jane Doe!</div>
     <div class="user-content-side-bar">
       <ul>
@@ -10,6 +11,25 @@
         <li>Log out</li>
       </ul>
     </div>
+	<% else %>
+	<div class="user-header-side-bar">Welcome!</div>
+	<div class="user-content-side-bar">
+	  <div class="signin-form">
+	  	<p> Sign in </p>
+		<ul>
+		<%= form_for(:session, url: sessions_path) do |f| %>
+		  <li><%= f.label :email %></li>
+		  <li><%= f.text_field :email %></li>
+
+		  <li><%= f.label :password %></li>
+		  <li><%= f.password_field :password %></li>
+
+		  <li><%= f.submit "Sign in" %></li>
+		  <li>New user? <%= link_to "Sign up now!", signup_path %></li>
+		<% end %>
+	  </div>
+	</div>
+	<% end %>
   </div>
   <div class="recent-side-bar">
     <div class="recent-header-side-bar">Latest Recipes</div>

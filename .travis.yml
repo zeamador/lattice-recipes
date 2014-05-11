@@ -8,3 +8,7 @@ notifications:
   on_failure: always # default: always
 # uncomment this line if your project needs to run something other than `rake`:
 script: bundle exec rspec spec
+# set environment variables, including creating a secret key
+env:
+  RAILS_ENV=test
+  TEST_SECRET_KEY_BASE="$(bundle exec rake secret)"

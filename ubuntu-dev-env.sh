@@ -31,3 +31,6 @@ rbenv rehash
 
 # set up postgres for production
 sudo apt-get install libpq-dev
+
+# install all missing gems
+bundle install

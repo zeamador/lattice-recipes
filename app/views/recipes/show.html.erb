@@ -1,0 +1,13 @@
+<% @title="Recipe" %>
+<div class="message-container">
+  <% flash.each do |key, value| %>
+    <div class="alert alert-<%= key %>"><%= value %></div>
+  <% end %>
+</div>
+<div class="recipe-info">
+  <p>Title: <%= @recipe.title %></p>
+  <p>Ingredients: <%= @recipe.ingredients %></p>
+  <p>Final Steps: <%= @recipe.final_steps %></p>
+  <p>Secret: <%= @recipe.secret %></p>
+  <p>Tags: <%= @recipe.tags %></p>
+</div>

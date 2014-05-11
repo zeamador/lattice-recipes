@@ -12,7 +12,7 @@ class RecipesController < ApplicationController
     @recipe = Recipe.new(recipe_params)
     if @recipe.save
       flash[:success] = "Thank you for your submission!"
-      redirect_to root_url
+      redirect_to @recipe
     else
       render 'new'
     end

@@ -43,12 +43,6 @@ ActiveRecord::Schema.define(version: 20140511022753) do
     t.datetime "updated_at"
   end
 
-  create_table "uploads", force: true do |t|
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "title"
-  end
-
   create_table "users", force: true do |t|
     t.string   "name"
     t.string   "email"

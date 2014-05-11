@@ -16,6 +16,11 @@
 	<div class="user-content-side-bar">
 	  <div class="signin-form">
 	  	<p> Sign in </p>
+		<div class="message-container">
+		  <% flash.each do |key, value| %>
+		    <div class="alert alert-<%= key %>"><%= value %></div>
+		  <% end %>
+		</div>
 		<ul>
 		<%= form_for(:session, url: sessions_path) do |f| %>
 		  <li><%= f.label :email %></li>

@@ -1,21 +1,24 @@
 <div class="side-bar">
   <div class="user-side-bar">
-	<% if 1 == 0 %>
-    <div class="user-header-side-bar">Welcome, Jane Doe!</div>
+	<% if signed_in? %>
+    <div class="user-header-side-bar">Welcome, <%= @current_user.name %></div>
     <div class="user-content-side-bar">
+	  <div class="message-container">
+		<% flash.each do |key, value| %>
+		  <div class="alert alert-<%= key %>"><%= value %></div>
+		<% end %>
+	  </div>
       <ul>
-        <li><%= link_to "Register", controller: "users", action: "new" %></li>
         <li>My Recipes</li>
-        <li>Profile</li> <!-- TODO: Make this a link to users/show -->
+        <li><%= link_to "Profile", current_user %></li> <!-- TODO: Make this a link to users/show -->
         <li>Account Settings</li>
-        <li>Log out</li>
+        <li><%= link_to "Log out", signout_path, method: "delete" %></li>
       </ul>
     </div>
 	<% else %>
-	<div class="user-header-side-bar">Welcome!</div>
+	<div class="user-header-side-bar">Sign in</div>
 	<div class="user-content-side-bar">
 	  <div class="signin-form">
-	  	<p> Sign in </p>
 		<div class="message-container">
 		  <% flash.each do |key, value| %>
 		    <div class="alert alert-<%= key %>"><%= value %></div>

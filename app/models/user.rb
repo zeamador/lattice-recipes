@@ -5,7 +5,6 @@ class User < ActiveRecord::Base
   # 5-20 characters
   # letters, digits, - or .
   # case insensitive
-  # unique
   VALID_NAME_REGEX = /\A[a-z\d\-.]+\z/i
   validates(:name, presence: true, length: { maximum: 20, minimum: 5}, 
             format: { with: VALID_NAME_REGEX })
@@ -29,5 +28,20 @@ class User < ActiveRecord::Base
   VALID_PASSWORD_REGEX = /\A[a-z\d\-.]+\z/i
   validates(:password, length: { maximum: 20, minimum: 6 }, 
             format: { with: VALID_PASSWORD_REGEX })
+
+  # Generate remember_token for UserId
+  before_create :create_remember_token
+  def User.new_remember_token
+	SecureRandom.urlsafe_base64
+  end
+
+  def User.digest(token)
+	Digest::SHA1.hexdigest(token.to_s)
+  end
+
+  private
+	def create_remember_token
+	  self.remember_token = User.digest(User.new_remember_token)
+	end
 
 end

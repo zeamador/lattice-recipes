@@ -5,7 +5,7 @@ notifications:
   email:
     - cse403_ares@u.washington.edu
   on_success: change # default: change
-  on_failure: always # default: always
+  on_failure: change # default: always
 # uncomment this line if your project needs to run something other than `rake`:
 script: bundle exec rspec spec
 # set environment variables, including creating a secret key

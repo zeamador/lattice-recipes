@@ -13,13 +13,19 @@ Software Architecture:&nbsp;<a href="https://drive.google.com/folderview?id=0Bwd
 </div>
 <div><b style="background-color:transparent;line-height:1.5"><i>Getting Started with Ubuntu 12.04 or Higher</i></b></div>
 <div>
-<ol><li>Clone our repository:<br>
+<ol><li>Make sure git and bundler are installed:<br>
+<font face="courier new, monospace" style="background-color: rgb(204, 204, 204);">$ git --version</font>, if not installed: <font face="courier new, monospace" style="background-color: rgb(204, 204, 204);">sudo apt-get install git</font><br>
+<font face="courier new, monospace" style="background-color: rgb(204, 204, 204);">$ bundle --version</font>, if not installed: <font face="courier new, monospace" color="#666666" style="background-color: rgb(204, 204, 204);">sudo apt-get install bundler</font></li>
+<li>Clone our repository:<br>
 <span style="background-color:rgb(204,204,204);line-height:1.5;font-family:courier new,monospace">$ g</span><font face="courier new, monospace"><span style="line-height:1.5"><span style="background-color:rgb(204,204,204)">it clone git@github.com:zeamador/lattice-recipes.git</span><span style="background-color:rgb(255,255,255)">&nbsp;</span></span></font><span style="background-color:rgb(255,255,255)">(with ssh key)<br>
 OR</span><br>
 <font face="courier new, monospace" style="background-color:rgb(204,204,204)">$ git clone https://github.com/zeamador/lattice-recipes.git</font><font face="courier new, monospace"><span style="line-height:1.5">&nbsp;</span></font>(with login)</li>
 <li><font face="courier new, monospace" style="background-color:rgb(204,204,204)">cd</font>&nbsp;into the&nbsp;<font face="courier new, monospace" style="background-color:rgb(204,204,204)">lattice-recipes</font>&nbsp;directory</li>
 <li>Set up the development environment described below using this top level script:<br>
 <font face="courier new, monospace" style="background-color:rgb(204,204,204)">$ ./ubuntu-dev-env.sh</font></li>
+<li><span style="background-color: transparent; line-height: 1.5;">Check that your ruby and rails versions match those listed in the dev environment section below<br>
+</span><font style="background-color: rgb(204, 204, 204);" face="courier new, monospace"><span style="line-height: 1.5;">$ ruby -v<br>
+</span><span style="line-height: 1.5;">$ rails -v</span></font></li>
 </ol>
 </div>
 <div>

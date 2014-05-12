@@ -1,4 +1,5 @@
 class Step < ActiveRecord::Base
+  # Invariant: if an immediate prereq exists, it is also in the prereqs list
   belongs_to :recipe
 
   validates(:description, presence: true)

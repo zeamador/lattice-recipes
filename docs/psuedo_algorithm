@@ -1,0 +1,92 @@
+# REF/OUT = reference/output parameters
+
+algoWrapper(recipes, kitchen, num users) 
+    returns list of successful schedules, with times measured from start
+{
+  starting steps = all recipes' final steps in a single list
+  resources = construct using kitchen and num users
+  schedule builder = construct new schedule builder
+  successful schedules = construct empty list of schedules
+  algo(starting steps, schedule, resources, REF successful schedules)
+
+  pick best successful schedule (how???)
+  return best schedule
+}
+
+algo(possible steps, schedule builder, resources, REF successful schedules)
+{
+  for each step in possible steps
+  {
+    ***COPY possible steps, schedule builder, and resources***
+    if (addStep(step, REF possible steps, REF schedule builder, REF resources)
+    {
+      // recursive case - add step
+      algo(possible steps, schedule builder, resources, successfulSchedules)
+    }
+  }
+
+  ***COPY possible steps, schedule builder, and resources***
+  if (advanceSweepLine(REF possible steps, REF schedule builder, REF resources, 
+                       OUT immediate prereqs))
+  {
+    // recursive case - advance sweep line
+    for each step in immediate prereqs
+    {
+      if (possible steps does not contain step || 
+          !addStep(step, schedule builder, resources))
+      {
+        // base case - failure
+        return
+      }
+    }
+
+    algo(possible steps, schedule builder, resources, REF successfulSchedules)
+  }
+  else if (possible steps is empty)
+  {
+    // base case - success
+    successful schedule = get schedule from schedule builder
+    add successful schedule to successful schedules
+    (return - noop)
+  }
+  else
+  {
+    // base case - failure
+    (return - noop)
+  }
+}
+
+bool advanceSweepLine(REF possible steps, REF schedule builder, REF resources, 
+                      OUT immediate prereqs)
+{
+  if there is a significant time to advance to
+  {
+    advance sweep line to next significant time in schedule builder
+
+    starting steps = get steps *starting* at new current time (from schedule builder)
+    release resources claimed by starting steps
+    add prereqs of starting steps with pred count == 0 to possible steps
+    immediate prereqs = immediate prereqs of all starting steps
+
+    return true
+  }
+  else
+  {
+    return false
+  }
+}
+
+bool addStep(step, REF possible steps, REF schedule builder, REF resources)
+{
+  if can consume resources for step
+  {
+    consume resources for step
+    add step to schedule builder
+    remove step from possible steps
+    return true
+  }
+  else
+  {
+    return false
+  }
+}

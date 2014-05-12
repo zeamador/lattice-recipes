@@ -1,5 +1,6 @@
 require 'spec_helper'
 
-describe Meal do
+describe RecipeObject do
 
 end
+ 

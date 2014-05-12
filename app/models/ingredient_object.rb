@@ -1,5 +1,5 @@
 # Immutable recipe ingredient.
-class Ingredient
+class IngredientObject
 
   attr_reader :description, :quantity, :units
 
@@ -7,7 +7,7 @@ class Ingredient
   # 
   # description - String name of ingredient.
   # quantity - Integer quantity of ingredient.
-  # units - Lowercase String name of units, 
+  # units - Lowercase plural String name of units (cups, not cup), 
   #         use "whole" if units are inappropriate.
   def initialize(description, quantity, units)
     @description = description

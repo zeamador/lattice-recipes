@@ -12,11 +12,20 @@ class RecipeObject
   #               for any other step in the recipe.
   # secret - Boolean indicating privacy setting, true = secret, false = public.
   # tags - Set of case-insensitive Strings.
+  #
+  # Raises error if final_steps is empty.
   def initialize(recipe_id, title, ingredients, final_steps, secret, tags)
     @recipe_id = recipe_id
     @title = title
     @ingredients = ingredients
-    @final_steps = final_steps
+
+    # set of final steps should not be empty
+    if(final_steps && !final_steps.empty?)
+      @final_steps = final_steps
+    else
+      raise "Set of final steps must contain at least one step"
+    end
+
     @secret = secret
     @tags = tags
   end

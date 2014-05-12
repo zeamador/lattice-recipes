@@ -22,17 +22,48 @@ class StepObject
   # preheat_prereq - Step object representing the prereq step that preheated the
   #                  oven for this step to use.
   #                  Default is nil.
+  #
+  # Raise error if time is not positive, if attentiveness is not 0, 1, or 2,
+  # or if immediate/preheat prereqs are not in set of prereqs.
   def initialize(description, time, attentiveness, recipe_id,
                  equipment: Set[], prereqs: Set[], immediate_prereq: nil, 
                  preheat_prereq: nil)
     @description = description
-    @time = time
-    @attentiveness = attentiveness
+
+    # time must be positive
+    if(time > 0)
+      @time = time
+    else
+      raise "Time was not given in positive minutes"
+    end
+      
+    # attentiveness must 0, 1, or 2
+    if(attentiveness == 0 || attentiveness == 1 || attentiveness == 2)
+      @attentiveness = attentiveness
+    else
+      raise "Time was not given in positive minutes"
+    end
+
     @recipe_id = recipe_id
     @equipment = equipment
     @prereqs = prereqs
-    @immediate_prereq = immediate_prereq
-    @preheat_prereq = preheat_prereq
+
+    # validate and set prerequisites
+    @immediate_prereq = validate_prereq(prereqs, immediate_prereq)
+    @preheat_prereq = validate_prereq(prereqs, preheat_prereq)
+  end
+
+  private
+  # Private - If the given prereq exists, ensure that it is in the set of
+  # prereqs and return it.
+  #
+  # prereqs - Set of step prereqs, should not be nil.
+  # prereq - Preheat/immediate prereq Step to be validated.
+  def validate_prereq(prereqs, prereq)
+    if(prereq && (!prereqs || !prereqs.include?(prereq)))
+      raise "Not all special prereqs were in the given set of prereqs"
+    end
+    prereq
   end
 end
 

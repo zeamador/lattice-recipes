@@ -12,9 +12,9 @@ describe StepObject do
   it "should allow for initialization of subset of keyword arguments" do
     step_a = StepObject.new("Let meat stand", 30, 0, 1234)
     step_b = StepObject.new("Dip meat in sauce", 2, 2, 1234, 
-                            immediate_prereq:step_a)
+                            immediate_prereq: step_a, prereqs: Set[step_a])
     expect(step_b.equipment).to eq(Set[])
-    expect(step_b.prereqs).to eq(Set[])
+    expect(step_b.prereqs).to eq(Set[step_a])
     expect(step_b.immediate_prereq).to equal(step_a)
     expect(step_b.preheat_prereq).to eq(nil)
   end

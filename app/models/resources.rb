@@ -12,7 +12,7 @@ class Resources
   # Returns true if resources were consumed, false otherwise.
   def consume(step)
     step.equipment.each do |equipment|
-      if @free_equipment.has_key?(equipment) && @free_equipment[equipment] != 0
+      if @free_equipment[equipment] != 0
         @free_equipment[equipment] -= 1
       else
         return false

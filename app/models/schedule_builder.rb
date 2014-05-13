@@ -8,6 +8,10 @@ class ScheduleBuilder
     @current_time = 0
   end
 
+  def initialize(other_sb)
+    
+  end
+
   # Public: Add a step to the schedule being built such that the step ends at 
   #         the current time. To be successfully added, the passed step must be
   #         in this ScheduleBuilder's list of possible steps and the step's 

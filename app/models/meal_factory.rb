@@ -20,11 +20,17 @@ module MealFactory
         end
       end
 
+      # DEBUG
+      puts "\nNumber of starting steps: #{starting_steps.length}\n"
+
       resources = Resources.new(kitchen, num_users)
       schedule_builder = ScheduleBuilder.new(starting_steps, resources)
       successful_schedules = [] #Set?
     
       create_meal_helper(schedule_builder, successful_schedules)
+
+      # DEBUG
+      puts "\nNumber of successful schedules: #{successful_schedules.length}\n"
 
       # Pick the shortest schedule
       best_schedule = nil
@@ -32,7 +38,7 @@ module MealFactory
       successful_schedules.each do |schedule|
         schedule_length = nil
         schedule.each_key do |time|
-          if time > schedule_length
+          if schedule_length.nil? || (time > schedule_length)
 	    schedule_length = time
           end
         end
@@ -59,8 +65,11 @@ module MealFactory
     #
     # Returns nothing, but populates successful_schedules.
     def create_meal_helper(schedule_builder, successful_schedules)
+      # DEBUG
+      puts "\ncreate_meal_helper: #{schedule_builder.possible_steps}\n"
+
       schedule_builder.possible_steps.each do |step|
-        schedule_builder_copy = schedule_builder.deep_copy   
+        schedule_builder_copy = ScheduleBuilder.new(schedule_builder)   
 
         if schedule_builder_copy.add_step(step)
           # Recursive case - add step
@@ -75,7 +84,7 @@ module MealFactory
       if schedule_builder_copy.advance_current_time
         # Recursive case - advance sweep line
         create_meal_helper(schedule_builder_copy, successful_schedules)
-      elsif schedule_builder.possible_steps.empty?
+      elsif schedule_builder.schedule_complete?
         # Base case - success
         successful_schedules << schedule_builder.schedule
         return # noop

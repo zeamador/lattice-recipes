@@ -21,11 +21,10 @@ class Resources
 
     if @free_focus >= step.focus
       @free_focus -= step.focus
+      true
     else
       false
     end
-
-    true
   end
 
   # Public: Release the resources consumed by a step. Release may only be called

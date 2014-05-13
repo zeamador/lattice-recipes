@@ -41,7 +41,7 @@ class StepObject
     if(attentiveness == 0 || attentiveness == 1 || attentiveness == 2)
       @attentiveness = attentiveness
     else
-      raise "Time was not given in positive minutes"
+      raise "Attentiveness must be integer value 0 = NONE, 1 = SOME, or 2 = ALL"
     end
 
     @recipe_id = recipe_id

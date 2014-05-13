@@ -18,4 +18,44 @@ describe StepObject do
     expect(step_b.immediate_prereq).to equal(step_a)
     expect(step_b.preheat_prereq).to eq(nil)
   end
+
+  it "should disallow non-positive time values" do
+    expect { StepObject.new("Time travel bake", -4, 2, 71) }.to raise_error(
+        "Time was not given in positive minutes")
+    expect { StepObject.new("Instant bake", 0, 2, 71) }.to raise_error(
+        "Time was not given in positive minutes")
+  end
+
+  it "should disallow attentiveness values that aren't 0, 1, or 2" do
+    expect { StepObject.new("Cook", 30, 3, 71) }.to raise_error(
+        "Attentiveness must be integer value 0 = NONE, 1 = SOME, or 2 = ALL")
+    expect { StepObject.new("Cook", 30, -1, 71) }.to raise_error(
+        "Attentiveness must be integer value 0 = NONE, 1 = SOME, or 2 = ALL")
+    expect { StepObject.new("Cook", 30, 0.5, 71) }.to raise_error(
+        "Attentiveness must be integer value 0 = NONE, 1 = SOME, or 2 = ALL")
+    expect { StepObject.new("Cook", 30, "dog", 71) }.to raise_error(
+        "Attentiveness must be integer value 0 = NONE, 1 = SOME, or 2 = ALL")
+  end
+
+  it "should allow attentiveness values of 0, 1, and 2" do
+    step_a = StepObject.new("Cook", 30, 0, 71)
+    expect(step_a.attentiveness).to eq(0)
+    step_b = StepObject.new("Cook", 30, 1, 71)
+    expect(step_b.attentiveness).to eq(1)
+    step_c = StepObject.new("Cook", 30, 2, 71)
+    expect(step_c.attentiveness).to eq(2)
+  end
+
+  it "should disallow preheat/immediate prereqs not in the prereqs set" do
+    step = StepObject.new("Let meat stand", 30, 0, 1234)
+    expect { StepObject.new("Dip meat in sauce", 2, 2, 1234, 
+                            immediate_prereq: step) }.to raise_error(
+        "Not all special prereqs were in the given set of prereqs")
+
+    other_step = StepObject.new("Let meat stand", 30, 0, 1234)
+    expect { StepObject.new("Dip meat in sauce", 2, 2, 1234, 
+                            preheat_prereq: step, 
+                            prereqs: Set[other_step]) }.to raise_error(
+        "Not all special prereqs were in the given set of prereqs")
+  end
 end

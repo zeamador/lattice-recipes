@@ -19,4 +19,13 @@ describe ScheduleBuilder do
     builder.add_step(step_a).should be_true
     builder.add_step(step_b).should be_false
   end
+
+  it "should fail to add a step when there are not enough resouces for it" do
+    resources = Resources.new(KitchenObject.new, 1)
+    step_a = StepObject.new("Bake apples", 10, 0, 170, equipment: [:OVEN])
+    step_b = StepObject.new("Bake bananas", 20, 0, 170, equipment: [:OVEN])
+    builder = ScheduleBuilder.new([step_a, step_b], resources)
+    builder.add_step(step_a).should be_true
+    builder.add_step(step_b).should be_false
+  end
 end

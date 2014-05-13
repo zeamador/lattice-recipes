@@ -1,33 +1,36 @@
 <% @title="Upload Recipe" %>
+
 <div class="recipe-content">
-  <h1>Upload Recipe</h1>
   <div class="recipe-form">
+    <h1>Upload Recipe</h1>
     <%= form_for(@recipe) do |f| %>
       <p>
-	<%= f.label :title %></br>
-	<%= f.text_field :title %>
+    <%= f.label :title %></br>
+    <%= f.text_field :title %>
       </p>
       <p>
-	<%= f.label :ingredients %></br>
-	<%= f.text_field :ingredients %>
+    <%= f.label :ingredients %></br>
+    <%= f.text_field :ingredients %>
       </p>
       <p>
-	<%= f.label :final_steps %></br>
-	<%= f.text_field :final_steps %>
+    <%= f.label :final_steps %></br>
+    <%= f.text_field :final_steps %>
       </p>
       <p>
-	<%= f.label "Secret" %>
-	<%= f.radio_button :secret, "true" %>
-	<%= f.label "Public" %>
-	<%= f.radio_button :secret, "false", { checked: true } %>
+    <%= f.label "Secret" %>
+    <%= f.radio_button :secret, "true" %>
+    <%= f.label "Public" %>
+    <%= f.radio_button :secret, "false", { checked: true } %>
       </p>
       <p>
-	<%= f.label :tags %></br>
-	<%= f.text_field :tags %>
+    <%= f.label :tags %></br>
+    <%= f.text_field :tags %>
       </p>
       <p>
-	<%= f.submit "Submit my Recipe", class: "btn btn-large btn-primary" %>
+    <%= f.submit "Submit my Recipe", class: "btn btn-large btn-primary" %>
       </p>
     <% end %>
   </div>
-</dvi>
+
+  <%= render "shared/sidebar" %>
+</div>

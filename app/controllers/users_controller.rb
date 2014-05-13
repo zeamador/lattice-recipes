@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   
   def show
     @user = User.find(params[:id])
+	@kitchen = @user.kitchen
   end
 
   def new

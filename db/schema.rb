@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 20140513204622) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "burner",     default: 4
-    t.integer  "over",       default: 1
+    t.integer  "oven",       default: 1
     t.integer  "microwave",  default: 1
     t.integer  "sink",       default: 2
     t.integer  "toaster",    default: 1

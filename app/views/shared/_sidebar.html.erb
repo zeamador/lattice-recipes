@@ -52,12 +52,23 @@
   <div class="kitchen-meal-side-bar">
     <div class="kitchen-meal-header-side-bar">Your Kitchen and Meal</div>
     <div class="kitchen-side-bar">
+	  <% if signed_in? %>
       <div class="kitchen-content-side-bar">
         <div class="your-kitchen"><u>Your Kitchen:</u></div>
-        <div class="stove-tops">Stoves Tops: 4</div>
+        <div class="burners">Burners: <%= @current_user.kitchen.burner %></div>
+        <div class="ovens">Ovens: <%= @current_user.kitchen.oven %></div>
+        <div class="microwaves">Microwaves: <%= @current_user.kitchen.microwave %></div>
+		<div clss ="sinks">Sinks: <%= @current_user.kitchen.sink %></div>
+		<div clss ="toasters">Toasters: <%= @current_user.kitchen.toaster %></div>
+      </div>
+      <% else %>
+      <div class="kitchen-content-side-bar">
+        <div class="your-kitchen"><u>Your Kitchen:</u></div>
+        <div class="stove-tops">Burners: 4</div>
         <div class="ovens">Ovens: 1</div>
         <div class="microwaves">Microwaves: 1</div>
       </div>
+      <% end %>
     </div>
     <div class="meal-side-bar">
       <div class="meal-content-side-bar">

@@ -26,6 +26,10 @@ class ScheduleBuilder
   #
   # Returns true if the step was successfully added, false otherwise.
   def add_step(step)
+    # DEBUG
+    puts "\nadd_step:\n"
+    puts "\tpossible_steps: #{@possible_steps}\n"
+    puts "\tstep: #{step}\n"
     if(@possible_steps.include?(step) && @resources.consume(step))
       # Remove step from possible steps
       @possible_steps.delete(step)
@@ -86,6 +90,7 @@ class ScheduleBuilder
     # @current_time is guaranteed to be a valid key in @schedule.
     # Add all prereqs to possible steps.
     @schedule[@current_time].each do |step|
+      @resources.release(step)
       step.prereqs.each do |prereq|
         if prereq.pred_count == 0
           @possible_steps << prereq

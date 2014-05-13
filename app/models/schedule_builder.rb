@@ -42,7 +42,8 @@ class ScheduleBuilder
   #         successfully advance the current time, there must be a significant 
   #         time to advance to and immediate prereqs of all steps starting at 
   #         that time must be able to be scheduled. If successful, those 
-  #         immediate prereqs will be scheduled by this call.
+  #         immediate prereqs will be scheduled by this call. If unsuccessful,
+  #         this call leaves the schedule builder in an UNDEFINED STATE.
   #
   # Examples
   #
@@ -74,16 +75,18 @@ class ScheduleBuilder
 
     # We just iterated over @significant_times to find the new @current_time,
     # and @significant_times is invariantly the sorted keyset of @schedule, so
-    # @current_time is guaranteed to be a valid key in @schedule.   
+    # @current_time is guaranteed to be a valid key in @schedule.
+    # Add all prereqs to possible steps.
     @schedule[@current_time].each do |step|
       step.prereqs.each do |prereq|
         if prereq.pred_count == 0
           @possible_steps << prereq
         end
       end
+    end
 
-      # If the step has an immediate prereq, try to add it. If it cannot be
-      # added, return false
+    # Add all immediate prereqs. If any cannot be added, return false
+    @schedule[@current_time].each do |step|
       unless step.immediate_prereq.nil? || add_step(step.immediate_prereq)
         return false
       end
@@ -107,14 +110,24 @@ class ScheduleBuilder
     @schedule.each do |time_from_end, steps|
       # Clone step collection so that future calls to add_step don't modify the
       # data returned to a previous caller
-      schedule[max_time_from_end - key] = steps.clone
+      schedule[max_time_from_end - time_from_end] = steps.clone
     end
 
     schedule
   end
 
+  # Public: Determine whether or not the schedule being built is complete, which
+  #         means every step in the step dependency graph starting at the steps
+  #         passed to the initializer have been scheduled.
+  #
+  # Returns true if the schedule being built is complete, false otherwise.
   def schedule_complete?
     possible_steps.empty? && current_time == @significant_time.first
+  end
+
+  def deep_copy
+    #TODO do this more efficiently
+    Marshal.load(Marshal.dump(self))
   end
 end
 

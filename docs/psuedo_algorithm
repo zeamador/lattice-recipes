@@ -5,42 +5,35 @@ algoWrapper(recipes, kitchen, num users)
 {
   starting steps = all recipes' final steps in a single list
   resources = construct using kitchen and num users
-  schedule builder = construct new schedule builder
+  schedule builder = construct new schedule builder using starting steps and 
+                     resources
   successful schedules = construct empty list of schedules
-  algo(starting steps, schedule, resources, REF successful schedules)
+  algo(schedule builder, REF successful schedules)
 
   pick best successful schedule (how???)
   return best schedule
 }
 
-algo(possible steps, schedule builder, resources, REF successful schedules)
+algo(schedule builder, REF successful schedules)
 {
-  for each step in possible steps
+  for each step in schedule builder's possible steps
   {
-    ***COPY possible steps, schedule builder, and resources***
-    if (addStep(step, REF possible steps, REF schedule builder, REF resources)
+    schedule builder copy = deep copy of schedule builder
+    if (can add step to schedule builder copy)
     {
       // recursive case - add step
-      algo(possible steps, schedule builder, resources, successfulSchedules)
+      add step to new schedule builder
+      algo(schedule builder copy, REF successful schedules)
     }
   }
 
-  ***COPY possible steps, schedule builder, and resources***
-  if (advanceSweepLine(REF possible steps, REF schedule builder, REF resources, 
-                       OUT immediate prereqs))
+  schedule builder copy = deep copy of schedule builder
+  if (can advance schedule builder copy's sweep line)
   {
     // recursive case - advance sweep line
-    for each step in immediate prereqs
-    {
-      if (possible steps does not contain step || 
-          !addStep(step, schedule builder, resources))
-      {
-        // base case - failure
-        return
-      }
-    }
+    advance new schedule builder's sweep line
 
-    algo(possible steps, schedule builder, resources, REF successfulSchedules)
+    algo(schedule builder, REF successfulSchedules)
   }
   else if (possible steps is empty)
   {
@@ -56,37 +49,3 @@ algo(possible steps, schedule builder, resources, REF successful schedules)
   }
 }
 
-bool advanceSweepLine(REF possible steps, REF schedule builder, REF resources, 
-                      OUT immediate prereqs)
-{
-  if there is a significant time to advance to
-  {
-    advance sweep line to next significant time in schedule builder
-
-    starting steps = get steps *starting* at new current time (from schedule builder)
-    release resources claimed by starting steps
-    add prereqs of starting steps with pred count == 0 to possible steps
-    immediate prereqs = immediate prereqs of all starting steps
-
-    return true
-  }
-  else
-  {
-    return false
-  }
-}
-
-bool addStep(step, REF possible steps, REF schedule builder, REF resources)
-{
-  if can consume resources for step
-  {
-    consume resources for step
-    add step to schedule builder
-    remove step from possible steps
-    return true
-  }
-  else
-  {
-    return false
-  }
-}

@@ -12,7 +12,7 @@ class KitchenObject
   #
   # equipment_type - An equipment_types constant.
   #
-  # Example: my_kitchen[::SINK]
+  # Example: my_kitchen[:SINK]
   #
   # Returns quantity of the given equipment type in this kitchen. 
   # Raises an exception if input is not an equipment_type constant.

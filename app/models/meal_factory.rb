@@ -61,15 +61,15 @@ module MealFactory
     def create_meal_helper(schedule_builder, successful_schedules)
       schedule_builder.possible_steps.each do |step|
         # schedule_builder_copy = ScheduleBuilder.new(schedule_builder)
-        schedule_builder_copy = schedule_builder.deep_copy   
-
+        schedule_builder_copy = schedule_builder.clone   
+        
         if schedule_builder_copy.add_step(step)
           # Recursive case - add step
           create_meal_helper(schedule_builder_copy, successful_schedules)
         end
       end
 
-      schedule_builder_copy = schedule_builder.deep_copy
+      schedule_builder_copy = schedule_builder.clone
     
       # A failed sweep line advance destroys the schedule builder copy, so don't
       # use it in else branches.

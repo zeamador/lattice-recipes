@@ -8,6 +8,15 @@ class ScheduleBuilder
     @current_time = 0
   end
 
+  def initialize_copy(other)
+    # Clone mutable structures
+    super
+    @possible_steps = @possible_steps.clone
+    @resources = @resources.clone
+    @schedule = @schedule.clone
+    @significant_times = @significant_times.clone
+  end
+
   # Public: Add a step to the schedule being built such that the step ends at 
   #         the current time. To be successfully added, the passed step must be
   #         in this ScheduleBuilder's list of possible steps and the step's 
@@ -30,7 +39,6 @@ class ScheduleBuilder
         @schedule[start_time] = Array.new #Set?
       end
       @schedule[start_time] << step
-
       true
     else
       false
@@ -124,11 +132,5 @@ class ScheduleBuilder
   def schedule_complete?
     @possible_steps.empty? && (@current_time == @significant_times.to_a.last)
   end
-
-  def deep_copy
-    #TODO do this more efficiently
-    Marshal.load(Marshal.dump(self))
-  end
-
 end
 

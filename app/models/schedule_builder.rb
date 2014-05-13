@@ -8,10 +8,6 @@ class ScheduleBuilder
     @current_time = 0
   end
 
-  def initialize(other_sb)
-    
-  end
-
   # Public: Add a step to the schedule being built such that the step ends at 
   #         the current time. To be successfully added, the passed step must be
   #         in this ScheduleBuilder's list of possible steps and the step's 
@@ -23,7 +19,7 @@ class ScheduleBuilder
   def add_step(step)
     if(@possible_steps.include?(step) && @resources.consume(step))
       # Remove step from possible steps
-      possible_steps.delete(step)
+      @possible_steps.delete(step)
 
       # Add step to schedule
       start_time = @current_time + step.time
@@ -126,7 +122,7 @@ class ScheduleBuilder
   #
   # Returns true if the schedule being built is complete, false otherwise.
   def schedule_complete?
-    possible_steps.empty? && current_time == @significant_time.first
+    @possible_steps.empty? && (@current_time == @significant_times.to_a.last)
   end
 
   def deep_copy

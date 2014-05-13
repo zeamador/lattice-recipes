@@ -20,17 +20,11 @@ module MealFactory
         end
       end
 
-      # DEBUG
-      puts "\nNumber of starting steps: #{starting_steps.length}\n"
-
       resources = Resources.new(kitchen, num_users)
       schedule_builder = ScheduleBuilder.new(starting_steps, resources)
       successful_schedules = [] #Set?
     
       create_meal_helper(schedule_builder, successful_schedules)
-
-      # DEBUG
-      puts "\nNumber of successful schedules: #{successful_schedules.length}\n"
 
       # Pick the shortest schedule
       best_schedule = nil
@@ -65,11 +59,9 @@ module MealFactory
     #
     # Returns nothing, but populates successful_schedules.
     def create_meal_helper(schedule_builder, successful_schedules)
-      # DEBUG
-      puts "\ncreate_meal_helper: #{schedule_builder.possible_steps}\n"
-
       schedule_builder.possible_steps.each do |step|
-        schedule_builder_copy = ScheduleBuilder.new(schedule_builder)   
+        # schedule_builder_copy = ScheduleBuilder.new(schedule_builder)
+        schedule_builder_copy = schedule_builder.deep_copy   
 
         if schedule_builder_copy.add_step(step)
           # Recursive case - add step

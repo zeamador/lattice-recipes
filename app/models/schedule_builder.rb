@@ -129,5 +129,6 @@ class ScheduleBuilder
     #TODO do this more efficiently
     Marshal.load(Marshal.dump(self))
   end
+
 end
 

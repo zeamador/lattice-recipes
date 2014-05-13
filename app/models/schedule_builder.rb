@@ -58,8 +58,8 @@ class ScheduleBuilder
     # Advance an iterator over significant_times until we reach the current 
     # time. If the current time is 0, it isn't in the list of significant times,    # but the sorted set's first element will be the next significant time.
     e = @significant_times.each
-    unless current_time == 0
-      until e.next == current_time
+    unless @current_time == 0
+      until e.next == @current_time
       end
     end
 
@@ -104,7 +104,7 @@ class ScheduleBuilder
   end
 
   def schedule
-    max_time_from_end = significant_times.first
+    max_time_from_end = @significant_times.first
 
     schedule = Hash.new
     @schedule.each do |time_from_end, steps|

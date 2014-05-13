@@ -52,6 +52,8 @@ class MealFactory extend self
 
     schedule_builder_copy = schedule_builder.deep_copy
     
+    # A failed sweep line advance destroys the schedule builder copy, so don't
+    # use it in else branches.
     if schedule_builder_copy.advance_sweep_line
       # Recursive case - advance sweep line
       create_meal_helper(schedule_builder_copy, successful_schedules)

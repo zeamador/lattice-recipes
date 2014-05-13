@@ -18,6 +18,14 @@ class Resources
         return false
       end
     end
+
+    if @free_focus >= step.focus
+      @free_focus -= step.focus
+    else
+      false
+    end
+
+    true
   end
 
   # Public: Release the resources consumed by a step. Release may only be called
@@ -30,5 +38,7 @@ class Resources
     step.equipment.each do |equipment|
       @free_equipment[equipment] += 1
     end
+    
+    @free_focus += step.focus
   end  
 end

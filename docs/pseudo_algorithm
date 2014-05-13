@@ -19,7 +19,7 @@ algo(schedule builder, REF successful schedules)
   for each step in schedule builder's possible steps
   {
     schedule builder copy = deep copy of schedule builder
-    if (can add step to schedule builder copy)
+    if can add step to schedule builder copy
     {
       // recursive case - add step
       add step to new schedule builder
@@ -28,14 +28,14 @@ algo(schedule builder, REF successful schedules)
   }
 
   schedule builder copy = deep copy of schedule builder
-  if (can advance schedule builder copy's sweep line)
+  if can advance schedule builder copy's sweep line
   {
     // recursive case - advance sweep line
     advance new schedule builder's sweep line
 
     algo(schedule builder, REF successfulSchedules)
   }
-  else if (possible steps is empty)
+  else if possible steps is empty
   {
     // base case - success
     successful schedule = get schedule from schedule builder

@@ -3,14 +3,14 @@ require "set"
 # Immutable recipe step.
 class StepObject
 
-  attr_reader :description, :time, :attentiveness, :recipe_id,
-              :equipment, :prereqs, :immediate_prereq, :preheat_prereq
+  attr_reader :description, :time, :focus, :recipe_id, :equipment, 
+              :prereqs, :immediate_prereq, :preheat_prereq
 
   # Public: Initialize Step with required and optional features.
   #
   # description - Human readable String description of the step.
   # time - Positive Integer number of minutes the step requires.
-  # attentiveness - Integer value where 0 = NONE, 1 = SOME, 2 = ALL.
+  # focus - Integer value where 0 = NONE, 1 = SOME, 2 = ALL.
   # recipe_id - Integer uniquely identifying the recipe this step belongs to.
   #
   # equipment - Set of EquipmentTypes constants. 
@@ -25,9 +25,8 @@ class StepObject
   #
   # Raise error if time is not positive, if attentiveness is not 0, 1, or 2,
   # or if immediate/preheat prereqs are not in set of prereqs.
-  def initialize(description, time, attentiveness, recipe_id,
-                 equipment: Set[], prereqs: Set[], immediate_prereq: nil, 
-                 preheat_prereq: nil)
+  def initialize(description, time, focus, recipe_id, equipment: Set[], 
+                 prereqs: Set[], immediate_prereq: nil, preheat_prereq: nil)
     @description = description
 
     # time must be positive
@@ -37,11 +36,11 @@ class StepObject
       raise "Time was not given in positive minutes"
     end
       
-    # attentiveness must 0, 1, or 2
-    if(attentiveness == 0 || attentiveness == 1 || attentiveness == 2)
-      @attentiveness = attentiveness
+    # focus must be 0, 1, or 2
+    if(focus == 0 || focus == 1 || focus == 2)
+      @focus = focus
     else
-      raise "Attentiveness must be integer value 0 = NONE, 1 = SOME, or 2 = ALL"
+      raise "Focus must be integer value 0 = NONE, 1 = SOME, or 2 = ALL"
     end
 
     @recipe_id = recipe_id

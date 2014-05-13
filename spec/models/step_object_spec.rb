@@ -28,22 +28,22 @@ describe StepObject do
 
   it "should disallow attentiveness values that aren't 0, 1, or 2" do
     expect { StepObject.new("Cook", 30, 3, 71) }.to raise_error(
-        "Attentiveness must be integer value 0 = NONE, 1 = SOME, or 2 = ALL")
+        "Focus must be integer value 0 = NONE, 1 = SOME, or 2 = ALL")
     expect { StepObject.new("Cook", 30, -1, 71) }.to raise_error(
-        "Attentiveness must be integer value 0 = NONE, 1 = SOME, or 2 = ALL")
+        "Focus must be integer value 0 = NONE, 1 = SOME, or 2 = ALL")
     expect { StepObject.new("Cook", 30, 0.5, 71) }.to raise_error(
-        "Attentiveness must be integer value 0 = NONE, 1 = SOME, or 2 = ALL")
+        "Focus must be integer value 0 = NONE, 1 = SOME, or 2 = ALL")
     expect { StepObject.new("Cook", 30, "dog", 71) }.to raise_error(
-        "Attentiveness must be integer value 0 = NONE, 1 = SOME, or 2 = ALL")
+        "Focus must be integer value 0 = NONE, 1 = SOME, or 2 = ALL")
   end
 
   it "should allow attentiveness values of 0, 1, and 2" do
     step_a = StepObject.new("Cook", 30, 0, 71)
-    expect(step_a.attentiveness).to eq(0)
+    expect(step_a.focus).to eq(0)
     step_b = StepObject.new("Cook", 30, 1, 71)
-    expect(step_b.attentiveness).to eq(1)
+    expect(step_b.focus).to eq(1)
     step_c = StepObject.new("Cook", 30, 2, 71)
-    expect(step_c.attentiveness).to eq(2)
+    expect(step_c.focus).to eq(2)
   end
 
   it "should disallow preheat/immediate prereqs not in the prereqs set" do

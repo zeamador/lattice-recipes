@@ -60,6 +60,7 @@ Rails.application.routes.draw do
 
   # User signup
   resources :users
+
   match '/signup', to: 'users#new', via: 'get'
 
   # User signin
@@ -70,5 +71,10 @@ Rails.application.routes.draw do
   # Add Recipe
   resources :recipes
   match '/upload', to: 'recipes#new', via: 'get'
+
+  # Add Kitchen
+  resources :kitchens do
+	resources :users
+  end
 
 end

@@ -1,5 +1,5 @@
 class Kitchen < ActiveRecord::Base
-  belongs_to :user
+  has_one :user
 
-  validates(:equipment, presence: true)
+  #validates(:equipment, presence: true)
 end

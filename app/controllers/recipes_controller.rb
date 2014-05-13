@@ -14,8 +14,14 @@ class RecipesController < ApplicationController
       flash[:success] = "Thank you for your submission!"
       redirect_to @recipe
     else
-      render 'new'
+      redirect_to 'new'
     end
+  end
+
+  def destroy
+    @recipe = Recipe.find(params[:id])
+    @recipe.destroy
+    redirect_to root_url
   end
 
   private

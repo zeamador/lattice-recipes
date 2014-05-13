@@ -16,8 +16,10 @@
 	<%= f.text_field :final_steps %>
       </p>
       <p>
-	<%= f.label :secret %></br>
-	<%= f.text_field :secret %>
+	<%= f.label "Secret" %>
+	<%= f.radio_button :secret, "true" %>
+	<%= f.label "Public" %>
+	<%= f.radio_button :secret, "false", { checked: true } %>
       </p>
       <p>
 	<%= f.label :tags %></br>

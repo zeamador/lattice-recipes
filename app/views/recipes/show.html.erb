@@ -10,4 +10,7 @@
   <p>Final Steps: <%= @recipe.final_steps %></p>
   <p>Secret: <%= @recipe.secret %></p>
   <p>Tags: <%= @recipe.tags %></p>
+  <p>
+    <%= link_to 'Destroy Recipe', @recipe, method: :delete %>
+  </p>
 </div>

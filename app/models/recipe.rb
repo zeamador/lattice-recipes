@@ -6,6 +6,5 @@ class Recipe < ActiveRecord::Base
   validates(:title, presence: true)
   validates(:ingredients, presence: true)
   validates(:final_steps, presence: true)
-  validates(:secret, presence: true)
   validates(:tags, presence: true)
 end

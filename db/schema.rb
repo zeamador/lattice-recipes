@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140511022753) do
+ActiveRecord::Schema.define(version: 20140513005026) do
 
   create_table "ingredients", force: true do |t|
     t.datetime "created_at"
@@ -29,13 +29,11 @@ ActiveRecord::Schema.define(version: 20140511022753) do
   end
 
   create_table "recipes", force: true do |t|
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "title"
-    t.string   "ingredients"
-    t.string   "final_steps"
-    t.string   "secret"
-    t.string   "tags"
+    t.string  "title"
+    t.string  "ingredients"
+    t.string  "final_steps"
+    t.boolean "secret"
+    t.string  "tags"
   end
 
   create_table "steps", force: true do |t|

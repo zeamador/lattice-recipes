@@ -16,7 +16,7 @@ class ScheduleBuilder
   # step - The Step to add to the schedule. 
   #
   # Returns true if the step was successfully added, false otherwise.
-  def add_step step
+  def add_step(step)
     if(@possible_steps.include?(step) && @resources.consume(step))
       # Remove step from possible steps
       possible_steps.delete(step)

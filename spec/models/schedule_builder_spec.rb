@@ -7,8 +7,8 @@ describe ScheduleBuilder do
     builder = ScheduleBuilder.new([step], resources)
     builder.add_step(step).should be_true
     builder.advance_current_time.should be_true
-    builder.advance_current_time.should be_false
     builder.should be_schedule_complete
+    builder.advance_current_time.should be_false
   end
 
   it "should fail to add a step when there is not enough focus for it" do

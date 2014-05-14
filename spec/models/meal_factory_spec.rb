@@ -74,6 +74,19 @@ describe MealFactory do
   end
 
   it "should complete n recipes at as close to the same time as possible" do
+    step_a = StepObject.new("Step A", 30, 2, 12)
+    recipe_a = RecipeObject.new(12, "Recipe A", nil, Set[step_a], false, nil)
 
+    step_b = StepObject.new("Step B", 40, 2, 17)
+    recipe_b = RecipeObject.new(17, "Recipe B", nil, Set[step_b], false, nil)
+
+    step_c = StepObject.new("Step C", 5, 2, 90)
+    step_d = StepObject.new("Step D", 5, 2, 90, prereqs: [step_c])
+    recipe_c = RecipeObject.new(90, "Recipe C", nil, Set[step_d], false, nil)
+
+    expected = { 0 => [step_c], 5 => [step_b], 45 => [step_a], 75 => [step_d] }
+    actual = MealFactory.create_meal([recipe_a, recipe_b, recipe_c]).schedule
+
+    expect(actual).to eq(expected)
   end
 end

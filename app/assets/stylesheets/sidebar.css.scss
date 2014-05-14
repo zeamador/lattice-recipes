@@ -48,8 +48,16 @@
   padding: 0;
 }
 
-.recent-content-side-bar ul {
-  margin: 0;
+.recent-content-side-bar .recipe-title {
+  margin: 2px;
+  margin-left: 25px;
+  padding: 2px;
+}
+
+.recent-content-side-bar .recipe-tags {
+  margin: 2px;
+  margin-left: 25px;
+  padding: 2px;
 }
 
 .kitchen-meal-side-bar {

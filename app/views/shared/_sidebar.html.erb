@@ -44,11 +44,12 @@
   <div class="recent-side-bar">
     <div class="recent-header-side-bar">Latest Recipes</div>
     <div class="recent-content-side-bar">
-      <ul>
-        <li><%= link_to raw("Easy Recipe #1"), controller: "recipes", action: "show", id: "1" %></li>
-        <li><%= link_to raw("Tasty Recipe #2"), controller: "recipes", action: "show", id: "2" %></li>
-        <li><%= link_to raw("Zesty Recipe #3"), controller: "recipes", action: "show", id: "3" %></li>
-      </ul>
+      <% recent_recipes.each do |recipe| %>
+        <div class="recipe">
+          <p class="recipe-title">Title: <%= link_to recipe.title, recipe %></p>
+          <p class="recipe-tags">Tags: <%= recipe.tags %></p>
+        </div>
+      <% end %>
     </div>
   </div>
   <div class="kitchen-meal-side-bar">

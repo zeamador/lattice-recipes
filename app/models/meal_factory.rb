@@ -33,20 +33,25 @@ module MealFactory
       best_schedule = nil
       lowest_variance = nil
       successful_schedules.each do |schedule|
-        # Construct a new schedule will only the final steps
+        # Construct a new schedule with only the final steps
         final_steps_schedule = Hash.new
-        schedule.each do |time, step|
-          if final_steps.include?(step)
-            unless final_steps_schedule.has_key?(time)
-              final_steps_schedule[time] = []
-            end
+        schedule.each do |time, steps|
+          steps.each do |step|
+            if final_steps.include?(step)
+              unless final_steps_schedule.has_key?(time)
+                final_steps_schedule[time] = []
+              end
   
-            final_steps_schedule[time] << step
+              final_steps_schedule[time] << step
+            end
           end
         end
-
+        # puts "schedule: #{schedule}"
+        # puts "final_steps: #{final_steps}"
+        puts "final_steps_schedule: #{final_steps_schedule}"
         # Calculate the variance of the final steps' end times
         variance = end_time_variance(final_steps_schedule)
+        puts "variance: #{variance}"
 
         if lowest_variance.nil? || (variance < lowest_variance)
           best_schedule = schedule

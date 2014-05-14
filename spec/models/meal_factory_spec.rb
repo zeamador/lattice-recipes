@@ -117,4 +117,21 @@ describe MealFactory do
 
     expect(actual).to eq(expected)
   end
+
+  it "should schedule schedule exactly two gray tasks at the same time" do
+    step_a = StepObject.new("Step A", 5, 1, 12)
+    recipe_a = RecipeObject.new(12, "Recipe A", nil, Set[step_a], false, nil)
+
+    step_b = StepObject.new("Step B", 10, 1, 17)
+    recipe_b = RecipeObject.new(17, "Recipe B", nil, Set[step_b], false, nil)
+
+    step_c = StepObject.new("Step C", 20, 1, 90)
+    recipe_c = RecipeObject.new(90, "Recipe C", nil, Set[step_c], false, nil)
+   
+    expected = { 0 => [step_c], 5 => [step_b], 15 => [step_c] }
+    actual = MealFactory.create_meal([recipe_a, recipe_b, recipe_c]).schedule
+
+    expect(actual).to eq(expected)
+
+  end
 end

@@ -46,12 +46,8 @@ module MealFactory
             end
           end
         end
-        # puts "schedule: #{schedule}"
-        # puts "final_steps: #{final_steps}"
-        puts "final_steps_schedule: #{final_steps_schedule}"
         # Calculate the variance of the final steps' end times
         variance = end_time_variance(final_steps_schedule)
-        puts "variance: #{variance}"
 
         if lowest_variance.nil? || (variance < lowest_variance)
           best_schedule = schedule

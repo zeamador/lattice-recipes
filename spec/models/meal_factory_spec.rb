@@ -47,7 +47,7 @@ describe MealFactory do
     expect(actual).to eq(expected)
   end
 
-=begin
+
   it "should schedule steps as close to the end as possible" do
     step_a = StepObject.new("Make sauce", 10, 2, 9)
     step_b = StepObject.new("Rub sauce on steaks", 10, 2, 9, prereqs: [step_a])
@@ -66,6 +66,14 @@ describe MealFactory do
       85 => [step_c], 115 => [step_d], 125 => [step_g] }
     actual = MealFactory.create_meal([recipe_a, recipe_b]).schedule
 
-    expect(actual).to equal(expected)
-=end
+    expect(actual).to eq(expected)
+  end
+
+  it "should schedule steps directly after their immediate prereqs" do
+
+  end
+
+  it "should complete n recipes at as close to the same time as possible" do
+
+  end
 end

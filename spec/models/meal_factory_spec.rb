@@ -118,7 +118,7 @@ describe MealFactory do
     expect(actual).to eq(expected)
   end
 
-  it "should schedule schedule exactly two gray tasks at the same time" do
+  it "should break variance ties by choosing the shorter overall cooking time" do
     step_a = StepObject.new("Step A", 5, 1, 12)
     recipe_a = RecipeObject.new(12, "Recipe A", nil, Set[step_a], false, nil)
 

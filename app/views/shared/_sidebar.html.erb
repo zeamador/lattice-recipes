@@ -56,7 +56,13 @@
     <div class="kitchen-side-bar">
 	  <% if signed_in? %>
       <div class="kitchen-content-side-bar">
-        <div class="your-kitchen"><u>Your Kitchen:</u></div>
+        <div class="your-kitchen">
+          <u>
+            Your Kitchen (edit on your
+              <%= link_to "Profile", current_user %>
+            ):
+          </u>
+        </div>
         <div class="burners">Burners: <%= @current_user.kitchen.burner %></div>
         <div class="ovens">Ovens: <%= @current_user.kitchen.oven %></div>
         <div class="microwaves">Microwaves: <%= @current_user.kitchen.microwave %></div>

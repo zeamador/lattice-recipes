@@ -61,6 +61,11 @@ body {
   text-decoration: none;
 }
 
+a {
+  color: Sienna;
+  text-decoration: none;
+}
+
 .main-menu ul li a:visited {
   color: White;
 }

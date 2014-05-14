@@ -15,6 +15,30 @@
   @extend .error;
 }
 
+.btn.btn-large.btn-primary {
+  margin-top: 10px;
+}
+
+#kitchen_burner {
+    width: 50px;
+}
+
+#kitchen_oven {
+    width: 50px;
+}
+
+#kitchen_microwave {
+    width: 50px;
+}
+
+#kitchen_sink {
+    width: 50px;
+}
+
+#kitchen_toaster {
+    width: 50px;
+}
+
 .user-info {
   float: left;
   width: 70%;

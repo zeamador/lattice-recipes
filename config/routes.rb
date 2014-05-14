@@ -81,9 +81,6 @@ Rails.application.routes.draw do
   # Contact page
   resources :contact
   
-  # Search page
-  resources :search
-  
   # Meal page
   resources :meal
   

@@ -68,8 +68,18 @@ describe MealFactory do
     expect(actual).to eq(expected)
   end
 
-  it "should schedule steps directly after their immediate prereqs" do
+  it "should start steps of different length simultaneously when appropriate" do
+    step_a = StepObject.new("Step A", 15, 2, 12)
+    recipe_a = RecipeObject.new(12, "Recipe A", nil, Set[step_a], false, nil)
 
+    step_b = StepObject.new("Step B", 50, 1, 90)
+    step_c = StepObject.new("Step C", 5, 0, 90, 
+                            prereqs: [step_b], immediate_prereq: step_b)
+    recipe_b = RecipeObject.new(90, "Recipe B", nil, Set[step_c], false, nil)
+
+    expected = { 0 => [step_b], 50 => [step_c, step_b] }
+    actual = MealFactory.create_meal([recipe_a, recipe_b]).schedule
+    expect(actual).to eq(expected)
   end
 
   it "should complete n recipes at as close to the same time as possible" do

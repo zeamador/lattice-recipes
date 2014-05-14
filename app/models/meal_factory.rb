@@ -13,20 +13,48 @@ module MealFactory
     # Returns a Meal
     def create_meal(recipes, kitchen=KitchenObject.new, num_users=1)
       # Combine final steps of each recipe into a single collection
-      starting_steps = [] #Set?
+      final_steps = [] #Set?
       recipes.each do |recipe|
         recipe.final_steps.each do |step|
-          starting_steps << step
+          final_steps << step
         end
       end
 
       resources = Resources.new(kitchen, num_users)
-      schedule_builder = ScheduleBuilder.new(starting_steps, resources)
+      schedule_builder = ScheduleBuilder.new(final_steps, resources)
       successful_schedules = [] #Set?
     
       create_meal_helper(schedule_builder, successful_schedules)
       successful_schedules.uniq!      
 
+      # Pick the schedule for which the end times of all of the final steps of
+      # every recipe passed to this method end at closest to the same times.
+      # This is calculated by minimizing the variance of the end times.
+      best_schedule = nil
+      lowest_variance = nil
+      successful_schedules.each do |schedule|
+        # Construct a new schedule will only the final steps
+        final_steps_schedule = Hash.new
+        schedule.each do |time, step|
+          if final_steps.include?(step)
+            unless final_steps_schedule.has_key?(time)
+              final_steps_schedule[time] = []
+            end
+  
+            final_steps_schedule[time] << step
+          end
+        end
+
+        # Calculate the variance of the final steps' end times
+        variance = end_time_variance(final_steps_schedule)
+
+        if lowest_variance.nil? || (variance < lowest_variance)
+          best_schedule = schedule
+          lowest_variance = variance
+        end
+      end      
+
+=begin
       # Pick the shortest schedule
       best_schedule = nil
       best_schedule_length = nil
@@ -54,6 +82,7 @@ module MealFactory
 	  best_schedule_length = schedule_length
         end
       end
+=end
 
       MealObject.new(recipes, best_schedule)
     end
@@ -82,7 +111,7 @@ module MealFactory
       end
 
       schedule_builder_copy = schedule_builder.clone
-    
+
       # A failed sweep line advance destroys the schedule builder copy, so don't
       # use it in else branches.
       if schedule_builder_copy.advance_current_time
@@ -97,6 +126,34 @@ module MealFactory
         #             remaining
         return # noop
       end
+    end
+
+    # Internal: Calculate the variance of the end times of all steps in a
+    #           schedule. End time is a step's start time plus its duration.
+    #
+    # schedule - A Hash from integer start times to Steps
+    #
+    # Returns the variance of the end times of all steps in the schedule 
+    def end_time_variance(schedule)
+      # Calculate mean and squared mean
+      num_steps = 0
+      end_times_sum = 0
+      end_times_sq_sum = 0
+      schedule.each do |time, steps|
+        steps.each do |step|
+          num_steps += 1
+
+          end_time = time + step.time
+          end_times_sum += end_time
+          end_times_sq_sum += end_time * end_time
+        end
+      end
+
+      mean_of_squares = end_times_sq_sum.to_f / num_steps
+      mean = end_times_sum.to_f / num_steps
+      square_of_mean = mean * mean
+
+      mean_of_squares - square_of_mean
     end
   end
 end

@@ -2,9 +2,9 @@ class CreateIngredients < ActiveRecord::Migration
   def change
     create_table :ingredients do |t|
 
-      t.string :description
       t.float :quantity
       t.string :unit
+      t.string :description
 
       t.references :recipe, index: true
 

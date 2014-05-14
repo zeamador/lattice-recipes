@@ -1,28 +1,36 @@
 <% @title="Upload Recipe" %>
 
 <div class="recipe-content">
-  <div class="recipe-form">
-    <h1>Upload Recipe</h1>
-    <%= form_for(@recipe) do |f| %>
-      <p>
-        <%= f.label :title %></br>
-        <%= f.text_field :title %>
-      </p>
-      <p>
-        <%= f.label "Secret" %>
-        <%= f.radio_button :secret, "true" %>
-        <%= f.label "Public" %>
-        <%= f.radio_button :secret, "false", { checked: true } %>
-      </p>
-      <p>
-        <%= f.label :tags %></br>
-        <%= f.text_field :tags %>
-      </p>
-      <p>
-        <%= f.submit "Submit my Recipe", class: "btn btn-large btn-primary" %>
-      </p>
-    <% end %>
-  </div>
+  <% if signed_in? %>
+    <div class="recipe-form">
+      <h1>Upload Recipe</h1>
+      <%= form_for(@recipe) do |f| %>
+        <p>
+          <%= f.label :title %><br>
+          <%= f.text_field :title %>
+	</p>
+        <p>
+          <%= f.label "Secret" %>
+          <%= f.radio_button :secret, "true" %>
+          <%= f.label "Public" %>
+          <%= f.radio_button :secret, "false", { checked: true } %>
+        </p>
+        <p>
+          <%= f.label :tags %><br>
+          <%= f.text_field :tags %>
+	</p>
+        <p>
+          <%= f.submit "Start Recipe Template",
+	      class: "btn btn-large btn-primary" %>
+	</p>
+      <% end %>
+    </div>
+  <% else %>
+    <div class="need-signin">
+      <li>Please Sign In using the sidebar </li>
+      <li>or Sign Up <%= link_to "HERE", signup_path %></li>
+    </div>
+  <% end %>
 
   <%= render "shared/sidebar" %>
 </div>

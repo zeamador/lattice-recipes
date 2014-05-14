@@ -6,10 +6,88 @@
   <% end %>
 </div>
 <div class="recipe-info">
-  <p>Title: <%= @recipe.title %></p>
-  <p>Secret: <%= @recipe.secret %></p>
-  <p>Tags: <%= @recipe.tags %></p>
   <p>
-    <%= link_to 'Destroy Recipe', @recipe, method: :delete %>
+    <strong>Title:</strong>
+    <%= @recipe.title %>
+  </p>
+  <p>
+    <strong>Secret:</strong>
+    <%=  @recipe.secret ? "True" : "False" %>
+  </p>
+  <p>
+    <strong>Tags:</strong>
+    <%= @recipe.tags %>
+  </p>
+  <h2>Ingredients</h2>
+  <% @recipe.ingredients.each do |ingredient| %>
+      <p>
+	<%= ingredient.quantity %>
+	<%= ingredient.unit %>
+	<%= ingredient.description %>
+	<%= link_to "Remove Ingredient", [ingredient.recipe, ingredient],
+	            method: :delete %>
+      </p>
+  <% end %>
+  <h2>Add an Ingredient:</h2>
+  <%= form_for([@recipe, @recipe.ingredients.build]) do |f| %>
+    <p>
+      <%= f.label :quantity %><br>
+      <%= f.number_field :quantity, step: 0.01 %>
+    </p>
+    <p>
+      <%= f.label :unit %><br>
+      <%= f.text_field :unit %>
+    </p>
+    <p>
+      <%= f.label :description %><br>
+      <%= f.text_field :description %>
+    </p>
+    <p>
+      <%= f.submit %>
+    </p>
+  <% end %>
+
+  <h2>Steps</h2>
+  <% @recipe.steps.each do |step| %>
+    <p>
+      <%= step.description %>
+      <%= step.time %>
+      <%= step.attentiveness %>
+      <%= step.step_number %>
+      <%= step.final_step %>
+      <%= link_to "Remove Step", [step.recipe, step], method: :delete %>
+    </p>
+  <% end %>
+  <h2>Add a Step:</h2>
+  <%= form_for([@recipe, @recipe.steps.build]) do |f| %>
+    <p>
+      <%= f.label :description %><br>
+      <%= f.text_area :description %>
+    </p>
+    <p>
+      <%= f.label :time %><br>
+      <%= f.number_field :time %>
+    </p>
+    <p>
+      <%= f.label :attentiveness %><br>
+      <%= f.number_field :attentiveness %>
+    </p>
+    <p>
+      <%= f.label :step_number %><br>
+      <%= f.number_field :step_number %>
+    </p>
+    <p>
+      <%= f.label "Final Step" %>
+      <%= f.radio_button :final_step, "true" %>
+      <%= f.label "Intermediate Step" %>
+      <%= f.radio_button :final_step, "false", { checked: true } %>
+    </p>
+    <p>
+      <%= f.submit %>
+    </p>
+  <% end %>
+
+  <p>
+    <%= link_to 'Destroy Recipe Template', @recipe, method: :delete %>
   </p>
 </div>

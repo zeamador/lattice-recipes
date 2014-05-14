@@ -11,7 +11,7 @@ class RecipesController < ApplicationController
   def create
     @recipe = Recipe.new(recipe_params)
     if @recipe.save
-      flash[:success] = "Thank you for your submission!"
+      flash[:success] = "Great! Now we need info about the ingredients and steps."
       redirect_to @recipe
     else
       redirect_to 'new'
@@ -27,7 +27,6 @@ class RecipesController < ApplicationController
   private
 
     def recipe_params
-      params.require(:recipe).permit(:title, :ingredients, :final_steps, :secret,
-                                     :tags)
+      params.require(:recipe).permit(:title, :secret, :tags)
     end
 end

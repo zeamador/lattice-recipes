@@ -69,7 +69,10 @@ Rails.application.routes.draw do
   match '/signout', to: 'sessions#destroy',     via: 'delete'
 
   # Add Recipe
-  resources :recipes
+  resources :recipes do
+    resources :ingredients
+    resources :steps
+  end  
   match '/upload', to: 'recipes#new', via: 'get'
 
   # Add Kitchen

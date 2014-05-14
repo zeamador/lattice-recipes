@@ -24,9 +24,9 @@ ActiveRecord::Schema.define(version: 20140513235634) do
   end
 
   create_table "ingredients", force: true do |t|
-    t.string   "description"
     t.float    "quantity"
     t.string   "unit"
+    t.string   "description"
     t.integer  "recipe_id"
     t.datetime "created_at"
     t.datetime "updated_at"

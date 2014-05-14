@@ -30,7 +30,7 @@ module MealFactory
       # Pick the schedule for which the end times of all of the final steps of
       # every recipe passed to this method end at closest to the same times.
       # This is calculated by minimizing the variance of the end times.
-      best_schedule = nil
+      best_schedules = nil
       lowest_variance = nil
       successful_schedules.each do |schedule|
         # Construct a new schedule with only the final steps
@@ -50,40 +50,26 @@ module MealFactory
         variance = end_time_variance(final_steps_schedule)
 
         if lowest_variance.nil? || (variance < lowest_variance)
-          best_schedule = schedule
+          best_schedules = [schedule]
           lowest_variance = variance
+        end
+
+        if lowest_variance == variance
+          best_schedules << schedule
         end
       end      
 
-=begin
-      # Pick the shortest schedule
+      # Pick the shortest schedule of those with the same variance
       best_schedule = nil
       best_schedule_length = nil
-      successful_schedules.each do |schedule|
-        schedule_length = nil
-        schedule.each do |time, steps|
-          # Find the longest step at each time
-          longest_step_length = nil
-          steps.each do |step|
-            if longest_step_length.nil? || (step.time > longest_step_length)
-              longest_step_length = step.time
-            end
-          end
-
-          # Add the longest step's length to the time to get a possible
-          # schedule length
-          possible_length = time + longest_step_length
-          if schedule_length.nil? || (possible_length > schedule_length)
-	    schedule_length = possible_length
-          end
-        end
+      best_schedules.each do |schedule|
+        schedule_length = schedule_length(schedule)
 
         if best_schedule_length.nil? || (schedule_length < best_schedule_length)
           best_schedule = schedule
 	  best_schedule_length = schedule_length
         end
       end
-=end
 
       MealObject.new(recipes, best_schedule)
     end
@@ -155,6 +141,34 @@ module MealFactory
       square_of_mean = mean * mean
 
       mean_of_squares - square_of_mean
+    end
+
+    # Internal: Calculate the total time a step schedule will take. Assumes the
+    #           schedule's start time is zero.
+    #
+    # schedule - A Hash from Integer start times to Arrays of Steps.
+    #
+    # Returns the length of the given schedule.
+    def schedule_length(schedule)
+      schedule_length = 0
+      schedule.each do |time, steps|
+        # Find the longest step at each time
+        longest_step_length = 0
+        steps.each do |step|
+          if step.time > longest_step_length
+            longest_step_length = step.time
+          end
+        end
+
+        # Add the longest step's length to the time to get a possible
+        # schedule length
+        possible_length = time + longest_step_length
+        if possible_length > schedule_length
+          schedule_length = possible_length
+        end
+      end
+
+      schedule_length
     end
   end
 end

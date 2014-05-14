@@ -88,7 +88,7 @@ class ScheduleBuilder
     @schedule[@current_time].each do |step|
       @resources.release(step)
       step.prereqs.each do |prereq|
-        if prereq.pred_count == 0
+        unless has_unscheduled_descendant?(prereq)
           @possible_steps << prereq
         end
       end
@@ -132,6 +132,44 @@ class ScheduleBuilder
   # Returns true if the schedule being built is complete, false otherwise.
   def schedule_complete?
     @possible_steps.empty? && (@current_time == @significant_times.to_a.last)
+  end
+
+  private
+  # Internal: Check whether a step is a prerequisite for any other unscheduled
+  #           steps.
+  #
+  # step - a Step object.
+  #
+  # Returns true if the step has unscheduled descendants, false otherwise
+  def has_unscheduled_descendant?(step)
+    has_unscheduled_descendant_helper(step, possible_steps)
+  end
+
+  # Internal: Check whether the passed step is in the step dependency graph
+  #           passed as a set of its last steps.
+  #
+  # step - a Step object.
+  # last_steps - a Set of the last steps of a step dependency graph.
+  #
+  # Returns true if the passed step is in the passed dependency graph, false
+  # otherwise.
+  def has_unscheduled_descendant_helper(step, last_steps)
+    if (last_steps.empty?)
+      false
+    else
+      next_last_steps = Set[]
+      last_steps.each do |other_step|
+        if step == other_step
+          return true
+        end
+
+        other_step.prereqs.each do |prereq|
+          next_last_steps << prereq
+        end
+      end
+
+      has_unscheduled_descendant_helper(step, next_last_steps)
+    end
   end
 end
 

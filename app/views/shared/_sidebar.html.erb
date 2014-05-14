@@ -5,7 +5,9 @@
     <div class="user-content-side-bar">
 	  <div class="message-container">
 		<% flash.each do |key, value| %>
-		  <div class="alert alert-<%= key %>"><%= value %></div>
+      <% if key == :user_success || key == :user_failure %>
+        <div class="alert alert-<%= key %>"><%= value %></div>
+      <% end %>
 		<% end %>
 	  </div>
       <ul>

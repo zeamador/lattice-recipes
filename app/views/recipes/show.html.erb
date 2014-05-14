@@ -3,7 +3,9 @@
 <div class="recipe-info">
   <div class="message-container">
     <% flash.each do |key, value| %>
-      <div class="alert alert-<%= key %>"><%= value %></div>
+      <% if key == :recipe_success || key == :recipe_failure %>
+        <div class="alert alert-<%= key %>"><%= value %></div>
+      <% end %>
     <% end %>
   </div>
   <h1>Title: <%= @recipe.title %></h1>
@@ -11,13 +13,13 @@
   <p>Tags: <%= @recipe.tags %></p>
   <h3>Ingredients</h3>
   <% @recipe.ingredients.each do |ingredient| %>
-      <p>
-	<%= ingredient.quantity %>
-	<%= ingredient.unit %>
-	<%= ingredient.description %>
-	<%= link_to "Remove Ingredient", [ingredient.recipe, ingredient],
-	            method: :delete %>
-      </p>
+    <p>
+      <%= ingredient.quantity %>
+      <%= ingredient.unit %>
+      <%= ingredient.description %>
+      <%= link_to "Remove Ingredient", [ingredient.recipe, ingredient],
+                  method: :delete %>
+    </p>
   <% end %>
   <% if params[:add] == '1' %>
   <h3>Add an Ingredient:</h3>
@@ -81,6 +83,6 @@
   <% end %>
   <% end %>
   <button type="button">
-    <%= link_to 'Destroy Recipe Template', @recipe, method: :delete %>
+    <%= link_to 'Delete Recipe', @recipe, method: :delete %>
   </button>
 </div>

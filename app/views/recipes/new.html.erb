@@ -8,7 +8,7 @@
         <p>
           <%= f.label :title %><br>
           <%= f.text_field :title %>
-	</p>
+        </p>
         <p>
           <%= f.label "Secret" %>
           <%= f.radio_button :secret, "true" %>
@@ -18,13 +18,13 @@
         <p>
           <%= f.label :tags %><br>
           <%= f.text_field :tags %>
-	</p>
+        </p>
         <%= f.submit "Start Recipe Template", class: "btn btn-large btn-primary" %>
       <% end %>
     </div>
   <% else %>
     <div class="need-signin">
-      <p>Please Sign In using the sidebar or Sign Up <%= link_to "here", signup_path %></p>
+      <p>Please sign in using the sidebar or <%= link_to "register", signup_path %></p>
     </div>
   <% end %>
 </div>

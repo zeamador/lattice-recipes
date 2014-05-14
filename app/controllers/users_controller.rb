@@ -17,7 +17,7 @@ class UsersController < ApplicationController
 	  @user.kitchen = @kitchen
 	  @user.save
 	  sign_in @user
-	  flash[:success] = "Welcome to Lattice Recipe, " + @user.name + "!"
+	  flash[:login_success] = "Welcome to Lattice Recipe, " + @user.name + "!"
       redirect_to @user
     else
       render 'new'

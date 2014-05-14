@@ -4,7 +4,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string :name
       t.string :email
 
-	  t.references :kitchen, index: true
+      t.references :kitchen, index: true
 
       t.timestamps
     end

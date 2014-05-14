@@ -11,12 +11,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140513204622) do
+ActiveRecord::Schema.define(version: 20140513235634) do
 
-  create_table "ingredients", force: true do |t|
+  create_table "equipment", force: true do |t|
+    t.integer  "burner",     default: 0
+    t.integer  "oven",       default: 0
+    t.integer  "microwave",  default: 0
+    t.integer  "sink",       default: 0
+    t.integer  "toaster",    default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "ingredients", force: true do |t|
+    t.string   "description"
+    t.float    "quantity"
+    t.string   "unit"
+    t.integer  "recipe_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "ingredients", ["recipe_id"], name: "index_ingredients_on_recipe_id"
 
   create_table "kitchens", force: true do |t|
     t.datetime "created_at"
@@ -35,16 +51,39 @@ ActiveRecord::Schema.define(version: 20140513204622) do
 
   create_table "recipes", force: true do |t|
     t.string  "title"
-    t.string  "ingredients"
-    t.string  "final_steps"
     t.boolean "secret"
     t.string  "tags"
+    t.integer "user_id"
   end
 
-  create_table "steps", force: true do |t|
+  add_index "recipes", ["user_id"], name: "index_recipes_on_user_id"
+
+  create_table "step_mappers", force: true do |t|
+    t.boolean  "immediate_prereq"
+    t.boolean  "preheat_prereq"
+    t.integer  "prereq_id"
+    t.integer  "prereq_step_number"
+    t.integer  "step_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "step_mappers", ["step_id"], name: "index_step_mappers_on_step_id"
+
+  create_table "steps", force: true do |t|
+    t.text     "description"
+    t.integer  "time"
+    t.integer  "attentiveness"
+    t.integer  "step_number"
+    t.boolean  "final_step"
+    t.integer  "recipe_id"
+    t.integer  "equipment_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "steps", ["equipment_id"], name: "index_steps_on_equipment_id"
+  add_index "steps", ["recipe_id"], name: "index_steps_on_recipe_id"
 
   create_table "users", force: true do |t|
     t.string   "name"

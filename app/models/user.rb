@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   belongs_to :kitchen
+  has_many :recipes
   
   # Valid username: 
   # 5-20 characters

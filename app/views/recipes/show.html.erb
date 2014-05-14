@@ -6,19 +6,10 @@
       <div class="alert alert-<%= key %>"><%= value %></div>
     <% end %>
   </div>
-  <p>
-    <strong>Title:</strong>
-    <%= @recipe.title %>
-  </p>
-  <p>
-    <strong>Secret:</strong>
-    <%=  @recipe.secret ? "True" : "False" %>
-  </p>
-  <p>
-    <strong>Tags:</strong>
-    <%= @recipe.tags %>
-  </p>
-  <h2>Ingredients</h2>
+  <h1>Title: <%= @recipe.title %></h1>
+  <p>Secret: <%=  @recipe.secret ? "True" : "False" %></p>
+  <p>Tags: <%= @recipe.tags %></p>
+  <h3>Ingredients</h3>
   <% @recipe.ingredients.each do |ingredient| %>
       <p>
 	<%= ingredient.quantity %>
@@ -29,7 +20,7 @@
       </p>
   <% end %>
   <% if params[:add] == '1' %>
-  <h2>Add an Ingredient:</h2>
+  <h3>Add an Ingredient:</h3>
   <%= form_for([@recipe, @recipe.ingredients.build]) do |f| %>
     <p>
       <%= f.label :quantity %><br>
@@ -48,7 +39,7 @@
     </p>
   <% end %>
   <% end %>
-  <h2>Steps</h2>
+  <h3>Steps</h3>
   <% @recipe.steps.each do |step| %>
     <p>
       <%= step.description %>
@@ -60,7 +51,7 @@
     </p>
   <% end %>
   <% if params[:add] == '1' %>
-  <h2>Add a Step:</h2>
+  <h3>Add a Step:</h3>
   <%= form_for([@recipe, @recipe.steps.build]) do |f| %>
     <p>
       <%= f.label :description %><br>

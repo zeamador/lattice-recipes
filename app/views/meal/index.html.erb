@@ -1,10 +1,18 @@
 <% @title="Meal" %>
 
-<div class="meal-content">
-  <div class="meal-info">
-    <h1>Your Meal!</h1>
-    <p>This is where the yummy things you've selected will go.</p>
-    <div><%= link_to "Combined Recipes", controller:"combined_recipes", action:"show", id:"" %></div>
+<div class="meal-info">
+  <h1>Your Meal</h1>
+  <p>These are the recipes you've added to your meal. If you've changed your mind on anything, you can remove it here. Once you're satisfied, click the Combine! button to get your Lattice Meal guide.</p>
+  <div>
+    <p>
+      Recipe #1 <button type="button">Remove</button> <br />
+      Recipe #2 <button type="button">Remove</button> <br />
+      Recipe #3 <button type="button">Remove</button> <br />
+    </p>
   </div>
-  <%= render "shared/sidebar" %>
+  <div>
+    <button type="button">
+      <%= link_to "Combine!", controller:"combined_recipes", action:"show", id:"" %>
+    </button>
+  </div>
 </div>

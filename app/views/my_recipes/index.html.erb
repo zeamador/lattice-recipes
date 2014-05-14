@@ -1,9 +1,23 @@
 <% @title="My Recipes" %>
 
-<div class="my-recipes-content">
-  <div class="my-recipes-info">
-    <h1>Here are your recipes!</h1>
-    <p>When you have some recipes (and our database can fetch them), they'll show up here.</p>
-  </div>
-  <%= render "shared/sidebar" %>
+<div class="my-recipes-info">
+  <h1>Your Recipes</h1>
+  <p>Sorting features coming soon!</p>
+  <ol>
+    <li>Recipe #1
+      <button type="button">
+        <%= link_to "view", controller:"recipes", action:"show", id:"1" %>
+      </button>
+    </li>
+    <li>Recipe #2
+      <button type="button">
+        <%= link_to "view", controller:"recipes", action:"show", id:"2" %>
+      </button>
+    </li>
+    <li>Recipe #3
+      <button type="button">
+        <%= link_to "view", controller:"recipes", action:"show", id:"3" %>
+      </button>
+    </li>
+  </ol>
 </div>

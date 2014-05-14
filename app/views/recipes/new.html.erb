@@ -1,6 +1,6 @@
 <% @title="Upload Recipe" %>
 
-<div class="recipe-content">
+<div class="recipe-info">
   <% if signed_in? %>
     <div class="recipe-form">
       <h1>Upload Recipe</h1>
@@ -19,18 +19,12 @@
           <%= f.label :tags %><br>
           <%= f.text_field :tags %>
 	</p>
-        <p>
-          <%= f.submit "Start Recipe Template",
-	      class: "btn btn-large btn-primary" %>
-	</p>
+        <%= f.submit "Start Recipe Template", class: "btn btn-large btn-primary" %>
       <% end %>
     </div>
   <% else %>
     <div class="need-signin">
-      <li>Please Sign In using the sidebar </li>
-      <li>or Sign Up <%= link_to "HERE", signup_path %></li>
+      <p>Please Sign In using the sidebar or Sign Up <%= link_to "here", signup_path %></p>
     </div>
   <% end %>
-
-  <%= render "shared/sidebar" %>
 </div>

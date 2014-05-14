@@ -1,9 +1,23 @@
 <% @title="Search" %>
 
-<div class="search-content">
-  <div class="search-info">
-    <h1>Searching!</h1>
-    <p>Wouldn't it be nice to be able to search right here?</p>
-  </div>
-  <%= render "shared/sidebar" %>
+<div class="search-info">
+  <h1>Searching Recipes</h1>
+  <p>Sorting features coming soon!</p>
+  <ol>
+    <li>Recipe #1
+      <button type="button">
+        <%= link_to "view", controller:"recipes", action:"show", id:"1" %>
+      </button>
+    </li>
+    <li>Recipe #2
+      <button type="button">
+        <%= link_to "view", controller:"recipes", action:"show", id:"2" %>
+      </button>
+    </li>
+    <li>Recipe #3
+      <button type="button">
+        <%= link_to "view", controller:"recipes", action:"show", id:"3" %>
+      </button>
+    </li>
+  </ol>
 </div>

@@ -52,17 +52,20 @@ body {
   font-weight: bold;
 }
 
+.main-menu .main-menu-leftmost {
+  border-left: 6px solid SaddleBrown;
+}
+
+.main-menu .main-menu-rightmost {
+  border-right: 6px solid SaddleBrown;
+}
+
 .main-menu ul li:hover {
   background-color: BurlyWood;
   color: Black;
 }
 
 .main-menu ul li a {
-  text-decoration: none;
-}
-
-a {
-  color: Sienna;
   text-decoration: none;
 }
 
@@ -74,3 +77,8 @@ a {
   color: Black;
 }
 
+/* Default for links */
+a {
+  color: Sienna;
+  text-decoration: none;
+}

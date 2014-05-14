@@ -26,10 +26,6 @@ class ScheduleBuilder
   #
   # Returns true if the step was successfully added, false otherwise.
   def add_step(step)
-    # DEBUG
-    puts "\nadd_step:\n"
-    puts "\tpossible_steps: #{@possible_steps}\n"
-    puts "\tstep: #{step}\n"
     if(@possible_steps.include?(step) && @resources.consume(step))
       # Remove step from possible steps
       @possible_steps.delete(step)

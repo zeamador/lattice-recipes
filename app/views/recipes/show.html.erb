@@ -3,7 +3,7 @@
 <div class="recipe-info">
   <div class="message-container">
     <% flash.each do |key, value| %>
-      <% if key == :recipe_success || key == :recipe_failure %>
+      <% if key == :recipe_success || key == :recipe_error %>
         <div class="alert alert-<%= key %>"><%= value %></div>
       <% end %>
     <% end %>
@@ -13,36 +13,36 @@
   <p>Tags: <%= @recipe.tags %></p>
   <h3>Ingredients</h3>
   <% @recipe.ingredients.each do |ingredient| %>
-      <p>
-	<%= ingredient.quantity %>
-	<%= ingredient.unit %>
-	<%= ingredient.description %>
+    <p>
+      <%= ingredient.quantity %>
+      <%= ingredient.unit %>
+      <%= ingredient.description %>
         
-        <% if params[:add] == '1' %>
-	  <%= link_to "Remove Ingredient", [ingredient.recipe, ingredient],
-	              method: :delete %>
-	<% end %>
-      </p>
+      <% if params[:add] == '1' %>
+      <%= link_to "Remove Ingredient", [ingredient.recipe, ingredient],
+                method: :delete %>
+      <% end %>
+    </p>
   <% end %>
   <% if params[:add] == '1' %>
-  <h3>Add an Ingredient:</h3>
-  <%= form_for([@recipe, @recipe.ingredients.build]) do |f| %>
-    <p>
-      <%= f.label :quantity %><br>
-      <%= f.number_field :quantity, step: 0.01 %>
-    </p>
-    <p>
-      <%= f.label :unit %><br>
-      <%= f.text_field :unit %>
-    </p>
-    <p>
-      <%= f.label :description %><br>
-      <%= f.text_field :description %>
-    </p>
-    <p>
-      <%= f.submit %>
-    </p>
-  <% end %>
+    <h3>Add an Ingredient:</h3>
+    <%= form_for([@recipe, @recipe.ingredients.build]) do |f| %>
+      <p>
+        <%= f.label :quantity %><br>
+        <%= f.number_field :quantity, step: 0.01 %>
+      </p>
+      <p>
+        <%= f.label :unit %><br>
+        <%= f.text_field :unit %>
+      </p>
+      <p>
+        <%= f.label :description %><br>
+        <%= f.text_field :description %>
+      </p>
+      <p>
+        <%= f.submit %>
+      </p>
+    <% end %>
   <% end %>
   <h3>Steps</h3>
   <% @recipe.steps.each do |step| %>
@@ -60,36 +60,36 @@
     </p>
   <% end %>
   <% if params[:add] == '1' %>
-  <h3>Add a Step:</h3>
-  <%= form_for([@recipe, @recipe.steps.build]) do |f| %>
-    <p>
-      <%= f.label :step_number %><br>
-      <%= f.number_field :step_number %>
-    </p>
-    <p>
-      <%= f.label :description %><br>
-      <%= f.text_area :description %>
-    </p>
-    <p>
-      <%= f.label :time %><br>
-      <%= f.number_field :time %> minutes
-    </p>
-    <p>
-      <%= f.label :attentiveness %><br>
-      <%= f.number_field :attentiveness %> All (2), Some (1), or None (0)
-    </p>
-    <p>
-      <%= f.label "Final Step" %>
-      <%= f.radio_button :final_step, "true" %>
-      <%= f.label "Intermediate Step" %>
-      <%= f.radio_button :final_step, "false", { checked: true } %>
-    </p>
-    <p>
-      <%= f.submit %>
-    </p>
-    <button type="button">
-     <%= link_to 'Delete Recipe Template', @recipe, method: :delete %>
-    </button>
-  <% end %>
+    <h3>Add a Step:</h3>
+    <%= form_for([@recipe, @recipe.steps.build]) do |f| %>
+      <p>
+        <%= f.label :step_number %><br>
+        <%= f.number_field :step_number %>
+      </p>
+      <p>
+        <%= f.label :description %><br>
+        <%= f.text_area :description %>
+      </p>
+      <p>
+        <%= f.label :time %><br>
+        <%= f.number_field :time %> minutes
+      </p>
+      <p>
+        <%= f.label :attentiveness %><br>
+        <%= f.number_field :attentiveness %> All (2), Some (1), or None (0)
+      </p>
+      <p>
+        <%= f.label "Final Step" %>
+        <%= f.radio_button :final_step, "true" %>
+        <%= f.label "Intermediate Step" %>
+        <%= f.radio_button :final_step, "false", { checked: true } %>
+      </p>
+      <p>
+        <%= f.submit %>
+      </p>
+      <button type="button">
+       <%= link_to 'Delete Recipe Template', @recipe, method: :delete %>
+      </button>
+    <% end %>
   <% end %>
 </div>

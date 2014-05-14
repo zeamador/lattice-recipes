@@ -1,15 +1,15 @@
 <div class="side-bar">
   <div class="user-side-bar">
-	<% if signed_in? %>
+  <% if signed_in? %>
     <div class="user-header-side-bar">Welcome, <%= @current_user.name %>!</div>
     <div class="user-content-side-bar">
-	  <div class="message-container">
-		<% flash.each do |key, value| %>
-      <% if key == :user_success || key == :user_failure %>
+    <div class="message-container">
+    <% flash.each do |key, value| %>
+      <% if key == :login_success || key == :login_error %>
         <div class="alert alert-<%= key %>"><%= value %></div>
       <% end %>
-		<% end %>
-	  </div>
+    <% end %>
+    </div>
       <ul>
         <li><%= link_to "My Recipes", controller:"my_recipes", action:"show", id:"" %></li>
         <li><%= link_to "Profile", current_user %></li> <!-- TODO: Make this a link to users/show -->
@@ -17,29 +17,29 @@
         <li><%= link_to "Log out", signout_path, method: "delete" %></li>
       </ul>
     </div>
-	<% else %>
-	<div class="user-header-side-bar">Sign in</div>
-	<div class="user-content-side-bar">
-	  <div class="signin-form">
-		<div class="message-container">
-		  <% flash.each do |key, value| %>
-		    <div class="alert alert-<%= key %>"><%= value %></div>
-		  <% end %>
-		</div>
-		<ul>
-		<%= form_for(:session, url: sessions_path) do |f| %>
-		  <li><%= f.label :email %></li>
-		  <li><%= f.text_field :email %></li>
+  <% else %>
+  <div class="user-header-side-bar">Sign in</div>
+  <div class="user-content-side-bar">
+    <div class="signin-form">
+    <div class="message-container">
+      <% flash.each do |key, value| %>
+        <div class="alert alert-<%= key %>"><%= value %></div>
+      <% end %>
+    </div>
+    <ul>
+    <%= form_for(:session, url: sessions_path) do |f| %>
+      <li><%= f.label :email %></li>
+      <li><%= f.text_field :email %></li>
 
-		  <li><%= f.label :password %></li>
-		  <li><%= f.password_field :password %></li>
+      <li><%= f.label :password %></li>
+      <li><%= f.password_field :password %></li>
 
-		  <li><%= f.submit "Sign in" %></li>
-		  <li>New user? <%= link_to "Sign up now!", signup_path %></li>
-		<% end %>
-	  </div>
-	</div>
-	<% end %>
+      <li><%= f.submit "Sign in" %></li>
+      <li>New user? <%= link_to "Sign up now!", signup_path %></li>
+    <% end %>
+    </div>
+  </div>
+  <% end %>
   </div>
   <div class="recent-side-bar">
     <div class="recent-header-side-bar">Latest Recipes</div>
@@ -55,36 +55,36 @@
   <div class="kitchen-meal-side-bar">
     <div class="kitchen-meal-header-side-bar">Your Kitchen and Meal</div>
     <div class="kitchen-side-bar">
-	  <% if signed_in? %>
-      <div class="kitchen-content-side-bar">
-        <div class="your-kitchen">
-          <u>
-            Your Kitchen (edit on your
-              <%= link_to "Profile", current_user %>
-            ):
-          </u>
+      <% if signed_in? %>
+        <div class="kitchen-content-side-bar">
+          <div class="your-kitchen">
+            <u>
+              Your Kitchen (edit on your
+                <%= link_to "Profile", current_user %>
+              ):
+            </u>
+          </div>
+          <div class="burners">Burners: <%= @current_user.kitchen.burner %></div>
+          <div class="ovens">Ovens: <%= @current_user.kitchen.oven %></div>
+          <div class="microwaves">Microwaves: <%= @current_user.kitchen.microwave %></div>
+          <div class="sinks">Sinks: <%= @current_user.kitchen.sink %></div>
+          <div class="toasters">Toasters: <%= @current_user.kitchen.toaster %></div>
         </div>
-        <div class="burners">Burners: <%= @current_user.kitchen.burner %></div>
-        <div class="ovens">Ovens: <%= @current_user.kitchen.oven %></div>
-        <div class="microwaves">Microwaves: <%= @current_user.kitchen.microwave %></div>
-	<div class="sinks">Sinks: <%= @current_user.kitchen.sink %></div>
-	<div class="toasters">Toasters: <%= @current_user.kitchen.toaster %></div>
-      </div>
       <% else %>
-      <div class="kitchen-content-side-bar">
-        <div class="your-kitchen"><u>Your Kitchen:</u></div>
-        <div class="burners">Burners: 4</div>
-        <div class="ovens">Ovens: 1</div>
-        <div class="microwaves">Microwaves: 1</div>
-	<div class="sinks">Sinks: 2</div>
-	<div class="toasters">Toasters: 1</div>
-      </div>
+        <div class="kitchen-content-side-bar">
+          <div class="your-kitchen"><u>Your Kitchen:</u></div>
+          <div class="burners">Burners: 4</div>
+          <div class="ovens">Ovens: 1</div>
+          <div class="microwaves">Microwaves: 1</div>
+          <div class="sinks">Sinks: 2</div>
+          <div class="toasters">Toasters: 1</div>
+        </div>
       <% end %>
     </div>
     <div class="meal-side-bar">
       <div class="meal-content-side-bar">
         <div class="your-meal"><u>Your Meal:</u></div>
-        <%= link_to raw("<div class=\"view-meal\">View Meal</div>"), controller: "meal", action: "show", id: "" %>
+        <%= link_to raw("<div class=\"view-meal\">View Meal</div>"), meal_index_path %>
       </div>
     </div>
   </div>

@@ -25,15 +25,27 @@ module MealFactory
       successful_schedules = [] #Set?
     
       create_meal_helper(schedule_builder, successful_schedules)
+      successful_schedules.uniq!      
 
       # Pick the shortest schedule
       best_schedule = nil
       best_schedule_length = nil
       successful_schedules.each do |schedule|
         schedule_length = nil
-        schedule.each_key do |time|
-          if schedule_length.nil? || (time > schedule_length)
-	    schedule_length = time
+        schedule.each do |time, steps|
+          # Find the longest step at each time
+          longest_step_length = nil
+          steps.each do |step|
+            if longest_step_length.nil? || (step.time > longest_step_length)
+              longest_step_length = step.time
+            end
+          end
+
+          # Add the longest step's length to the time to get a possible
+          # schedule length
+          possible_length = time + longest_step_length
+          if schedule_length.nil? || (possible_length > schedule_length)
+	    schedule_length = possible_length
           end
         end
 

@@ -113,16 +113,16 @@ class ScheduleBuilder
   end
 
   def schedule
-    max_time_from_end = @significant_times.first
+    max_time_from_end = @significant_times.to_a.last
 
-    schedule = Hash.new
+    forward_schedule = Hash.new
     @schedule.each do |time_from_end, steps|
       # Clone step collection so that future calls to add_step don't modify the
       # data returned to a previous caller
-      schedule[max_time_from_end - time_from_end] = steps.clone
+      forward_schedule[max_time_from_end - time_from_end] = steps.clone
     end
 
-    schedule
+    forward_schedule
   end
 
   # Public: Determine whether or not the schedule being built is complete, which

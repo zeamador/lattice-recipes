@@ -16,8 +16,6 @@
 /tmp
 
 # Ignore other unneeded files.
-# (Copied from "The Ruby on Rails Tutorial" by Michael Hartl)
-database.yml
 doc/
 *.swp
 *~
@@ -25,4 +23,4 @@ doc/
 .DS_Store
 .idea
 .secret
-
+tags

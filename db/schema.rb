@@ -24,15 +24,9 @@ ActiveRecord::Schema.define(version: 20140513235634) do
   end
 
   create_table "ingredients", force: true do |t|
-    t.float    "quantity"
-    t.string   "unit"
-    t.string   "description"
-    t.integer  "recipe_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  add_index "ingredients", ["recipe_id"], name: "index_ingredients_on_recipe_id"
 
   create_table "kitchens", force: true do |t|
     t.datetime "created_at"
@@ -45,25 +39,17 @@ ActiveRecord::Schema.define(version: 20140513235634) do
   end
 
   create_table "meals", force: true do |t|
-    t.integer  "recipe_id"
-    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  add_index "meals", ["recipe_id"], name: "index_meals_on_recipe_id"
-  add_index "meals", ["user_id"], name: "index_meals_on_user_id"
 
   create_table "recipes", force: true do |t|
-    t.string   "title"
-    t.boolean  "secret"
-    t.string   "tags"
-    t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.string  "title"
+    t.string  "ingredients"
+    t.string  "final_steps"
+    t.boolean "secret"
+    t.string  "tags"
   end
-
-  add_index "recipes", ["user_id"], name: "index_recipes_on_user_id"
 
   create_table "step_mappers", force: true do |t|
     t.boolean  "immediate_prereq"
@@ -78,24 +64,13 @@ ActiveRecord::Schema.define(version: 20140513235634) do
   add_index "step_mappers", ["step_id"], name: "index_step_mappers_on_step_id"
 
   create_table "steps", force: true do |t|
-    t.text     "description"
-    t.integer  "time"
-    t.integer  "attentiveness"
-    t.integer  "step_number"
-    t.boolean  "final_step"
-    t.integer  "recipe_id"
-    t.integer  "equipment_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "steps", ["equipment_id"], name: "index_steps_on_equipment_id"
-  add_index "steps", ["recipe_id"], name: "index_steps_on_recipe_id"
-
   create_table "users", force: true do |t|
     t.string   "name"
     t.string   "email"
-    t.integer  "kitchen_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "password_digest"
@@ -103,7 +78,6 @@ ActiveRecord::Schema.define(version: 20140513235634) do
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["kitchen_id"], name: "index_users_on_kitchen_id"
   add_index "users", ["name"], name: "index_users_on_name", unique: true
   add_index "users", ["remember_token"], name: "index_users_on_remember_token"
 

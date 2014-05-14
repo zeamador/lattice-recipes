@@ -7,7 +7,7 @@ class CreateRecipes < ActiveRecord::Migration
 
       t.references :user, index: true
 
-      t.timestamp
+      t.timestamps
     end
   end
 end

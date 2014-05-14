@@ -45,15 +45,22 @@ ActiveRecord::Schema.define(version: 20140513235634) do
   end
 
   create_table "meals", force: true do |t|
+    t.integer  "recipe_id"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
+  add_index "meals", ["recipe_id"], name: "index_meals_on_recipe_id"
+  add_index "meals", ["user_id"], name: "index_meals_on_user_id"
+
   create_table "recipes", force: true do |t|
-    t.string  "title"
-    t.boolean "secret"
-    t.string  "tags"
-    t.integer "user_id"
+    t.string   "title"
+    t.boolean  "secret"
+    t.string   "tags"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_index "recipes", ["user_id"], name: "index_recipes_on_user_id"

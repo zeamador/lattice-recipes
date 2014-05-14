@@ -12,9 +12,9 @@ class RecipesController < ApplicationController
     @recipe = Recipe.new(recipe_params)
     if @recipe.save
       flash[:success] = "Great! Now we need info about the ingredients and steps."
-      redirect_to @recipe
+      redirect_to recipe_path(@recipe, :add => 1)
     else
-      redirect_to 'new'
+      render 'new'
     end
   end
 
@@ -24,9 +24,18 @@ class RecipesController < ApplicationController
     redirect_to root_url
   end
 
+  def index
+    if params[:search]
+      @recipes = Recipe.search(params[:search]).order("created_at DESC")
+    else
+      @recipes = Recipe.order("created_at DESC")
+    end
+  end
+
   private
 
     def recipe_params
       params.require(:recipe).permit(:title, :secret, :tags)
     end
+
 end

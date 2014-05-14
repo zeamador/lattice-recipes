@@ -28,6 +28,7 @@
 	            method: :delete %>
       </p>
   <% end %>
+  <% if params[:add] == '1' %>
   <h2>Add an Ingredient:</h2>
   <%= form_for([@recipe, @recipe.ingredients.build]) do |f| %>
     <p>
@@ -46,7 +47,7 @@
       <%= f.submit %>
     </p>
   <% end %>
-
+  <% end %>
   <h2>Steps</h2>
   <% @recipe.steps.each do |step| %>
     <p>
@@ -58,6 +59,7 @@
       <%= link_to "Remove Step", [step.recipe, step], method: :delete %>
     </p>
   <% end %>
+  <% if params[:add] == '1' %>
   <h2>Add a Step:</h2>
   <%= form_for([@recipe, @recipe.steps.build]) do |f| %>
     <p>
@@ -86,7 +88,7 @@
       <%= f.submit %>
     </p>
   <% end %>
-
+  <% end %>
   <p>
     <%= link_to 'Destroy Recipe Template', @recipe, method: :delete %>
   </p>

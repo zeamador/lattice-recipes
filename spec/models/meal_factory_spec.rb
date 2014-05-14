@@ -47,7 +47,6 @@ describe MealFactory do
     expect(actual).to eq(expected)
   end
 
-
   it "should schedule steps as close to the end as possible" do
     step_a = StepObject.new("Make sauce", 10, 2, 9)
     step_b = StepObject.new("Rub sauce on steaks", 10, 2, 9, prereqs: [step_a])
@@ -86,6 +85,25 @@ describe MealFactory do
 
     expected = { 0 => [step_c], 5 => [step_b], 45 => [step_a], 75 => [step_d] }
     actual = MealFactory.create_meal([recipe_a, recipe_b, recipe_c]).schedule
+
+    expect(actual).to eq(expected)
+  end
+
+  it "should not allow the oven to be re-preheated before being used" do
+    step_1a = StepObject.new("Preheat 1", 30, 0, 1, equipment: [:OVEN])
+    step_1b = StepObject.new("Use preheat 1", 5, 0, 1, equipment: [:OVEN],
+                             prereqs: Set[step_1a], preheat_prereq: step_1a)
+     
+    step_2a = StepObject.new("Preheat 2", 35, 0, 2, equipment: [:OVEN])
+    step_2b = StepObject.new("Use preheat 2", 10, 0, 2, equipment: [:OVEN],
+                             prereqs: Set[step_2a], preheat_prereq: step_2a)
+
+    recipe_1 = RecipeObject.new(1, "Recipe 1", nil, Set[step_1b], false, nil)
+    recipe_2 = RecipeObject.new(2, "Recipe 2", nil, Set[step_2b], false, nil)
+
+    expected = { 0 => [step_2a], 35 => [step_2b], 
+                45 => [step_1a], 75 => [step_1b] }
+    actual = MealFactory.create_meal([recipe_1, recipe_2]).schedule
 
     expect(actual).to eq(expected)
   end

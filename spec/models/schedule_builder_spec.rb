@@ -48,4 +48,24 @@ describe ScheduleBuilder do
     builder.advance_current_time.should be_true
     builder.add_step(step_b).should be_true
   end
+
+  it "should be able to add no attention steps during a full attention step" do
+    resources = Resources.new(KitchenObject.new, 1)
+    step_a = StepObject.new("Cut apples", 10, 2, 170)
+    step_b = StepObject.new("Boil water", 12, 0, 170)
+    step_c = StepObject.new("Preheat oven", 8, 0, 220)
+    builder = ScheduleBuilder.new([step_a, step_b, step_c], resources)
+    builder.add_step(step_a).should be_true
+    builder.add_step(step_b).should be_true
+    builder.add_step(step_c).should be_true
+  end
+
+  it "should be able to add two some attention steps at the same time" do
+    resources = Resources.new(KitchenObject.new, 1)
+    step_a = StepObject.new("Stir apples periodically", 10, 1, 170)
+    step_b = StepObject.new("Stir bananas periodically", 12, 1, 170)
+    builder = ScheduleBuilder.new([step_a, step_b], resources)
+    builder.add_step(step_a).should be_true
+    builder.add_step(step_b).should be_true
+  end
 end

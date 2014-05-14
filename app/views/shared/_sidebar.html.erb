@@ -1,7 +1,7 @@
 <div class="side-bar">
   <div class="user-side-bar">
 	<% if signed_in? %>
-    <div class="user-header-side-bar">Welcome, <%= @current_user.name %></div>
+    <div class="user-header-side-bar">Welcome, <%= @current_user.name %>!</div>
     <div class="user-content-side-bar">
 	  <div class="message-container">
 		<% flash.each do |key, value| %>
@@ -9,9 +9,9 @@
 		<% end %>
 	  </div>
       <ul>
-        <li>My Recipes</li>
+        <li><%= link_to "My Recipes", controller:"my_recipes", action:"show", id:"" %></li>
         <li><%= link_to "Profile", current_user %></li> <!-- TODO: Make this a link to users/show -->
-        <li>Account Settings</li>
+        <li><%= link_to "Account Settings", controller:"account", action:"show", id:"" %></li>
         <li><%= link_to "Log out", signout_path, method: "delete" %></li>
       </ul>
     </div>
@@ -43,9 +43,9 @@
     <div class="recent-header-side-bar">Latest Recipes</div>
     <div class="recent-content-side-bar">
       <ul>
-        <li>Easy Recipe #1</li>
-        <li>Tasty Recipe #2</li>
-        <li>Zesty Recipe #3</li>
+        <li><%= link_to raw("Easy Recipe #1"), controller: "recipes", action: "show", id: "1" %></li>
+        <li><%= link_to raw("Tasty Recipe #2"), controller: "recipes", action: "show", id: "2" %></li>
+        <li><%= link_to raw("Zesty Recipe #3"), controller: "recipes", action: "show", id: "3" %></li>
       </ul>
     </div>
   </div>
@@ -75,6 +75,7 @@
     <div class="meal-side-bar">
       <div class="meal-content-side-bar">
         <div class="your-meal"><u>Your Meal:</u></div>
+        <%= link_to raw("<div class=\"view-meal\">View Meal</div>"), controller: "meal", action: "show", id: "" %>
       </div>
     </div>
   </div>

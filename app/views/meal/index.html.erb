@@ -1,0 +1,10 @@
+<% @title="Meal" %>
+
+<div class="meal-content">
+  <div class="meal-info">
+    <h1>Your Meal!</h1>
+    <p>This is where the yummy things you've selected will go.</p>
+    <div><%= link_to "Combined Recipes", controller:"combined_recipes", action:"show", id:"" %></div>
+  </div>
+  <%= render "shared/sidebar" %>
+</div>

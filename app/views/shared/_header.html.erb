@@ -4,9 +4,9 @@
   <ul>
     <%= link_to raw("<li>Home</li>"), root_path %>
     <%= link_to raw("<li>Add Recipe</li>"), new_recipe_path %>
-    <a href="#"><li>About</li></a>
-    <a href="#"><li>Contact</li></a>
-    <a href="#"><li>Search</li></a> <!-- TODO: link to search controller -->
+    <%= link_to raw("<li>About</li>"), controller: "about", action: "show", id: "" %>
+    <%= link_to raw("<li>Contact</li>"), controller: "contact", action: "show", id: "" %>
+    <%= link_to raw("<li>Search</li>"), controller: "search", action: "show", id: "" %> <!-- TODO: link to search controller -->
   </ul>
 </div>
 

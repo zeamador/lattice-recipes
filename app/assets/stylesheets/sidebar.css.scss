@@ -6,6 +6,10 @@
   color: Black;
 }
 
+.side-bar a {
+  text-decoration: none;
+}
+
 .user-side-bar {
   background-color: White;
   margin-bottom: 10px;
@@ -87,4 +91,8 @@
 
 .meal-side-bar {
   padding: 0 15px 0 15px;
+}
+
+.meal-side-bar .view-meal {
+  margin-left: 15px;
 }

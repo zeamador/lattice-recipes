@@ -74,6 +74,27 @@ Rails.application.routes.draw do
     resources :steps
   end  
   match '/upload', to: 'recipes#new', via: 'get'
+  
+  # About page
+  resources :about
+  
+  # Contact page
+  resources :contact
+  
+  # Search page
+  resources :search
+  
+  # Meal page
+  resources :meal
+  
+  # Account Settings page
+  resources :account
+  
+  # My Recipes page
+  resources :my_recipes
+  
+  # Combined Recipes page
+  resources :combined_recipes
 
   # Add Kitchen
   resources :kitchens do

@@ -1,11 +1,11 @@
 <% @title="Recipe" %>
-<%= render "shared/sidebar" %>
-<div class="message-container">
-  <% flash.each do |key, value| %>
-    <div class="alert alert-<%= key %>"><%= value %></div>
-  <% end %>
-</div>
+
 <div class="recipe-info">
+  <div class="message-container">
+    <% flash.each do |key, value| %>
+      <div class="alert alert-<%= key %>"><%= value %></div>
+    <% end %>
+  </div>
   <p>
     <strong>Title:</strong>
     <%= @recipe.title %>
@@ -89,7 +89,7 @@
     </p>
   <% end %>
   <% end %>
-  <p>
+  <button type="button">
     <%= link_to 'Destroy Recipe Template', @recipe, method: :delete %>
-  </p>
+  </button>
 </div>

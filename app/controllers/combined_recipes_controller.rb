@@ -1,0 +1,2 @@
+class CombinedRecipesController < ApplicationController
+end

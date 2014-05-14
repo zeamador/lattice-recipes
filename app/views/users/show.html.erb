@@ -1,28 +1,32 @@
 <% @title="User Profile" %>
-<div class="message-container">
+
+<div class="user-content">
+  <div class="user-info">
+    <div class="message-container">
 	<% flash.each do |key, value| %>
 		<div class="alert alert-<%= key %>"><%= value %></div>
 	<% end %>
-</div>
-<div class="user-info">
-  <p>User Name: <%= @user.name %></p>
-  <p>Email: <%= @user.email %></p>
+    </div>
+    <h2>User Name: <%= @user.name %></h2>
+    <p>Email: <%= @user.email %></p>
   
-  <div class="kitchen-form">
-	Your Kitchen Settings:</br>
-    <%= form_for(@kitchen) do |f| %>
-	  <%= render 'shared/error_messages' %>
-        <%= f.label :burner %>
-        <%= f.text_field :burner %></br>
-        <%= f.label :oven %>
-        <%= f.text_field :oven %></br>
-        <%= f.label :microwave %>
-        <%= f.text_field :microwave %></br>
-        <%= f.label :sink %>
-        <%= f.text_field :sink %></br>
-        <%= f.label :toaster %>
-        <%= f.text_field :toaster %></br>
-      <%= f.submit "Change my kitchen!", class: "btn btn-large btn-primary" %>
-    <% end %>
+    <div class="kitchen-form">
+  	  Your Kitchen Settings:</br>
+      <%= form_for(@kitchen) do |f| %>
+	    <%= render 'shared/error_messages' %>
+          <%= f.label :burner %>
+          <%= f.text_field :burner %></br>
+          <%= f.label :oven %>
+          <%= f.text_field :oven %></br>
+          <%= f.label :microwave %>
+          <%= f.text_field :microwave %></br>
+          <%= f.label :sink %>
+          <%= f.text_field :sink %></br>
+          <%= f.label :toaster %>
+          <%= f.text_field :toaster %></br>
+        <%= f.submit "Update Kitchen", class: "btn btn-large btn-primary" %>
+      <% end %>
+    </div>
   </div>
+  <%= render "shared/sidebar" %>
 </div>

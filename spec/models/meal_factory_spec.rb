@@ -118,7 +118,7 @@ describe MealFactory do
     expect(actual).to eq(expected)
   end
 
-  it "should break variance ties by choosing the shorter overall cooking time" do
+  it "should break mse ties by choosing the shorter overall cooking time" do
     step_a = StepObject.new("Step A", 5, 1, 12)
     recipe_a = RecipeObject.new(12, "Recipe A", nil, Set[step_a], false, nil)
 
@@ -132,6 +132,6 @@ describe MealFactory do
     actual = MealFactory.create_meal([recipe_a, recipe_b, recipe_c]).schedule
 
     expect(actual).to eq(expected)
-
   end
 end
+

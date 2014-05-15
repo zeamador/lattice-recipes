@@ -31,37 +31,28 @@ module MealFactory
       # every recipe passed to this method end at closest to the same times.
       # This is calculated by minimizing the variance of the end times.
       best_schedules = nil
-      lowest_variance = nil
+      lowest_mse = nil
       successful_schedules.each do |schedule|
-        # Construct a new schedule with only the final steps
-        final_steps_schedule = Hash.new
-        schedule.each do |time, steps|
-          steps.each do |step|
-            if final_steps.include?(step)
-              unless final_steps_schedule.has_key?(time)
-                final_steps_schedule[time] = []
-              end
-  
-              final_steps_schedule[time] << step
-            end
-          end
-        end
-        # Calculate the variance of the final steps' end times
-        variance = end_time_variance(final_steps_schedule)
+        # Calculate the error for the schedule.
+        mse = get_schedule_mse(schedule, final_steps)
 
-        if lowest_variance.nil? || (variance < lowest_variance)
+        # Check if its error is less than or equal to the lowest error so far
+        if lowest_mse.nil? || (mse < lowest_mse)
+          # If lower, make a new list of best schedules containing only this 
+          # one and note a new lowest error
           best_schedules = [schedule]
-          lowest_variance = variance
-        elsif lowest_variance == variance
+          lowest_mse = mse
+        elsif lowest_mse == mse
+          # If equal, add this schedule to the list of best schedules
           best_schedules << schedule
         end
       end      
 
-      # Pick the shortest schedule of those with the same variance
+      # Pick the shortest schedule of those with the same error
       best_schedule = nil
       best_schedule_length = nil
       best_schedules.each do |schedule|
-        schedule_length = get_schedule_length(schedule)
+        schedule_length = get_schedule_end_time(schedule)
 
         if best_schedule_length.nil? || (schedule_length < best_schedule_length)
           best_schedule = schedule
@@ -123,43 +114,54 @@ module MealFactory
       end
     end
 
-    # Internal: Calculate the variance of the end times of all steps in a
-    #           schedule. End time is a step's start time plus its duration.
+    # Internal: Calculates the mean squared error of a schedule, where an error
+    #           is the difference between a final step's end time and the end 
+    #           time of a schedule.
     #
     # schedule - A Hash from Integer start times to Steps.
+    # final_steps - The final Step objects in the schedule. Each of these steps
+    #               must also be in the schedule.
     #
-    # Returns the variance of the end times of all steps in the schedule as a
-    # Rational.
-    def end_time_variance(schedule)
-      # Calculate mean and squared mean
-      num_steps = 0
-      end_times_sum = 0
-      end_times_sq_sum = 0
+    # Returns the mean squared error of a schedule
+    def get_schedule_mse(schedule, final_steps)
+      # Construct a schedule with only the final steps.
+      final_steps_schedule = Hash.new
       schedule.each do |time, steps|
         steps.each do |step|
-          num_steps += 1
+          if final_steps.include?(step)
+            unless final_steps_schedule.has_key?(time)
+              final_steps_schedule[time] = []
+            end
 
-          end_time = time + step.time
-          end_times_sum += end_time
-          end_times_sq_sum += end_time * end_time
+            final_steps_schedule[time] << step
+          end
         end
       end
 
-      mean_of_squares = Rational(end_times_sq_sum, num_steps)
-      mean = Rational(end_times_sum, num_steps)
-      square_of_mean = mean * mean
+      # For each final step, find the difference between its end time and the
+      # end time of the entire schedule. Sum the square of these differences.
+      time_from_end_sq_sum = 0
+      end_time = get_schedule_end_time(final_steps_schedule)
 
-      mean_of_squares - square_of_mean
+      final_steps_schedule.each do |time, steps|
+        steps.each do |step|
+          time_from_end = end_time - (time + step.time)
+          time_from_end_sq_sum += time_from_end * time_from_end
+        end
+      end
+
+      # Divide the sum by the number of final steps to get the mean squared 
+      # error.
+      Rational(time_from_end_sq_sum, final_steps.length)
     end
 
-    # Internal: Calculate the total time a step schedule will take. Assumes the
-    #           schedule's start time is zero.
+    # Internal: Calculate the time at which a step schedule ends.
     #
     # schedule - A Hash from Integer start times to Arrays of Steps.
     #
     # Returns the length of the given schedule.
-    def get_schedule_length(schedule)
-      schedule_length = 0
+    def get_schedule_end_time(schedule)
+      schedule_end_time = 0
       schedule.each do |time, steps|
         # Find the longest step at each time
         longest_step_length = 0
@@ -171,13 +173,13 @@ module MealFactory
 
         # Add the longest step's length to the time to get a possible
         # schedule length
-        possible_length = time + longest_step_length
-        if possible_length > schedule_length
-          schedule_length = possible_length
+        end_time_candidate = time + longest_step_length
+        if end_time_candidate > schedule_end_time
+          schedule_end_time = end_time_candidate
         end
       end
 
-      schedule_length
+      schedule_end_time
     end
   end
 end

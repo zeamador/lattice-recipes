@@ -45,6 +45,31 @@ class ScheduleBuilder
     end
   end
 
+  # Public: Add the passed step to the schedule such that it starts at the next
+  #         significant time in the schedule.
+  #
+  # step - The Step object to add.
+  #
+  # Returns true if the step was successfully added, false otherwise
+  def add_step_preemptive(step)
+    old_current_time = @current_time
+
+    next_time = get_next_time
+    if next_time.nil?
+      return false
+    else
+      @current_time = next_time - step.time
+    end
+
+    res = false
+    unless @current_time <= old_current_time
+      res = add_step(step)
+    end
+
+    @current_time = old_current_time
+    res
+  end
+
   # Public: Advances this ScheduleBuilder's current time to the next
   #         significant time in the schedule, moving backwards from the end. To
   #         successfully advance the current time, there must be a significant 
@@ -58,33 +83,22 @@ class ScheduleBuilder
   #   if builder.advance_current_time
   #     #continue building
   #   else
-  #     #advancing current time failed, fail or change something and try again
+  #     #advancing current time failed, throw out this ScheduleBuilder
   #   end
   #
   # Returns true if the current time was successfully advanced, false otherwise.
   def advance_current_time
-    # Advance an iterator over significant_times until we reach the current 
-    # time. If the current time is 0, it isn't in the list of significant times,    # but the sorted set's first element will be the next significant time.
-    e = @significant_times.each
-    unless @current_time == 0
-      until e.next == @current_time
-      end
-    end
+    @current_time = get_next_time
 
-    # The next element in the iterator is the next significant time to consider.
-    # If there are no more elements, there are no more significant times, so
-    # return false. Otherwise set the current time to the next significant 
-    # time.
-    begin
-      @current_time = e.next
-    rescue StopIteration
+    if @current_time.nil?
+      # There is not a next time to advance to, fail
       return false
     end
 
-    # We just iterated over @significant_times to find the new @current_time,
-    # and @significant_times is invariantly the sorted keyset of @schedule, so
-    # @current_time is guaranteed to be a valid key in @schedule.
-    # Add all prereqs to possible steps.
+    # Add all prereqs to possible steps. @current_time is guaranteed to be a
+    # valid key in @schedule, because it is invariantly non-nil by the above
+    # check and get_next_time guarantees its return value to be nil or a valid 
+    # key.
     @schedule[@current_time].each do |step|
       @resources.release(step)
       step.prereqs.each do |prereq|
@@ -169,6 +183,31 @@ class ScheduleBuilder
       end
 
       has_unscheduled_descendant_helper(step, next_last_steps)
+    end
+  end
+
+  # Internal: Get the next significant time in the schedule, which is the lowest
+  #           time greater than the current time.
+  #
+  # Returns the next significant time in the schedule, or nil if there isn't
+  # one. If non-nil, this value is guaranteed to be a key in @schedule
+  def get_next_time
+    # Advance an iterator over significant_times until we reach the current 
+    # time. If the current time is 0, it isn't in the list of significant times,    # but the sorted set's first element will be the next significant time.
+    e = @significant_times.each
+    unless @current_time == 0
+      until e.next == @current_time
+      end
+    end
+
+    # The next element in the iterator is the next significant time to consider.
+    # If there are no more elements, there are no more significant times, so
+    # return false. Otherwise set the current time to the next significant 
+    # time.
+    begin
+      e.next
+    rescue StopIteration
+      nil
     end
   end
 end

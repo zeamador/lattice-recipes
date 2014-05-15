@@ -27,6 +27,8 @@ module MealFactory
       create_meal_helper(schedule_builder, successful_schedules)
       successful_schedules.uniq!      
 
+      puts "\n#{successful_schedules.length}\n"
+
       # Pick the schedule for which the end times of all of the final steps of
       # every recipe passed to this method end at closest to the same times.
       # This is calculated by minimizing the variance of the end times.
@@ -88,12 +90,22 @@ module MealFactory
     # Returns nothing, but populates successful_schedules.
     def create_meal_helper(schedule_builder, successful_schedules)
       schedule_builder.possible_steps.each do |step|
-        # schedule_builder_copy = ScheduleBuilder.new(schedule_builder)
+        # Make a copy of the schedule_builder to modify and pass to a new
+        # recursive branch
         schedule_builder_copy = schedule_builder.clone   
         
         if schedule_builder_copy.add_step(step)
           # Recursive case - add step
           create_meal_helper(schedule_builder_copy, successful_schedules)
+        end
+
+        unless step.immediate_prereq.nil?
+          # Make another copy for another recursive branch
+          schedule_builder_copy = schedule_builder.clone
+
+          if schedule_builder_copy.add_step_preemptive(step)
+            create_meal_helper(schedule_builder_copy, successful_schedules)
+          end
         end
       end
 

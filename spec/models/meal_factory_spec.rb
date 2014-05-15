@@ -128,7 +128,7 @@ describe MealFactory do
     step_c = StepObject.new("Step C", 20, 1, 90)
     recipe_c = RecipeObject.new(90, "Recipe C", nil, Set[step_c], false, nil)
    
-    expected = { 0 => [step_c], 5 => [step_b], 15 => [step_c] }
+    expected = { 0 => [step_c], 5 => [step_b], 15 => [step_a] }
     actual = MealFactory.create_meal([recipe_a, recipe_b, recipe_c]).schedule
 
     expect(actual).to eq(expected)

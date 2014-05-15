@@ -27,8 +27,6 @@ module MealFactory
       create_meal_helper(schedule_builder, successful_schedules)
       successful_schedules.uniq!      
 
-      puts "\n#{successful_schedules.length}\n"
-
       # Pick the schedule for which the end times of all of the final steps of
       # every recipe passed to this method end at closest to the same times.
       # This is calculated by minimizing the variance of the end times.
@@ -54,9 +52,7 @@ module MealFactory
         if lowest_variance.nil? || (variance < lowest_variance)
           best_schedules = [schedule]
           lowest_variance = variance
-        end
-
-        if lowest_variance == variance
+        elsif lowest_variance == variance
           best_schedules << schedule
         end
       end      
@@ -65,7 +61,7 @@ module MealFactory
       best_schedule = nil
       best_schedule_length = nil
       best_schedules.each do |schedule|
-        schedule_length = schedule_length(schedule)
+        schedule_length = get_schedule_length(schedule)
 
         if best_schedule_length.nil? || (schedule_length < best_schedule_length)
           best_schedule = schedule
@@ -130,9 +126,10 @@ module MealFactory
     # Internal: Calculate the variance of the end times of all steps in a
     #           schedule. End time is a step's start time plus its duration.
     #
-    # schedule - A Hash from integer start times to Steps
+    # schedule - A Hash from Integer start times to Steps.
     #
-    # Returns the variance of the end times of all steps in the schedule 
+    # Returns the variance of the end times of all steps in the schedule as a
+    # Rational.
     def end_time_variance(schedule)
       # Calculate mean and squared mean
       num_steps = 0
@@ -148,8 +145,8 @@ module MealFactory
         end
       end
 
-      mean_of_squares = end_times_sq_sum.to_f / num_steps
-      mean = end_times_sum.to_f / num_steps
+      mean_of_squares = Rational(end_times_sq_sum, num_steps)
+      mean = Rational(end_times_sum, num_steps)
       square_of_mean = mean * mean
 
       mean_of_squares - square_of_mean
@@ -161,7 +158,7 @@ module MealFactory
     # schedule - A Hash from Integer start times to Arrays of Steps.
     #
     # Returns the length of the given schedule.
-    def schedule_length(schedule)
+    def get_schedule_length(schedule)
       schedule_length = 0
       schedule.each do |time, steps|
         # Find the longest step at each time

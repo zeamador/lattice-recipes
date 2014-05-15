@@ -87,9 +87,26 @@
       <p>
         <%= f.submit %>
       </p>
-      <button type="button">
-       <%= link_to 'Delete Recipe Template', @recipe, method: :delete %>
-      </button>
     <% end %>
+  <% end %>
+  <% if params[:add] == '1' %>
+    <br />
+    <p>
+      <%= button_to 'Delete Recipe Template', @recipe, method: :delete,
+	  data: { confirm: "Are you sure?" } %>
+    </p>
+    <p>
+      <!-- This is kind of annoying and ugly but it was the only way I could
+	   get this link to work and still look like a button. -->
+      <%= content_tag :button, :type => "button", 
+    :onclick => "window.location.href =  '#{url_for(recipe_path(@recipe))}'; " do
+      "#{'Save Recipe'}"
+      end %>
+    </p>
+  <% end %>
+  <% if params[:add] != '1' %>
+    <button type="button">
+      Add to Meal
+    </button>
   <% end %>
 </div>

@@ -20,15 +20,21 @@ class RecipesController < ApplicationController
 
   def destroy
     @recipe = Recipe.find(params[:id])
+    @recipe.ingredients.each do |ingredient|
+      ingredient.destroy
+    end
+    @recipe.steps.each do |step|
+      step.destroy
+    end
     @recipe.destroy
     redirect_to root_url
   end
 
   def index
     if params[:search]
-      @recipes = Recipe.search(params[:search]).order("created_at DESC")
+      @recipes = Recipe.search(params[:search]).order(created_at: :desc)
     else
-      @recipes = Recipe.order("created_at DESC")
+      @recipes = Recipe.order(created_at: :desc)
     end
   end
 

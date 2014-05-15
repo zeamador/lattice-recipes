@@ -15,7 +15,9 @@ git clone git://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-buil
 echo 'export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"' >> ~/.bashrc
 source $HOME/.bashrc
 
-export RBENV_ROOT="/home/vagrant/.rbenv"
+export RBENV_ROOT="$HOME/.rbenv"
+export PATH="$RBENV_ROOT/bin:$PATH"
+eval "$(rbenv init -)"
 
 rbenv install 2.1.2
 rbenv global 2.1.2

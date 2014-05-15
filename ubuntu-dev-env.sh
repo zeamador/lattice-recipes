@@ -15,8 +15,10 @@ git clone git://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-buil
 echo 'export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"' >> ~/.bashrc
 source $HOME/.bashrc
 
-rbenv install 2.1.1
-rbenv global 2.1.1
+export RBENV_ROOT="/home/vagrant/.rbenv"
+
+rbenv install 2.1.2
+rbenv global 2.1.2
 
 echo "gem: --no-ri --no-rdoc" > ~/.gemrc
 

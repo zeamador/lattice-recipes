@@ -1,8 +1,7 @@
 require 'spec_helper'
 
 describe "User pages" do
-  pending "tests need to updated to relect Bessie's changes"
-=begin
+begin
   subject { page }
 
   describe "signup page" do
@@ -12,22 +11,30 @@ describe "User pages" do
     it { should have_title('Sign up') }
   end
 
-  describe "profile page" do
+  #describe "profile page" do
 
-    let(:user) { FactoryGirl.create(:user) }
-    before { visit user_path(user) }
+   # let(:user) { FactoryGirl.create(:user) }
+    #before { visit user_path(user) }
 
-    it { should have_content(user.name) }
-    it { should have_title("User Profile") }
-  end
+    #it { should have_content(user.name) }
+    #it { should have_title("User Profile") }
+  #end
 
   describe "signup" do
 
     before { visit signup_path }
 
-    let(:submit) { "Create my account" }
+    let(:submit) { "Create Account" }
 
     describe "with invalid information" do
+
+	  before do
+        fill_in "Name",         with: "ExampleUser"
+        fill_in "Email Address",        with: "user@example.com"
+        fill_in "New Password",     with: ""
+        fill_in "Confirm Password", with: ""
+      end
+
       it "should not create a user" do
         expect { click_button submit }.not_to change(User, :count)
       end
@@ -36,9 +43,9 @@ describe "User pages" do
     describe "with valid information" do
       before do
         fill_in "Name",         with: "ExampleUser"
-        fill_in "Email",        with: "user@example.com"
-        fill_in "Password",     with: "foobar"
-        fill_in "Confirmation", with: "foobar"
+        fill_in "Email Address",        with: "user@example.com"
+        fill_in "New Password",     with: "foobar"
+        fill_in "Confirm Password", with: "foobar"
       end
 
       it "should create a user" do
@@ -46,5 +53,22 @@ describe "User pages" do
       end
     end
   end
-=end
+
+  describe "edit" do
+    let(:user) { FactoryGirl.create(:user) }
+    before { visit edit_user_path(user) }
+
+    describe "page" do
+      it { should have_content("Your Account Settings") }
+      it { should have_title("User Settings") }
+    end
+
+    describe "with invalid information" do
+      before { click_button "Change Password" }
+
+      it { should have_content('error') }
+    end
+  end
+
+end
 end

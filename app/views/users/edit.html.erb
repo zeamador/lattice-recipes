@@ -1,0 +1,31 @@
+<% @title="Account Settings" %>
+
+<div class="user-info">
+  <div class="message-container">
+      <% flash.each do |key, value| %>
+	<div class="alert alert-<%= key %>"><%= value %></div>
+      <% end %>
+  </div>
+  <h1>User Name: <%= @user.name %></h1>
+  <p>Email: <%= @user.email %></p>
+
+  <div class="account-info">
+    <!-- TODO make an account settings form -->
+    <h1>Your Account Settings</h1>
+    <h3>Change Password</h3>
+    Old Password<br />
+    <input type="text"/><br />
+    New Password<br />
+    <input type="text"/><br />
+    Confirm New Password<br />
+    <input type="text"/><br />
+    <button type="button">Change Password</button><br />
+    
+    <h3>Change Email</h3>
+    New Email<br />
+    <input type="text"/><br />
+    Password<br />
+    <input type="text"/><br />
+    <button type="button">Change Email</button><br />
+  </div>
+</div>

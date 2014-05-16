@@ -1,0 +1,54 @@
+Creating an Account:
+
+Make sure to clear the dev database before doing these tests!
+
+CASE 1: Create new account with valid log-in information
+1. From the Home page, click "Sign up now!" in the right sidebar.
+   This should bring user to the Sign up page.
+2. Input the following data:
+   Name: test-name
+   Email Address: test@gmail.com
+   New Password: sosecure
+   Confirm Password: sosecure
+3. Click "Create Account".
+   This should show the user their name, email, and the default kitchen
+   settings. The sidebar should now say "Welcome, test-name!"
+4. Click "Log out" in the right sidebar.
+   This should take the user back to the Home page. The sidebar should
+   now have a sign in 
+5. Sign in using the above email and password in the right sidebar.
+   Sidebar should now say "Welcome, test-name!"
+
+CASE 2: Should not be able create an account with duplicate email
+1. If the database has been cleared since trying CASE 1, create 
+   an account as described in CASE 1 steps 1 - 4.
+2. From Home, as a logged-out user, click "Sign up now!" in the sidebar.
+   This should bring user to the Sign up page.
+3. Input the following data:
+   Name: test-name
+   Email Address: test@gmail.com
+   New Password: sosecure
+   Confirm Password: sosecure
+4. Click "Create Account".
+   This should clear the password fields, highlight "Email Address" in red,
+   and display one error message on the top of the page saying "Email has
+   already been taken"
+
+CASE 3: Should not be able create an account with mismatched passwords
+1. From Home, as a logged-out user, click "Sign up now!" in the sidebar.
+   This should bring user to the Sign up page.
+2. Input the following data:
+   Name: test3-name
+   Email Address: test3@gmail.com
+   New Password: sosecure
+   Confirm Password: sonotsecure
+3. Click "Create Account".
+   This should clear the password fields, highlight "Confirm" in red,
+   and display one error message on the top of the page saying "Password
+   confirmation doesn't match Password"
+
+CASE 4: Should not be able to create an account while logged-in
+1. From Home, as a logged-out user, click "Sign up now!" in the sidebar.
+   This should bring user to the Sign up page.
+2. Before submitting anything, log-in in the sidebar with an existing account.
+   This should take the user back to the Home page.

@@ -15,7 +15,7 @@ Meeting Minutes: https://docs.google.com/document/d/1ojSoqqIhGlx7bhAVIOo-5m7rPOy
 
 
 -- Development Environment --
- - Ubunutu 14.04
+ - Ubuntu 14.04
  - Ruby version 2.1.2
  - Rails version 4.1.0
  - Sqlite3 for development
@@ -106,7 +106,7 @@ can add your email to the top level .travis.yml file to get these notifications.
 -- Directory Structure --
  - In general, we are using the standard Rails directory structure:
       http://www.tutorialspoint.com/ruby-on-rails/rails-directory-structure.htm
- - lattice-recieps/app/
+ - lattice-recipes/app/
     - application specific code
     - divided into models, views, and controllers folders
  - lattice-recipes/docs/

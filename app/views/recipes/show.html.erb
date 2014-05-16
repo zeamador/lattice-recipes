@@ -44,10 +44,12 @@
       </p>
       <p>
 	<% step.step_mappers.each do |step_mapper| %>
-          <strong>Prereq Step:</strong> <%= step_mapper.prereq_step_number %>
-          <strong>Prereq ID:</strong> <%= step_mapper.prereq_id %>
-          <strong>Immediate?:</strong> <%= step_mapper.immediate_prereq %>
-<!--	  <strong>Preheat?:</strong> <%= step_mapper.preheat_prereq %> -->
+	  <p>
+            <strong>Prereq Step:</strong> <%= step_mapper.prereq_step_number %>
+            <strong>Prereq ID:</strong> <%= step_mapper.prereq_id %>
+            <strong>Immediate?:</strong> <%= step_mapper.immediate_prereq %>
+<!--	    <strong>Preheat?:</strong> <%= step_mapper.preheat_prereq %> -->
+	  </p>
         <% end %>
       </p>
       <p>

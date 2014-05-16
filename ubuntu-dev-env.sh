@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# get the current directory, which should be the lattice-recipes directory
+OLD_PWD=$(pwd)
+
 # install dependencies for Ruby
 sudo apt-get update
 sudo apt-get install git-core curl zlib1g-dev build-essential libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev
@@ -36,8 +39,8 @@ rbenv rehash
 # set up postgres for production
 sudo apt-get install libpq-dev
 
-# cd to the location of the script
-cd "$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+# cd to the lattice-recipes directory
+cd $OLD_PWD
 
 # install all missing gems
 bundle install

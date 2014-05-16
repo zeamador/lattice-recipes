@@ -26,23 +26,36 @@
   <h3>Steps</h3>
   <% @recipe.steps.each do |step| %>
     <p>
-      <strong><%= step.step_number %>)</strong>
-      <%= step.description %>
-      <br />
-      <strong>Time:</strong> <%= step.time %> minutes
-      <strong>Attentiveness:</strong> <%= step.attentiveness %>
-      <br />
-      <strong>Final Step?:</strong> <%= step.final_step %>
-      <% step.step_mappers.each do |step_mapper| %>
-        <strong>Prereq Step:</strong> <%= step_mapper.prereq_step_number %>
-	<strong>Prereq ID:</strong> <%= step_mapper.prereq_id %>
-	<strong>Immediate?:</strong> <%= step_mapper.immediate_prereq %>
-<!--	<strong>Preheat?:</strong> <%= step_mapper.preheat_prereq %> -->
-      <% end %>
-      <%= link_to "Remove Step", [step.recipe, step], method: :delete %><br />
+      <p>
+        <strong>Step Number:</strong> <%= step.step_number %>
+	<strong>Description:</strong> <%= step.description %>
+      </p>
+      <p>
+	<strong>Time:</strong> <%= step.time %> minutes
+	<strong>Attentiveness:</strong> <%= step.attentiveness %>
+	<strong>Final Step?:</strong> <%= step.final_step %>
+      </p>
+      <p>
+	<strong>Burners:</strong> <%= step.equipment.burner %>
+	<strong>Ovens:</strong> <%= step.equipment.oven %>
+	<strong>Microwaves:</strong> <%= step.equipment.microwave %>
+	<strong>Sinks:</strong> <%= step.equipment.sink %>
+	<strong>Toasters:</strong> <%= step.equipment.toaster %>
+      </p>
+      <p>
+	<% step.step_mappers.each do |step_mapper| %>
+          <strong>Prereq Step:</strong> <%= step_mapper.prereq_step_number %>
+          <strong>Prereq ID:</strong> <%= step_mapper.prereq_id %>
+          <strong>Immediate?:</strong> <%= step_mapper.immediate_prereq %>
+<!--	  <strong>Preheat?:</strong> <%= step_mapper.preheat_prereq %> -->
+        <% end %>
+      </p>
+      <p>
+	<%= link_to "Remove Step", [step.recipe, step], method: :delete %>
+      </p>
+      <br /> 
     </p>
   <% end %>
-    <br />
     <p>
       <%= button_to 'Delete Recipe', @recipe, method: :delete,
 	  data: { confirm: "Are you sure?" } %>

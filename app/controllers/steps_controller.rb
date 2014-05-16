@@ -1,24 +1,14 @@
 class StepsController < ApplicationController
 
-  def create
-    @recipe = Recipe.find(params[:recipe_id])
-    @step = @recipe.steps.new(step_params)
-    @step.save
-    redirect_to recipe_path(@recipe)
-  end
-
-  def destroy
-    @recipe = Recipe.find(params[:recipe_id])
-    @step = @recipe.steps.find(params[:id])
-    @step.destroy
-    redirect_to recipe_path(@recipe)
-  end
-
   private
 
     def step_params
       params.require(:step).permit(:description, :time, :attentiveness, 
                                    :step_number, :final_step,
+                                   equipment_attributes: [:id,
+                                                          :burner, :oven,
+                                                          :microwave, :sink,
+                                                          :toaster],
                                    step_mappers_attributes: [:id, 
                                                              :immediate_prereq,
                                                              :preheat_prereq,

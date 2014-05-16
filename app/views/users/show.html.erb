@@ -2,27 +2,27 @@
 
 <div class="user-info">
   <div class="message-container">
-      <% flash.each do |key, value| %>
-	<div class="alert alert-<%= key %>"><%= value %></div>
-      <% end %>
+    <% flash.each do |key, value| %>
+      <div class="alert alert-<%= key %>"><%= value %></div>
+    <% end %>
   </div>
   <h1>User Name: <%= @user.name %></h1>
   <p>Email: <%= @user.email %></p>
   
   <div class="kitchen-form">
-  	<h3>Your Kitchen Settings:</h3>
+    <h3>Your Kitchen Settings:</h3>
     <%= form_for(@kitchen) do |f| %>
-	  <%= render 'shared/error_messages' %>
-        <%= f.label :burner %>
-        <%= f.number_field :burner %></br>
-        <%= f.label :oven %>
-        <%= f.number_field :oven %></br>
-        <%= f.label :microwave %>
-        <%= f.number_field :microwave %></br>
-        <%= f.label :sink %>
-        <%= f.number_field :sink %></br>
-        <%= f.label :toaster %>
-        <%= f.number_field :toaster %></br>
+      <%= render 'shared/error_messages' %>
+      <%= f.label :burner %>
+      <%= f.number_field :burner %></br>
+      <%= f.label :oven %>
+      <%= f.number_field :oven %></br>
+      <%= f.label :microwave %>
+      <%= f.number_field :microwave %></br>
+      <%= f.label :sink %>
+      <%= f.number_field :sink %></br>
+      <%= f.label :toaster %>
+      <%= f.number_field :toaster %></br>
       <%= f.submit "Update Kitchen", class: "btn btn-large btn-primary" %>
     <% end %>
   </div>

@@ -20,6 +20,7 @@ Meeting Minutes: https://docs.google.com/document/d/1ojSoqqIhGlx7bhAVIOo-5m7rPOy
  - Rails version 4.1.0
  - Sqlite3 for development
  - Postgresql for production
+ - Chrome or Firefox
 
 
 -- Getting Started with Ubuntu 14.04 --

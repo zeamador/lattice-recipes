@@ -47,21 +47,38 @@
 }
 
 #ingredient_quantity {
-    width: 50px;
+  width: 50px;
 }
 
 #ingredient_unit {
-    width: 100px;
+  width: 100px;
 }
 
 #step_time {
-    width: 50px;
+  width: 50px;
+}
+
+#step_description {
+  height: 100px;
+  width: 400px;
 }
 
 #step_attentiveness {
-    width: 50px;
+  width: 50px;
 }
 
 #step_step_number {
-    width: 50px;
+  width: 50px;
+}
+
+.divider {
+  border-bottom: solid medium SaddleBrown;
+}
+
+.button_to {
+  display: inline;
+}
+
+.button_to div {
+  display: inline;
 }

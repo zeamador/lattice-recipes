@@ -26,11 +26,12 @@
   <h3>Steps</h3>
   <% @recipe.steps.each do |step| %>
     <p>
-      <strong>Step Number:</strong> <%= step.step_number %>
-      <strong>Description:</strong> <%= step.description %>
+      <strong><%= step.step_number %>)</strong>
+      <%= step.description %>
       <br />
       <strong>Time:</strong> <%= step.time %> minutes
       <strong>Attentiveness:</strong> <%= step.attentiveness %>
+      <br />
       <strong>Final Step?:</strong> <%= step.final_step %>
       <% step.step_mappers.each do |step_mapper| %>
         <strong>Prereq Step:</strong> <%= step_mapper.prereq_step_number %>

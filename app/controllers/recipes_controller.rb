@@ -6,13 +6,18 @@ class RecipesController < ApplicationController
 
   def new
     @recipe = Recipe.new
+    2.times { @recipe.ingredients.build }
+    2.times do 
+      step = @recipe.steps.build
+      2.times { step.step_mappers.build }
+    end
   end
 
   def create
     @recipe = Recipe.new(recipe_params)
     if @recipe.save
       flash[:recipe_success] = "Great! Now we need info about the ingredients and steps."
-      redirect_to recipe_path(@recipe, :add => 1)
+      redirect_to recipe_path(@recipe)
     else
       render 'new'
     end
@@ -20,12 +25,6 @@ class RecipesController < ApplicationController
 
   def destroy
     @recipe = Recipe.find(params[:id])
-    @recipe.ingredients.each do |ingredient|
-      ingredient.destroy
-    end
-    @recipe.steps.each do |step|
-      step.destroy
-    end
     @recipe.destroy
     redirect_to root_url
   end
@@ -41,7 +40,14 @@ class RecipesController < ApplicationController
   private
 
     def recipe_params
-      params.require(:recipe).permit(:title, :secret, :tags)
+      params.require(:recipe).permit(:title, :secret, :tags, 
+                                     ingredients_attributes: [:id, :quantity,
+                                                              :unit,
+                                                              :description],
+                                     steps_attributes: [:id, :step_number,
+                                                        :description, :time,
+                                                        :attentiveness,
+                                                        :final_step])
     end
 
 end

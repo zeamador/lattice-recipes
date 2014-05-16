@@ -18,31 +18,9 @@
       <%= ingredient.unit %>
       <%= ingredient.description %>
         
-      <% if params[:add] == '1' %>
       <%= link_to "Remove Ingredient", [ingredient.recipe, ingredient],
                 method: :delete %>
-      <% end %>
     </p>
-  <% end %>
-  <% if params[:add] == '1' %>
-    <h3>Add an Ingredient:</h3>
-    <%= form_for([@recipe, @recipe.ingredients.build]) do |f| %>
-      <p>
-        <%= f.label :quantity %><br>
-        <%= f.number_field :quantity, step: 0.01 %>
-      </p>
-      <p>
-        <%= f.label :unit %><br>
-        <%= f.text_field :unit %>
-      </p>
-      <p>
-        <%= f.label :description %><br>
-        <%= f.text_field :description %>
-      </p>
-      <p>
-        <%= f.submit %>
-      </p>
-    <% end %>
   <% end %>
   <h3>Steps</h3>
   <% @recipe.steps.each do |step| %>
@@ -53,43 +31,15 @@
       <strong>Time:</strong> <%= step.time %> minutes
       <strong>Attentiveness:</strong> <%= step.attentiveness %>
       <strong>Final Step?:</strong> <%= step.final_step %>
-      
-      <% if params[:add] == '1' %>
-        <%= link_to "Remove Step", [step.recipe, step], method: :delete %><br />
+      <% step.step_mappers.each do |step_mapper| %>
+        <strong>Prereq Step:</strong> <%= step_mapper.prereq_step_number %>
+	<strong>Prereq ID:</strong> <%= step_mapper.prereq_id %>
+	<strong>Immediate?:</strong> <%= step_mapper.immediate_prereq %>
+	<strong>Preheat?:</strong> <%= step_mapper.preheat_prereq %>
       <% end %>
+      <%= link_to "Remove Step", [step.recipe, step], method: :delete %><br />
     </p>
   <% end %>
-  <% if params[:add] == '1' %>
-    <h3>Add a Step:</h3>
-    <%= form_for([@recipe, @recipe.steps.build]) do |f| %>
-      <p>
-        <%= f.label :step_number %><br>
-        <%= f.number_field :step_number %>
-      </p>
-      <p>
-        <%= f.label :description %><br>
-        <%= f.text_area :description %>
-      </p>
-      <p>
-        <%= f.label :time %><br>
-        <%= f.number_field :time %> minutes
-      </p>
-      <p>
-        <%= f.label :attentiveness %><br>
-        <%= f.number_field :attentiveness %> All (2), Some (1), or None (0)
-      </p>
-      <p>
-        <%= f.label "Final Step" %>
-        <%= f.radio_button :final_step, "true" %>
-        <%= f.label "Intermediate Step" %>
-        <%= f.radio_button :final_step, "false", { checked: true } %>
-      </p>
-      <p>
-        <%= f.submit %>
-      </p>
-    <% end %>
-  <% end %>
-  <% if params[:add] == '1' %>
     <br />
     <p>
       <%= button_to 'Delete Recipe Template', @recipe, method: :delete,
@@ -103,10 +53,7 @@
       "#{'Save Recipe'}"
       end %>
     </p>
-  <% end %>
-  <% if params[:add] != '1' %>
     <button type="button">
       Add to Meal
     </button>
-  <% end %>
 </div>

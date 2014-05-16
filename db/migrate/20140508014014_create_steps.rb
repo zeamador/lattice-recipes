@@ -9,7 +9,6 @@ class CreateSteps < ActiveRecord::Migration
       t.boolean :final_step
 
       t.references :recipe, index: true
-      t.references :equipment, index: true
 
       t.timestamps
     end

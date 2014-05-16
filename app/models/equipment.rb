@@ -1,3 +1,3 @@
 class Equipment < ActiveRecord::Base
-  has_one :step
+  belongs_to :step
 end

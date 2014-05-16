@@ -1,0 +1,28 @@
+<p>
+  <%= f.label :step_number %><br>
+  <%= f.number_field :step_number %>
+</p>
+<p>
+  <%= f.label :description %><br>
+  <%= f.text_area :description %>
+</p>
+<p>
+  <%= f.label :time %><br>
+  <%= f.number_field :time %> minutes
+</p>
+<p>
+  <%= f.label :attentiveness %><br>
+  <%= f.number_field :attentiveness %> All (2), Some (1), or None (0)
+</p>
+<p>
+  <%= f.label "Final Step" %>
+  <%= f.radio_button :final_step, "true" %>
+  <%= f.label "Intermediate Step" %>
+  <%= f.radio_button :final_step, "false", { checked: true } %>
+</p>
+<%= f.fields_for :equipment do |builder| %>
+  <%= render partial: "equipment_fields", locals: { f: builder } %>
+<% end %>
+<%= f.fields_for :step_mappers do |builder| %>
+  <%= render partial: "step_mapper_fields", locals: { f: builder } %>
+<% end %>

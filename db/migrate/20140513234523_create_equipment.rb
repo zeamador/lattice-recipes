@@ -7,6 +7,8 @@ class CreateEquipment < ActiveRecord::Migration
       t.integer :microwave, default: 0
       t.integer :sink, default: 0
       t.integer :toaster, default: 0
+
+      t.references :step, index: true
       
       t.timestamps
     end

@@ -19,9 +19,12 @@ ActiveRecord::Schema.define(version: 20140513235634) do
     t.integer  "microwave",  default: 0
     t.integer  "sink",       default: 0
     t.integer  "toaster",    default: 0
+    t.integer  "step_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "equipment", ["step_id"], name: "index_equipment_on_step_id"
 
   create_table "ingredients", force: true do |t|
     t.float    "quantity"
@@ -84,12 +87,10 @@ ActiveRecord::Schema.define(version: 20140513235634) do
     t.integer  "step_number"
     t.boolean  "final_step"
     t.integer  "recipe_id"
-    t.integer  "equipment_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "steps", ["equipment_id"], name: "index_steps_on_equipment_id"
   add_index "steps", ["recipe_id"], name: "index_steps_on_recipe_id"
 
   create_table "users", force: true do |t|

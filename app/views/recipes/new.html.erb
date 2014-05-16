@@ -4,7 +4,7 @@
   <% if signed_in? %>
     <div class="recipe-form">
       <h1>Upload Recipe</h1>
-      <%= form_for(@recipe) do |f| %>
+      <%= form_for @recipe do |f| %>
         <p>
           <%= f.label :title %><br>
           <%= f.text_field :title %>
@@ -20,7 +20,22 @@
           <%= f.label :tags %><br>
           <%= f.text_field :tags %>
         </p>
-        <%= f.submit "Start Recipe Template", class: "btn btn-large btn-primary" %>
+	<p>
+	  <h3>Ingredients</h3>
+	  <ul>
+	    <%= f.fields_for :ingredients do |builder| %>
+	      <%= render partial: "ingredient_fields", locals: { f: builder } %>
+	    <% end %>
+	  </ul>
+	</p>
+	<p>
+	  <h3>Steps</h3>
+	  <ul>
+	    <%= f.fields_for :steps do |builder| %>
+              <%= render partial: "step_fields", locals: { f: builder } %>
+	    <% end %>
+	  </ul>
+        <%= f.submit %>
       <% end %>
     </div>
   <% else %>

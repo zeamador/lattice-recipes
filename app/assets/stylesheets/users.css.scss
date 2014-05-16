@@ -13,6 +13,11 @@
 .field_with_errors {
   @extend .control-group;
   @extend .error;
+  display: inline;
+}
+
+.field_with_errors label {
+  text-shadow: 0 0 0.2em Red;
 }
 
 .btn.btn-large.btn-primary {

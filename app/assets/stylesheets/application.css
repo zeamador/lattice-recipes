@@ -23,6 +23,36 @@ body {
   min-width: 800px;
 }
 
+.info {
+  float: left;
+  width: 70%;
+  background-color: BurlyWood;
+  color: Black;
+  padding-top: 1px;
+  padding-bottom: 1px;
+  padding-right: 15px;
+  padding-left: 15px;
+  border-radius: 25px;
+}
+
+.info-extra-bottom {
+  float: left;
+  width: 70%;
+  background-color: BurlyWood;
+  color: Black;
+  padding-top: 1px;
+  padding-bottom: 20px;
+  padding-right: 15px;
+  padding-left: 15px;
+  border-radius: 25px;
+}
+
+.question-mark-icon {
+  content: url("/assets/question-mark-icon.jpg");
+  width: 15px;
+  height: 15px;
+}
+
 /* Main Menu */
 
 .main-menu {
@@ -84,29 +114,4 @@ body {
 a {
   color: Sienna;
   text-decoration: none;
-}
-
-/* Universal content styling */
-.info {
-  float: left;
-  width: 70%;
-  background-color: BurlyWood;
-  color: Black;
-  padding-top: 1px;
-  padding-bottom: 1px;
-  padding-right: 15px;
-  padding-left: 15px;
-  border-radius: 25px;
-}
-
-.info-extra-bottom {
-  float: left;
-  width: 70%;
-  background-color: BurlyWood;
-  color: Black;
-  padding-top: 1px;
-  padding-bottom: 20px;
-  padding-right: 15px;
-  padding-left: 15px;
-  border-radius: 25px;
 }

@@ -6,7 +6,9 @@
     <%= form_for(@user) do |f| %>
     <%= render 'shared/error_messages' %>
     <p>
-      <%= f.label :name %></br>
+      <%= f.label :name %>
+        <img class="question-mark-icon" title="Your user name must be 5 to 20 characters and can only contain letters, numbers, dashes, and periods." />
+      </br>
       <%= f.text_field :name %>
     </p>
     <p>
@@ -14,7 +16,9 @@
       <%= f.text_field :email %>
     </p>
     <p>
-      <%= f.label :password, "New Password" %></br>
+      <%= f.label :password, "New Password" %>
+        <img class="question-mark-icon" title="Your password must be 6 to 20 characters and can only contain letters, numbers, dashes, and periods."></img>
+      </br>
       <%= f.password_field :password %>
     </p>
     <p>

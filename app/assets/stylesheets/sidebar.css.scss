@@ -1,4 +1,6 @@
-/* Side Bar */
+// Place all the styles related to the Sidebar here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
 
 .side-bar {
   float: right;
@@ -30,7 +32,9 @@
 }
 
 .user-content-side-bar ul {
+  padding-left: 30px;
   margin: 0;
+  list-style-type: none;
 }
 
 .recent-side-bar {

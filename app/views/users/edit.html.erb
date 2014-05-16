@@ -1,16 +1,13 @@
 <% @title="User Settings" %>
 
-<div class="user-info">
+<div class="info-extra-bottom">
   <div class="message-container">
     <% flash.each do |key, value| %>
       <div class="alert alert-<%= key %>"><%= value %></div>
     <% end %>
   </div>
-  <h1>User Name: <%= @user.name %></h1>
+  <h1>User: <%= @user.name %></h1>
   <p>Email: <%= @user.email %></p>
-
-  <div class="account-info">
-    <h1>Your Account Settings</h1>
 
     <!-- <h3>Change UserName</h3>
     <%= form_for(@user) do |f| %>
@@ -27,11 +24,10 @@
       <%= render 'shared/error_messages' %>
       <%= f.label :password, "New Password" %></br>
       <%= f.password_field :password %></br>
-
+      
       <%= f.label :password_confirmation, "Confirm New Password" %></br>
       <%= f.password_field :password_confirmation %></br>
 
       <%= f.submit "Change Password" %>
     <% end %>
-  </div>
 </div>

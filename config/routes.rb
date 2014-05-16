@@ -84,9 +84,6 @@ Rails.application.routes.draw do
   # Meal page
   resources :meal
   
-  # Account Settings page
-  resources :account
-  
   # My Recipes page
   resources :my_recipes
   

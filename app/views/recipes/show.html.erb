@@ -9,7 +9,8 @@
     <% end %>
   </div>
   <h1>Title: <%= @recipe.title %></h1>
-  <p>Secret?: <%=  @recipe.secret ? "True" : "False" %></p>
+  <h1>Uploader: <%= @recipe.user_id %></h1>
+<!--  <p>Secret?: <%=  @recipe.secret ? "True" : "False" %></p> -->
   <p>Tags: <%= @recipe.tags %></p>
   <h3>Ingredients</h3>
   <% @recipe.ingredients.each do |ingredient| %>
@@ -35,23 +36,15 @@
         <strong>Prereq Step:</strong> <%= step_mapper.prereq_step_number %>
 	<strong>Prereq ID:</strong> <%= step_mapper.prereq_id %>
 	<strong>Immediate?:</strong> <%= step_mapper.immediate_prereq %>
-	<strong>Preheat?:</strong> <%= step_mapper.preheat_prereq %>
+<!--	<strong>Preheat?:</strong> <%= step_mapper.preheat_prereq %> -->
       <% end %>
       <%= link_to "Remove Step", [step.recipe, step], method: :delete %><br />
     </p>
   <% end %>
     <br />
     <p>
-      <%= button_to 'Delete Recipe Template', @recipe, method: :delete,
+      <%= button_to 'Delete Recipe', @recipe, method: :delete,
 	  data: { confirm: "Are you sure?" } %>
-    </p>
-    <p>
-      <!-- This is kind of annoying and ugly but it was the only way I could
-	   get this link to work and still look like a button. -->
-      <%= content_tag :button, :type => "button", 
-    :onclick => "window.location.href =  '#{url_for(recipe_path(@recipe))}'; " do
-      "#{'Save Recipe'}"
-      end %>
     </p>
     <button type="button">
       Add to Meal

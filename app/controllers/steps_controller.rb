@@ -2,7 +2,8 @@ class StepsController < ApplicationController
 
   def create
     @recipe = Recipe.find(params[:recipe_id])
-    @step = @recipe.steps.create(step_params)
+    @step = @recipe.steps.new(step_params)
+    @step.save
     redirect_to recipe_path(@recipe)
   end
 

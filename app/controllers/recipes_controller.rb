@@ -14,6 +14,7 @@ class RecipesController < ApplicationController
   end
 
   def create
+#    @user = User.find(params[:user_id])
     @recipe = Recipe.new(recipe_params)
     if @recipe.save
       flash[:recipe_success] = "Great! Now we need info about the ingredients and steps."

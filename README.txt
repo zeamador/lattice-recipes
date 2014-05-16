@@ -33,7 +33,8 @@ Meeting Minutes: https://docs.google.com/document/d/1ojSoqqIhGlx7bhAVIOo-5m7rPOy
 3. cd into the lattice-recipes directory
 4. Configure the development environment using this top level script:
    $ ./ubuntu-dev-env.sh
-5. Check that your ruby and rails versions match those listed above
+5. Restart shell
+6. Check that your ruby and rails versions match those listed above
    $ ruby -v
    $ rails -v
 

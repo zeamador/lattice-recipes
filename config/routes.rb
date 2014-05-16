@@ -81,9 +81,6 @@ Rails.application.routes.draw do
   # Contact page
   resources :contact
   
-  # Developers page
-  resources :developers
-
   # Meal page
   resources :meal
   

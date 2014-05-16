@@ -96,7 +96,7 @@ can add your email to the top level .travis.yml file to get these notifications.
 3. $ git push
 
 
--- Depolying Release Website --
+-- Deploying Release Website --
 1. Make sure dev repo reflects all desired changes
 2. cd into lattice-recipes directory
 3. Using appropriate version number and release name:

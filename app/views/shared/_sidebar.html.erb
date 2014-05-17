@@ -1,45 +1,49 @@
 <div class="side-bar">
-  <div class="user-side-bar">
-  <% if signed_in? %>
-    <div class="user-header-side-bar">Welcome, <%= @current_user.name %>!</div>
-    <div class="user-content-side-bar">
-    <div class="message-container">
-    <% flash.each do |key, value| %>
-      <% if key == :login_success || key == :login_error %>
-        <div class="alert alert-<%= key %>"><%= value %></div>
-      <% end %>
-    <% end %>
-    </div>
-      <ul>
-        <li><%= link_to "Profile", current_user %></li> <!-- TODO: Make this a link to users/show -->
-        <li><%= link_to "Account Settings", edit_user_path(current_user) %></li>
-        <li><%= link_to "Log out", signout_path, method: "delete" %></li>
-      </ul>
-    </div>
-  <% else %>
-  <div class="user-header-side-bar">Sign in</div>
-  <div class="user-content-side-bar">
-    <div class="signin-form">
-    <div class="message-container">
+  
+  <% if URI.parse(request.original_url).path != signup_path %>
+    <div class="user-side-bar">
+    <% if signed_in? %>
+      <div class="user-header-side-bar">Welcome, <%= @current_user.name %>!</div>
+      <div class="user-content-side-bar">
+      <div class="message-container">
       <% flash.each do |key, value| %>
-        <div class="alert alert-<%= key %>"><%= value %></div>
+        <% if key == :login_success || key == :login_error %>
+          <div class="alert alert-<%= key %>"><%= value %></div>
+        <% end %>
       <% end %>
+      </div>
+        <ul>
+          <li><%= link_to "Profile", current_user %></li> <!-- TODO: Make this a link to users/show -->
+          <li><%= link_to "Account Settings", edit_user_path(current_user) %></li>
+          <li><%= link_to "Log out", signout_path, method: "delete" %></li>
+        </ul>
+      </div>
+    <% else %>
+    <div class="user-header-side-bar">Sign in</div>
+    <div class="user-content-side-bar">
+      <div class="signin-form">
+      <div class="message-container">
+        <% flash.each do |key, value| %>
+          <div class="alert alert-<%= key %>"><%= value %></div>
+        <% end %>
+      </div>
+      <ul>
+      <%= form_for(:session, url: sessions_path) do |f| %>
+        <li><%= f.label :email %></li>
+        <li><%= f.text_field :email %></li>
+
+        <li><%= f.label :password %></li>
+        <li><%= f.password_field :password %></li>
+
+        <li><%= f.submit "Sign in" %></li>
+        <li>New user? <%= link_to "Sign up now!", signup_path %></li>
+      <% end %>
+      </div>
     </div>
-    <ul>
-    <%= form_for(:session, url: sessions_path) do |f| %>
-      <li><%= f.label :email %></li>
-      <li><%= f.text_field :email %></li>
-
-      <li><%= f.label :password %></li>
-      <li><%= f.password_field :password %></li>
-
-      <li><%= f.submit "Sign in" %></li>
-      <li>New user? <%= link_to "Sign up now!", signup_path %></li>
     <% end %>
     </div>
-  </div>
   <% end %>
-  </div>
+  
   <div class="recent-side-bar">
     <div class="recent-header-side-bar">Latest Recipes</div>
     <div class="recent-content-side-bar">
@@ -51,6 +55,7 @@
       <% end %>
     </div>
   </div>
+  
   <div class="kitchen-meal-side-bar">
     <div class="kitchen-meal-header-side-bar">Your Kitchen and Meal</div>
     <div class="kitchen-side-bar">
@@ -81,4 +86,5 @@
       <% end %>
     </div>
   </div>
+  
 </div>

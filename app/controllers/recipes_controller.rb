@@ -8,7 +8,6 @@ class RecipesController < ApplicationController
     @recipe = Recipe.new
     @recipe.ingredients.build
     step = @recipe.steps.build
-    step.build_equipment
     step.step_mappers.build
   end
 

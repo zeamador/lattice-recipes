@@ -46,8 +46,8 @@
 	<% step.step_mappers.each do |step_mapper| %>
 	  <p>
             <strong>Prereq Step:</strong> <%= step_mapper.prereq_step_number %>
-            <%= step_mapper.prereq_id = @recipe.steps.find_by(step_number: step_mapper.prereq_step_number).id %>
-	    <%= step_mapper.save %>
+            <% step_mapper.prereq_id = @recipe.steps.find_by(step_number: step_mapper.prereq_step_number).id %>
+	    <% step_mapper.save %>
             <strong>Immediate?:</strong> <%= step_mapper.immediate_prereq %>
 <!--	    <strong>Preheat?:</strong> <%= step_mapper.preheat_prereq %> -->
 	  </p>

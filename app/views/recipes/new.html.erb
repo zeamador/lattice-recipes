@@ -1,43 +1,15 @@
-<% @title="Upload Recipe" %>
+<% @title="Upload Recipe" -%>
 
 <div class="info-extra-bottom">
-  <% if signed_in? %>
+  <% if signed_in? -%>
     <div class="recipe-form">
       <h1>Upload Recipe</h1>
-      <%= form_for @recipe do |f| %>
-        <p>
-          <%= f.label :title, :class => "title-label" %><br>
-          <%= f.text_field :title %>
-        </p>
-<!--        <p>
-          Visibility <br />
-          <%= f.label "Secret" %>
-          <%= f.radio_button :secret, "true" %>
-          <%= f.label "Public" %>
-          <%= f.radio_button :secret, "false", { checked: true } %>
-        </p>  -->
-        <p>
-          <%= f.label :tags %> (separated by commas)<br>
-          <%= f.text_field :tags %>
-        </p>
-        <p>
-          <h3>Ingredients</h3>
-          <%= f.fields_for :ingredients do |builder| %>
-            <%= render partial: "ingredient_fields", locals: { f: builder } %>
-          <% end %>
-        </p>
-        <p>
-          <h3>Steps</h3>
-          <%= f.fields_for :steps do |builder| %>
-            <%= render partial: "step_fields", locals: { f: builder } %>
-          <% end %>
-        </p>
-        <%= f.submit %>
-      <% end %>
+      <%= render 'recipe_fields' %>
     </div>
-  <% else # not signed in %>
+  <% else -%>
     <div class="need-signin">
       <p>Please sign in using the sidebar or <%= link_to "register", signup_path %></p>
     </div>
-  <% end %>
+  <% end -%>
 </div>
+

@@ -1,7 +1,11 @@
-<%= f.label :quantity %>: 
-<%= f.number_field :quantity, :class => "number-input-box", step: 0.01 %> 
-<%= f.label :unit %>: 
-<img class="question-mark-icon" src="/assets/question-mark-icon.jpg" title="The value the ingredient is measured in. For situations like '1 apple', use '1 whole apple'. Examples: Cups, tbsp, dashes, etc."></img>
-<%= f.text_field :unit, :class => "unit-input-box" %> 
-<%= f.label :description %>: 
-<%= f.text_field :description %><br /><br />
+<fieldset class="ingredient"> 
+  <%= f.label :quantity %>: 
+  <%= f.number_field :quantity, :class => "number-input-box", step: 0.01 %> 
+  <%= f.label :unit %>: 
+  <img class="question-mark-icon" src="/assets/question-mark-icon.jpg" title="The value the ingredient is measured in. For situations like '1 apple', use '1 whole apple'. Examples: Cups, tbsp, dashes, etc."></img>
+  <%= f.text_field :unit, :class => "unit-input-box" %> 
+  <%= f.label :description %>: 
+  <%= f.text_field :description %><br /><br />
+  <%= f.link_to_remove "Remove ingredient" %>
+</fieldset>
+

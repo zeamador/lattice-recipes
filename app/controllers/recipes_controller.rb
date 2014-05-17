@@ -6,19 +6,17 @@ class RecipesController < ApplicationController
 
   def new
     @recipe = Recipe.new
-    10.times { @recipe.ingredients.build }
-    10.times do 
-      step = @recipe.steps.build
-      3.times { step.step_mappers.build }
-    end
+    @recipe.ingredients.build
+    step = @recipe.steps.build
+    step.build_equipment
+    step.step_mappers.build
   end
 
   def create
-#    @user = User.find(params[:user_id])
     @recipe = Recipe.new(recipe_params)
     if @recipe.save
       @user = current_user
-	  @recipe.user = @user
+      @recipe.user = @user
       @recipe.save
       flash[:recipe_success] = "Great! Your recipe is created!"
       redirect_to recipe_path(@recipe)
@@ -47,11 +45,13 @@ class RecipesController < ApplicationController
       params.require(:recipe).permit(:title, :secret, :tags, 
                                      ingredients_attributes: [:id, :quantity,
                                                               :unit,
-                                                              :description],
+                                                              :description,
+                                                              :_destroy],
                                      steps_attributes: [:id, :step_number,
                                                         :description, :time,
                                                         :attentiveness,
                                                         :final_step, :equipment,
+                                                        :_destroy,
                                      step_mappers_attributes: [:id,
                                                                :immediate_prereq,
                                                                :prereq_id,

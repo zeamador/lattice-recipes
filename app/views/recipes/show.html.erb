@@ -9,56 +9,54 @@
     <% end %>
   </div>
   <h1>Title: <%= @recipe.title %></h1>
-<!--  <p>Secret?: <%=  @recipe.secret ? "True" : "False" %></p> -->
+  <h1>Uploader: <%= @recipe.user_id %></h1>
+  <!-- TODO: Add Secret flag -->
   <p>Tags: <%= @recipe.tags %></p>
+
   <h3>Ingredients</h3>
-  <% @recipe.ingredients.each do |ingredient| %>
+  <% @recipe.ingredients.each do |ingredient| -%>
     <p>
-      <%= ingredient.quantity %>
-      <%= ingredient.unit %>
-      <%= ingredient.description %>
-        
-      <%= link_to "Remove Ingredient", [ingredient.recipe, ingredient],
-                method: :delete %>
+      <%= ingredient.quantity -%>
+      <%= ingredient.unit -%>
+      <%= ingredient.description -%>
     </p>
-  <% end %>
+  <% end -%>
   <h3>Steps</h3>
-  <% @recipe.steps.each do |step| %>
+  <% @recipe.steps.each do |step| -%>
     <p>
       <p>
         <strong>Step Number:</strong> <%= step.step_number %>
-	<strong>Description:</strong> <%= step.description %>
+        <strong>Description:</strong> <%= step.description %>
       </p>
       <p>
-	<strong>Time:</strong> <%= step.time %> minutes
-	<strong>Attentiveness:</strong> <%= step.attentiveness %>
-	<strong>Final Step?:</strong> <%= step.final_step %>
+        <strong>Time:</strong> <%= step.time %> minutes
+        <strong>Attentiveness:</strong> <%= step.attentiveness %>
+        <strong>Final Step?:</strong> <%= step.final_step %>
       </p>
       <p>
-	<strong>Equipment:</strong> <%= step.equipment %>
+        <strong>Equipment:</strong> <%= step.equipment %>
+        <strong>Burners:</strong> <%= step.equipment.burner %>
+        <strong>Ovens:</strong> <%= step.equipment.oven %>
+        <strong>Microwaves:</strong> <%= step.equipment.microwave %>
+        <strong>Sinks:</strong> <%= step.equipment.sink %>
+        <strong>Toasters:</strong> <%= step.equipment.toaster %>
       </p>
       <p>
-	<% step.step_mappers.each do |step_mapper| %>
-	  <p>
+        <% step.step_mappers.each do |step_mapper| %>
+          <p>
             <strong>Prereq Step:</strong> <%= step_mapper.prereq_step_number %>
             <% step_mapper.prereq_id = @recipe.steps.find_by(step_number: step_mapper.prereq_step_number).id %>
-	    <% step_mapper.save %>
+            <% step_mapper.save %>
             <strong>Immediate?:</strong> <%= step_mapper.immediate_prereq %>
-<!--	    <strong>Preheat?:</strong> <%= step_mapper.preheat_prereq %> -->
-	  </p>
+            <!-- TODO: Add Preheat -->
+          </p>
         <% end %>
-      </p>
-      <p>
-	<%= link_to "Remove Step", [step.recipe, step], method: :delete %>
       </p>
       <br /> 
     </p>
   <% end %>
-    <p>
-      <%= button_to 'Delete Recipe', @recipe, method: :delete,
-	  data: { confirm: "Are you sure?" } %>
-    </p>
-    <p>
-      
-    </p>
+  <p>
+    <%= button_to 'Delete Recipe', @recipe, method: :delete,
+      data: { confirm: "Are you sure?" } %>
+  </p>
 </div>

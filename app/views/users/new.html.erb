@@ -5,7 +5,7 @@
   <div>Already have an account? Sign in on the <%= link_to "Home Page", root_path %>.</div>
   <div class="user-form">
     <%= form_for(@user) do |f| %>
-    <%= render 'shared/error_messages' %>
+    <%= render 'shared/errors', object: @user if @user.errors.any? %>
     <p>
       <%= f.label :name %>
         <img class="question-mark-icon" src="/assets/question-mark-icon.jpg" title="Your user name must be 5 to 20 characters and can only contain letters, numbers, dashes, and periods." />

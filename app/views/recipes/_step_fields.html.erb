@@ -1,4 +1,4 @@
-<p class = "step-number" >
+<fieldset class="step">
   <strong><%= f.label :step_number%>: </strong>
   <%= f.number_field :step_number, :class => "number-input-box" %>
   <br />
@@ -39,4 +39,5 @@
       <%= render partial: "step_mapper_fields", locals: { f: builder } %>
     <% end %>
   </div>
-</p>
+  <%= f.link_to_remove "Remove step" %>
+</fieldset>

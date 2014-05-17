@@ -1,0 +1,25 @@
+<%= nested_form_for @recipe do |f| %>
+  <%= render 'shared/errors', object: @recipe if @recipe.errors.any? %>
+
+  <p>
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </p>
+  <!-- TODO add secret input -->
+  <p>
+    <%= f.label :tags %><br />
+    <%= f.text_field :tags %>
+  </p>
+  <p>
+    <h3>Ingredients</h3>
+    <% f.fields_for :ingredients -%>
+    <p><%= f.link_to_add "Add Ingredient", :ingredients %></p>
+  </p>
+  <p>
+    <h3>Steps</h3>
+    <% f.fields_for :steps -%>
+    <p><%= f.link_to_add "Add Step", :steps %></p>
+  </p>
+  <%= f.submit %>
+<% end -%>
+

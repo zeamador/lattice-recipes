@@ -16,23 +16,6 @@ class StepFactory
 
   private
   def construct_new_step(db_step)
-    equipment = Set[]
-    unless db_step.equipment.burner == 0
-      equipment << :BURNER
-    end
-    unless db_step.equipment.oven == 0
-      equipment << :OVEN
-    end
-    unless db_step.equipment.burner == 0
-      equipment << :MICROWAVE
-    end
-    unless db_step.equipment.burner == 0
-      equipment << :SINK
-    end
-    unless db_step.equipment.burner == 0
-      equipment << :TOASTER
-    end
-
     immediate_prereq = nil
     preheat_prereq = nil
     prereqs = Set[]
@@ -51,7 +34,7 @@ class StepFactory
     end
 
     StepObject.new(db_step.description, db_step.time, db_step.attentiveness,
-                   db_step.recipe_id, equipment, prereqs, immediate_prereq, 
-                   preheat_prereq)
+                   db_step.recipe_id, db_step.equipment, prereqs,
+                   immediate_prereq, preheat_prereq)
   end
 end

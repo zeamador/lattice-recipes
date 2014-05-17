@@ -4,6 +4,8 @@ class Resources
   def initialize(kitchen, num_users)
     @free_equipment = kitchen.clone
     @free_focus = num_users * FOCUS_PER_USER
+    # The preheat step that currently owns the oven
+    @preheat_step = nil
   end
 
   # Public: Consume the resources required by a step, if possible. If
@@ -11,12 +13,24 @@ class Resources
   #
   # Returns true if resources were consumed, false otherwise.
   def consume(step)
-    step.equipment.each do |equipment|
-      if @free_equipment[equipment] != 0
-        @free_equipment[equipment] -= 1
+    # If this step's equipment is an oven, a preheat step owns the oven, the
+    # step is not the preheat step that owns the oven, and the step's preheat
+    # prereq is not the step that owns the oven, fail.
+    if(step.equipment == :OVEN && !@preheat_step.nil? && 
+       step != @preheat_step && @preheat_step != step.preheat_prereq)
+      return false
+    end
+
+    unless step.equipment.nil?
+      if @free_equipment[step.equipment] != 0
+        @free_equipment[step.equipment] -= 1
       else
         return false
       end
+    end
+
+    unless step.preheat_prereq.nil?
+      @preheat_step = step.preheat_prereq
     end
 
     if @free_focus >= step.focus
@@ -34,10 +48,14 @@ class Resources
   #
   # Returns nothing.
   def release(step)
-    step.equipment.each do |equipment|
-      @free_equipment[equipment] += 1
+    if step == @preheat_step
+      @preheat_step = nil
     end
-    
+
+    unless step.equipment.nil?
+      @free_equipment[step.equipment] += 1
+    end
+
     @free_focus += step.focus
   end  
 end

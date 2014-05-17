@@ -2,7 +2,9 @@
   <%= f.label :prereq_step_number %>: 
   <%= f.number_field :prereq_step_number, :class => "number-input-box" %>
   <br />
-  <span class = "radio-buttons-label" > Immediate Prereq?</span>
+  <span class = "radio-buttons-label" > Immediate Prereq?
+    <img class="question-mark-icon" title="Does the prereq step have to be preformed immediately before the current step?"></img>
+  </span>
   <%= f.label "Yes" %>
   <%= f.radio_button :immediate_prereq, "true" %>
   <%= f.label "No" %>

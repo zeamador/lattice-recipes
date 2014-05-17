@@ -2,27 +2,39 @@
   <strong><%= f.label :step_number%>: </strong>
   <%= f.number_field :step_number, :class => "number-input-box" %>
   <br />
+  
   <div class = "tabbed-margin-left">
-  <%= f.label :description %>: <br>
-  <%= f.text_area :description %>
-  <br />
-  <%= f.label :time %>: 
-  <%= f.number_field :time, :class => "number-input-box" %> minutes
-  <%= f.label :attentiveness, :class => "tabbed-margin-left" %>: 
-  <%= f.number_field :attentiveness, :class => "number-input-box" %> All (2), Some (1), or None (0)
-  <br />
-  <span class = "radio-buttons-label" >Step Order:</span>
-  <%= f.label "Final" %>
-  <%= f.radio_button :final_step, "true" %>
-  <%= f.label "Intermediate" %>
-  <%= f.radio_button :final_step, "false", { checked: true } %>
+    <%= f.label :description %>: <br>
+    <%= f.text_area :description %>
+    <br />
+    <%= f.label :time %>: 
+    <img class="question-mark-icon" title="Total time required to complet the step."></img>
+    <%= f.number_field :time, :class => "number-input-box" %> minutes
+    <%= f.label :attentiveness, :class => "tabbed-margin-left" %>: 
+    
+    <img class="question-mark-icon" title="How much of your attention does this step require? Examples:
+    All (2): chopping or sauteing
+    Some (1): stirring occasionally
+    None (0): leaving water to boil"></img>
+    
+    <%= f.number_field :attentiveness, :class => "number-input-box" %>
+    <br />
+    <span class = "radio-buttons-label" >Step Order:
+      <img class="question-mark-icon" title="Is this the last/final step in the recipe?"></img>
+    </span>
+    <%= f.label "Final" %>
+    <%= f.radio_button :final_step, "true" %>
+    <%= f.label "Intermediate" %>
+    <%= f.radio_button :final_step, "false", { checked: true } %>
+    <br />
+    <br />
+    <strong>Equipment: </strong>
+    <%= f.fields_for :equipment do |builder| %>
+      <%= render partial: "equipment_fields", locals: { f: builder } %>
+    <% end %>
+    <strong>Prereq Steps: </strong>
+    <%= f.fields_for :step_mappers do |builder| %>
+      <%= render partial: "step_mapper_fields", locals: { f: builder } %>
+    <% end %>
+  </div>
 </p>
-<strong>Equipment: </strong>
-<%= f.fields_for :equipment do |builder| %>
-  <%= render partial: "equipment_fields", locals: { f: builder } %>
-<% end %>
-<strong>Prereq Steps: </strong>
-<%= f.fields_for :step_mappers do |builder| %>
-  <%= render partial: "step_mapper_fields", locals: { f: builder } %>
-<% end %>
-</div>

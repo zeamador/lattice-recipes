@@ -6,7 +6,7 @@
       <h1>Upload Recipe</h1>
       <%= form_for @recipe do |f| %>
         <p>
-          <%= f.label :title %><br>
+          <%= f.label :title, :class => "title-label" %><br>
           <%= f.text_field :title %>
         </p>
 <!--        <p>
@@ -17,7 +17,7 @@
           <%= f.radio_button :secret, "false", { checked: true } %>
         </p>  -->
         <p>
-          <%= f.label :tags %><br>
+          <%= f.label :tags %> (seperated by commas)<br>
           <%= f.text_field :tags %>
         </p>
         <p>

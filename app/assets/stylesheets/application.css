@@ -49,8 +49,9 @@ body {
 
 .question-mark-icon {
   content: url("/assets/question-mark-icon.jpg");
-  width: 15px;
-  height: 15px;
+  vertical-align: text-top;
+  width: 17px;
+  height: 17px;
 }
 
 .alert {

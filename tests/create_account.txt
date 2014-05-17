@@ -1,6 +1,7 @@
 Creating an Account:
 
-Make sure to clear the dev database before doing these tests!
+Make sure to clear the dev database before doing these tests or use random
+values where appropriate.
 
 CASE 1: Create new account with valid log-in information
 1. From the Home page, click "Sign up now!" in the right sidebar.

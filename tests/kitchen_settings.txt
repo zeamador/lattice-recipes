@@ -1,6 +1,7 @@
 Kitchen Settings:
 
-Make sure to clear the dev database before doing these tests!
+Make sure to clear the dev database before doing these tests or use random sign
+up information where appropriate.
 
 CASE 1: Kitchen settings should persist between sessions
 1. From the Home page, click "Sign up now!" in the right sidebar.

@@ -13,15 +13,15 @@
     <h3>Your Kitchen Settings:</h3>
     <%= form_for(@kitchen) do |f| %>
       <%= render 'shared/error_messages' %>
-      <%= f.label :burner %>
+      <%= f.label :burner %>s: 
       <%= f.number_field :burner %></br>
-      <%= f.label :oven %>
+      <%= f.label :oven %>s: 
       <%= f.number_field :oven %></br>
-      <%= f.label :microwave %>
+      <%= f.label :microwave %>s: 
       <%= f.number_field :microwave %></br>
-      <%= f.label :sink %>
+      <%= f.label :sink %>s: 
       <%= f.number_field :sink %></br>
-      <%= f.label :toaster %>
+      <%= f.label :toaster %>s: 
       <%= f.number_field :toaster %></br>
       <%= f.submit "Update Kitchen", class: "btn btn-large btn-primary" %>
     <% end %>

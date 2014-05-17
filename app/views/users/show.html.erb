@@ -12,7 +12,7 @@
   <div class="kitchen-form">
     <h3>Your Kitchen Settings:</h3>
     <%= form_for(@kitchen) do |f| %>
-      <%= render 'shared/error_messages' %>
+      <%= render 'shared/errors', object: @user if @user.errors.any? %>
       <%= f.label :burner %>s: 
       <%= f.number_field :burner %></br>
       <%= f.label :oven %>s: 

@@ -29,9 +29,11 @@
     <br />
     <br />
     <strong>Equipment: </strong>
-    <%= f.fields_for :equipment do |builder| %>
-      <%= render partial: "equipment_fields", locals: { f: builder } %>
+    <% equip_array = [] %>
+    <% EquipmentTypes.constants.each do |constant| %>
+    <% equip_array << [EquipmentTypes.const_get(constant), EquipmentTypes.const_get(constant)] %>
     <% end %>
+    <%= f.select(:equipment, equip_array, { prompt: true }) %>
     <strong>Prereq Steps: </strong>
     <%= f.fields_for :step_mappers do |builder| %>
       <%= render partial: "step_mapper_fields", locals: { f: builder } %>

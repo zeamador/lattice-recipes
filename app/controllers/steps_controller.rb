@@ -4,11 +4,7 @@ class StepsController < ApplicationController
 
     def step_params
       params.require(:step).permit(:description, :time, :attentiveness, 
-                                   :step_number, :final_step,
-                                   equipment_attributes: [:id,
-                                                          :burner, :oven,
-                                                          :microwave, :sink,
-                                                          :toaster],
+                                   :step_number, :final_step, :equipment,
                                    step_mappers_attributes: [:id, 
                                                              :immediate_prereq,
                                                              :preheat_prereq,

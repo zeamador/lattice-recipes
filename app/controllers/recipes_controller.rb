@@ -9,7 +9,6 @@ class RecipesController < ApplicationController
     10.times { @recipe.ingredients.build }
     10.times do 
       step = @recipe.steps.build
-      step.build_equipment
       3.times { step.step_mappers.build }
     end
   end
@@ -49,10 +48,7 @@ class RecipesController < ApplicationController
                                      steps_attributes: [:id, :step_number,
                                                         :description, :time,
                                                         :attentiveness,
-                                                        :final_step,
-                                     equipment_attributes: [:id, :burner, :oven,
-                                                            :microwave, :sink,
-                                                            :toaster],
+                                                        :final_step, :equipment,
                                      step_mappers_attributes: [:id,
                                                                :immediate_prereq,
                                                                :prereq_id,

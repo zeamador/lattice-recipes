@@ -13,19 +13,6 @@
 
 ActiveRecord::Schema.define(version: 20140513235634) do
 
-  create_table "equipment", force: true do |t|
-    t.integer  "burner",     default: 0
-    t.integer  "oven",       default: 0
-    t.integer  "microwave",  default: 0
-    t.integer  "sink",       default: 0
-    t.integer  "toaster",    default: 0
-    t.integer  "step_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "equipment", ["step_id"], name: "index_equipment_on_step_id"
-
   create_table "ingredients", force: true do |t|
     t.float    "quantity"
     t.string   "unit"
@@ -84,6 +71,7 @@ ActiveRecord::Schema.define(version: 20140513235634) do
     t.integer  "attentiveness"
     t.integer  "step_number"
     t.boolean  "final_step"
+    t.string   "equipment"
     t.integer  "recipe_id"
     t.datetime "created_at"
     t.datetime "updated_at"

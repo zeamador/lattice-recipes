@@ -7,6 +7,7 @@ class CreateSteps < ActiveRecord::Migration
       t.integer :attentiveness
       t.integer :step_number
       t.boolean :final_step
+      t.string :equipment
 
       t.references :recipe, index: true
 

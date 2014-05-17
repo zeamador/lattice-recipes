@@ -9,6 +9,10 @@ class Recipe < ActiveRecord::Base
   accepts_nested_attributes_for :ingredients, :reject_if =>
                                 lambda { |a| a[:description].blank? }, 
                                 :allow_destroy => true
+  validates_associated :steps
+  validates_associated :ingredients
+
+  
 
   def self.search(query)
     where("title like ? OR tags like ?", "%#{query}%", "%#{query}%")

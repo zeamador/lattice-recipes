@@ -35,11 +35,7 @@
 	<strong>Final Step?:</strong> <%= step.final_step %>
       </p>
       <p>
-	<strong>Burners:</strong> <%= step.equipment.burner %>
-	<strong>Ovens:</strong> <%= step.equipment.oven %>
-	<strong>Microwaves:</strong> <%= step.equipment.microwave %>
-	<strong>Sinks:</strong> <%= step.equipment.sink %>
-	<strong>Toasters:</strong> <%= step.equipment.toaster %>
+	<strong>Equipment:</strong> <%= step.equipment %>
       </p>
       <p>
 	<% step.step_mappers.each do |step_mapper| %>

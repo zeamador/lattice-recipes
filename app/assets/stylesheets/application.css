@@ -57,6 +57,15 @@ body {
   margin-top: 15px;
 }
 
+.alert.alert-login_success {
+  margin-top: 0;
+}
+
+.alert.alert-login_error {
+  margin-top: 0;
+  color: Red;
+}
+
 /* Main Menu */
 
 .main-menu {

@@ -53,6 +53,10 @@ body {
   height: 15px;
 }
 
+.alert {
+  margin-top: 15px;
+}
+
 /* Main Menu */
 
 .main-menu {

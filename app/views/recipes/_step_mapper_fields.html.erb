@@ -1,15 +1,13 @@
-<p>
-  <%= f.label :prereq_id %>
-  <%= f.number_field :prereq_id %>
-</p>
-<p>
-  <%= f.label :prereq_step_number %>
-  <%= f.number_field :prereq_step_number %>
-</p>
-<p>
-  <%= f.label "Immediate Prereq" %>
+<p class = "no-top-margin" >
+  <%= f.label :prereq_id %>: 
+  <%= f.number_field :prereq_id, :class => "number-input-box" %>
+  <%= f.label :prereq_step_number %>: 
+  <%= f.number_field :prereq_step_number, :class => "number-input-box" %>
+  <br />
+  <span class = "radio-buttons-label" > Immediate Prereq?</span>
+  <%= f.label "Yes" %>
   <%= f.radio_button :immediate_prereq, "true" %>
-  <%= f.label "Not Immediate Prereq" %>
+  <%= f.label "No" %>
   <%= f.radio_button :immediate_prereq, "false", { checked: true } %>
 </p>
 <!-- <p>

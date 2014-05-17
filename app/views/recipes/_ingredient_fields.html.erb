@@ -1,6 +1,6 @@
-<%= f.label :quantity %><br />
-<%= f.number_field :quantity, step: 0.01 %><br />
-<%= f.label :unit %><br />
-<%= f.text_field :unit %><br />
-<%= f.label :description %><br />
+<%= f.label :quantity %>: 
+<%= f.number_field :quantity, :class => "number-input-box", step: 0.01 %> 
+<%= f.label :unit %>: 
+<%= f.text_field :unit, :class => "unit-input-box" %> 
+<%= f.label :description %>: 
 <%= f.text_field :description %><br /><br />

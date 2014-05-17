@@ -22,19 +22,15 @@
         </p>
         <p>
           <h3>Ingredients</h3>
-          <ul>
-            <%= f.fields_for :ingredients do |builder| %>
-              <%= render partial: "ingredient_fields", locals: { f: builder } %>
-            <% end %>
-          </ul>
+          <%= f.fields_for :ingredients do |builder| %>
+            <%= render partial: "ingredient_fields", locals: { f: builder } %>
+          <% end %>
         </p>
         <p>
           <h3>Steps</h3>
-          <ul>
-            <%= f.fields_for :steps do |builder| %>
-              <%= render partial: "step_fields", locals: { f: builder } %>
-            <% end %>
-          </ul>
+          <%= f.fields_for :steps do |builder| %>
+            <%= render partial: "step_fields", locals: { f: builder } %>
+          <% end %>
         </p>
         <%= f.submit %>
       <% end %>

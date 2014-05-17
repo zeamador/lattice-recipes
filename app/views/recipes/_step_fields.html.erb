@@ -1,28 +1,28 @@
-<p>
-  <%= f.label :step_number %><br>
-  <%= f.number_field :step_number %>
-</p>
-<p>
-  <%= f.label :description %><br>
+<p class = "step-number" >
+  <strong><%= f.label :step_number%>: </strong>
+  <%= f.number_field :step_number, :class => "number-input-box" %>
+  <br />
+  <div class = "tabbed-margin-left">
+  <%= f.label :description %>: <br>
   <%= f.text_area :description %>
-</p>
-<p>
-  <%= f.label :time %><br>
-  <%= f.number_field :time %> minutes
-</p>
-<p>
-  <%= f.label :attentiveness %><br>
-  <%= f.number_field :attentiveness %> All (2), Some (1), or None (0)
-</p>
-<p>
-  <%= f.label "Final Step" %>
+  <br />
+  <%= f.label :time %>: 
+  <%= f.number_field :time, :class => "number-input-box" %> minutes
+  <%= f.label :attentiveness, :class => "tabbed-margin-left" %>: 
+  <%= f.number_field :attentiveness, :class => "number-input-box" %> All (2), Some (1), or None (0)
+  <br />
+  <span class = "radio-buttons-label" >Step Order:</span>
+  <%= f.label "Final" %>
   <%= f.radio_button :final_step, "true" %>
-  <%= f.label "Intermediate Step" %>
+  <%= f.label "Intermediate" %>
   <%= f.radio_button :final_step, "false", { checked: true } %>
 </p>
+<strong>Equipment: </strong>
 <%= f.fields_for :equipment do |builder| %>
   <%= render partial: "equipment_fields", locals: { f: builder } %>
 <% end %>
+<strong>Prereq Steps: </strong>
 <%= f.fields_for :step_mappers do |builder| %>
   <%= render partial: "step_mapper_fields", locals: { f: builder } %>
 <% end %>
+</div>

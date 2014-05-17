@@ -22,39 +22,36 @@
   border-bottom-style: solid;
 }
 
-#ingredient_quantity {
-  width: 50px;
-}
-
-#ingredient_unit {
-  width: 100px;
-}
-
-#step_time {
-  width: 50px;
-}
-
-#step_description {
-  height: 100px;
-  width: 400px;
-}
-
-#step_attentiveness {
-  width: 50px;
-}
-
-#step_step_number {
-  width: 50px;
-}
-
 .divider {
   border-bottom: solid medium SaddleBrown;
 }
 
-.button_to {
-  display: inline;
+/* Step Styling and Spacing */
+.step-number {
+  margin-top: 20px;
 }
 
-.button_to div {
-  display: inline;
+.tabbed-margin-left {
+  margin-left: 40px;
+}
+
+.no-top-margin {
+  margin-top: 0;
+}
+
+.radio-buttons-label {
+  margin-right: 10px;
+}
+
+.number-input-box {
+  width: 50px;
+}
+
+.unit-input-box {
+  width: 100px;
+}
+
+textarea {
+  height: 100px;
+  width: 400px;
 }

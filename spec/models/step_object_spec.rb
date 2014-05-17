@@ -60,5 +60,9 @@ describe StepObject do
   end
 
   it "should only except nil or EquipmentType constants for equipment" do
+    StepObject.new("No Error", 20, 0, 1234, equipment: nil)
+    expect { StepObject.new("Error", 20, 0, 1234, 
+                            equipment: "dogs").to raise_error(
+        "Equipment must either be nil or an EquipmentType constant") }
   end
 end

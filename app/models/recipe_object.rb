@@ -10,11 +10,9 @@ class RecipeObject
   # ingredients - Set of Ingredient objects.
   # final_steps - Set of Step objects in the recipe that are not prereqs 
   #               for any other step in the recipe.
-  # secret - Boolean indicating privacy setting, true = secret, false = public.
-  # tags - Set of case-insensitive Strings.
   #
   # Raises error if final_steps is empty.
-  def initialize(recipe_id, title, ingredients, final_steps, secret, tags)
+  def initialize(recipe_id, title, ingredients, final_steps)
     @recipe_id = recipe_id
     @title = title
     @ingredients = ingredients
@@ -25,8 +23,5 @@ class RecipeObject
     else
       raise "Set of final steps must contain at least one step"
     end
-
-    @secret = secret
-    @tags = tags
   end
 end

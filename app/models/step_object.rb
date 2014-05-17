@@ -53,7 +53,7 @@ class StepObject
   end
 
   private
-  # Private - If the given prereq exists, ensure that it is in the set of
+  # Internal - If the given prereq exists, ensure that it is in the set of
   # prereqs and return it.
   #
   # prereqs - Set of step prereqs, should not be nil.

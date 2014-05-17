@@ -101,12 +101,12 @@ describe MealFactory do
 
   it "should not allow the oven to be re-preheated before being used" do
     pending("feature not implemented for beta release") do
-      step_1a = StepObject.new("Preheat 1", 30, 0, 1, equipment: [:OVEN])
-      step_1b = StepObject.new("Use preheat 1", 5, 0, 1, equipment: [:OVEN],
+      step_1a = StepObject.new("Preheat 1", 30, 0, 1, equipment: :OVEN)
+      step_1b = StepObject.new("Use preheat 1", 5, 0, 1, equipment: :OVEN,
                                prereqs: Set[step_1a], preheat_prereq: step_1a)
       
-      step_2a = StepObject.new("Preheat 2", 35, 0, 2, equipment: [:OVEN])
-      step_2b = StepObject.new("Use preheat 2", 10, 0, 2, equipment: [:OVEN],
+      step_2a = StepObject.new("Preheat 2", 35, 0, 2, equipment: :OVEN)
+      step_2b = StepObject.new("Use preheat 2", 10, 0, 2, equipment: :OVEN,
                                prereqs: Set[step_2a], preheat_prereq: step_2a)
 
       recipe_1 = RecipeObject.new(1, "Recipe 1", nil, Set[step_1b])

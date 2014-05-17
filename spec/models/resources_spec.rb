@@ -5,7 +5,7 @@ describe Resources do
     kitchen = KitchenObject.new
     kitchen[:OVEN] = 1
     resources = Resources.new(kitchen, 1)
-    step = StepObject.new("Bake pizza", 10, 0, 123, equipment: [:OVEN])
+    step = StepObject.new("Bake pizza", 10, 0, 123, equipment: :OVEN)
     resources.consume(step).should be_true
   end
 
@@ -13,7 +13,7 @@ describe Resources do
     kitchen = KitchenObject.new
     kitchen[:OVEN] = 0
     resources = Resources.new(kitchen, 1)
-    step = StepObject.new("Bake pizza", 10, 0, 123, equipment: [:OVEN])
+    step = StepObject.new("Bake pizza", 10, 0, 123, equipment: :OVEN)
     resources.consume(step).should be_false
   end
 
@@ -21,8 +21,8 @@ describe Resources do
     kitchen = KitchenObject.new
     kitchen[:OVEN] = 1
     resources = Resources.new(kitchen, 1)
-    step_1 = StepObject.new("Bake pizza", 10, 0, 123, equipment: [:OVEN])
-    step_2 = StepObject.new("Bake potatoes", 30, 0, 123, equipment: [:OVEN])
+    step_1 = StepObject.new("Bake pizza", 10, 0, 123, equipment: :OVEN)
+    step_2 = StepObject.new("Bake potatoes", 30, 0, 123, equipment: :OVEN)
     resources.consume(step_1).should be_true
     resources.consume(step_2).should be_false
   end
@@ -31,8 +31,8 @@ describe Resources do
     kitchen = KitchenObject.new
     kitchen[:OVEN] = 1
     resources = Resources.new(kitchen, 1)
-    step_1 = StepObject.new("Bake pizza", 10, 0, 123, equipment: [:OVEN])
-    step_2 = StepObject.new("Bake potatoes", 30, 0, 123, equipment: [:OVEN])
+    step_1 = StepObject.new("Bake pizza", 10, 0, 123, equipment: :OVEN)
+    step_2 = StepObject.new("Bake potatoes", 30, 0, 123, equipment: :OVEN)
     resources.consume(step_1).should be_true
     resources.release(step_1)
     resources.consume(step_2).should be_true

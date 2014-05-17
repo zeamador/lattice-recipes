@@ -13,8 +13,8 @@ class StepObject
   # focus - Integer value where 0 = NONE, 1 = SOME, 2 = ALL.
   # recipe_id - Integer uniquely identifying the recipe this step belongs to.
   #
-  # equipment - Set of EquipmentTypes constants. 
-  #             Default is an empty Set.
+  # equipment - Single EquipmentTypes constants. 
+  #             Default is nil.
   # prereqs - Set of Step objects representing unchained prerequisite steps. 
   #           Default is an empty Set.
   # immediate_prereq - Step object representing this step's immediate prereq.
@@ -24,8 +24,9 @@ class StepObject
   #                  Default is nil.
   #
   # Raise error if time is not positive, if attentiveness is not 0, 1, or 2,
-  # or if immediate/preheat prereqs are not in set of prereqs.
-  def initialize(description, time, focus, recipe_id, equipment: Set[], 
+  # if immediate/preheat prereqs are not in set of prereqs, or if equipment
+  # is not an EquipmentType or nil.
+  def initialize(description, time, focus, recipe_id, equipment: nil, 
                  prereqs: Set[], immediate_prereq: nil, preheat_prereq: nil)
     @description = description
 
@@ -44,7 +45,14 @@ class StepObject
     end
 
     @recipe_id = recipe_id
-    @equipment = equipment
+
+    # equipment must either be nil or an EquipmentType
+    if(equipment && !EquipmentTypes.constants.include?(equipment))
+      raise "Equipment must either be nil or an EquipmentType constant"
+    else
+      @equipment = equipment
+    end
+
     @prereqs = prereqs
 
     # validate and set prerequisites

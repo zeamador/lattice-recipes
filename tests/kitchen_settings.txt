@@ -1,0 +1,57 @@
+Kitchen Settings:
+
+Make sure to clear the dev database before doing these tests!
+
+CASE 1: Kitchen settings should persist between sessions
+1. From the Home page, click "Sign up now!" in the right sidebar.
+   This should bring user to the Sign up page.
+2. Input the following data:
+   Name: test-name
+   Email Address: test@gmail.com
+   New Password: sosecure
+   Confirm Password: sosecure
+3. Click "Create Account".
+   This should show the user their name, email, and the default kitchen
+   settings. The sidebar should now say "Welcome, test-name!"
+4. Change the following data:
+   Burner: 1
+   Oven: 0
+   Microwave: 30
+5. Select "Update Kitchen".
+   This should update the kitchen in the sidebar to:
+   Burner: 1
+   Oven: 0
+   Microwave: 30
+   Sinks: 2
+   Toaster: 1
+6. Log out. 
+   The sidebar kitchen should display the default kitchen settings again.
+7. Sign in with the information from step 2.
+   The sidebar should display step 4's kitchen settings again.
+
+CASE 2: Users should not be able to input non-integer equipment values
+1. As a logged in user, select "Profile" in the sidebar.
+   This should display your kitchen settings.
+2. Change the following data:
+   Oven: 0.4
+3. Select "Update Kitchen".
+   This should produce an appropriate pop-error message instructing users to 
+   input whole numbers. The sidebar kitchen should not be updated.
+
+CASE 3: Users should not be able to input non-integer negative equipment values
+1. As a logged in user, select "Profile" in the sidebar.
+   This should display your kitchen settings.
+2. Change the following data:
+   Oven: -7
+3. Select "Update Kitchen".
+   This should produce an appropriate pop-error message instructing users to 
+   input non-negatives numbers. The sidebar kitchen should not be updated.
+
+CASE 4: Users should not be able to input blank equipment values
+1. As a logged in user, select "Profile" in the sidebar.
+   This should display your kitchen settings.
+2. Change the following data: (by using the backspace key)
+   Oven: 
+3. Select "Update Kitchen".
+   This should produce an appropriate pop-error message instructing users not 
+   to leave fields blank. The sidebar kitchen should not be updated.

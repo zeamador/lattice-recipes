@@ -17,7 +17,10 @@ class RecipesController < ApplicationController
 #    @user = User.find(params[:user_id])
     @recipe = Recipe.new(recipe_params)
     if @recipe.save
-      flash[:recipe_success] = "Great! Now we need info about the ingredients and steps."
+      @user = current_user
+	  @recipe.user = @user
+      @recipe.save
+      flash[:recipe_success] = "Great! Your recipe is created!"
       redirect_to recipe_path(@recipe)
     else
       render 'new'

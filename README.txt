@@ -100,7 +100,7 @@ can add your email to the top level .travis.yml file to get these notifications.
 1. Make sure dev repo reflects all desired changes
 2. cd into lattice-recipes directory
 3. Using appropriate version number and release name:
-    $ ./deploy v0.0 "release name"
+    $ ./deploy.sh v0.0 "release name"
 
 
 -- Directory Structure --

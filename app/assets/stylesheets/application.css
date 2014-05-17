@@ -26,6 +26,7 @@ body {
 .info {
   float: left;
   width: 70%;
+  overflow: hidden;
   background-color: BurlyWood;
   color: Black;
   padding-top: 1px;
@@ -38,6 +39,7 @@ body {
 .info-extra-bottom {
   float: left;
   width: 70%;
+  overflow: hidden;
   background-color: BurlyWood;
   color: Black;
   padding-top: 1px;

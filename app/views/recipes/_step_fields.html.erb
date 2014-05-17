@@ -34,6 +34,7 @@
     <% equip_array << [EquipmentTypes.const_get(constant), EquipmentTypes.const_get(constant)] %>
     <% end %>
     <%= f.select(:equipment, equip_array, { prompt: true }) %>
+    <br />
     <strong>Prereq Steps: </strong>
     <%= f.fields_for :step_mappers do |builder| %>
       <%= render partial: "step_mapper_fields", locals: { f: builder } %>

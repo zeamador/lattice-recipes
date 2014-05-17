@@ -9,7 +9,7 @@
     <% end %>
   </div>
   <h1>Title: <%= @recipe.title %></h1>
-  <h1>Uploader: <%= @recipe.user_id %></h1>
+  <h3>Author: <%= @recipe.user_id %></h3>
   <!-- TODO: Add Secret flag -->
   <p>Tags: <%= @recipe.tags %></p>
 
@@ -18,39 +18,31 @@
 
   <h3>Ingredients</h3>
   <% @recipe.ingredients.each do |ingredient| -%>
-    <p>
-      <%= ingredient.quantity -%>
-      <%= ingredient.unit -%>
-      <%= ingredient.description -%>
-    </p>
+    <%= ingredient.quantity -%>
+    <%= ingredient.unit -%>
+    <%= ingredient.description -%>
+    <br />
   <% end -%>
   <h3>Steps</h3>
   <% @recipe.steps.each do |step| -%>
     <p>
-      <p>
-        <strong>Step Number:</strong> <%= step.step_number %>
-        <strong>Description:</strong> <%= step.description %>
-      </p>
-      <p>
-        <strong>Time:</strong> <%= step.time %> minutes
-        <strong>Attentiveness:</strong> <%= step.attentiveness %>
-        <strong>Final Step?:</strong> <%= step.final_step %>
-      </p>
-      <p>
-        <strong>Equipment:</strong> <%= step.equipment %>
-      </p>
-      <p>
-        <% step.step_mappers.each do |step_mapper| %>
-          <p>
-            <strong>Prereq Step:</strong> <%= step_mapper.prereq_step_number %>
-            <% step_mapper.prereq_id = @recipe.steps.find_by(step_number: step_mapper.prereq_step_number).id %>
-            <% step_mapper.save %>
-            <strong>Immediate?:</strong> <%= step_mapper.immediate_prereq %>
-            <!-- TODO: Add Preheat -->
-          </p>
-        <% end %>
-      </p>
-      <br /> 
+      <strong><%= step.step_number %>) </strong>
+      <strong>Description:</strong> <%= step.description %>
+      <br />
+      <strong>Time:</strong> <%= step.time %> minutes
+      <strong>Attentiveness:</strong> <%= step.attentiveness %>
+      <strong>Final Step?:</strong> <%= step.final_step %>
+      <br />
+      <strong>Equipment:</strong> <%= step.equipment %>
+      <br />
+      <% step.step_mappers.each do |step_mapper| %>
+        <strong>Prereq Step:</strong> <%= step_mapper.prereq_step_number %>
+        <% step_mapper.prereq_id = @recipe.steps.find_by(step_number: step_mapper.prereq_step_number).id %>
+        <% step_mapper.save %>
+        <strong>Immediate?:</strong> <%= step_mapper.immediate_prereq %>
+        <!-- TODO: Add Preheat -->
+        <br />
+      <% end %>
     </p>
   <% end %>
   <p>

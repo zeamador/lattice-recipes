@@ -7,12 +7,12 @@
     <%= f.label :description %>: <br>
     <%= f.text_area :description %>
     <br />
-    <%= f.label :time %>: 
-    <img class="question-mark-icon" title="Total time required to complete the step."></img>
+    <%= f.label :time %>:
+    <img class="question-mark-icon" src="/assets/question-mark-icon.jpg" title="Total time required to complete the step."></img>
     <%= f.number_field :time, :class => "number-input-box" %> minutes
     <%= f.label :attentiveness, :class => "tabbed-margin-left" %>: 
     
-    <img class="question-mark-icon" title="How much of your attention does this step require? Examples:
+    <img class="question-mark-icon" src="/assets/question-mark-icon.jpg" title="How much of your attention does this step require? Examples:
     All (2): chopping or sauteing
     Some (1): stirring occasionally
     None (0): leaving water to boil"></img>
@@ -20,7 +20,7 @@
     <%= f.number_field :attentiveness, :class => "number-input-box" %>
     <br />
     <span class = "radio-buttons-label" >Step Order:
-      <img class="question-mark-icon" title="Is this the last/final step in the recipe?"></img>
+      <img class="question-mark-icon" src="/assets/question-mark-icon.jpg" title="Is this the last/final step in the recipe?"></img>
     </span>
     <%= f.label "Final" %>
     <%= f.radio_button :final_step, "true" %>

@@ -11,7 +11,7 @@ class RecipeFactory
     @recipes[db_recipe.id]
   end
 
-  private:
+  private
   def construct_new_recipe(db_recipe)
     step_maker = StepFactory.new
     ingred_maker = IngredientFactory.new

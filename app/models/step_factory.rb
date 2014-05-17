@@ -14,7 +14,7 @@ class StepFactory
     @steps[db_step.id]
   end
 
-  private:
+  private
   def construct_new_step(db_step)
     equipment = Set[]
     unless db_step.equipment.burner == 0

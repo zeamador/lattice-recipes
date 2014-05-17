@@ -11,7 +11,7 @@ class IngredientFactory
     @ingredients[db_ingredient.id]
   end
 
-  private:
+  private
   def construct_new_ingredient(db_ingredient)
     IngredientObject.new(db_ingredient.description, db_ingredient.quantity, 
                          db_ingredient.units)

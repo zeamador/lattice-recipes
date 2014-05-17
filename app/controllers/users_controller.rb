@@ -2,6 +2,9 @@ class UsersController < ApplicationController
   before_action :signed_in_user, only: [:show, :edit, :update]
   before_action :correct_user, only: [:show, :edit, :update]
 
+  def myrecipes
+    @my_recipes = Recipe.where("user_id = ?", current_user.id)
+  end
 
   def show
     @user = User.find(params[:id])
@@ -10,7 +13,11 @@ class UsersController < ApplicationController
   end
 
   def new
-    @user = User.new
+    if current_user.nil?
+      @user = User.new
+    else
+      redirect_to root_url
+    end
   end
 
   def create

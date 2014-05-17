@@ -74,6 +74,9 @@ Rails.application.routes.draw do
     resources :steps
   end  
   match '/upload', to: 'recipes#new', via: 'get'
+
+  # Get users' own recipes
+  match '/user/myrecipes' => 'users#myrecipes', :as => :myrecipes_user, via: 'get'
   
   # About page
   resources :about

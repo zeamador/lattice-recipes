@@ -13,6 +13,9 @@
   <!-- TODO: Add Secret flag -->
   <p>Tags: <%= @recipe.tags %></p>
 
+  <p>Uploaded at: <%= @recipe.user.created_at %></p>
+  <p>Uploaded by: <%= @recipe.user.name %></p>
+
   <h3>Ingredients</h3>
   <% @recipe.ingredients.each do |ingredient| -%>
     <p>

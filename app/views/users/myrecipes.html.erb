@@ -1,0 +1,10 @@
+<% @title="My Recipes" %>
+
+<div class="my-recipes-content">
+  <% @my_recipes.each do |recipe| %>
+    <div class="recipe">
+      <p class="recipe-title">Title: <%= link_to recipe.title, recipe %></p>
+      <p class="recipe-tags">Tags: <%= recipe.tags %></p>
+    </div>
+  <% end %>
+</div>

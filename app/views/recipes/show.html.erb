@@ -9,7 +9,6 @@
     <% end %>
   </div>
   <h1>Title: <%= @recipe.title %></h1>
-  <h1>Uploader: <%= current_user.name %></h1> 
 <!--  <p>Secret?: <%=  @recipe.secret ? "True" : "False" %></p> -->
   <p>Tags: <%= @recipe.tags %></p>
   <h3>Ingredients</h3>
@@ -64,6 +63,6 @@
 	  data: { confirm: "Are you sure?" } %>
     </p>
     <p>
-      <%= link_to "Add to Meal", meals_path %>
+      
     </p>
 </div>

@@ -1,20 +1,12 @@
 class MealsController < ApplicationController
 
-  def new
-    @meal = Meal.new
-  end
-
-  def show
-    @meal = Meal.find(params[:id])
-  end
-
   def update
+    @user = User.find(params[:id])
+    @meal = @user.meal
     if @meal.update_attributes(meal_params)
-      flash[:success] = "Meal updated"
-      redirect_to @meal
-    else
-      render 'edit'
+      flash[:success] = "Meal updated!"
     end
+    redirect_to @user
   end
 
   private

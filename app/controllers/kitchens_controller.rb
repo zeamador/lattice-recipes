@@ -6,7 +6,7 @@ class KitchensController < ApplicationController
 	if @kitchen.update_attributes(kitchen_params)
 	  flash[:success] = "Kitchen updated!"
 	end
-	  redirect_to @user
+	redirect_to @user
   end
 
   private

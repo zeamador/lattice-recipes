@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
   belongs_to :kitchen
   has_many :recipes
   has_many :users
-  has_one :meal
+  belongs_to :meal
   
   # Valid username: 
   # 5-20 characters

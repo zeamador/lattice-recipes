@@ -6,6 +6,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @kitchen = @user.kitchen
+    @meal = @user.meal
   end
 
   def new
@@ -18,6 +19,10 @@ class UsersController < ApplicationController
       @kitchen = Kitchen.new()
       @kitchen.save
       @user.kitchen = @kitchen
+      @user.save
+      @meal = Meal.new
+      @meal.save
+      @user.meal = @meal
       @user.save
       sign_in @user
       flash[:login_success] = "Welcome to Lattice Recipes, " + @user.name + "!"

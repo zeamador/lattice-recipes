@@ -11,7 +11,6 @@
     <% end %>
     </div>
       <ul>
-        <li><%= link_to "My Recipes", my_recipes_path %></li>
         <li><%= link_to "Profile", current_user %></li> <!-- TODO: Make this a link to users/show -->
         <li><%= link_to "Account Settings", edit_user_path(current_user) %></li>
         <li><%= link_to "Log out", signout_path, method: "delete" %></li>
@@ -80,12 +79,6 @@
           <div class="toasters">Toasters: 1</div>
         </div>
       <% end %>
-    </div>
-    <div class="meal-side-bar">
-      <div class="meal-content-side-bar">
-        <div class="your-meal"><u>Your Meal:</u></div>
-        <%= link_to raw("<div class=\"view-meal\">View Meal</div>"), meal_index_path %>
-      </div>
     </div>
   </div>
 </div>

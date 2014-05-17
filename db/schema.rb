@@ -49,13 +49,11 @@ ActiveRecord::Schema.define(version: 20140513235634) do
 
   create_table "meals", force: true do |t|
     t.integer  "recipe_id"
-    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   add_index "meals", ["recipe_id"], name: "index_meals_on_recipe_id"
-  add_index "meals", ["user_id"], name: "index_meals_on_user_id"
 
   create_table "recipes", force: true do |t|
     t.string   "title"
@@ -97,6 +95,7 @@ ActiveRecord::Schema.define(version: 20140513235634) do
     t.string   "name"
     t.string   "email"
     t.integer  "kitchen_id"
+    t.integer  "meal_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "password_digest"
@@ -105,6 +104,7 @@ ActiveRecord::Schema.define(version: 20140513235634) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["kitchen_id"], name: "index_users_on_kitchen_id"
+  add_index "users", ["meal_id"], name: "index_users_on_meal_id"
   add_index "users", ["name"], name: "index_users_on_name", unique: true
   add_index "users", ["remember_token"], name: "index_users_on_remember_token"
 

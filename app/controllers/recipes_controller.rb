@@ -6,11 +6,11 @@ class RecipesController < ApplicationController
 
   def new
     @recipe = Recipe.new
-    2.times { @recipe.ingredients.build }
-    2.times do 
+    10.times { @recipe.ingredients.build }
+    10.times do 
       step = @recipe.steps.build
       step.build_equipment
-      2.times { step.step_mappers.build }
+      3.times { step.step_mappers.build }
     end
   end
 

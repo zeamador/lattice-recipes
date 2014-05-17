@@ -15,12 +15,12 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)    # Not the final implementation!
     if @user.save
-    @kitchen = Kitchen.new()
-    @kitchen.save
-    @user.kitchen = @kitchen
-    @user.save
-    sign_in @user
-    flash[:login_success] = "Welcome to Lattice Recipes, " + @user.name + "!"
+      @kitchen = Kitchen.new()
+      @kitchen.save
+      @user.kitchen = @kitchen
+      @user.save
+      sign_in @user
+      flash[:login_success] = "Welcome to Lattice Recipes, " + @user.name + "!"
       redirect_to @user
     else
       render 'new'

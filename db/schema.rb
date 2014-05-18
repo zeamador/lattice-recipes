@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(version: 20140513235634) do
   create_table "kitchens", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "burner",     default: 4
+    t.integer  "burner",     default: 40
     t.integer  "oven",       default: 1
     t.integer  "microwave",  default: 1
     t.integer  "sink",       default: 2

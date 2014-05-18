@@ -13,16 +13,10 @@
     <h3>Your Kitchen Settings:</h3>
     <%= form_for(@kitchen) do |f| %>
       <%= render 'shared/errors', object: @user if @user.errors.any? %>
-      <%= f.label :burner %>s: 
-      <%= f.number_field :burner %></br>
-      <%= f.label :oven %>s: 
-      <%= f.number_field :oven %></br>
-      <%= f.label :microwave %>s: 
-      <%= f.number_field :microwave %></br>
-      <%= f.label :sink %>s: 
-      <%= f.number_field :sink %></br>
-      <%= f.label :toaster %>s: 
-      <%= f.number_field :toaster %></br>
+      <% EquipmentTypes.constants.each do |constant| %>
+        <%= f.label constant.downcase %>s:
+        <%= f.number_field constant.downcase %></br>
+      <% end -%>
       <%= f.submit "Update Kitchen", class: "btn btn-large btn-primary" %>
     <% end %>
   </div>

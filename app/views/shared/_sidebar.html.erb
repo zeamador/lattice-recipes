@@ -69,20 +69,18 @@
               ):
             </u>
           </div>
-          <div class="burners">Burners: <%= @current_user.kitchen.burner %></div>
-          <div class="ovens">Ovens: <%= @current_user.kitchen.oven %></div>
-          <div class="microwaves">Microwaves: <%= @current_user.kitchen.microwave %></div>
-          <div class="sinks">Sinks: <%= @current_user.kitchen.sink %></div>
-          <div class="toasters">Toasters: <%= @current_user.kitchen.toaster %></div>
+          <% EquipmentTypes.constants.each do |constant| -%>
+            <%= "<div class=\"#{constant.downcase}s\">#{constant.capitalize}s: 
+                 #{@current_user.kitchen.send(constant.downcase)}</div>".html_safe %>
+          <% end -%>
         </div>
       <% else %>
         <div class="kitchen-content-side-bar">
           <div class="your-kitchen"><u>Default Kitchen:</u></div>
-          <div class="burners">Burners: 4</div>
-          <div class="ovens">Ovens: 1</div>
-          <div class="microwaves">Microwaves: 1</div>
-          <div class="sinks">Sinks: 2</div>
-          <div class="toasters">Toasters: 1</div>
+          <% default_kitchen = KitchenObject.new -%>
+          <% EquipmentTypes.constants.each do |constant| -%>
+            <%= "<div class=\"#{constant.downcase}s\">#{constant.capitalize}s: #{default_kitchen[constant]}</div>".html_safe %>
+          <% end -%>
         </div>
       <% end %>
     </div>

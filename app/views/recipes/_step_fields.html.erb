@@ -10,14 +10,19 @@
     <%= f.label :time %>:
     <img class="question-mark-icon" src="/assets/question-mark-icon.jpg" title="Total time required to complete the step."></img>
     <%= f.number_field :time, :class => "number-input-box" %> minutes
-    <%= f.label :attentiveness, :class => "tabbed-margin-left" %>: 
-    
-    <img class="question-mark-icon" src="/assets/question-mark-icon.jpg" title="How much of your attention does this step require? Examples:
-    All (2): chopping or sauteing
-    Some (1): stirring occasionally
-    None (0): leaving water to boil"></img>
-    
-    <%= f.number_field :attentiveness, :class => "number-input-box" %>
+    <br />
+    <span class = "radio-buttons-label" >Attentiveness:
+      <img class="question-mark-icon" src="/assets/question-mark-icon.jpg" title="How much of your attention does this step require? Examples:
+All: chopping or sauteing
+Some: stirring occasionally
+None: leaving water to boil"></img>
+    </span>    
+    <%= f.label "All" %>
+    <%= f.radio_button :attentiveness, "2", { checked: true } %>
+    <%= f.label "Some" %>
+    <%= f.radio_button :attentiveness, "1" %>
+    <%= f.label "None" %>
+    <%= f.radio_button :attentiveness, "0" %>
     <br />
     <span class = "radio-buttons-label" >Step Order:
       <img class="question-mark-icon" src="/assets/question-mark-icon.jpg" title="Is this the last/final step in the recipe?"></img>

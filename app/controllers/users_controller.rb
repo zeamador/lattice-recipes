@@ -30,10 +30,6 @@ class UsersController < ApplicationController
       @kitchen.save
       @user.kitchen = @kitchen
       @user.save
-      @meal = Meal.new
-      @meal.save
-      @user.meal = @meal
-      @user.save
       sign_in @user
       flash[:login_success] = "Welcome to Lattice Recipes, " + @user.name + "!"
       redirect_to @user

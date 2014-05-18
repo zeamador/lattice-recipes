@@ -39,9 +39,11 @@
           All
         <% end %>
       <% end %>
-      <br />
-      <strong>Equipment:</strong> <%= step.equipment %>
-      <br />
+      <% if step.equipment.present? %>
+        <br />
+        <strong>Equipment:</strong> <%= step.equipment %>
+        <br />
+      <% end %>
       <% step.step_mappers.each do |step_mapper| %>
         <strong>Prereq Step:</strong> <%= step_mapper.prereq_step_number %>
         <% step_mapper.prereq_id = @recipe.steps.find_by(step_number: step_mapper.prereq_step_number).id %>

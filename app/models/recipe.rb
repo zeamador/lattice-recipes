@@ -3,16 +3,13 @@ class Recipe < ActiveRecord::Base
   has_many :ingredients, :dependent => :destroy
   belongs_to :user
   belongs_to :meal
-  accepts_nested_attributes_for :steps, :reject_if =>
-                                lambda { |a| a[:description].blank? }, 
+  accepts_nested_attributes_for :steps, 
                                 :allow_destroy => true
-  accepts_nested_attributes_for :ingredients, :reject_if =>
-                                lambda { |a| a[:description].blank? }, 
+  accepts_nested_attributes_for :ingredients,
                                 :allow_destroy => true
-  validates_associated :steps
-  validates_associated :ingredients
 
-  
+  validates :title, presence: true
+  validates :tags, presence: true
 
   def self.search(query)
     where("title like ? OR tags like ?", "%#{query}%", "%#{query}%")

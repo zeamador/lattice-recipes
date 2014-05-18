@@ -46,7 +46,9 @@
     </p>
   <% end %>
   <p>
+  <% if @recipe.user == current_user %>
     <%= button_to 'Delete Recipe', @recipe, method: :delete,
       data: { confirm: "Are you sure?" } %>
   </p>
+  <% end %>
 </div>

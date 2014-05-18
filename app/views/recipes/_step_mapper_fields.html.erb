@@ -9,6 +9,7 @@
   <%= f.radio_button :immediate_prereq, "true" %>
   <%= f.label "No" %>
   <%= f.radio_button :immediate_prereq, "false", { checked: true } %>
+  <%= f.link_to_remove "Remove Prereq" %>
 </p>
 <!-- <p>
   <%= f.label "Preheat Prereq" %>

@@ -34,16 +34,17 @@ None: leaving water to boil"></img>
     <br />
     <br />
     <strong>Equipment: </strong>
-    <% equip_array = [] %>
-    <% EquipmentTypes.constants.each do |constant| %>
-    <% equip_array << [EquipmentTypes.const_get(constant), EquipmentTypes.const_get(constant)] %>
-    <% end %>
-    <%= f.select(:equipment, equip_array, { prompt: true }) %>
-    <br />
+    <% equip_array = [] -%>
+    <% EquipmentTypes.constants.each do |constant| -%>
+      <% equip_array << [EquipmentTypes.const_get(constant), EquipmentTypes.const_get(constant)] -%>
+    <% end -%>
+
+    <%= f.select(:equipment, equip_array, { prompt: true }) %><br />
+
     <strong>Prereq Steps: </strong>
-    <%= f.fields_for :step_mappers do |builder| %>
-      <%= render partial: "step_mapper_fields", locals: { f: builder } %>
-    <% end %>
+    <% f.fields_for :step_mappers -%>
+    <p><%= f.link_to_add "Add Prereq", :step_mappers %></p>
   </div>
   <%= f.link_to_remove "Remove step" %>
 </fieldset>
+

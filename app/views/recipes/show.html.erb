@@ -11,10 +11,9 @@
   <h1><%= @recipe.title %></h1>
 
   <!-- TODO: Add Secret flag -->
-  <p><%= @recipe.tags %></p>
-
-  <p>Uploaded at: <%= @recipe.user.created_at %></p>
-  <p>Uploaded by: <%= @recipe.user.name %></p>
+  <p>Tags: <%= @recipe.tags %></p>
+  
+  <p>Uploader: <%= @recipe.user.name %> on <%= @recipe.user.created_at.strftime("%m/%d/%Y at %H:%M %Z") %></p>
 
   <h3>Ingredients</h3>
   <% @recipe.ingredients.each do |ingredient| -%>

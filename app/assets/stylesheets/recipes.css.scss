@@ -27,7 +27,25 @@
   border-bottom: solid medium SaddleBrown;
 }
 
+.add_nested_fields {
+  font-size: medium;
+  font-weight: bold;
+}
+
+/* Ingredient Styling and Spacing */
+.ingredient {
+  border: 0;
+  padding: 0 0 5px 0;
+  margin: 0;
+}
+
 /* Step Styling and Spacing */
+.step {
+  border: 0;
+  padding: 0 0 15px 0;
+  margin: 0;
+}
+
 .title-label {
   font-size: 16pt;
   font-weight: bold;

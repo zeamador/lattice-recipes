@@ -2,12 +2,12 @@
   <%= render 'shared/errors', object: @recipe if @recipe.errors.any? %>
 
   <p>
-    <%= f.label :title %><br />
+    <strong><%= f.label :title %></strong><br />
     <%= f.text_field :title %>
   </p>
   <!-- TODO add secret input -->
   <p>
-    <%= f.label :tags %><br />
+    <%= f.label :tags %> (seperate with commas)<br />
     <%= f.text_field :tags %>
   </p>
   <p>

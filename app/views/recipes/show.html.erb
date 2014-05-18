@@ -30,8 +30,16 @@
       <strong>Description:</strong> <%= step.description %>
       <br />
       <strong>Time:</strong> <%= step.time %> minutes
-      <strong>Attentiveness:</strong> <%= step.attentiveness %>
-      <strong>Final Step?:</strong> <%= step.final_step %>
+      <strong>Attentiveness:</strong> 
+      <% if step.attentiveness == 0 %>
+        None
+      <% else %>
+        <% if step.attentiveness == 1 %>
+          Some
+        <% else %>
+          All
+        <% end %>
+      <% end %>
       <br />
       <strong>Equipment:</strong> <%= step.equipment %>
       <br />

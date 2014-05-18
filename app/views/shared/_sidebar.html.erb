@@ -1,7 +1,7 @@
 <div class="side-bar">
   
-  <% if URI.parse(request.original_url).path != signup_path %>
-    <div class="user-side-bar">
+  <% if URI.parse(request.original_url).path != signup_path and URI.parse(request.original_url).path != users_path %>
+    <div class="user-side-bar" title=<%= users_path %>>
     <% if signed_in? %>
       <div class="user-header-side-bar">Welcome, <%= @current_user.name %>!</div>
       <div class="user-content-side-bar">

@@ -54,7 +54,8 @@ class RecipesController < ApplicationController
                                      step_mappers_attributes: [:id,
                                                                :immediate_prereq,
                                                                :prereq_id,
-                                                               :prereq_step_number]])
+                                                               :prereq_step_number,
+                                                               :_destroy]])
     end
 
 end

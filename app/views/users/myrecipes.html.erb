@@ -1,6 +1,8 @@
 <% @title="My Recipes" %>
 
-<div class="my-recipes-content">
+<div class="info-extra-bottom">
+  <h1>Your Recipes</h1>
+  <hr />
   <% @my_recipes.each do |recipe| %>
     <div class="recipe">
       <p class="recipe-title">Title: <%= link_to recipe.title, recipe %></p>

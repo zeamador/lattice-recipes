@@ -125,8 +125,12 @@ body {
   color: Black;
 }
 
-/* Default for links */
+/* Global Colorings/Stylings */
 a {
   color: Sienna;
   text-decoration: none;
+}
+
+hr {
+  border-color: Black;
 }

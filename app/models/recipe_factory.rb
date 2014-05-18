@@ -1,18 +1,11 @@
-class RecipeFactory
-  def get_recipe_from_db_id(db_recipe_id)
-    get_recipe_from_db_object(Recipe.find(db_recipe_id))
-  end  
-
-  def get_recipe_from_db_object(db_recipe)
-    unless @recipes.has_key?(db_recipe.id)
-      @recipes[db_recipe.id] = construct_new_recipe(db_recipe)
-    end
-
-    @recipes[db_recipe.id]
+class RecipeFactory < ObjectFactory
+  def initialize
+    @db_class = Recipe
   end
 
   private
-  def construct_new_recipe(db_recipe)
+  # See ObjectFactory
+  def construct_new_object(db_recipe)
     step_maker = StepFactory.new
     ingred_maker = IngredientFactory.new
 

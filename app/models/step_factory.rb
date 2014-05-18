@@ -1,21 +1,14 @@
 # A StepFactory ensures that calls to construct_step_from_db passed the same
 # database object always return the same StepObject, e.g. the same reference,
 # for the duration of the StepFactory instance.
-class StepFactory
-  def get_step_from_db_id(db_step_id) 
-    get_step_from_db_object(Step.find(db_step_id))
-  end
-
-  def get_step_from_db_object(db_step)
-    unless @steps.has_key?(db_step.id)
-      @steps[db_step.id] = construct_new_step(db_step)
-    end
-    
-    @steps[db_step.id]
+class StepFactory < ObjectFactory
+  def initialize
+    @db_class = Step
   end
 
   private
-  def construct_new_step(db_step)
+  # See ObjectFactory
+  def construct_new_object(db_step)
     immediate_prereq = nil
     preheat_prereq = nil
     prereqs = Set[]

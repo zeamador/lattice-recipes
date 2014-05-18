@@ -3,13 +3,16 @@ class UsersController < ApplicationController
   before_action :correct_user, only: [:show, :edit, :update]
 
   def myrecipes
-    @my_recipes = Recipe.where("user_id = ?", current_user.id)
+    if params[:search]
+      @my_recipes = Recipe.where("user_id = ? AND (title like ? OR tags like ?)", current_user.id, "%#{params[:search]}%", "%#{params[:search]}%")
+    else
+      @my_recipes = Recipe.where("user_id = ?", current_user.id).order(created_at: :desc)
+    end
   end
 
   def show
     @user = User.find(params[:id])
     @kitchen = @user.kitchen
-    @meal = @user.meal
   end
 
   def new

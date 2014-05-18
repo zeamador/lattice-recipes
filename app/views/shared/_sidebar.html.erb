@@ -50,8 +50,8 @@
     <div class="recent-content-side-bar">
       <% recent_recipes.each do |recipe| %>
         <div class="recipe">
-          <p class="recipe-title">Title: <%= link_to recipe.title, recipe %></p>
-          <p class="recipe-tags">Tags: <%= recipe.tags %></p>
+          <p class="recipe-title"><%= link_to recipe.title, recipe %></p>
+          <p class="recipe-tags"><%= recipe.tags %></p>
         </div>
       <% end %>
     </div>

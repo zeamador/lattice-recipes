@@ -8,10 +8,10 @@
       <% end %>
     <% end %>
   </div>
-  <h1>Title: <%= @recipe.title %></h1>
+  <h1><%= @recipe.title %></h1>
 
   <!-- TODO: Add Secret flag -->
-  <p>Tags: <%= @recipe.tags %></p>
+  <p><%= @recipe.tags %></p>
 
   <p>Uploaded at: <%= @recipe.user.created_at %></p>
   <p>Uploaded by: <%= @recipe.user.name %></p>

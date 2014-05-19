@@ -1,5 +1,5 @@
 # Immutable schedule of steps from multiple in recipes in a user's meal.
-class MealObject
+class MealSchedule
   attr_reader :recipes, :schedule
 
   # Public: Initialize a Meal with a set of recipes and a schedule of steps.

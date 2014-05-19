@@ -13,8 +13,8 @@ $(document).on('nested:fieldAdded:steps', (event) ->
   # select step number input in field
   # by selecting where name ends with [step_number]
   stepNum = field.find("input[name$='[step_number]']")
-  # TODO: refactor so step number is displayed, but not editable
-  # stepNum.prop("disabled", true)
+  # Set readonly so users can't tamper with step number
+  stepNum.prop("readonly", true)
   stepNum.val(stepCounter.toString())
 )
 

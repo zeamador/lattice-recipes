@@ -23,7 +23,7 @@
     <br />
   <% end -%>
   <h3>Steps</h3>
-  <% @recipe.steps.each do |step| -%>
+  <% @recipe.steps.sort { |a, b| a.step_number <=> b.step_number }.each do |step| -%>
     <p>
       <strong><%= step.step_number %>) </strong>
       <strong>Description:</strong> <%= step.description %>

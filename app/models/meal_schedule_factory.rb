@@ -1,4 +1,4 @@
-module MealFactory
+module MealScheduleFactory
   class << self
     # Public: Combine multiple recipes into a single meal, whose steps are an
     #         optimal combination of the steps of the input recipes, based
@@ -10,8 +10,8 @@ module MealFactory
     # num_users - The number of cooks who will be working. Optional parameter,
     #             default 1.
     #
-    # Returns a Meal
-    def create_meal(recipes, kitchen=KitchenObject.new, num_users=1)
+    # Returns a MealSchedule
+    def combine(recipes, kitchen=KitchenObject.new, num_users=1)
       # Combine final steps of each recipe into a single collection
       final_steps = [] #Set?
       recipes.each do |recipe|
@@ -24,7 +24,7 @@ module MealFactory
       schedule_builder = ScheduleBuilder.new(final_steps, resources)
       successful_schedules = [] #Set?
     
-      create_meal_helper(schedule_builder, successful_schedules)
+      create_meal_schedule_helper(schedule_builder, successful_schedules)
       successful_schedules.uniq!      
 
       # Pick the schedule for which the end times of all of the final steps of
@@ -60,7 +60,7 @@ module MealFactory
         end
       end
 
-      MealObject.new(recipes, best_schedule)
+      MealSchedule.new(recipes, best_schedule)
     end
 
     private
@@ -75,7 +75,7 @@ module MealFactory
     #                        dependency graph.
     #
     # Returns nothing, but populates successful_schedules.
-    def create_meal_helper(schedule_builder, successful_schedules)
+    def create_meal_schedule_helper(schedule_builder, successful_schedules)
       schedule_builder.possible_steps.each do |step|
         # Make a copy of the schedule_builder to modify and pass to a new
         # recursive branch
@@ -83,7 +83,8 @@ module MealFactory
         
         if schedule_builder_copy.add_step(step)
           # Recursive case - add step
-          create_meal_helper(schedule_builder_copy, successful_schedules)
+          create_meal_schedule_helper(schedule_builder_copy, 
+                                      successful_schedules)
         end
 
         unless step.immediate_prereq.nil?
@@ -91,7 +92,8 @@ module MealFactory
           schedule_builder_copy = schedule_builder.clone
 
           if schedule_builder_copy.add_step_preemptive(step)
-            create_meal_helper(schedule_builder_copy, successful_schedules)
+            create_meal_schedule_helper(schedule_builder_copy, 
+                                        successful_schedules)
           end
         end
       end
@@ -102,7 +104,7 @@ module MealFactory
       # use it in else branches.
       if schedule_builder_copy.advance_current_time
         # Recursive case - advance sweep line
-        create_meal_helper(schedule_builder_copy, successful_schedules)
+        create_meal_schedule_helper(schedule_builder_copy, successful_schedules)
       elsif schedule_builder.schedule_complete?
         # Base case - success
         successful_schedules << schedule_builder.schedule

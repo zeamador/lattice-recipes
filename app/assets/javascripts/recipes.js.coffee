@@ -13,9 +13,8 @@ $(document).on('nested:fieldAdded:steps', (event) ->
   # select step number input in field
   # by selecting where name ends with [step_number]
   stepNum = field.find("input[name$='[step_number]']")
-  # Set readonly so users can't tamper with step number
-  stepNum.prop("readonly", true)
   stepNum.val(stepCounter.toString())
+  stepNum.prev(".stepnum").html(stepCounter.toString())
 )
 
 # Handle event when a step field is removed
@@ -27,6 +26,7 @@ $(document).on('nested:fieldRemoved:steps', (event) ->
   # and decrement their step numbers.
   while ((field = field.next("div.fields")).length)
     stepNum = field.find("input[name$='[step_number]']")
-    value = parseInt(stepNum.val())
-    stepNum.val((value - 1).toString())
+    value = parseInt(stepNum.val()) - 1
+    stepNum.val(value.toString())
+    stepNum.prev(".stepnum").html(value.toString())
 )

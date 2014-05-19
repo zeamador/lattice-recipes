@@ -1,6 +1,7 @@
 <fieldset class="step">
   <strong><%= f.label :step_number%>: </strong>
-  <%= f.number_field :step_number, :class => "number-input-box" %>
+  <span class="stepnum"></span>
+  <%= f.hidden_field :step_number %>
   <br />
   
   <div class = "tabbed-margin-left">

@@ -1,0 +1,13 @@
+Viewing Recipes:
+
+CASE 1: All recipes should have consistent casing
+1. As a signed in user, click "Add Recipe" in the menu bar
+2. Upload a recipe with:
+       title: "TeST reCIPE"
+       tags: "One, TWO, three, FoUR"
+       ingredient: 4.0 "Whole" "CATS and Dogs and fishes"
+4. Click "Create Recipe" and expect to see the following formatting:
+       title: "Test Recipe"
+       tags: "one, two, three, four"
+       ingredient: 4.0 "whole" "cats and dogs and fishes"
+		

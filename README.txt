@@ -39,7 +39,7 @@ Meeting Minutes: https://docs.google.com/document/d/1ojSoqqIhGlx7bhAVIOo-5m7rPOy
    $ ruby -v
    $ rails -v
 7. From lattice-recipes/ directory, migrate the development database:
-   $ bin/rake db:migrate RAILS_ENC=development
+   $ bin/rake db:migrate RAILS_ENV=development
 
 -- Contributing to Lattice --
 You will need to contact us cse403_ares at u dot washington dot edu to 

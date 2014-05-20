@@ -15,7 +15,7 @@
       <%= render 'shared/errors', object: @kitchen if @kitchen.errors.any? %>
       <% EquipmentTypes.constants.each do |constant| %>
         <%= f.label constant.downcase %>s:
-        <%= f.number_field constant.downcase %></br>
+        <%= f.number_field constant.downcase, :min => 0 %></br>
       <% end -%>
       <%= f.submit "Update Kitchen", class: "btn btn-large btn-primary" %>
     <% end %>

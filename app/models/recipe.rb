@@ -11,8 +11,13 @@ class Recipe < ActiveRecord::Base
   validates :title, presence: true
   validates :tags, presence: true
 
+  # sanitize case
+  before_save do
+    self.tags.downcase!
+    self.title = self.title.titleize
+  end
+
   def self.search(query)
     where("title like ? OR tags like ?", "%#{query}%", "%#{query}%")
   end
-
 end

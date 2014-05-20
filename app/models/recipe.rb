@@ -14,7 +14,7 @@ class Recipe < ActiveRecord::Base
   # sanitize case
   before_save do
     self.tags.downcase!
-    self.title = self.title.titleize
+    self.title = self.title.downcase.titleize
   end
 
   def self.search(query)

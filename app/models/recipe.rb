@@ -10,6 +10,8 @@ class Recipe < ActiveRecord::Base
 
   validates :title, presence: true
   validates :tags, presence: true
+  validates :steps, presence: true
+  validates :ingredients, presence: true
 
   # sanitize case
   before_save do

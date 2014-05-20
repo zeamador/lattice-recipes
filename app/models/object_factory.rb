@@ -14,7 +14,7 @@ class ObjectFactory
   # to the passed database object. Subsequent calls on the same factory instance
   # are guaranteed to return the same object reference.
   def get_object_from_db_id(db_object_id)
-    get_step_from_db_object(@db_class.find(db_object_id))
+    get_object_from_db_object(@db_class.find(db_object_id))
   end
 
   # Public: Get the algorithm object that corresponds to the passed database

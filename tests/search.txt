@@ -1,0 +1,37 @@
+Searching for Recipes:
+
+CASE 1: Users should be able to search for recipes by title or tag
+1. As a signed in user, click "Add Recipe" in the menu bar
+2. Upload a recipe with title "Black Forest Cake" and tag "Sweet"
+3. Upload a recipe with title "Sweet BBQ Ribs" and tag "pork"
+4. Upload a recipe with title "Control" and tag "Not, Found"
+5. Search for "Sweet"
+   Recipes from steps 2 and 3 should appear.
+
+CASE 2: Searching should be case insensitive for tag and title
+1. As a signed in user, click "Add Recipe" in the menu bar
+2. Upload a recipe with title "Waffles" and tag "breakfast"
+3. Upload a recipe with title "Pancakes" and tag "Breakfast"
+4. Upload a recipe with title "breakfast burritos" and tag "yummy"
+5. Upload a recipe with title "Breakfast Scramble" and tag "Eggs"
+6. Upload a recipe with title "Control" and tag "Not, Found"
+7. Search for "breakfast"
+   Recipes steps 2, 3, 4, and 5 should appear.
+8. Search for "Breakfast"
+   Recipes steps 2, 3, 4, and 5 should appear.
+
+CASE 3: Searching should include partial words
+1. As a signed in user, click "Add Recipe" in the menu bar
+2. Upload a recipe with title "Fruit Salad" and tag "watermelon"
+3. Upload a recipe with title "Control" and tag "Not, Found"
+4. Search for "melon"
+   Recipe from step 2 should appear.
+
+CASE 4: "My Recipes" searching should have same features as normal searching
+1. Create a new account and click "Add Recipe" in the menu bar
+2. Upload a recipe with title "Other" and tag "Sweet, breakfast, melon"
+3. Log out, and back in as another user.
+4. Repeat all tests outlined above using "My Recipes" search.
+   Same expected behavior, but also ensure that recipe "Other" from step 2 
+   never appears in a search list.
+

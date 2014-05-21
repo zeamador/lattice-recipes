@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(version: 20140513235634) do
     t.integer  "burner",     default: 4
     t.integer  "oven",       default: 1
     t.integer  "microwave",  default: 1
-    t.integer  "sink",       default: 2
+    t.integer  "sink",       default: 1
     t.integer  "toaster",    default: 1
   end
 

@@ -11,7 +11,9 @@
   <h1>Recipes In Your Meal</h1>
 
   <% @meal.recipes.each do |recipe| -%>
-    <%= recipe.title %><br />
+    <%= recipe.title %>
+    <%= button_to "Remove Recipe", recipe_path(recipe, meal_id: nil), method: :patch %>
+    <br />
   <% end -%>
 
   <%= button_to "Combine Recipes", meal_schedule_path, method: :get %>

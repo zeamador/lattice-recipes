@@ -26,7 +26,7 @@ class RecipesController < ApplicationController
 
   def update
     @recipe = Recipe.find(params[:id])
-    @recipe.update_attribute(:meal_id, current_user.meal.id)
+    @recipe.update_attribute(:meal_id, params[:meal_id])
     redirect_to meal_path(current_user.meal)
   end
 
@@ -47,7 +47,7 @@ class RecipesController < ApplicationController
   private
 
     def recipe_params
-      params.require(:recipe).permit(:title, :secret, :tags, 
+      params.require(:recipe).permit(:title, :secret, :tags, :meal_id,
                                      ingredients_attributes: [:id, :quantity,
                                                               :unit,
                                                               :description,

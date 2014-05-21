@@ -3,47 +3,51 @@
 <div class="info-extra-bottom">
   <h1>Combined Recipes</h1>
   
-  <h2>Ingredients</h2>
-  <% @meal_schedule.recipes.each do |recipe| -%>
-    <div class="ingredient-list">
-    <h3><%= recipe.title %></h3>
-    <% recipe.ingredients.each do |ingredient| -%>
-      <%= ingredient.quantity -%>
-      <%= ingredient.unit -%>
-      <%= ingredient.description -%>
-      </br>
+  <% if @meal_schedule -%>
+    <h2>Ingredients</h2>
+    <% @meal_schedule.recipes.each do |recipe| -%>
+      <div class="ingredient-list">
+      <h3><%= recipe.title %></h3>
+      <% recipe.ingredients.each do |ingredient| -%>
+        <%= ingredient.quantity -%>
+        <%= ingredient.unit -%>
+        <%= ingredient.description -%>
+        </br>
+      <% end -%>
+      </div>
     <% end -%>
-    </div>
-  <% end -%>
 
-  <h2>Steps</h2>
-  <% i = 1 -%>
-  <% @meal_schedule.schedule.keys.sort.each do |time| -%>
-    <% steps = @meal_schedule.schedule[time] -%>
-    <% steps.sort {|a, b| a.time <=> b.time}.each do |step| -%>
-      <p>
-      <strong><%= i -%>) </strong>
-      <strong>Description:</strong> <%= step.description %>
-      <br />
-      <strong>Time:</strong> <%= step.time %> minutes
-      <strong>Attentiveness:</strong>
-      <% if step.focus == 0 %>
-        None
-      <% else %>
-        <% if step.focus == 1 %>
-          Some
-        <% else %>
-          All
-        <% end %>
-      <% end %>
-      <br />
-      <% unless step.equipment.nil? %>
-        <strong>Equipment:</strong> <%= step.equipment.capitalize %>
+    <h2>Steps</h2>
+    <% i = 1 -%>
+    <% @meal_schedule.schedule.keys.sort.each do |time| -%>
+      <% steps = @meal_schedule.schedule[time] -%>
+      <% steps.sort {|a, b| a.time <=> b.time}.each do |step| -%>
+        <p>
+        <strong><%= i -%>) </strong>
+        <strong>Description:</strong> <%= step.description %>
         <br />
-      <% end %>
-      </p>
+        <strong>Time:</strong> <%= step.time %> minutes
+        <strong>Attentiveness:</strong>
+        <% if step.focus == 0 %>
+          None
+        <% else %>
+          <% if step.focus == 1 %>
+            Some
+          <% else %>
+            All
+          <% end %>
+        <% end %>
+        <br />
+        <% unless step.equipment.nil? %>
+          <strong>Equipment:</strong> <%= step.equipment.capitalize %>
+          <br />
+        <% end %>
+        </p>
 
-      <% i += 1 -%>
+        <% i += 1 -%>
+      <% end -%>
     <% end -%>
+  <% else -%>
+    <h2>No Recipes To Display</h2>
   <% end -%>
 </div>

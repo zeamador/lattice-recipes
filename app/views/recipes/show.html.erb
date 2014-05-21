@@ -11,7 +11,7 @@
   <% if @recipe.user == current_user -%>
     <div>
       <div class="add-to-meal">
-        <%= button_to "Add To Meal", recipe_path(@recipe), method: :patch %>
+        <%= button_to "Add To Meal", recipe_path(@recipe, meal_id: current_user.meal.id), method: :patch %>
       </div>
       <h1><%= @recipe.title %></h1>
     </div>

@@ -15,6 +15,9 @@ $(document).on('nested:fieldAdded:steps', (event) ->
   stepNum = field.find("input[name$='[step_number]']")
   stepNum.val(stepCounter.toString())
   stepNum.prev(".stepnum").html(stepCounter.toString())
+  # hide prereq input if this is step #1
+  if (stepCounter == 1)
+    field.find(".prereqs").hide()
 )
 
 # Handle event when a step field is removed
@@ -28,5 +31,10 @@ $(document).on('nested:fieldRemoved:steps', (event) ->
     stepNum = field.find("input[name$='[step_number]']")
     value = parseInt(stepNum.val()) - 1
     stepNum.val(value.toString())
+    # change value in html to match form
     stepNum.prev(".stepnum").html(value.toString())
+    # if this is now step #1, hide prereq input
+    if (value == 1)
+      field.find(".prereqs").hide()
 )
+

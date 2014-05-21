@@ -41,10 +41,11 @@ None: leaving water to boil"></img>
     <% end -%>
 
     <%= f.select(:equipment, equip_array, { prompt: true }) %><br />
-
-    <strong>Prereq Steps: </strong>
-    <% f.fields_for :step_mappers -%>
-    <p><%= f.link_to_add "Add Prereq", :step_mappers %></p>
+    <div class="prereqs">
+      <strong>Prereq Steps: </strong>
+      <% f.fields_for :step_mappers -%>
+      <p><%= f.link_to_add "Add Prereq", :step_mappers %></p>
+    </div>
   </div>
   <%= f.link_to_remove "Remove step" %>
 </fieldset>

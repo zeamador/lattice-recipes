@@ -84,26 +84,14 @@
 }
 
 .kitchen-side-bar {
-  padding: 0 15px 0 15px;
+  padding: 0 15px 0 0;
 }
 
-.kitchen-side-bar .burners {
-  margin-left: 15px;
+.kitchen-side-bar .your-kitchen {
+  margin-left: 0;
 }
 
-.kitchen-side-bar .ovens {
-  margin-left: 15px;
-}
-
-.kitchen-side-bar .microwaves {
-  margin-left: 15px;
-}
-
-.kitchen-side-bar .sinks {
-  margin-left: 15px;
-}
-
-.kitchen-side-bar .toasters {
+.kitchen-side-bar div {
   margin-left: 15px;
 }
 

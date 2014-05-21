@@ -74,6 +74,9 @@
                  #{@current_user.kitchen.send(constant.downcase)}</div>".html_safe %>
           <% end -%>
         </div>
+	<div class="meal-content-side-bar">
+	  <%= link_to "View Meal", meal_path(current_user.meal) %>
+	</div>
       <% else %>
         <div class="kitchen-content-side-bar">
           <div class="your-kitchen"><u>Default Kitchen:</u></div>

@@ -24,6 +24,12 @@ class RecipesController < ApplicationController
     end
   end
 
+  def update
+    @recipe = Recipe.find(params[:id])
+    @recipe.update_attribute(:meal_id, current_user.meal.id)
+    redirect_to meal_path(current_user.meal)
+  end
+
   def destroy
     @recipe = Recipe.find(params[:id])
     @recipe.destroy

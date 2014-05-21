@@ -6,6 +6,7 @@ class CreateRecipes < ActiveRecord::Migration
       t.string :tags
 
       t.references :user, index: true
+      t.references :meal, index: true
 
       t.timestamps
     end

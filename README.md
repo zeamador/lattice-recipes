@@ -11,7 +11,7 @@
 
 ## Important Links
 - [Release Website](http://lattice-recipes.herokuapp.com/)
-- [Documentation](lattice-recipes/docs/)
+- [Documentation](https://github.com/zeamador/lattice-recipes/tree/master/docs)
 - [GitHub Repository](https://github.com/zeamador/lattice-recipes)
 - [Issue Tracker](https://github.com/zeamador/lattice-recipes/issues)
 - [Style Guidelines](https://github.com/styleguide/ruby)

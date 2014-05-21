@@ -60,4 +60,7 @@
       data: { confirm: "Are you sure?" } %>
   </p>
   <% end %>
+  <div class="add-to-meal">
+    <%= button_to "Add To Meal", recipe_path(@recipe), method: :patch %>
+  </div>
 </div>

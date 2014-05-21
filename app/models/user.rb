@@ -1,7 +1,6 @@
 class User < ActiveRecord::Base
   belongs_to :kitchen
   has_many :recipes
-  has_many :users
   belongs_to :meal
   
   # Valid username: 

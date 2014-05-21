@@ -3,7 +3,10 @@ module SessionsHelper
   def sign_in(user)
     remember_token = User.new_remember_token
     cookies.permanent[:remember_token] = remember_token
+    meal = Meal.new
+    meal.save
     user.update_attribute(:remember_token, User.digest(remember_token))
+    user.update_attribute(:meal, meal)
     self.current_user = user
   end
 
@@ -28,6 +31,7 @@ module SessionsHelper
     current_user.update_attribute(:remember_token,
                                   User.digest(User.new_remember_token))
     cookies.delete(:remember_token)
+    current_user.meal.delete
     self.current_user = nil
   end
 

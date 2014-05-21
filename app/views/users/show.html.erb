@@ -20,4 +20,10 @@
       <%= f.submit "Update Kitchen", class: "btn btn-large btn-primary" %>
     <% end %>
   </div>
+
+  <div class="meal-schedule-form">
+    <h3>Your Meal:</h3>
+
+    <%= button_to "Combine Recipes", meal_schedule_path, method: :get %>
+  </div>
 </div>

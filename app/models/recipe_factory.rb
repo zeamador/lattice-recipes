@@ -1,5 +1,6 @@
 class RecipeFactory < ObjectFactory
   def initialize
+    super
     @db_class = Recipe
   end
 

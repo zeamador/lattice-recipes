@@ -91,7 +91,7 @@ Rails.application.routes.draw do
   resources :my_recipes
   
   # Combined Recipes page
-  resources :combined_recipes
+  resources :meal_schedules
 
   # Add Kitchen
   resources :kitchens do

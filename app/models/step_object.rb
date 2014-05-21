@@ -48,7 +48,7 @@ class StepObject
 
     # equipment must either be nil or an EquipmentType
     if(equipment && !EquipmentTypes.constants.include?(equipment))
-      raise "Equipment must either be nil or an EquipmentType constant"
+      raise "Equipment must either be nil or an EquipmentType constant, is: #{equipment}"
     else
       @equipment = equipment
     end

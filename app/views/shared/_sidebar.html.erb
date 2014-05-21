@@ -56,11 +56,11 @@
       <% end %>
     </div>
   </div>
-  
-  <div class="kitchen-meal-side-bar">
-    <div class="kitchen-meal-header-side-bar">Your Kitchen and Meal</div>
-    <div class="kitchen-side-bar">
-      <% if signed_in? %>
+
+  <% if signed_in? %>  
+    <div class="kitchen-meal-side-bar">
+      <div class="kitchen-meal-header-side-bar">Your Kitchen and Meal</div>
+      <div class="kitchen-side-bar">
         <div class="kitchen-content-side-bar">
           <div class="your-kitchen">
             <u>Your Kitchen:</u> <%= link_to " Edit", current_user %>
@@ -73,16 +73,8 @@
 	<div class="meal-content-side-bar">
 	  <%= link_to "View Meal", meal_path(current_user.meal) %>
 	</div>
-      <% else %>
-        <div class="kitchen-content-side-bar">
-          <div class="your-kitchen"><u>Default Kitchen:</u></div>
-          <% default_kitchen = KitchenObject.new -%>
-          <% EquipmentTypes.constants.each do |constant| -%>
-            <%= "<div class=\"#{constant.downcase}s\">#{constant.capitalize}s: #{default_kitchen[constant]}</div>".html_safe %>
-          <% end -%>
-        </div>
-      <% end %>
+      </div>
     </div>
-  </div>
+  <% end %>
   
 </div>

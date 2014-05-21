@@ -4,6 +4,7 @@ class CreateRecipes < ActiveRecord::Migration
       t.string :title
       t.boolean :secret
       t.string :tags
+      t.string :ingredients
 
       t.references :user, index: true
       t.references :meal, index: true

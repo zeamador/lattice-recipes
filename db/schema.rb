@@ -13,17 +13,6 @@
 
 ActiveRecord::Schema.define(version: 20140513235634) do
 
-  create_table "ingredients", force: true do |t|
-    t.float    "quantity"
-    t.string   "unit"
-    t.string   "description"
-    t.integer  "recipe_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "ingredients", ["recipe_id"], name: "index_ingredients_on_recipe_id"
-
   create_table "kitchens", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -43,6 +32,7 @@ ActiveRecord::Schema.define(version: 20140513235634) do
     t.string   "title"
     t.boolean  "secret"
     t.string   "tags"
+    t.string   "ingredients"
     t.integer  "user_id"
     t.integer  "meal_id"
     t.datetime "created_at"

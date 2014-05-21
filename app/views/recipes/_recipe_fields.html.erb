@@ -11,9 +11,10 @@
     <%= f.text_field :tags %>
   </p>
 
-  <h3>Ingredients</h3>
-  <% f.fields_for :ingredients -%>
-  <%= f.link_to_add "Add Ingredient", :ingredients %>
+  <p>
+    <strong><%= f.label :ingredients %></strong><br />
+    <%= f.text_area :ingredients %>
+  </p>
 
   <div class="steps-container">
     <h3>Steps</h3>

@@ -59,7 +59,7 @@ actual release website, you will also need to set up Heroku (below).
 3. Install Heroku from toolbelt.heroku.com
 4. Double check that this all worked correctly by running
    ``heroku info --app lattice-recipes``,
-   which should produce the following output:
+   which should produce the following output:  
     ```
     === lattice-recipes
     Addons:           heroku-postgresql:hobby-dev

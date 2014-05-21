@@ -16,9 +16,9 @@ describe KitchenObject do
     expect(kitchen[:MICROWAVE]).to eq(1)
   end
 
-  it "should be intialized with two sinks" do
+  it "should be intialized with one sink" do
     kitchen = KitchenObject.new
-    expect(kitchen[:SINK]).to eq(2)
+    expect(kitchen[:SINK]).to eq(1)
   end
 
   it "should be intialized with one toaster" do

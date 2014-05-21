@@ -14,7 +14,7 @@ with the continuous integration service, Travis, which we will be using for auto
 deliverables and important links are stored in our GitHub repository and are accessible in its README file.  
 Finally, we have acquired a free server through Heroku which we will use to host our site.  
 
-## Group Dynamics
+## Team Structure
 
 Our team communicates through a UW mailing list. The archives, as well as a link to our meeting minutes are can  
 be found from the top of our README. All our deliverables and working documents are in the lattice-recipes/docs/  

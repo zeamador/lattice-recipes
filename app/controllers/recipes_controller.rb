@@ -6,7 +6,6 @@ class RecipesController < ApplicationController
 
   def new
     @recipe = Recipe.new
-    @recipe.ingredients.build
     step = @recipe.steps.build
     step.step_mappers.build
   end
@@ -47,11 +46,8 @@ class RecipesController < ApplicationController
   private
 
     def recipe_params
-      params.require(:recipe).permit(:title, :secret, :tags, :meal_id,
-                                     ingredients_attributes: [:id, :quantity,
-                                                              :unit,
-                                                              :description,
-                                                              :_destroy],
+      params.require(:recipe).permit(:title, :secret, :tags, :meal_id, 
+                                     :ingredients,
                                      steps_attributes: [:id, :step_number,
                                                         :description, :time,
                                                         :attentiveness,

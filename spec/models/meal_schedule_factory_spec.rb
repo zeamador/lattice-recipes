@@ -3,20 +3,17 @@ require 'spec_helper'
 describe MealScheduleFactory do
   it "should produce a meal with a non-nil schedule" do
     step_a = StepObject.new("Bake pears", 20, 0, 1)
-    pears = Set[IngredientObject.new("pears", 8, "whole")]
-    recipe_a = RecipeObject.new(1, "Pears", pears, Set[step_a])
+    recipe_a = RecipeObject.new(1, "Pears", "8 pears", Set[step_a])
 
     MealScheduleFactory.combine([recipe_a]).schedule.should_not be_nil
   end
   
   it "should schedule two steps at the same time to finish simultaneously" do
     step_a = StepObject.new("Bake pears", 20, 0, 1)
-    pears = Set[IngredientObject.new("pears", 8, "whole")]
-    recipe_a = RecipeObject.new(1, "Pears", pears, Set[step_a])
+    recipe_a = RecipeObject.new(1, "Pears", "2 pears", Set[step_a])
     
     step_b = StepObject.new("Chop onions", 5, 2, 2)
-    onions = Set[IngredientObject.new("onions", 2, "whole")]
-    recipe_b = RecipeObject.new(2, "Onions", onions, Set[step_b])
+    recipe_b = RecipeObject.new(2, "Onions", "onions", Set[step_b])
     
     expected = { 0 => [step_a], 15 => [step_b] }
     actual = MealScheduleFactory.combine([recipe_a, recipe_b]).schedule
@@ -25,12 +22,10 @@ describe MealScheduleFactory do
 
   it "should schedule shorter final steps after longer ones" do
     step_a = StepObject.new("Peel potatos", 10, 2, 16)
-    potatos = Set[IngredientObject.new("potatos", 8, "whole")]
-    recipe_a = RecipeObject.new(16, "Potatos", potatos, Set[step_a])
+    recipe_a = RecipeObject.new(16, "Potatos", "potatos", Set[step_a])
     
     step_b = StepObject.new("Chop onions", 5, 2, 2)
-    onions = Set[IngredientObject.new("onions", 2, "whole")]
-    recipe_b = RecipeObject.new(2, "Onions", onions, Set[step_b])
+    recipe_b = RecipeObject.new(2, "Onions", "onions", Set[step_b])
     
     expected = { 0 => [step_a], 10 => [step_b] }
     actual = MealScheduleFactory.combine([recipe_b, recipe_a]).schedule

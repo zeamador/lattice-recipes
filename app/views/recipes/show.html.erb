@@ -27,12 +27,8 @@
   <p>Uploader: <%= @recipe.user.name %> on <%= @recipe.user.created_at.strftime("%m/%d/%Y at %H:%M %Z") %></p>
 
   <h3>Ingredients</h3>
-  <% @recipe.ingredients.each do |ingredient| -%>
-    <%= ingredient.quantity -%>
-    <%= ingredient.unit -%>
-    <%= ingredient.description -%>
-    <br />
-  <% end -%>
+  <%= simple_format(@recipe.ingredients) %>
+
   <h3>Steps</h3>
   <% @recipe.steps.sort { |a, b| a.step_number <=> b.step_number }.each do |step| -%>
     <p>

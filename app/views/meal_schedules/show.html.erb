@@ -6,16 +6,10 @@
   <% if @meal_schedule -%>
     <h2>Ingredients</h2>
     <% @meal_schedule.recipes.each do |recipe| -%>
-      <div class="ingredient-list">
+    <div class="ingredient-list">
       <h3><%= recipe.title %></h3>
-      <% recipe.ingredients.each do |ingredient| -%>
-        <%= ingredient.quantity -%>
-        <%= ingredient.unit -%>
-        <%= ingredient.description -%>
-        </br>
-      <% end -%>
-      </div>
-    <% end -%>
+      <%= simple_format(recipe.ingredients) %>
+    </div>
 
     <h2>Steps</h2>
     <% i = 1 -%>

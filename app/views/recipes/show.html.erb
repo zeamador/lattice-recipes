@@ -8,12 +8,18 @@
       <% end %>
     <% end %>
   </div>
-  <div>
-    <div class="add-to-meal">
-      <%= button_to "Add To Meal", recipe_path(@recipe), method: :patch %>
+  <% if @recipe.user == current_user -%>
+    <div>
+      <div class="add-to-meal">
+        <%= button_to "Add To Meal", recipe_path(@recipe), method: :patch %>
+      </div>
+      <h1><%= @recipe.title %></h1>
     </div>
-    <h1><%= @recipe.title %></h1>
-  </div>
+  <% else -%>
+    <div>
+      <h1><%= @recipe.title %></h1>
+    </div>
+  <% end -%>
 
   <!-- TODO: Add Secret flag -->
   <p>Tags: <%= @recipe.tags %></p>

@@ -105,22 +105,22 @@ We will use a database to store our data. The main data we will store are: recip
 kitchen settings. The data will be stored in 8 tables called: User, Kitchen, Meal, Recipe, Ingredient, Step,  
 StepMapper, and Equipment
 
-User(name, email, password_digest, kitchen_id, meal_id)  
-*   Stores information about the user and allows sessions to work, has many recipes, has one meal, has one kitchen  
-Kitchen(burner, oven, microwave, sink, toaster, user_id)  
-*   Stores information about resources that a user has available, belongs to users  
-Meal(recipe_id)  
-*   Stores recipes to be used in combinations, has many recipes, belongs to users.  
-Recipe(title, secret, tags, user_id)  
-*   Stores basic recipe information, has many steps, has many ingredients, belongs to users.  
-Ingredient(quantity, unit, description, recipe_id)  
-*   Stores basic information about ingredients, belongs to recipes  
-Step(description, time, attentiveness, step_number, final_step, recipe_id)  
-*   Stores detailed information about steps in a recipe, has many StepMappers, has many Equipments, belongs to recipes  
-StepMapper(immediate_prereq, preheat_prereq, prereq_id, prereq_step_number, step_id)  
-*   Acts as a database representation of prerequisite steps, belongs to steps.  
-Equipment(burner, oven, microwave, sink, toaster, step_id)  
-*   Stores information about resources that a single step uses, belongs to steps.  
+*   User(name, email, password_digest, kitchen_id, meal_id)  
+    *   Stores information about the user and allows sessions to work, has many recipes, has one meal, has one kitchen  
+*   Kitchen(burner, oven, microwave, sink, toaster, user_id)  
+    *   Stores information about resources that a user has available, belongs to users  
+*   Meal(recipe_id)  
+    *   Stores recipes to be used in combinations, has many recipes, belongs to users.  
+*   Recipe(title, secret, tags, user_id)  
+    *   Stores basic recipe information, has many steps, has many ingredients, belongs to users.  
+*   Ingredient(quantity, unit, description, recipe_id)  
+    *   Stores basic information about ingredients, belongs to recipes  
+*   Step(description, time, attentiveness, step_number, final_step, recipe_id)  
+    *   Stores detailed information about steps in a recipe, has many StepMappers, has many Equipments, belongs to recipes  
+*   StepMapper(immediate_prereq, preheat_prereq, prereq_id, prereq_step_number, step_id)  
+    *   Acts as a database representation of prerequisite steps, belongs to steps.  
+*   Equipment(burner, oven, microwave, sink, toaster, step_id)  
+    *   Stores information about resources that a single step uses, belongs to steps.  
 	
 ## Process
 

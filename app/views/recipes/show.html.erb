@@ -41,7 +41,7 @@
       <% end %>
       <br />
       <% if step.equipment.present? %>
-        <strong>Equipment:</strong> <%= step.equipment %>
+        <strong>Equipment:</strong> <%= step.equipment.capitalize %>
         <br />
       <% end %>
       <% step.step_mappers.each do |step_mapper| %>

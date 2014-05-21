@@ -4,7 +4,8 @@
 # method described below.
 class ObjectFactory
   def initialize
-    raise "ObjectFactory is abstract and cannot be instantiated" 
+    # raise "ObjectFactory is abstract and cannot be instantiated" 
+    @objects = Hash.new
   end
 
   # Public: Get the algorithm object that corresponds to the database object

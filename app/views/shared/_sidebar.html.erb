@@ -63,11 +63,7 @@
       <% if signed_in? %>
         <div class="kitchen-content-side-bar">
           <div class="your-kitchen">
-            <u>
-              Your Kitchen (
-	      <%= link_to " Edit", current_user %>
-	      ):
-	    </u>
+            <u>Your Kitchen:</u> <%= link_to " Edit", current_user %>
           </div>
           <% EquipmentTypes.constants.each do |constant| -%>
             <%= "<div class=\"#{constant.downcase}s\">#{constant.capitalize}s: 

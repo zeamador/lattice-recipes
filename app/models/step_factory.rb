@@ -3,6 +3,7 @@
 # for the duration of the StepFactory instance.
 class StepFactory < ObjectFactory
   def initialize
+    super
     @db_class = Step
   end
 
@@ -13,7 +14,7 @@ class StepFactory < ObjectFactory
     preheat_prereq = nil
     prereqs = Set[]
     db_step.step_mappers.each do |step_mapper|
-      prereq = get_step_from_db_id(step_mapper.prereq_id)
+      prereq = get_object_from_db_id(step_mapper.prereq_id)
 
       prereqs << prereq
 
@@ -26,8 +27,14 @@ class StepFactory < ObjectFactory
       end
     end
 
+    equipment = nil;
+    unless db_step.equipment.empty?
+      equipment = db_step.equipment.upcase.to_sym
+    end
+
     StepObject.new(db_step.description, db_step.time, db_step.attentiveness,
-                   db_step.recipe_id, db_step.equipment, prereqs,
-                   immediate_prereq, preheat_prereq)
+                   db_step.recipe_id, equipment: equipment, prereqs: prereqs, 
+                   immediate_prereq: immediate_prereq, 
+                   preheat_prereq: preheat_prereq)
   end
 end

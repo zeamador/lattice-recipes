@@ -37,7 +37,7 @@ None: leaving water to boil"></img>
     <strong>Equipment: </strong>
     <% equip_array = [] -%>
     <% EquipmentTypes.constants.each do |constant| -%>
-      <% equip_array << [EquipmentTypes.const_get(constant), EquipmentTypes.const_get(constant)] -%>
+      <% equip_array << [constant.capitalize, constant.downcase] -%>
     <% end -%>
 
     <%= f.select(:equipment, equip_array, { prompt: true }) %><br />

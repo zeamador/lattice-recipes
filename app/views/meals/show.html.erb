@@ -13,4 +13,6 @@
   <% @meal.recipes.each do |recipe| -%>
     <%= recipe.title %><br />
   <% end -%>
+
+  <%= button_to "Combine Recipes", meal_schedule_path, method: :get %>
 </div>

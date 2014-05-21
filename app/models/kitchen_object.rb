@@ -5,7 +5,7 @@ class KitchenObject
   # Public: Initialize kitchen with default equipment settings.
   def initialize
     @equipment = { :BURNER => 4, :OVEN => 1, :MICROWAVE => 1, 
-                   :SINK => 2, :TOASTER => 1 }
+                   :SINK => 1, :TOASTER => 1 }
   end
 
   # Public: View quantity of the given equipment type in this kitchen.

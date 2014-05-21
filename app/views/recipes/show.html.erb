@@ -8,7 +8,12 @@
       <% end %>
     <% end %>
   </div>
-  <h1><%= @recipe.title %></h1>
+  <div>
+    <div class="add-to-meal">
+      <%= button_to "Add To Meal", recipe_path(@recipe), method: :patch %>
+    </div>
+    <h1><%= @recipe.title %></h1>
+  </div>
 
   <!-- TODO: Add Secret flag -->
   <p>Tags: <%= @recipe.tags %></p>
@@ -60,7 +65,4 @@
       data: { confirm: "Are you sure?" } %>
   </p>
   <% end %>
-  <div class="add-to-meal">
-    <%= button_to "Add To Meal", recipe_path(@recipe), method: :patch %>
-  </div>
 </div>

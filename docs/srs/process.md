@@ -62,6 +62,7 @@ Not sure how to include this table...
 ## Risk Summary
 
 ### Using Ruby on Rails
+
 None of our group has any prior experience with Ruby on Rails, so it is a sizeable risk to use it as the framework  
 for our product. Few of our group members have any experience with the Ruby language, either. We will have to spend  
 a lot of time in setting up the framework, working through tutorials, and figuring out how things are done the  
@@ -73,7 +74,8 @@ entire team from getting work done until they’re resolved. To reduce the chanc
 we have already started looking at Rails tutorials and trying to set up the framework, and getting ourselves off the  
 ground will be our top priority in the coming week.  
 
-### Combination algorithm won’t be efficient
+### Inefficiency of Combination Algorithm
+
 The algorithm for combining recipes will inevitably be complicated, as we’re trying to solve an inherently difficult  
 problem (finding the optimal combination is NP-complete). It is of medium likelihood that the algorithm, once  
 implemented, won’t be efficient enough to meet our non-functional requirement of having the response time for recipe  
@@ -81,7 +83,8 @@ combination be five seconds or less. The impact of this would be medium - it wou
 actually make the product unusable. We are in the process of working out the details of the algorithm, which will allow  
 us to make a better estimate of how likely this is to occur.  
 
-### Lack of experience with web design
+### Lack of Experience with Web Design
+
 Only a few of our group members have done web design before, and even they are not very experienced. Because of this,  
 implementing the front-end of our application may take more time than we anticipate. The likelihood of this happening  
 is high, but the impact would be low - even if the UI implementation takes longer than expected, it does not represent  
@@ -90,7 +93,8 @@ the UI. The hardest part of implementing the front-end will be getting started a
 will be done early, so doing this will permit us to make a better estimate of the likelihood of the front-end posing  
 difficulty. 
 
-### Usability of inputting recipes
+### Usability of Recipe Upload Form
+
 Because of the way our recipe combination algorithm will work, we need a fair bit of “metadata” about the recipes in the  
 app. Because recipe upload is user-facing, this means users are required to do extra work and deal with a relatively  
 complex interface when inputting recipes. It is possible that our input form will be too complicated for end users, which  
@@ -101,7 +105,8 @@ our application. We have already taken steps to make sure this will not happen, 
 testing it on our customers, and we are fairly confident that we will be able to come up with a useable design considering  
 Isaac, our TA customer, told us he thought our input form made sense and would not be unreasonably difficult to use. 
 
-### Displaying combined recipes in a clear and accurate way
+### Clarity of Meal Schedules
+
 Once we combine recipes, we need to display the workflow of combined recipes in a way that is easy to understand. This is  
 non-trivial, considering our workflow may have the cook doing multiple things at once, so just showing them a list of steps  
 will not suffice to get them to understand how to carry out our instructions. This isn’t something we have spent much time  

@@ -2,12 +2,12 @@
 ## Team Ares
 ### CSE 403 Spring 2014
 #### Team
-- Zach Amador (zea@uw)
-- Chris Chalmers (cchalm@uw)
-- Sam Courts (src712@uw)
-- Jake Nash (nashj2@uw)
-- Nick Parker (nnmp@uw)
-- Bessie Song (bessieyy@uw)
+- Zach Amador (`zea@uw`)
+- Chris Chalmers (`cchalm@uw`)
+- Sam Courts (`src712@uw`)
+- Jake Nash (`nashj2@uw`)
+- Nick Parker (`nnmp@uw`)
+- Bessie Song (`bessieyy@uw`)
 
 ## Important Links
 - [Release Website](http://lattice-recipes.herokuapp.com/)
@@ -48,16 +48,13 @@
  - ``bin/rake db:migrate RAILS_ENV=development``
 
 ## Contributing to Lattice
-You will need to contact us cse403_ares at u dot washington dot edu to 
+You will need to [contact us][contact] to 
 request permission to push to our development repository. If you want 
 to be able to push to our Heroku repository and make changes to the 
-actual release website, you will also need to set up Heroku (below). 
-Although all documentation can be viewed as PDFs in lattice-recipes/docs, 
-you will need to contact cse_403 to get permission to edit the working 
-versions of these documents in our Google Drive.
+actual release website, you will also need to set up Heroku (below).
 
 ## Setting up Heroku
-1. Contact us cse403_ares at u dot washington dot edu to request server access
+1. [Contact us][contact] to request server access
 2. Create Heroku account using the email you sent the request from
 3. Install Heroku from toolbelt.heroku.com
 4. Double check that this all worked correctly by running
@@ -84,9 +81,9 @@ versions of these documents in our Google Drive.
 2. ``rspec spec`` 
 
 ## Automated Testing
-We are using [Travis CI](https://travis-ci.org/zeamador/lattice-recipes)
+We are using [Travis CI][travis]
 for automated testing. It is linked to the GitHub repository and will email
-the cse403_ares mailing list if a push breaks the build or causes a test to
+our mailing list if a push breaks the build or causes a test to
 fail. Travis runs every time there is a push to the repository. Once you've
 gotten permission to push to the repo, you can add your email to the top
 level .travis.yml file to get these notifications.
@@ -107,7 +104,7 @@ level .travis.yml file to get these notifications.
     ``./deploy.sh v0.0 "<release name>"``
 
 ## Directory Structure
-In general, we are using the [standard Rails directory structure](http://www.tutorialspoint.com/ruby-on-rails/rails-directory-structure.htm).
+In general, we are using the standard [Rails directory structure][rails].
  - `lattice-recipes/app/`
     - application specific code
     - divided into models, views, and controllers folders
@@ -121,3 +118,9 @@ In general, we are using the [standard Rails directory structure](http://www.tut
  - `lattice-recipes/spec/`
     - Automated unit tests
 
+## License
+MIT
+
+[travis]:https://travis-ci.org/zeamador/lattice-recipes
+[contact]:mailto:cse403_ares@u.washington.edu
+[rails]:http://www.tutorialspoint.com/ruby-on-rails/rails-directory-structure.htm

@@ -8,7 +8,7 @@ Nash (nashj2@uw), Parker (nnmp@uw), Song (bessieyy@uw)
 ## Software Toolset
 
 We will be using the Ruby on Rails framework for our application. This will give us an easy way to connect  
-our database, server, and website. We will be using [GitHub] (https://github.com/zeamador/lattice-recipes) as our version control system, because everyone  
+our database, server, and website. We will be using [GitHub] as our version control system, because everyone  
 on our team is already familiar with it. GitHub will provide us with an issue tracker and will integrate well  
 with the continuous integration service, Travis, which we will be using for automated testing. All of our  
 deliverables and important links are stored in our GitHub repository and are accessible in its README file.  
@@ -179,3 +179,5 @@ an unclear output won’t ruin the usability of our application, but it will sig
 with the results of using our application and make them less likely to use it again. We have started thinking about ways to  
 display combined recipes well, and will mock up designs for combined recipes and test them on our customers to ensure we  
 make a good one.  
+
+[GitHub]:https://github.com/zeamador/lattice-recipes

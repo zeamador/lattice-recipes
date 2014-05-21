@@ -57,7 +57,70 @@ maintaining our documentation.
 
 ## Schedule/Timeline
 
-Not sure how to include this table...
+<table border="1">
+<tr>
+  <th>Week</th>
+  <th>Tasks</th>
+  <th>Deliverable</th>
+</tr>
+<tr>
+  <td>4/21 - 4/25</td>
+  <td>All: Design architecture (modularization, interfaces)</td>
+  <td>Architecture (4/25)</td>
+</tr>
+  <td>4/28 - 5/2</td>
+  <td>All: Setup development environment - version control, setup Rails, write build script<br />
+  Nick: Implement skeleton UI<br />
+  Zach: Link UI to backend, setup Continuous Integration<br />
+  Jake: Get Heroku deployment working<br />
+  Sam, Chris, Jake: Implement models (recipe, kitchen, etc.)</td>
+  <td>Zero-Feature Release (5/2)</td>
+</tr>
+<tr>
+  <td>5/5 - 5/9</td>
+  <td>Nick, Zach: Implement upload, search, display pages<br />
+  Jake: Implement basic upload controller functionality<br />
+  Bessie: Implement user account creation and login<br />
+  Sam, Chris: Work on combination algorithm</td>
+  <td>None</td>
+</tr>
+<tr>
+  <td>5/12 - 5/16</td>
+  <td>Nick, Zach: Write basic recipe combination page, implement user meal sidebar display<br />
+  Jake: Finish and test upload controller<br />
+  Bessie: Add user meal support<br />
+  Chris: Implement recipe combination<br />
+  Sam: Test combination and supporting classes<br />
+  All: Meet with customer (Isaac)</td>
+  <td>Beta Release (5/16)</td>
+</tr>
+<tr>
+  <td>5/19 - 5/23</td>
+  <td>Nick, Zach: Implement UI for combined recipes and search, add “latest recipes” sidebar feature<br />
+  Jake: Add user support, help with other back-end tasks<br />
+  Bessie: Support private recipes in search<br />
+  Sam, Chris: Bugfix combination<br />
+  All: Do more usability testing with customers and others</td><br />
+  <td>Feature-Complete Release (5/23)</td>
+</tr>
+<tr>
+  <td>5/26 - 5/30</td>
+  <td>Nick: Finish documentation<br />
+  Zach: Improve error handling/error messages<br />
+  All: Meet with customers to fix bugs, implement stretch features if time permits</td>
+  <td>Release Candidate (5/30)</td>
+</tr>
+<tr>
+  <td>6/2 - 6/6</td>
+  <td>All: Shore up any remaining issues, finish any chosen stretch features, polish UI and documentation</td>
+  <td>Version 1.0 (6/4)</td>
+</tr>
+<tr>
+  <td>6/9</td>
+  <td>All: Celebrate, cook delicious meals!</td>
+  <td>Final Demo</td>
+</tr>
+</table>
 
 ## Risk Summary
 

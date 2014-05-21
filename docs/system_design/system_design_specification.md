@@ -124,7 +124,7 @@ StepMapper, and Equipment
 	
 ## Process
 
-See ../srs/process.md for our risk assessment, schedule, team structure, and documentation plan
+See ../requirements/process.md for our risk assessment, schedule, team structure, and documentation plan
 
 ### Test Plan
 

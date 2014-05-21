@@ -10,7 +10,7 @@
     <br />
     <%= f.label :time %>:
     <img class="question-mark-icon" src="/assets/question-mark-icon.jpg" title="Total time required to complete the step."></img>
-    <%= f.number_field :time, :class => "number-input-box" %> minutes
+    <%= f.number_field :time, :class => "number-input-box", :min => 0 %> minutes
     <br />
     <span class = "radio-buttons-label" >Attentiveness:
       <img class="question-mark-icon" src="/assets/question-mark-icon.jpg" title="How much of your attention does this step require? Examples:

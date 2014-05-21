@@ -60,19 +60,19 @@ actual release website, you will also need to set up Heroku (below).
 4. Double check that this all worked correctly by running
    ``heroku info --app lattice-recipes``,
    which should produce the following output:  
-    ```
-    === lattice-recipes  
-    Addons:           heroku-postgresql:hobby-dev  
-    Collaborators:    < .... >  
-                  <your email>  
-    Git URL:          git@heroku.com:lattice-recipes.git  
-    Owner Email:      <email>  
-    Region:           us  
-    Repo Size:        784k   
-    Slug Size:        22M  
-    Stack:            cedar  
-    Web URL:          http://lattice-recipes.herokuapp.com/  
-    ```
+```
+=== lattice-recipes
+Addons:           heroku-postgresql:hobby-dev
+Collaborators:    < .... >
+                  <your email>
+Git URL:          git@heroku.com:lattice-recipes.git
+Owner Email:      <email>
+Region:           us
+Repo Size:        784k
+Slug Size:        22M
+Stack:            cedar
+Web URL:          http://lattice-recipes.herokuapp.com/
+```
 5. After cloning our repository, run
    ``heroku git:remote -a lattice-recipes``
 

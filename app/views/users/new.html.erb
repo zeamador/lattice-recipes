@@ -7,23 +7,21 @@
     <%= form_for(@user) do |f| %>
     <%= render 'shared/errors', object: @user if @user.errors.any? %>
     <p>
-      <%= f.label :name %>
-        <img class="question-mark-icon" src="/assets/question-mark-icon.jpg" title="Your user name must be 5 to 20 characters and can only contain letters, numbers, dashes, and periods." />
-      </br>
+      <strong>Username</strong><br /><!--<%= f.label :name %>-->
+      5 to 20 characters. Letters, numbers, dashes, and periods are allowed.</br>
       <%= f.text_field :name %>
     </p>
     <p>
-      <%= f.label :email, "Email Address" %></br>
+      <strong><%= f.label :email, "Email Address" %></strong></br>
       <%= f.text_field :email %>
     </p>
     <p>
-      <%= f.label :password, "New Password" %>
-        <img class="question-mark-icon" src="/assets/question-mark-icon.jpg" title="Your password must be 6 to 20 characters and can only contain letters, numbers, dashes, and periods."></img>
-      </br>
+      <strong><%= f.label :password, "New Password" %></strong><br />
+      6 to 20 characters. Letters, numbers, dashes, and periods are allowed.</br>
       <%= f.password_field :password %>
     </p>
     <p>
-      <%= f.label :password_confirmation, "Confirm Password" %></br>
+      <strong><%= f.label :password_confirmation, "Confirm Password" %></strong></br>
       <%= f.password_field :password_confirmation %>
     </p>
     <p>

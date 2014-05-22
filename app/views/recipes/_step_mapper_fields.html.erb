@@ -9,14 +9,15 @@
     <%= f.check_box :immediate_prereq, { checked: false } %>
     Immediate Prereq
     <img class="question-mark-icon" src="/assets/question-mark-icon.jpg" 
-	 title="Does the current step have to be preformed 
-	immediately after this prereq?"></img>
+	       title="Does the current step have to be preformed 
+	              immediately after this prereq?"></img>
   </span>
   <br />
+  <span class = "radio-buttons-label">
+    <%= f.check_box :preheat_prereq, { checked: "false" } %>
+    Preheat Prereq
+    <img class="question-mark-icon" src="/assets/question-mark-icon.jpg" 
+	       title="If this step uses the oven, is this prereq 
+                the one that preheated the oven?"></img>
+  </span>
 </p>
-<!-- <p>
-  <%= f.radio_button :preheat_prereq, "true" %>
-  <%= f.label "Preheat Prereq" %>
-  <%= f.radio_button :preheat_prereq, "false", { checked: true } %>
-  <%= f.label "Not Preheat Prereq" %>
-</p> -->

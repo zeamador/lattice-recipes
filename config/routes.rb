@@ -76,10 +76,16 @@ Rails.application.routes.draw do
   match '/upload', to: 'recipes#new', via: 'get'
 
   # Get users' own recipes
-  match '/user/myrecipes' => 'users#myrecipes', :as => :myrecipes_user, via: 'get'
+  match '/user/myrecipes' => 'users#myrecipes', :as => :myrecipes_user, 
+  via: 'get'
   
-  # Add "addToMeal" method
-  match '/recipe/addToMeal' => 'recipes#addToMeal', :as => :add_to_meal, via: 'post'
+  # Add "add_to_meal" method
+  match '/recipe/addtomeal' => 'recipes#add_to_meal', :as => :add_to_meal, 
+  via: 'post'
+
+  # Add "remove_from_meal" method
+  match '/recipes/:recipe_id' => 'recipes#remove', :as => :remove_from_meal, 
+  via: 'post'
 
   # About page
   resources :about

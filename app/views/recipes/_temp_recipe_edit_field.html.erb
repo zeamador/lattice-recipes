@@ -1,0 +1,56 @@
+<% if current_user == @recipe.user %>
+	<%= form_for(@recipe) do |recipe_form| %>
+		<div>
+			<h1><%= @recipe.title %></h1>
+    	</div>
+    	<p>Tags: <%= @recipe.tags %></p>
+  
+  		<p>Uploader: <%= @recipe.user.name %></p>
+
+  		<h3>Ingredients</h3>
+  		<%= simple_format(@recipe.ingredients) %>
+
+  		<h3>Steps</h3>
+  		<% @recipe.steps.sort { |a, b| a.step_number <=> b.step_number }.each do |step| -%>
+  			<%= recipe_form.fields_for step, index: step.id do |step_form| %>
+  			
+  			<p>
+  				<strong><%= step.step_number %>) </strong>
+      			<%= step.description %>
+      			<br />
+
+      			<%= step_form.label :time %>:
+    			<img class="question-mark-icon" src="/assets/question-mark-icon.jpg" 
+	 			title="Total time required to complete the step."></img>
+    			<%= step_form.number_field :time, :class => "number-input-box", :min => 0 %> minutes
+
+    			<span class = "radio-buttons-label" >Attentiveness:
+      			<img class="question-mark-icon" src="/assets/question-mark-icon.jpg" 
+	   			title="How much of your attention does this step require? 
+				Examples:
+		  			All: chopping or sauteing
+		  			Some: stirring occasionally
+		  			None: leaving water to boil"></img>
+    			</span>
+
+    			<br />
+    			<%= step_form.radio_button :attentiveness, "2" %>
+    			<%= step_form.label "All" %>
+    			<br />
+    			<%= step_form.radio_button :attentiveness, "1" %>
+    			<%= step_form.label "Some" %>
+    			<br />
+    			<%= step_form.radio_button :attentiveness, "0" %>
+    			<%= step_form.label "None" %>
+    			<br />
+
+      		</p>
+
+      		<% end %>
+
+  		<% end %>
+  		<%= recipe_form.submit "Update Recipe", method: :patch %>
+  	<% end %>
+<% else %>
+No right to see others' temp recipes.
+<% end %>

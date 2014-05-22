@@ -1,5 +1,11 @@
 <% @title="Recipe" %>
 
+<% if @recipe.temp %>
+
+  <%= render 'temp_recipe_edit_field' %>
+
+<% else %>
+
 <div class="info-extra-bottom">
   <div class="message-container">
     <% flash.each do |key, value| %>
@@ -69,3 +75,5 @@
   </p>
   <% end %>
 </div>
+
+<% end %>

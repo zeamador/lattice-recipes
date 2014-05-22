@@ -78,6 +78,9 @@ Rails.application.routes.draw do
   # Get users' own recipes
   match '/user/myrecipes' => 'users#myrecipes', :as => :myrecipes_user, via: 'get'
   
+  # Add "addToMeal" method
+  match '/recipe/addToMeal' => 'recipes#addToMeal', :as => :add_to_meal, via: 'post'
+
   # About page
   resources :about
   

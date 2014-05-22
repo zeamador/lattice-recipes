@@ -60,6 +60,14 @@ class StepObject
     @preheat_prereq = validate_prereq(prereqs, preheat_prereq)
   end
 
+  def to_s
+    description
+  end
+
+  def inspect
+    description
+  end
+
   private
   # Internal - If the given prereq exists, ensure that it is in the set of
   # prereqs and return it.

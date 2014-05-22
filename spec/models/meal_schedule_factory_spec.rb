@@ -130,5 +130,26 @@ describe MealScheduleFactory do
 
     expect(actual).to eq(expected)
   end
+
+  # This test exists to test a bug discovered through the UI that may be
+  # unrelated to the algorithm implementation. It is documented in issue #92 on
+  # the lattice-recipes GitHub issue tracker.
+  it "should not duplicate steps" do
+    step_a = StepObject.new("Step A", 1, 2, 123)
+    step_b = StepObject.new("Step B", 1, 2, 123)
+    step_c = StepObject.new("Step C", 1, 2, 123)
+    step_d = StepObject.new("Step D", 1, 0, 123, prereqs: Set[step_c])
+    recipe = RecipeObject.new(123, "Recipe", nil, Set[step_a, step_b, step_d])
+
+    expected = [step_a, step_b, step_c, step_d]
+
+    schedule = MealScheduleFactory.combine([recipe]).schedule
+    actual = []
+    schedule.each do |time, steps|
+      actual += steps
+    end
+
+    expect(actual).to match_array(expected)
+  end
 end
 

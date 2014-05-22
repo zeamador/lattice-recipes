@@ -15,7 +15,7 @@ class Recipe < ActiveRecord::Base
     self.tags.downcase!
   end
 
-  # after_create :deduce_final_steps
+  before_create :deduce_final_steps
 
   def self.search(query)
     where("title like ? OR tags like ?", "%#{query}%", "%#{query}%")
@@ -31,20 +31,11 @@ class Recipe < ActiveRecord::Base
         not_final << step_mapper.prereq_step_number
       end
     end
-   
-    #DEBUG
-    puts "non-final step numbers:"
-    not_final.each do |step_number|
-      puts step_number
-    end
 
-    puts "final step numbers:"
-    # Set all steps that are prereqs to not final
+    # Set each step to be not final if it appears in the not final list, and
+    # final otherwise.
     self.steps.each do |step|
       step.final_step = !not_final.include?(step.step_number)
-      puts step.step_number if !not_final.include?(step.step_number)
     end
-
-    raise "a"
   end
 end

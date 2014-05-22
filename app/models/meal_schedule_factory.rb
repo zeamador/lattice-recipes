@@ -30,7 +30,7 @@ module MealScheduleFactory
       # Pick the schedule for which the end times of all of the final steps of
       # every recipe passed to this method end at closest to the same times.
       # This is calculated by minimizing the variance of the end times.
-      best_schedules = nil
+      best_schedules = []
       lowest_mse = nil
       successful_schedules.each do |schedule|
         # Calculate the error for the schedule.

@@ -2,12 +2,12 @@
   <%= f.label :prereq_step_number %>: 
   <%= f.number_field :prereq_step_number, :class => "number-input-box" %>
 
-  &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
   <%= f.link_to_remove "Remove Prereq" %>
   <br />
   <span class = "radio-buttons-label" > 
     <%= f.check_box :immediate_prereq, { checked: false } %>
-    Immediate Prereq
+    <%= f.label :immediate_prereq %>
     <img class="question-mark-icon" src="/assets/question-mark-icon.jpg" 
 	       title="Does the current step have to be preformed 
 	              immediately after this prereq?"></img>
@@ -15,7 +15,7 @@
   <br />
   <span class = "radio-buttons-label">
     <%= f.check_box :preheat_prereq, { checked: "false" } %>
-    Preheat Prereq
+    <%= f.label :preheat_prereq %>
     <img class="question-mark-icon" src="/assets/question-mark-icon.jpg" 
 	       title="If this step uses the oven, is this prereq 
                 the one that preheated the oven?"></img>

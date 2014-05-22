@@ -23,7 +23,7 @@ class RecipesController < ApplicationController
     end
   end
 
-  def update
+  def addToMeal
     @recipe = Recipe.find(params[:id])
 
     # Make a copy of recipe
@@ -53,6 +53,10 @@ class RecipesController < ApplicationController
 
     @tmp_recipe.update_attribute(:meal_id, params[:meal_id])
     redirect_to meal_path(current_user.meal)
+  end
+
+  def update
+    
   end
 
   def destroy

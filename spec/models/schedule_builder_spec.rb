@@ -68,4 +68,28 @@ describe ScheduleBuilder do
     builder.add_step(step_a).should be_true
     builder.add_step(step_b).should be_true
   end
+
+  it "should be immune from downstream changes after being cloned" do
+    resources = Resources.new(KitchenObject.new, 1)
+    step_a = StepObject.new("Step A", 1, 2, 123)
+    step_b = StepObject.new("Step B", 1, 2, 123)
+
+    builder = ScheduleBuilder.new([step_a, step_b], resources)
+    builder.add_step(step_a).should be_true
+
+    builder_copy = builder.clone
+    builder_copy.advance_current_time.should be_true
+    builder_copy.add_step(step_b).should be_true
+
+    builder.possible_steps.should_not include step_a
+    builder.advance_current_time.should be_true
+    builder.add_step(step_b).should be_true
+
+    expected = [step_a, step_b]
+    actual = []
+    builder.schedule.values.each do |steps|
+      actual += steps
+    end
+    expect(actual).to match_array(expected)
+  end
 end

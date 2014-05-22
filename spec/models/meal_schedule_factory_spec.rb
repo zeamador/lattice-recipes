@@ -131,9 +131,6 @@ describe MealScheduleFactory do
     expect(actual).to eq(expected)
   end
 
-  # This test exists to test a bug discovered through the UI that may be
-  # unrelated to the algorithm implementation. It is documented in issue #92 on
-  # the lattice-recipes GitHub issue tracker.
   it "should not duplicate steps" do
     step_a = StepObject.new("Step A", 1, 2, 123)
     step_b = StepObject.new("Step B", 1, 2, 123)

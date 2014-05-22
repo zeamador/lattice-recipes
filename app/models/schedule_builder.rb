@@ -14,6 +14,9 @@ class ScheduleBuilder
     @possible_steps = @possible_steps.clone
     @resources = @resources.clone
     @schedule = @schedule.clone
+    @schedule.keys.each do |time|
+      @schedule[time] = @schedule[time].clone
+    end
     @significant_times = @significant_times.clone
   end
 

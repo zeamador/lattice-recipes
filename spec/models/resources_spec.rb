@@ -77,4 +77,16 @@ describe Resources do
     resources.consume(step_boil).should be_true
     resources.consume(step_chop_2).should be_false
   end
+
+  it "should be immune from downstream changes after being cloned" do
+    step_a = StepObject.new("Step A", 1, 2, 123)
+    step_b = StepObject.new("Step B", 1, 2, 123)
+    resources = Resources.new(KitchenObject.new, 1)
+    expect(resources.consume(step_a)).to be_true
+
+    resources_copy = resources.clone
+    resources_copy.release(step_a)
+
+    expect(resources.consume(step_b)).to be_false
+  end
 end

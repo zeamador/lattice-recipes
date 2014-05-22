@@ -5,6 +5,14 @@ Nash (nashj2@uw), Parker (nnmp@uw), Song (bessieyy@uw)
 
 # Customer Meetings
 
+## 2014/05/22 Customer Meeting (Team Poseidon)
+Attendees: Chris Chalmers, Sam Courts, Bessie Song
+
+We let Team Poseidon use our computers and attempt to upload recipes using our current UI. We took notes on  
+what seemed challenging to them, any questions they asked, and things they did differently than we intended.  
+We then asked them for general feedback on our UI. We used this information to add issues #105 - #112 and set  
+priorities for our feature complete release. 
+
 ## 2014/05/15 Customer Meeting (Isaac)
 Attendees: Zach Amador, Chris Chalmers, Sam Courts, Jake Nash, Nick Parker, Bessie Song  
 

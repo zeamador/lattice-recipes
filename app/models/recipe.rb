@@ -15,7 +15,7 @@ class Recipe < ActiveRecord::Base
     self.tags.downcase!
   end
 
-  after_create :deduce_final_steps
+  # after_create :deduce_final_steps
 
   def self.search(query)
     where("title like ? OR tags like ?", "%#{query}%", "%#{query}%")

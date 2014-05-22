@@ -15,7 +15,8 @@ class MealSchedulesController < ApplicationController
           current_user.kitchen.send(constant.downcase)
       end
 
-      @meal_schedule = MealScheduleFactory.combine(@recipe_objects, kitchen_object)
+      @meal_schedule = 
+        MealScheduleFactory.combine(@recipe_objects, kitchen_object)
     end
   end
 end

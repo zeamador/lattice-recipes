@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(version: 20140513235634) do
   end
 
   create_table "recipes", force: true do |t|
+    t.boolean  "temp",        default: false
     t.string   "title"
     t.boolean  "secret"
     t.string   "tags"

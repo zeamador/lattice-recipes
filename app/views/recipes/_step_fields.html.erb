@@ -1,52 +1,64 @@
 <fieldset class="step">
-  <strong><%= f.label :step_number%>: </strong>
+  (
   <span class="stepnum"></span>
   <%= f.hidden_field :step_number %>
-  <br />
-  
+  )
+  &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+  &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+  &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+  &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+  <%= f.link_to_remove "Remove step" %>
   <div class = "tabbed-margin-left">
-    <%= f.label :description %>: <br />
-    <%= f.text_area :description %>
+   <%= f.text_area :description %> 
     <br />
+    
     <%= f.label :time %>:
-    <img class="question-mark-icon" src="/assets/question-mark-icon.jpg" title="Total time required to complete the step."></img>
+    <img class="question-mark-icon" src="/assets/question-mark-icon.jpg" 
+	 title="Total time required to complete the step."></img>
     <%= f.number_field :time, :class => "number-input-box", :min => 0 %> minutes
-    <br />
-    <span class = "radio-buttons-label" >Attentiveness:
-      <img class="question-mark-icon" src="/assets/question-mark-icon.jpg" title="How much of your attention does this step require? Examples:
-All: chopping or sauteing
-Some: stirring occasionally
-None: leaving water to boil"></img>
-    </span>    
-    <%= f.label "All" %>
-    <%= f.radio_button :attentiveness, "2", { checked: true } %>
-    <%= f.label "Some" %>
-    <%= f.radio_button :attentiveness, "1" %>
-    <%= f.label "None" %>
-    <%= f.radio_button :attentiveness, "0" %>
-    <br />
-    <span class = "radio-buttons-label" >Step Order:
-      <img class="question-mark-icon" src="/assets/question-mark-icon.jpg" title="Is this the last/final step in the recipe?"></img>
-    </span>
-    <%= f.label "Final" %>
-    <%= f.radio_button :final_step, "true" %>
-    <%= f.label "Intermediate" %>
-    <%= f.radio_button :final_step, "false", { checked: true } %>
-    <br />
-    <br />
-    <strong>Equipment: </strong>
+    
+    &nbsp &nbsp &nbsp &nbsp Equipment:
     <% equip_array = [] -%>
     <% EquipmentTypes.constants.each do |constant| -%>
       <% equip_array << [constant.capitalize, constant.downcase] -%>
     <% end -%>
+    <%= f.select(:equipment, equip_array, { prompt: true }) %>
+    <br />
 
-    <%= f.select(:equipment, equip_array, { prompt: true }) %><br />
+    <span class = "radio-buttons-label" >Attentiveness:
+      <img class="question-mark-icon" src="/assets/question-mark-icon.jpg" 
+	   title="How much of your attention does this step require? 
+	Examples:
+		  All: chopping or sauteing
+		  Some: stirring occasionally
+		  None: leaving water to boil"></img>
+    </span>
+
+    <span class = "radio-button-label" >
+       &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+      <%= f.check_box :final_step, { checked: false } %>
+      Final Step 
+      <img class="question-mark-icon" src="/assets/question-mark-icon.jpg" 
+	   title="Is this the last/final step in the recipe?"></img>
+    </span>
+
+    <br />
+    <%= f.radio_button :attentiveness, "2", { checked: true } %>
+    <%= f.label "All" %>
+    <br />
+    <%= f.radio_button :attentiveness, "1" %>
+    <%= f.label "Some" %>
+    <br />
+    <%= f.radio_button :attentiveness, "0" %>
+    <%= f.label "None" %>
+    <br /> 
+
     <div class="prereqs">
-      <strong>Prereq Steps: </strong>
+      <br />
+      Prereq Steps:
       <% f.fields_for :step_mappers -%>
       <p><%= f.link_to_add "Add Prereq", :step_mappers %></p>
     </div>
   </div>
-  <%= f.link_to_remove "Remove step" %>
 </fieldset>
 

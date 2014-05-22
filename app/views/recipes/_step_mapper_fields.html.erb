@@ -1,19 +1,22 @@
 <p class = "no-top-margin" >
   <%= f.label :prereq_step_number %>: 
   <%= f.number_field :prereq_step_number, :class => "number-input-box" %>
-      <br />
-  <span class = "radio-buttons-label" > Immediate Prereq?
-    <img class="question-mark-icon" src="/assets/question-mark-icon.jpg" title="Does the prereq step have to be preformed immediately before the current step?"></img>
-  </span>
-  <%= f.label "Yes" %>
-  <%= f.radio_button :immediate_prereq, "true" %>
-  <%= f.label "No" %>
-  <%= f.radio_button :immediate_prereq, "false", { checked: true } %>
+
+  &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
   <%= f.link_to_remove "Remove Prereq" %>
+  <br />
+  <span class = "radio-buttons-label" > 
+    <%= f.check_box :immediate_prereq, { checked: false } %>
+    Immediate Prereq
+    <img class="question-mark-icon" src="/assets/question-mark-icon.jpg" 
+	 title="Does the current step have to be preformed 
+	immediately after this prereq?"></img>
+  </span>
+  <br />
 </p>
 <!-- <p>
-  <%= f.label "Preheat Prereq" %>
   <%= f.radio_button :preheat_prereq, "true" %>
-  <%= f.label "Not Preheat Prereq" %>
+  <%= f.label "Preheat Prereq" %>
   <%= f.radio_button :preheat_prereq, "false", { checked: true } %>
+  <%= f.label "Not Preheat Prereq" %>
 </p> -->

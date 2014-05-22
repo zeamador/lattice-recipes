@@ -13,10 +13,14 @@
     <h3>Your Kitchen Settings:</h3>
     <%= form_for(@kitchen) do |f| %>
       <%= render 'shared/errors', object: @kitchen if @kitchen.errors.any? %>
-      <% EquipmentTypes.constants.each do |constant| %>
-        <%= f.label constant.downcase %>s:
-        <%= f.number_field constant.downcase, :min => 0 %></br>
-      <% end -%>
+      <table>
+        <% EquipmentTypes.constants.each do |constant| %>
+        <tr>
+          <td><%= f.number_field constant.downcase, :min => 0 %></td>
+          <td><%= f.label constant.downcase %>s</td>
+        </tr>
+        <% end -%>
+      </table>
       <%= f.submit "Update Kitchen", class: "btn btn-large btn-primary" %>
     <% end %>
   </div>

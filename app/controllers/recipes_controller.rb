@@ -28,6 +28,8 @@ class RecipesController < ApplicationController
 
     # Make a copy of recipe
     @tmp_recipe = @recipe.dup
+    @tmp_recipe.temp = true
+    @tmp_recipe.user = current_user
     @steps_arry = Array.new
     @steps_hash = Hash.new
     @steps = @recipe.steps
@@ -67,9 +69,9 @@ class RecipesController < ApplicationController
 
   def index
     if params[:search]
-      @recipes = Recipe.search(params[:search]).order(created_at: :desc)
+      @recipes = Recipe.search(params[:search]).where("temp = ?", false).order(created_at: :desc)
     else
-      @recipes = Recipe.order(created_at: :desc)
+      @recipes = Recipe.where("temp = ?", false).order(created_at: :desc)
     end
   end
 

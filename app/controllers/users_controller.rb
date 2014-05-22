@@ -4,9 +4,9 @@ class UsersController < ApplicationController
 
   def myrecipes
     if params[:search]
-      @my_recipes = Recipe.where("user_id = ? AND (title like ? OR tags like ?)", current_user.id, "%#{params[:search]}%", "%#{params[:search]}%")
+      @my_recipes = Recipe.where("user_id = ? AND temp = ? AND (title like ? OR tags like ?)", current_user.id, false, "%#{params[:search]}%", "%#{params[:search]}%")
     else
-      @my_recipes = Recipe.where("user_id = ?", current_user.id).order(created_at: :desc)
+      @my_recipes = Recipe.where("user_id = ? AND temp = ?", current_user.id, false).order(created_at: :desc)
     end
   end
 

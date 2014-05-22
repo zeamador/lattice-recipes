@@ -25,7 +25,33 @@ class RecipesController < ApplicationController
 
   def update
     @recipe = Recipe.find(params[:id])
-    @recipe.update_attribute(:meal_id, params[:meal_id])
+
+    # Make a copy of recipe
+    @tmp_recipe = @recipe.dup
+    @steps_arry = Array.new
+    @steps_hash = Hash.new
+    @steps = @recipe.steps
+    for @step in @steps
+      @tmp_step = @step.dup
+      @tmp_step.save
+      @steps_arry.push(@tmp_step.id)
+      @steps_hash[@tmp_step.step_number] = @tmp_step.id
+      for @sm in @step.step_mappers
+        @tmp_sm = @sm.dup
+        @tmp_sm.step = @tmp_step
+        @tmp_sm.save
+      end
+    end
+    @tmp_recipe.step_ids = @steps_arry
+    @tmp_recipe.save
+    for @step in @tmp_recipe.steps
+      for @sm in @step.step_mappers
+        @sm.prereq_id = @steps_hash[@sm.prereq_step_number]
+        @sm.save
+      end
+    end
+
+    @tmp_recipe.update_attribute(:meal_id, params[:meal_id])
     redirect_to meal_path(current_user.meal)
   end
 

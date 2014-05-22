@@ -11,8 +11,11 @@
   <h1>Recipes In Your Meal</h1>
 
   <% @meal.recipes.each do |recipe| -%>
-    <%= recipe.title %>
-    <%= button_to "Remove Recipe", recipe_path(recipe), method: :delete %>
+     <div class="recipe">
+      <p class="recipe-title"><%= link_to recipe.title, recipe %></p>
+      <p class="recipe-tags"><%= recipe.tags %></p>
+      <%= link_to "Remove from Meal", recipe_path(recipe), method: :delete %>
+     </div>
     <br />
   <% end -%>
 

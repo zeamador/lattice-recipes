@@ -24,7 +24,7 @@
   <!-- TODO: Add Secret flag -->
   <p>Tags: <%= @recipe.tags %></p>
   
-  <p>Uploader: <%= @recipe.user.name %> on <%= @recipe.user.created_at.strftime("%m/%d/%Y at %H:%M %Z") %></p>
+  <p>Uploader: <%= @recipe.user.name %></p>
 
   <h3>Ingredients</h3>
   <%= simple_format(@recipe.ingredients) %>

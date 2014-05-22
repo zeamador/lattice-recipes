@@ -33,7 +33,7 @@
   <% @recipe.steps.sort { |a, b| a.step_number <=> b.step_number }.each do |step| -%>
     <p>
       <strong><%= step.step_number %>) </strong>
-      <strong>Description:</strong> <%= step.description %>
+      <%= step.description %>
       <br />
       <strong>Time:</strong> <%= step.time %> minutes
       <strong>Attentiveness:</strong> 

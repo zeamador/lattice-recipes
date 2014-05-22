@@ -56,7 +56,7 @@ module MealScheduleFactory
 
         if best_schedule_length.nil? || (schedule_length < best_schedule_length)
           best_schedule = schedule
-	  best_schedule_length = schedule_length
+          best_schedule_length = schedule_length
         end
       end
 

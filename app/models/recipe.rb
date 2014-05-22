@@ -11,14 +11,15 @@ class Recipe < ActiveRecord::Base
 
   # sanitize case
   before_save do
-    self.title = self.title.downcase.titleize   
+    self.title = self.title.downcase.titleize 
     self.tags.downcase!
   end
 
   before_create :deduce_final_steps
 
   def self.search(query)
-    where("title like ? OR tags like ?", "%#{query}%", "%#{query}%")
+    lowered = query.downcase
+    where("lower(title) like ? OR tags like ?", "%#{lowered}%", "%#{lowered}%")
   end
 
   private

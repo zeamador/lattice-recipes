@@ -37,7 +37,6 @@ h1, h2, h3 {
   padding-bottom: 1px;
   padding-right: 15px;
   padding-left: 15px;
-  border-radius: 5px;
 }
 
 .info-extra-bottom {
@@ -46,11 +45,10 @@ h1, h2, h3 {
   overflow: hidden;
   background-color: #EAEEF8;
   color: Black;
-  padding-top: 20px;
+  padding-top: 1px;
   padding-bottom: 20px;
   padding-right: 15px;
   padding-left: 15px;
-  border-radius: 5px;
 }
 
 .alert {
@@ -78,9 +76,7 @@ input[type="submit"] {
     text-decoration: none;
     cursor: pointer;
     border: none;
-    -moz-border-radius: 5px;
-    -webkit-border-radius: 5px;
-    border-radius:6px;
+    box-shadow: 0 0 0.2em Black;
 }
 
 /* Tooltips */
@@ -103,7 +99,6 @@ a.tooltips span {
   line-height: 20px;
   text-align: center;
   visibility: hidden;
-  border-radius: 6px;
   padding-top: 5px;
   padding-bottom: 5px;
 }

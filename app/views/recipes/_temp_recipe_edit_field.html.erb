@@ -1,10 +1,22 @@
 <div class="info-extra-bottom">
+  <div class="message-container">
+    <% flash.each do |key, value| %>
+      <% if key == "recipe_success" || key == "recipe_error" %>
+        <div class="alert alert-<%= key %>"><%= value %></div>
+      <% end %>
+    <% end %>
+  </div>
 <% if current_user == @recipe.user %>
   <%= form_for(@recipe) do |recipe_form| %>
       <div>
       <h1><%= @recipe.title %></h1>
       </div>
-      <p>Tags: <%= @recipe.tags %></p>
+      <p>Tags:
+        <% @tags = @recipe.tags.split(%r{,\s*}) %>
+        <% for @tag in @tags %>
+          <%= link_to @tag, recipes_path(:search => @tag)  %>
+        <% end %>
+      </p>
 
       <h3>Ingredients</h3>
       <%= simple_format(@recipe.ingredients) %>

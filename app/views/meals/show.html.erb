@@ -12,8 +12,9 @@
 
   <% @meal.recipes.each do |recipe| -%>
      <div class="recipe">
-      <p class="recipe-title"><%= link_to recipe.title, recipe %></p>
+      <p class="recipe-title"><span><%= recipe.title %></span></p>
       <p class="recipe-tags"><%= recipe.tags %></p>
+      <%= link_to "Edit", recipe %></br>
       <%= link_to "Remove from Meal", recipe, method: :remove_from_meal %>
      </div>
     <br />

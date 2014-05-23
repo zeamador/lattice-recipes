@@ -34,4 +34,9 @@
   <%= f.radio_button :attentiveness, "0" %>
   <%= f.label :attentiveness, "None" %>
   <br /> 
+
+  <div class="prereqs">
+    <% f.fields_for :step_mappers -%>
+    <p><%= f.link_to_add "Add Prereq", :step_mappers %></p>
+  </div>
 </div>

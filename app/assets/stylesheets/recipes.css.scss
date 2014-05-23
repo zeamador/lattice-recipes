@@ -56,13 +56,23 @@
   font-weight: bold;
 }
 
-.right-step-fields {
-  float: right;
+.step-fields {
+  display: block;
+  width: 100%;
 }
 
 .left-step-fields {
   float: left;
-  margin-right: 90px;
+  width: 280px;
+}
+
+.right-step-fields {
+  width: 200px;
+}
+
+.prereqs {
+  display: block;
+  width: 100%;
 }
 
 .step-number {

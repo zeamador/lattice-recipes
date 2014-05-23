@@ -38,7 +38,8 @@ input[value="Edit Recipe"] {
 }
 
 input[value="Delete Recipe"] {
-  float: right;
+  float: left;
+  margin-left: 20px;
 }
 
 /* Ingredient Styling and Spacing */

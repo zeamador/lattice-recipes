@@ -11,8 +11,8 @@
 	       title="Mark as an immediate prereq if no action(s) should be preformed between the end of this prereq and the start of this step."></img>
   </span>
   <br />
-  <span class = "radio-buttons-label">
-    <%= f.check_box :preheat_prereq, { checked: "false" } %>
+  <span class = "radio-buttons-label preheat-prereq">
+    <%= f.check_box :preheat_prereq, { checked: false } %>
     <%= f.label :preheat_prereq %>
     <img class="question-mark-icon" src="/assets/question-mark-icon.jpg" 
 	       title="If this step uses the oven, is this prereq 

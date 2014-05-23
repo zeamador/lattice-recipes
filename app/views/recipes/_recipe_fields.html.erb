@@ -1,6 +1,5 @@
 <%= nested_form_for @recipe do |f| %>
   <%= render 'shared/errors', object: @recipe if @recipe.errors.any? %>
-
   <p>
     <strong><%= f.label :title %></strong><br />
     <%= f.text_field :title %>

@@ -22,7 +22,9 @@
       (
       <%= step_form.object.step_number %>
       )
-      <%= render partial: "specific_step_fields", locals: {f: step_form} %>
+      <div>
+	<%= render partial: "specific_step_fields", locals: {f: step_form} %>
+      </div>
     <% end -%>
 
   </div>

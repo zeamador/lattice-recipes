@@ -51,9 +51,10 @@
       <div class="meal-content-side-bar">
         <% current_user.meal.recipes.each do |recipe| %>
           <div class="recipe">
+            <%= link_to "Remove", recipe, method: :remove_from_meal, :class => "meal-recipe-link-side-bar"  %>
+            <%= link_to "Customize", recipe, :class => "meal-recipe-link-side-bar" %>
             <strong><%= recipe.title %></strong></br>
-            <%= recipe.tags %></br>
-            <%= link_to "Customize", recipe %> <%= link_to "Remove", recipe, method: :remove_from_meal %>
+            <%= recipe.tags %>
           </div>
         <% end %>
         <%= link_to "View Meal", current_user.meal %>

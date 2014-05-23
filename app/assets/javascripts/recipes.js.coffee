@@ -1,6 +1,10 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://coffeescript.org/
+# recipes.js.coffee
+# Hooks for the recipe input form.
+
+# Make the first step be added automatically when the page loads
+$(document).ready( ->
+  $(".steps-container").find(".add_nested_fields").click()
+)
 
 stepCounter = 0
 

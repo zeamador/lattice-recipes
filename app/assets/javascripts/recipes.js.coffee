@@ -1,12 +1,16 @@
 # recipes.js.coffee
 # Hooks for the recipe input form.
 
-# Make the first step be added automatically when the page loads
-$(document).ready( ->
-  $(".steps-container").find(".add_nested_fields").click()
-)
-
 stepCounter = 0
+
+# Make the first step be added automatically when the page loads
+$(document).on('page:load', -> addFirstStep())
+$(document).ready(-> addFirstStep())
+
+addFirstStep = () ->
+  stepCounter = 0
+  $(".steps-container").find(".add_nested_fields").click()
+
 
 # Handle event when a step field is added
 $(document).on('nested:fieldAdded:steps', (event) ->

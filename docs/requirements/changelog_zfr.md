@@ -1,8 +1,3 @@
-Lattice - Team Ares  
-Amador (zea@uw), Chalmers (cchalm@uw), Courts (src712@uw),   
-Nash (nashj2@uw), Parker (nnmp@uw), Song (bessieyy@uw)
-
-
 # Changelog at Zero Feature Release
 
 All of documentation now reflects our name change from Parallel Cookbook to Lattice.

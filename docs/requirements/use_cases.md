@@ -1,11 +1,6 @@
-Lattice - Team Ares  
-Amador (zea@uw), Chalmers (cchalm@uw), Courts (src712@uw),   
-Nash (nashj2@uw), Parker (nnmp@uw), Song (bessieyy@uw)
-
-
 # Use Cases
 
-The most important use cases of Lattice are associated with the handling of recipes, which includes adding new recipes, viewing recipes, searching for recipes, and combining recipes. Use cases also include users signing in/out their account, but signing in/out is a single interaction that only changes the sing-in state. Therefore, signing in/out is only considered as two conditions here.
+The most important use cases of Lattice are associated with recipes, meals, and kitchens. Users can also sign up, sign in and out, and edit their password, but these later use cases are considered trivial and are not included here.
 
 ## Recipes
 
@@ -82,9 +77,9 @@ The most important use cases of Lattice are associated with the handling of reci
 
 1. From their meal page, a signed in user clicks "Combine Recipes" on the bottom of the page.
 2. The system takes them to a Combined Recipes page which displays one of the following:
-    -   the meal schedule for all of the recipes in the user's meal (Success End)
-    -   the error message "Recipe combination timed out. We're currently working to speed up this process, but for now, we cannot create this meal for you." (Failure End)
-    -   the error message "Your recipes could not be combined because at least one of them requires a piece of kitchen equipment that you don't have." (Failure End)
+    -   Meal schedule for all of the recipes in the user's meal (Success End)
+    -   Error message "Recipe combination timed out. We're currently working to speed up this process, but for now, we cannot create this meal for you." (Failure End)
+    -   Error message "Your recipes could not be combined because at least one of them requires a piece of kitchen equipment that you don't have." (Failure End)
     
 ## Kitchen
 
@@ -100,6 +95,6 @@ The most important use cases of Lattice are associated with the handling of reci
 3. User edits the numbers next to equipment types in their kitchen.
 4. User clicks "Update Kitchen" button.
 5. System stays on the settings page and displays one of the following:
-    -   a flash message that says "Kitchen updated!" (Success End)
-    -   if input was negative, a browser validation warning that says "Value must be greater than or equal to 0." (Failure End)
-    -   if input was blank, no flash message, and the kitchen settings are unchanged (Failure End)z<
+    -   A flash message that says "Kitchen updated!" (Success End)
+    -   If input was negative, a browser validation warning that says "Value must be greater than or equal to 0." (Failure End)
+    -   If input was blank, no flash message, and the kitchen settings are unchanged (Failure End)

@@ -62,6 +62,7 @@ module MealScheduleFactory
         end
       end
 
+      puts best_schedule
       MealSchedule.new(recipes, best_schedule)
     end
 
@@ -87,8 +88,7 @@ module MealScheduleFactory
         if schedule_builder_copy.add_step(step)
           unless redundant(schedule_builder_copy, all_schedules_seen)
             create_meal_schedule_helper(schedule_builder_copy, 
-                                        successful_schedules, 
-                                        all_schedules_seen)
+                        successful_schedules, all_schedules_seen)
           end
         end
 
@@ -100,8 +100,7 @@ module MealScheduleFactory
             unless redundant(schedule_builder_copy, all_schedules_seen)
               # Recursive case - add preemptive step
               create_meal_schedule_helper(schedule_builder_copy, 
-                                          successful_schedules, 
-                                          all_schedules_seen)
+                       successful_schedules, all_schedules_seen)
             end
           end
         end
@@ -112,10 +111,9 @@ module MealScheduleFactory
       # A failed sweep line advance destroys the schedule builder copy, so don't
       # use it in else branches.
       if schedule_builder_copy.advance_current_time
-        #! Create new blank redundancy checker and pass
         # Recursive case - advance sweep line
-        create_meal_schedule_helper(schedule_builder_copy, successful_schedules,
-                                    all_schedules_seen)
+        create_meal_schedule_helper(schedule_builder_copy,
+               successful_schedules, Set[])
       elsif schedule_builder.schedule_complete?
         # Base case - success
         successful_schedules << schedule_builder.schedule
@@ -195,28 +193,26 @@ module MealScheduleFactory
       schedule_end_time
     end
 
-    # Internal: Checks to see if the schedule in progress by the builder already
-    #           exists in the passed set of seen schedules. Adds the builder's
-    #           schedule to the passed list of seen schedules if not already
-    #           present.
+    # Internal: Checks to see if the passed builder's state is already in the
+    #           passed Set of previously seen states. If it hasn't, adds the
+    #           builder's state to the passed Set of seen states.
     #
     # builder - The ScheduleBuilder under question for being redundant.
-    # seen - A Set of the schedules already considered. The builder is redundant
-    #        if this Set contains its schedule.
+    # seen - A Set of all States that have already been seen. The builder is
+    #        redundant if this Set contains its state.
     #
-    # Returns true if the builder is redundant given the seen schedules, false
-    # otherwise.
+    # Returns true if the builder's state is redundant given the seen states, 
+    # false otherwise.
     def redundant(builder, seen)      
-      schedule_so_far = builder.schedule
+      state = builder.state
 
       # If the schedules seen so far includes the builder's schedule, the
       # builder is redundant
-      is_redundant = seen.include?(schedule_so_far)
+      is_redundant = seen.include?(state)
       
       unless is_redundant
-        seen << schedule_so_far
+        seen << state
       end
-
       is_redundant
     end
   end

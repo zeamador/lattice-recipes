@@ -53,12 +53,6 @@ h1, h2, h3 {
   border-radius: 5px;
 }
 
-.question-mark-icon {
-  vertical-align: text-top;
-  width: 17px;
-  height: 17px;
-}
-
 .alert {
   margin-top: 15px;
 }
@@ -87,6 +81,40 @@ input[type="submit"] {
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
     border-radius:6px;
+}
+
+/* Tooltips */
+.question-mark-icon {
+  vertical-align: text-top;
+  width: 17px;
+  height: 17px;
+}
+
+a.tooltips {
+  position: relative;
+  display: inline;
+}
+
+a.tooltips span {
+  position: absolute;
+  width: 280px;
+  color: #FFFFFF;
+  background: #A34318;
+  line-height: 20px;
+  text-align: center;
+  visibility: hidden;
+  border-radius: 6px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+a:hover.tooltips span {
+  visibility: visible;
+  left: 100%;
+  top: 50%;
+  margin-top: -15px;
+  margin-left: 15px;
+  z-index: 999;
 }
 
 /* Global Colorings/Stylings */

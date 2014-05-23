@@ -8,6 +8,13 @@ class ScheduleBuilder
     @current_time = 0
   end
 
+  # Public: This method overrides the default initialize_copy method. It is
+  #         called automatically to initialize copies of this object returned
+  #         from dup or clone.
+  #
+  # other - The ScheduleBuilder to be copied.
+  #
+  # Returns nothing.
   def initialize_copy(other)
     # Clone mutable structures
     super
@@ -122,9 +129,9 @@ class ScheduleBuilder
   end
 
   # Public: Get the steps that can be scheduled to end at the current time in
-  #         this ScheduleBuilder
+  #         this ScheduleBuilder.
   #
-  # Returns an Array of Steps
+  # Returns an Array of Steps.
   def possible_steps
     @possible_steps.clone
   end

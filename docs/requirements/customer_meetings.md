@@ -1,6 +1,6 @@
-Lattice - Team Ares
-Amador (zea@uw), Chalmers (cchalm@uw), Courts (src712@uw),
-Nash (nashj2@uw), Parker (nnmp@uw), Song (bessieyy@uw)
+Lattice - Team Ares  
+Amador (zea@uw), Chalmers (cchalm@uw), Courts (src712@uw),  
+Nash (nashj2@uw), Parker (nnmp@uw), Song (bessieyy@uw)  
 
 
 # Customer Meetings

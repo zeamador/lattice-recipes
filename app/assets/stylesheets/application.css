@@ -20,7 +20,7 @@ body {
   background-color: #1A3959;
   color: white;
   font-family: "Helvetica", sans-serif;
-  min-width: 800px;
+  min-width: 840px;
 }
 
 h1, h2, h3 {
@@ -28,8 +28,10 @@ h1, h2, h3 {
 }
 
 .info {
-  float: left;
-  width: 70%;
+  position: absolute;
+  top: 208px;
+  margin: 0 320px 0 0;
+  min-width: 500px;
   overflow: hidden;
   background-color: #EAEEF8;
   color: Black;
@@ -41,8 +43,10 @@ h1, h2, h3 {
 }
 
 .info-extra-bottom {
-  float: left;
-  width: 70%;
+  position: absolute;
+  top: 208px;
+  margin: 0 320px 0 0;
+  min-width: 500px;
   overflow: hidden;
   background-color: #EAEEF8;
   color: Black;

@@ -51,6 +51,7 @@
 
       <% end %>
       <%= recipe_form.submit "Save Changes", method: :patch %>
+      <%= link_to "Back to My Meal", meal_path(current_user.meal) %>
     <% end %>
 <% else %>
 No right to see others' temp recipes.

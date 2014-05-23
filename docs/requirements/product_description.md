@@ -51,15 +51,16 @@ Lattice also knows whether a particular step can be interrupted, so it knows not
 *   Combine any number of recipes such that the combined meal:
     *   Finishes each dish at as close to the same time as possible
     *   Efficiently uses the chef’s time and kitchen resources
-*   Print combined recipes
+*   Custom kitchen settings
+*   Edit and delete recipes
 
 ## Stretch Features
 
-*   Custom kitchen settings
 *   Set when each dish should be finished. Appetizers should come out half an hour before entrees, for example
 *   Create task lists for multiple chefs working on the same meal
 *   Intelligently scale recipes for different numbers of servings
 *   Upload images for custom recipes
+*   Pretty print version of meal schedules
 
 ## Non-funtional Requirements
 

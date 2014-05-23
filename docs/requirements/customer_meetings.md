@@ -5,6 +5,11 @@ Nash (nashj2@uw), Parker (nnmp@uw), Song (bessieyy@uw)
 
 # Customer Meetings
 
+## 2014/05/23 Vendor Meeting (Team Zeus)
+Attendees: Zach Amador, Chris Chalmers, Sam Courts, Jake Nash
+
+We evaluated AgreeMate's beta release this week and filed 17 issues. During our vendor meeting, they showed us all the changes they made for the feature complete release. We were very impressed with how the site is coming along and were pleased to see that they had addressed nearly all of our concerns. The UI is clean, chores are much less confusing, they've added a history feature, and invalid input is no longer allowed. We are still a little confused by how they manage bills, but would be willing to use the site as is with our actual roommates.
+
 ## 2014/05/22 Customer Meeting (Team Poseidon)
 Attendees: Chris Chalmers, Sam Courts, Bessie Song
 

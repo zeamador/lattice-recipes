@@ -13,11 +13,15 @@
   <% end %>
   <% @my_recipes.each do |recipe| %>
     <div class="recipe">
-      <p class="recipe-title"><%= link_to recipe.title, recipe %></p>
+      <p class="recipe-title"><%= link_to recipe.title, recipe %>
+        <% if recipe.secret %>
+          (SECRET)
+        <% end %>
+      </p>
       <p class="recipe-tags"><%= recipe.tags %></p>
-      <% if @recipe.user == current_user %>
+      <% if recipe.user == current_user %>
         <%= link_to "Edit", edit_recipe_path(recipe) %>
-        <%= link_to "Delete", @recipe, method: :delete, data: { confirm: "Are you sure you want to delete?" } %>
+        <%= link_to "Delete", recipe, method: :delete, data: { confirm: "Are you sure you want to delete?" } %>
       <% end %>
     </div>
   <% end %>

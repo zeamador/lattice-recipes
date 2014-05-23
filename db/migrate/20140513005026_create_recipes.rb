@@ -3,7 +3,7 @@ class CreateRecipes < ActiveRecord::Migration
     create_table :recipes do |t|
       t.boolean :temp, default: false
       t.string :title
-      t.boolean :secret
+      t.boolean :secret, default: false
       t.string :tags
       t.text :ingredients
 

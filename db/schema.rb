@@ -31,9 +31,9 @@ ActiveRecord::Schema.define(version: 20140513235634) do
   create_table "recipes", force: true do |t|
     t.boolean  "temp",        default: false
     t.string   "title"
-    t.boolean  "secret"
+    t.boolean  "secret",      default: false
     t.string   "tags"
-    t.string   "ingredients"
+    t.text     "ingredients"
     t.integer  "user_id"
     t.integer  "meal_id"
     t.datetime "created_at"

@@ -1,8 +1,3 @@
-Lattice - Team Ares  
-Amador (zea@uw), Chalmers (cchalm@uw), Courts (src712@uw),  
-Nash (nashj2@uw), Parker (nnmp@uw), Song (bessieyy@uw)
-
-
 # Product Description
 
 Lattice is a web app that combines multiple recipes. It combines steps from multiple recipes into an easy-to-follow list that aims to finish all of the recipes at the same time while efficiently using all of the user’s kitchen tools and appliances.

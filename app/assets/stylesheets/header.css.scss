@@ -2,13 +2,74 @@
 
 #header {
   text-align: center;
+  vertical-align: middle;
   background-image: image-url('lattice-header-background.jpg');
   background-size: 100%;
-  height: 100px;
+  background-position: center;
+  height: 125px;
+  padding-top: 25px;
   font-size: 80px;
   font-weight: bold;
   color: White;
   text-shadow: 0 0 0.2em Black, 0 0 0.2em Black;
 }
 
+/* Main Menu */
+
+.main-menu {
+  float: left;
+  text-align: center;
+  margin: 5px auto 5px auto;
+  min-width: 800px;
+  width: 100%;
+  height: 40px;
+  background-color: #A34318;
+}
+
+.main-menu ul {
+  text-align: left;
+  min-width: 800px;
+  margin: 0 auto 0 auto;
+}
+
+.main-menu ul li {
+  float: left;
+  color: White;
+  padding: 0 20px 0 20px;
+  border-right: 3px solid #1A3959;
+  border-left: 3px solid #1A3959;
+  height: 40px;
+  width: 90px;
+  list-style: none;
+  display: block;
+  line-height: 35px;
+  text-align: center;
+  cusor: pointer;
+  font-weight: bold;
+}
+
+.main-menu .main-menu-leftmost {
+  border-left: 6px solid #1A3959;
+}
+
+.main-menu .main-menu-rightmost {
+  border-right: 6px solid #1A3959;
+}
+
+.main-menu ul li:hover {
+  background-color: #DE741D;
+  color: Black;
+}
+
+.main-menu ul li a {
+  text-decoration: none;
+}
+
+.main-menu ul li a:visited {
+  color: White;
+}
+
+.main-menu ul a:visited li:hover {
+  color: Black;
+}
 

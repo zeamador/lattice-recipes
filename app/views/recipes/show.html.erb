@@ -31,11 +31,15 @@
   
   <% if @recipe.secret %>
     <p> <strong> SECRET </strong> </p>
-    <p>Tags: <%= @recipe.tags %></p>
   <% else %>
-    <p>Tags: <%= @recipe.tags %></p>
     <p>Uploader: <%= @recipe.user.name %></p>
   <% end %>
+    <p>Tags:
+      <% @tags = @recipe.tags.split(%r{,\s*}) %>
+      <% for @tag in @tags %>
+        <%= link_to @tag, recipes_path(:search => @tag)  %>
+      <% end %>
+    </p>
 
   <% if params[:showDetail] == "1" %>
     <%= link_to "Hide info", recipe_path(@recipe) %>

@@ -5,8 +5,6 @@
       <h1><%= @recipe.title %></h1>
       </div>
       <p>Tags: <%= @recipe.tags %></p>
-  
-      <p>Uploader: <%= @recipe.user.name %></p>
 
       <h3>Ingredients</h3>
       <%= simple_format(@recipe.ingredients) %>
@@ -49,7 +47,7 @@
         </p>
 
       <% end %>
-      <%= recipe_form.submit "Update Recipe", method: :patch %>
+      <%= recipe_form.submit "Save Changes", method: :patch %>
     <% end %>
 <% else %>
 No right to see others' temp recipes.

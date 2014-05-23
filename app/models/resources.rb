@@ -8,6 +8,11 @@ class Resources
     @preheat_step = nil
   end
 
+  def initialize_copy(other)  
+    super
+    @free_equipment = @free_equipment.clone
+  end
+
   # Public: Consume the resources required by a step, if possible. If
   #         unsuccessful, this Resources object is left in an UNDEFINED STATE.
   #

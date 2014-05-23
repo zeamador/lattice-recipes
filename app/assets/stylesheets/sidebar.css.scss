@@ -70,7 +70,7 @@
   padding: 2px;
 }
 
-.kitchen-meal-side-bar {
+.meal-side-bar {
   background-color: #EAEEF8;
   box-shadow: 0px 0px 10px #231105;
   margin-bottom: 10px;
@@ -80,26 +80,14 @@
   border-color: #A34318;
 }
 
-.kitchen-meal-header-side-bar {
+.meal-header-side-bar {
   background-color: #A34318;
   color: White;
   padding-left: 15px;
 }
 
-.kitchen-side-bar {
-  padding: 0 15px 0 0;
-}
-
-.kitchen-side-bar .your-kitchen {
-  margin-left: 0;
-}
-
-.kitchen-side-bar div {
-  margin-left: 15px;
-}
-
-.meal-side-bar {
-  padding: 0 15px 0 15px;
+.meal-content-side-bar {
+  padding-left: 30px;
 }
 
 .meal-side-bar .view-meal {

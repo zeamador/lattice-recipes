@@ -85,7 +85,11 @@ class RecipesController < ApplicationController
 
   def index
     if params[:search]
-      @recipes = Recipe.search(params[:search]).where("temp = ?", false).where("secret = ? OR user_id = ?", false, current_user.id).order(created_at: :desc)
+      if signed_in?
+        @recipes = Recipe.search(params[:search]).where("temp = ?", false).where("secret = ? OR user_id = ?", false, current_user.id).order(created_at: :desc)
+      else
+        @recipes = Recipe.search(params[:search]).where("temp = ?", false).where("secret = ?", false).order(created_at: :desc)
+      end
     else
       if signed_in?
         @recipes = Recipe.where("temp = ?", false).where("secret = ? OR user_id = ?", false, current_user.id).order(created_at: :desc)

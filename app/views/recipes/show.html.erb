@@ -22,12 +22,18 @@
       </div>
     <% end %>
       <h1><%= @recipe.title %></h1>
-    </div>
+  </div>
 
   <!-- TODO: Add Secret flag -->
   <p>Tags: <%= @recipe.tags %></p>
   
   <p>Uploader: <%= @recipe.user.name %></p>
+
+  <% if params[:showDetail] == "1" %>
+    <%= link_to "Hide info", recipe_path(@recipe) %>
+  <% else %>
+    <%= link_to "More info..", recipe_path(@recipe, showDetail: 1) %>
+  <% end %>
 
   <h3>Ingredients</h3>
   <%= simple_format(@recipe.ingredients) %>
@@ -38,6 +44,7 @@
       <strong><%= step.step_number %>) </strong>
       <%= step.description %>
       <br />
+      <% if params[:showDetail] == "1" %>
       <strong>Time:</strong> <%= step.time %> minutes
       <strong>Attentiveness:</strong> 
       <% if step.attentiveness == 0 %>
@@ -62,14 +69,14 @@
         <!-- TODO: Add Preheat -->
         <br />
       <% end %>
+      <% end %>
     </p>
   <% end %>
   <p>
   <% if @recipe.user == current_user %>
+    <%= button_to 'Edit Recipe', edit_recipe_path(@recipe), method: :get %>
     <%= button_to 'Delete Recipe', @recipe, method: :delete,
       data: { confirm: "Are you sure you want to delete?" } %>
-    <br />
-    <%= button_to 'Edit Recipe', edit_recipe_path(@recipe), method: :get %>
   </p>
   <% end %>
 </div>

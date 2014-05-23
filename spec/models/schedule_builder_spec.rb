@@ -88,7 +88,7 @@ describe ScheduleBuilder do
     expected = [step_a, step_b]
     actual = []
     builder.schedule.values.each do |steps|
-      actual += steps
+      actual += steps.to_a
     end
     expect(actual).to match_array(expected)
   end

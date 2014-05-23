@@ -15,7 +15,7 @@ describe MealScheduleFactory do
     step_b = StepObject.new("Chop onions", 5, 2, 2)
     recipe_b = RecipeObject.new(2, "Onions", "onions", Set[step_b])
     
-    expected = { 0 => [step_a], 15 => [step_b] }
+    expected = { 0 => Set[step_a], 15 => Set[step_b] }
     actual = MealScheduleFactory.combine([recipe_a, recipe_b]).schedule
     expect(actual).to eq(expected)
   end
@@ -27,7 +27,7 @@ describe MealScheduleFactory do
     step_b = StepObject.new("Chop onions", 5, 2, 2)
     recipe_b = RecipeObject.new(2, "Onions", "onions", Set[step_b])
     
-    expected = { 0 => [step_a], 10 => [step_b] }
+    expected = { 0 => Set[step_a], 10 => Set[step_b] }
     actual = MealScheduleFactory.combine([recipe_b, recipe_a]).schedule
     expect(actual).to eq(expected)
   end
@@ -37,7 +37,7 @@ describe MealScheduleFactory do
     step_b = StepObject.new("Bake potatos", 50, 0, 16, prereqs: [step_a])
     recipe = RecipeObject.new(16, "Potatos", nil, Set[step_b])
 
-    expected = { 0 => [step_a], 10 => [step_b] }
+    expected = { 0 => Set[step_a], 10 => Set[step_b] }
     actual = MealScheduleFactory.combine([recipe]).schedule
     expect(actual).to eq(expected)
   end
@@ -56,8 +56,9 @@ describe MealScheduleFactory do
                              prereqs: [step_f], immediate_prereq: step_f)
     recipe_b = RecipeObject.new(20, "Stone Cake", nil, Set[step_g])
 
-    expected = { 0 => [step_e], 5 => [step_f], 65 => [step_a], 75 => [step_b],
-      85 => [step_c], 115 => [step_d], 125 => [step_g] }
+    expected = { 0 => Set[step_e], 5 => Set[step_f], 65 => Set[step_a], 
+                 75 => Set[step_b], 85 => Set[step_c], 115 => Set[step_d], 
+                 125 => Set[step_g] }
     actual = MealScheduleFactory.combine([recipe_a, recipe_b]).schedule
 
     expect(actual).to eq(expected)
@@ -72,7 +73,7 @@ describe MealScheduleFactory do
                             prereqs: [step_b], immediate_prereq: step_b)
     recipe_b = RecipeObject.new(90, "Recipe B", nil, Set[step_c])
 
-    expected = { 0 => [step_b], 50 => [step_a, step_c] }
+    expected = { 0 => Set[step_b], 50 => Set[step_a, step_c] }
     actual = MealScheduleFactory.combine([recipe_a, recipe_b]).schedule
     expect(actual).to eq(expected)
   end
@@ -88,7 +89,8 @@ describe MealScheduleFactory do
     step_d = StepObject.new("Step D", 5, 2, 90, prereqs: [step_c])
     recipe_c = RecipeObject.new(90, "Recipe C", nil, Set[step_d])
 
-    expected = { 0 => [step_c], 5 => [step_b], 45 => [step_a], 75 => [step_d] }
+    expected = { 0 => Set[step_c], 5 => Set[step_b], 45 => Set[step_a], 
+                 75 => Set[step_d] }
     actual = MealScheduleFactory.combine(
                [recipe_a, recipe_b, recipe_c]).schedule
 
@@ -107,8 +109,8 @@ describe MealScheduleFactory do
     recipe_1 = RecipeObject.new(1, "Recipe 1", nil, Set[step_1b])
     recipe_2 = RecipeObject.new(2, "Recipe 2", nil, Set[step_2b])
       
-    expected = { 0 => [step_2a], 35 => [step_2b], 
-      45 => [step_1a], 75 => [step_1b] }
+    expected = { 0 => Set[step_2a], 35 => Set[step_2b], 45 => Set[step_1a], 
+                75 => Set[step_1b] }
     actual = MealScheduleFactory.combine([recipe_1, recipe_2]).schedule
 
     expect(actual).to eq(expected)
@@ -124,7 +126,7 @@ describe MealScheduleFactory do
     step_c = StepObject.new("Step C", 20, 1, 90)
     recipe_c = RecipeObject.new(90, "Recipe C", nil, Set[step_c])
    
-    expected = { 0 => [step_c], 5 => [step_b], 15 => [step_a] }
+    expected = { 0 => Set[step_c], 5 => Set[step_b], 15 => Set[step_a] }
     actual = MealScheduleFactory.combine(
                [recipe_a, recipe_b, recipe_c]).schedule
 
@@ -143,7 +145,7 @@ describe MealScheduleFactory do
     schedule = MealScheduleFactory.combine([recipe]).schedule
     actual = []
     schedule.each do |time, steps|
-      actual += steps
+      actual += steps.to_a
     end
 
     expect(actual).to match_array(expected)

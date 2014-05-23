@@ -27,7 +27,6 @@ class ScheduleBuilder
     # Invariant - @significant_times is the sorted keyset of @schedule
     @significant_times = SortedSet.new
     @current_time = 0
-    @state = State.new
   end
 
   # Public: This method overrides the default initialize_copy method. It is
@@ -47,7 +46,6 @@ class ScheduleBuilder
       @schedule[time] = @schedule[time].clone
     end
     @significant_times = @significant_times.clone
-    @state = @state.clone
   end
 
   # Public: Add a step to the schedule being built such that the step ends at 
@@ -62,9 +60,6 @@ class ScheduleBuilder
     if(@possible_steps.include?(step) && @resources.consume(step))
       # Remove step from possible steps
       @possible_steps.delete(step)
-
-      # Add step to current state
-      @state.steps << step
 
       # Add step to schedule
       start_time = @current_time + step.time
@@ -101,17 +96,6 @@ class ScheduleBuilder
     res = false
     unless @current_time <= old_current_time
       res = add_step(step)
-      if res
-        # add_step adds the step to @state.steps, but we only want it in the
-        # preemptive step map, so remove it.
-        @state.steps.delete(step)
-        # Add the step to @state's preemptive step map
-        if @state.preemptive_step_map.has_key?(@current_time)
-          @state.preemptive_step_map[@current_time] << step
-        else
-          @state.preemptive_step_map[@current_time] = Set[step]
-        end
-      end
     end
 
     @current_time = old_current_time
@@ -163,9 +147,6 @@ class ScheduleBuilder
       end
     end
 
-    # Reset state
-    @state = State.new
-
     true
   end
 
@@ -176,15 +157,6 @@ class ScheduleBuilder
   # doesn't change the internal state of this ScheduleBuilder.
   def possible_steps
     @possible_steps.clone
-  end
-
-  # Public: Get the state of this ScheduleBuilder since the last call to
-  #         advance_current_time.
-  #
-  # Returns a State. The returned State is a clone; modifying it doesn't change
-  # the internal state of this ScheduleBuilder.
-  def state
-    @state.clone
   end
 
   # Public: Get the schedule built so far by this ScheduleBuilder.
@@ -273,51 +245,6 @@ class ScheduleBuilder
     rescue StopIteration
       nil
     end
-  end
-
-  # public: A State wraps the state of a ScheduleBuilder *since the last call to
-  #         advance_current_time*.
-  class State
-    # Steps is a Set of Steps that have been added non-preemptively since the
-    # last call to advance_current_time.
-    attr_accessor :steps
-    # Steps is a Hash from Integer end times to Steps preemptively scheduled to
-    # end at those times since the last call to advance_current_time.
-    attr_accessor :preemptive_step_map
-
-    def initialize
-      @steps = Set[]
-      @preemptive_step_map = Hash.new
-    end
-
-    def initialize_copy(other)
-      super
-      @steps = @steps.clone
-      @preemptive_step_map = @preemptive_step_map.clone
-      @preemptive_step_map.keys.each do |time|
-        @preemptive_step_map[time] = @preemptive_step_map[time].clone
-      end
-    end
-
-    def eql?(other)
-      @steps == other.steps && 
-      @preemptive_step_map == other.preemptive_step_map
-      true
-    end
-
-    def hash
-      @steps.hash * 7 + @preemptive_step_map.hash
-    end
-
-    def inspect
-      str = "Steps: Set["
-      @steps.each do |step|
-        str << "#{step}, "
-      end
-      str << "] Preemptive Steps: #{@preemptive_step_map}\n"
-      str
-    end
-
   end
 end
 

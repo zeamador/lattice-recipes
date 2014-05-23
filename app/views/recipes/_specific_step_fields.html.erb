@@ -14,7 +14,7 @@
       <% EquipmentTypes.constants.each do |constant| -%>
 	<% equip_array << [constant.capitalize, constant.downcase] -%>
       <% end -%>
-      <%= f.select(:equipment, equip_array, { prompt: true }) %>
+      <%= f.select(:equipment, equip_array, { prompt: true, :prompt => "None" }) %>
       </div>
       <br />
     </span>

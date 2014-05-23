@@ -37,8 +37,8 @@ $(document).on('nested:fieldRemoved:steps', (event) ->
   # decrement step counter
   stepCounter--
   field = event.field
-  # show so we can animate removal
-  field.show()
+  # animate removal
+  field.show().slideUp(animLength)
   # iterate through all fields after the removed step
   # and decrement their step numbers.
   while ((field = field.next("div.fields")).length)
@@ -50,8 +50,6 @@ $(document).on('nested:fieldRemoved:steps', (event) ->
     # if this is now step #1, hide prereq input
     if (value == 1)
       field.find(".prereqs").hide()
-  # animate removal
-  field.slideUp(animLength)
 )
 
 # Handle event when prereq is added

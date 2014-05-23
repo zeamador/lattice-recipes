@@ -1,0 +1,30 @@
+<%= nested_form_for @recipe do |recipe_form| %>
+  <%= render 'shared/errors', object: @recipe if @recipe.errors.any? %>
+
+  <p>
+    <strong><%= recipe_form.label :title %></strong><br />
+    <%= recipe_form.text_field :title %>
+  </p>
+
+  <p>
+    <strong><%= recipe_form.label :tags %></strong> (separate with commas)<br />
+    <%= recipe_form.text_field :tags %>
+  </p>
+
+  <p>
+    <strong><%= recipe_form.label :ingredients %></strong><br />
+    <%= recipe_form.text_area :ingredients %>
+  </p>
+
+  <div class="steps-container">
+    <h3>Steps</h3>
+    <%= recipe_form.fields_for :steps do |step_form| %>
+      (
+      <%= step_form.object.step_number %>
+      )
+      <%= render partial: "specific_step_fields", locals: {f: step_form} %>
+    <% end -%>
+
+  </div>
+  <%= recipe_form.submit "Update Recipe", method: :patch %>
+<% end %>

@@ -72,6 +72,8 @@
   <% if @recipe.user == current_user %>
     <%= button_to 'Delete Recipe', @recipe, method: :delete,
       data: { confirm: "Are you sure you want to delete?" } %>
+    <br />
+    <%= button_to 'Edit Recipe', edit_recipe_path(@recipe), method: :get %>
   </p>
   <% end %>
 </div>

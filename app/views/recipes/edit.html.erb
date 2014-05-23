@@ -1,0 +1,22 @@
+<% @title="Edit Recipe" %>
+
+<div class="info-extra-bottom">
+  <div class="message-container">
+    <% flash.each do |key, value| -%>
+      <% if key == :recipe_success || key == :recipe_error -%>
+        <div class="alert alert-<%= key %>"><%= value %></div>
+      <% end -%>
+    <% end -%>
+  </div>
+  <% if @recipe.user == current_user -%>
+    <div>
+      <h1><%= @recipe.title %></h1>
+    </div>
+
+    <%= render 'recipe_edit_fields' %>
+  <% else -%>
+    <div class="need-signin">
+      <p>Please sign in with the correct user using the sidebar</p>
+    </div>
+  <% end -%>
+</div>

@@ -8,49 +8,7 @@
   &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
   &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
   <%= f.link_to_remove "Remove Step" %>
-  <div class = "tabbed-margin-left">
-   <%= f.text_area :description %> 
-    <br />
-    
-    <%= f.label :time %>:
-    <img class="question-mark-icon" src="/assets/question-mark-icon.jpg" 
-   title="Total time required to complete the step."></img>
-    <%= f.number_field :time, :class => "number-input-box", :min => 0 %> minutes
-    
-    &nbsp; &nbsp; &nbsp; &nbsp; Equipment:
-    <% equip_array = [] -%>
-    <% EquipmentTypes.constants.each do |constant| -%>
-      <% equip_array << [constant.capitalize, constant.downcase] -%>
-    <% end -%>
-    <%= f.select(:equipment, equip_array, { prompt: true }) %>
-    <br />
 
-    <span class = "radio-buttons-label" >Attentiveness:
-      <img class="question-mark-icon" src="/assets/question-mark-icon.jpg" 
-     title="How much of your attention does this step require? 
-  Examples:
-      All: chopping or sauteing
-      Some: stirring occasionally
-      None: leaving water to boil"></img>
-    </span>
-
-    <br />
-    <%= f.radio_button :attentiveness, "2", { checked: true } %>
-    <%= f.label :attentiveness, "All" %>
-    <br />
-    <%= f.radio_button :attentiveness, "1" %>
-    <%= f.label :attentiveness, "Some" %>
-    <br />
-    <%= f.radio_button :attentiveness, "0" %>
-    <%= f.label :attentiveness, "None" %>
-    <br /> 
-
-    <div class="prereqs">
-      <br />
-      Prereq Steps:
-      <% f.fields_for :step_mappers -%>
-      <p><%= f.link_to_add "Add Prereq", :step_mappers %></p>
-    </div>
-  </div>
+  <%= render partial: "specific_step_fields", locals: {f: f} %>
 </fieldset>
 

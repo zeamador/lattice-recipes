@@ -21,6 +21,9 @@
     <% f.fields_for :steps -%>
     <p><%= f.link_to_add "Add Step", :steps %></p>
   </div>
-  <%= f.submit %>
+  
+  <div class="create-recipe-btn">
+    <%= f.submit %>
+  </div>
 <% end -%>
 

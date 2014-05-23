@@ -1,12 +1,11 @@
 <fieldset class="step">
-  (
-  <span class="stepnum"></span>
-  <%= f.hidden_field :step_number %>
-  )
-  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  <span class="step-number">
+    (
+    <span class="stepnum"></span>
+    <%= f.hidden_field :step_number %>
+    )
+  </span>
+  
   <%= f.link_to_remove "Remove Step" %>
 
   <%= render partial: "specific_step_fields", locals: {f: f} %>

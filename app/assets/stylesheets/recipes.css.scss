@@ -85,8 +85,26 @@
   width: 50px;
 }
 
+.step-number {
+  margin-right: 240px;
+}
+
+.remove_nested_fields {
+  margin-left: 75px;
+}
+
 .unit-input-box {
   width: 100px;
+}
+
+.create-recipe-btn {
+  text-align: center;
+}
+
+.create-recipe-btn input {
+  width: 140px;
+  height: 40px;
+  font-size: 2em;
 }
 
 textarea {

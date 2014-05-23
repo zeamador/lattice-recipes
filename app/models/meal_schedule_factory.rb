@@ -24,8 +24,10 @@ module MealScheduleFactory
       schedule_builder = ScheduleBuilder.new(final_steps, resources)
       successful_schedules = [] #Set?
     
-      create_meal_schedule_helper(schedule_builder, successful_schedules)
-      successful_schedules.uniq!      
+      create_meal_schedule_helper(schedule_builder, successful_schedules, Set[])
+      if successful_schedules.uniq.length != successful_schedules.length
+        raise "The combination algorithm created redundant successful schedules"
+      end
 
       # Pick the schedule for which the end times of all of the final steps of
       # every recipe passed to this method end at closest to the same times.
@@ -75,16 +77,19 @@ module MealScheduleFactory
     #                        dependency graph.
     #
     # Returns nothing, but populates successful_schedules.
-    def create_meal_schedule_helper(schedule_builder, successful_schedules)
+    def create_meal_schedule_helper(schedule_builder, successful_schedules, 
+                                    all_schedules_seen)
       schedule_builder.possible_steps.each do |step|
         # Make a copy of the schedule_builder to modify and pass to a new
         # recursive branch
         schedule_builder_copy = schedule_builder.clone   
         
         if schedule_builder_copy.add_step(step)
-          # Recursive case - add step
-          create_meal_schedule_helper(schedule_builder_copy, 
-                                      successful_schedules)
+          unless redundant(schedule_builder_copy, all_schedules_seen)
+            create_meal_schedule_helper(schedule_builder_copy, 
+                                        successful_schedules, 
+                                        all_schedules_seen)
+          end
         end
 
         unless step.immediate_prereq.nil?
@@ -92,8 +97,12 @@ module MealScheduleFactory
           schedule_builder_copy = schedule_builder.clone
 
           if schedule_builder_copy.add_step_preemptive(step)
-            create_meal_schedule_helper(schedule_builder_copy, 
-                                        successful_schedules)
+            unless redundant(schedule_builder_copy, all_schedules_seen)
+              # Recursive case - add preemptive step
+              create_meal_schedule_helper(schedule_builder_copy, 
+                                          successful_schedules, 
+                                          all_schedules_seen)
+            end
           end
         end
       end
@@ -103,8 +112,10 @@ module MealScheduleFactory
       # A failed sweep line advance destroys the schedule builder copy, so don't
       # use it in else branches.
       if schedule_builder_copy.advance_current_time
+        #! Create new blank redundancy checker and pass
         # Recursive case - advance sweep line
-        create_meal_schedule_helper(schedule_builder_copy, successful_schedules)
+        create_meal_schedule_helper(schedule_builder_copy, successful_schedules,
+                                    all_schedules_seen)
       elsif schedule_builder.schedule_complete?
         # Base case - success
         successful_schedules << schedule_builder.schedule
@@ -182,6 +193,31 @@ module MealScheduleFactory
       end
 
       schedule_end_time
+    end
+
+    # Internal: Checks to see if the schedule in progress by the builder already
+    #           exists in the passed set of seen schedules. Adds the builder's
+    #           schedule to the passed list of seen schedules if not already
+    #           present.
+    #
+    # builder - The ScheduleBuilder under question for being redundant.
+    # seen - A Set of the schedules already considered. The builder is redundant
+    #        if this Set contains its schedule.
+    #
+    # Returns true if the builder is redundant given the seen schedules, false
+    # otherwise.
+    def redundant(builder, seen)      
+      schedule_so_far = builder.schedule
+
+      # If the schedules seen so far includes the builder's schedule, the
+      # builder is redundant
+      is_redundant = seen.include?(schedule_so_far)
+      
+      unless is_redundant
+        seen << schedule_so_far
+      end
+
+      is_redundant
     end
   end
 end

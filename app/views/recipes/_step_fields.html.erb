@@ -8,6 +8,13 @@
   
   <%= f.link_to_remove "Remove Step" %>
 
-  <%= render partial: "specific_step_fields", locals: {f: f} %>
+  <div class = "tabbed-margin-left">
+    <%= render partial: "specific_step_fields", locals: {f: f} %>
+
+    <div class="prereqs">
+      <% f.fields_for :step_mappers -%>
+      <p><%= f.link_to_add "Add Prereq", :step_mappers %></p>
+    </div>
+  </div>
 </fieldset>
 

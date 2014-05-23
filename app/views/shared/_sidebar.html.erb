@@ -53,7 +53,7 @@
           <div class="recipe">
             <strong><%= recipe.title %></strong></br>
             <%= recipe.tags %></br>
-            <%= link_to "Edit", recipe %> <%= link_to "Remove", recipe, method: :remove_from_meal %>
+            <%= link_to "Customize", recipe %> <%= link_to "Remove", recipe, method: :remove_from_meal %>
           </div>
         <% end %>
         <%= link_to "View Meal", current_user.meal %>

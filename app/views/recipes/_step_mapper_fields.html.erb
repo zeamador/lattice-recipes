@@ -1,6 +1,6 @@
 <p class = "no-top-margin" >
   <%= f.label :prereq_step_number %>: 
-  <%= f.number_field :prereq_step_number, :class => "number-input-box" %>
+  <%= f.number_field :prereq_step_number, :class => "number-input-box", :min => 0 %>
 
   <%= f.link_to_remove "Remove Prereq" %>
   <br />

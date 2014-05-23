@@ -72,6 +72,10 @@ h1, h2, h3 {
   color: Red;
 }
 
+input[type="text"], input[type="number"] {
+  font-family: "Helvetica", sans-serif;
+}
+
 input[type="submit"] {
     background-color: #A34318;
     padding: 5px 7px 5px 7px;

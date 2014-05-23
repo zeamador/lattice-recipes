@@ -44,6 +44,15 @@
     <% end %>
     </div>
   <% end %>
+
+  <% if signed_in? %>  
+    <div class="meal-side-bar">
+      <div class="meal-header-side-bar">Meal</div>
+      <div class="meal-content-side-bar">
+        <%= link_to "View Meal", meal_path(current_user.meal) %>
+      </div>
+    </div>
+  <% end %>
   
   <div class="recent-side-bar">
     <div class="recent-header-side-bar">Latest Recipes</div>
@@ -56,25 +65,5 @@
       <% end %>
     </div>
   </div>
-
-  <% if signed_in? %>  
-    <div class="kitchen-meal-side-bar">
-      <div class="kitchen-meal-header-side-bar">Your Kitchen and Meal</div>
-      <div class="kitchen-side-bar">
-        <div class="kitchen-content-side-bar">
-          <div class="your-kitchen">
-            <u>Your Kitchen:</u> <%= link_to " Edit", current_user %>
-          </div>
-          <% EquipmentTypes.constants.each do |constant| -%>
-            <%= "<div class=\"#{constant.downcase}s\">#{constant.capitalize}s: 
-                 #{@current_user.kitchen.send(constant.downcase)}</div>".html_safe %>
-          <% end -%>
-        </div>
-	<div class="meal-content-side-bar">
-	  <%= link_to "View Meal", meal_path(current_user.meal) %>
-	</div>
-      </div>
-    </div>
-  <% end %>
   
 </div>

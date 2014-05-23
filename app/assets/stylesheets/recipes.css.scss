@@ -56,6 +56,15 @@
   font-weight: bold;
 }
 
+.right-step-fields {
+  float: right;
+}
+
+.left-step-fields {
+  float: left;
+  margin-right: 90px;
+}
+
 .step-number {
   margin-top: 20px;
 }
@@ -83,4 +92,5 @@
 textarea {
   height: 100px;
   width: 400px;
+  font-family: "Helvetica", sans-serif;
 }

@@ -7,7 +7,7 @@
     <%= form_for(@user) do |f| %>
     <%= render 'shared/errors', object: @user if @user.errors.any? %>
     <p>
-      <strong>Username</strong><br /><!--<%= f.label :name %>-->
+      <strong><%= f.label :name, "Username" %></strong><br />
       5 to 20 characters. Letters, numbers, dashes, and periods are allowed.</br>
       <%= f.text_field :name %>
     </p>

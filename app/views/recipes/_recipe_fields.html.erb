@@ -5,10 +5,14 @@
     <strong><%= f.label :title %></strong><br />
     <%= f.text_field :title %>
   </p>
-  <!-- TODO add secret input -->
+
   <p>
     <strong><%= f.label :tags %></strong> (separate with commas)<br />
     <%= f.text_field :tags %>
+  </p>
+
+  <p>
+    <strong>Secret? <%= f.check_box :secret %></strong>
   </p>
 
   <p>

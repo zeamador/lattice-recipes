@@ -1,12 +1,14 @@
-<div id="header">Lattice</div>
+<div id="header_container">
+  <div id="header">Lattice</div>
 
-<div class="main-menu">
-  <ul>
-    <%= link_to raw("<li class=\"main-menu-leftmost\">Home</li>"), root_path%>
-    <%= link_to raw("<li>Add Recipe</li>"), new_recipe_path %>
-    <%= link_to raw("<li>About</li>"), about_index_path %>
-    <%= link_to raw("<li>Tutorial</li>"), tutorial_index_path %>
-    <%= link_to raw("<li class=\"main-menu-rightmost\">Search</li>"), recipes_path %>
-  </ul>
+  <div class="main-menu">
+    <ul>
+      <%= link_to raw("<li class=\"main-menu-leftmost\">Home</li>"), root_path%>
+      <%= link_to raw("<li>Add Recipe</li>"), new_recipe_path %>
+      <%= link_to raw("<li>About</li>"), about_index_path %>
+      <%= link_to raw("<li>Tutorial</li>"), tutorial_index_path %>
+      <%= link_to raw("<li class=\"main-menu-rightmost\">Search</li>"), recipes_path %>
+    </ul>
+  </div>
 </div>
 

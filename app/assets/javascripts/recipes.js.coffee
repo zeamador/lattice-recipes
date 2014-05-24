@@ -4,13 +4,17 @@
 stepCounter = 0
 animLength = 250
 
-# Make the first step be added automatically when the page loads
-$(document).on('page:load', -> addFirstStep()) # for turbolinks
-$(document).ready(-> addFirstStep()) # for normal page load
+# Set page loaded handler for each way the page could be loaded
+$(document).on('page:load', -> onPageLoad()) # for turbolinks
+$(document).ready(-> onPageLoad()) # for normal page load
 
-addFirstStep = () ->
+# Do stuff once page is loaded
+onPageLoad = () ->
+  # reset step counter and add the first step to the page
   stepCounter = 0
-  $(".steps-container").find(".add_nested_fields").click()
+  $("#steps_container").find(".add_nested_fields").click()
+  # add validation handler to form
+  $("#new_recipe").submit(-> validateRecipeForm())
 
 # Handle event when a step field is added
 $(document).on('nested:fieldAdded:steps', (event) ->
@@ -61,3 +65,38 @@ $(document).on('nested:fieldAdded:step_mappers', (event) ->
 $(document).on('nested:fieldRemoved:step_mappers', (event) ->
   event.field.show().slideUp(animLength)
 )
+
+# Validate the recipe form data
+validateRecipeForm = () ->
+  title = $("#recipe_title").value
+  if (title == undefined || title == null || title == "")
+    alert("Title can't be empty")
+    return false
+  tags = $("#recipe_tags").value
+  if (tags == undefined || tags == null || tags == "")
+    alert("Tags can't be empty")
+    return false
+  ingredients = $("#recipe_ingredients").value
+  if (ingredients == undefined || ingredients == null || ingredients == "")
+    alert("Ingredients can't be empty")
+    return false
+  stepCount = 0
+  steps = $("#steps_container").find("div.fields")
+  steps.each(->
+    # only validate if the step hasn't been removed
+    if (this.find("input[name$='[_destroy]']").value != "1")
+      stepCount++
+      description = this.find("textarea[name$='[description]']")
+      if (description == undefined || description == null || description == "")
+        alert("Description can't be empty")
+        return false
+      time = this.find("input[name$='[time]']")
+      if (time == undefined || time == null || time == "")
+        alert("Time can't be empty")
+        return false
+  )
+  if (stepCount == 0)
+    alert("Must have at least one step")
+    return false
+  return true
+

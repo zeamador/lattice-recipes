@@ -68,33 +68,37 @@ $(document).on('nested:fieldRemoved:step_mappers', (event) ->
 
 # Validate the recipe form data
 validateRecipeForm = () ->
-  title = $("#recipe_title").value
+  title = $("#recipe_title").val()
   if (title == undefined || title == null || title == "")
     alert("Title can't be empty")
     return false
-  tags = $("#recipe_tags").value
+  tags = $("#recipe_tags").val()
   if (tags == undefined || tags == null || tags == "")
     alert("Tags can't be empty")
     return false
-  ingredients = $("#recipe_ingredients").value
+  ingredients = $("#recipe_ingredients").val()
   if (ingredients == undefined || ingredients == null || ingredients == "")
     alert("Ingredients can't be empty")
     return false
   stepCount = 0
+  stepValid = true
   steps = $("#steps_container").find("div.fields")
   steps.each(->
     # only validate if the step hasn't been removed
-    if (this.find("input[name$='[_destroy]']").value != "1")
+    if ($(this).find("input[name$='[_destroy]']").val() != "1")
       stepCount++
-      description = this.find("textarea[name$='[description]']")
+      description = $(this).find("textarea[name$='[description]']").val()
       if (description == undefined || description == null || description == "")
         alert("Description can't be empty")
-        return false
-      time = this.find("input[name$='[time]']")
+        return (stepValid = false)
+      time = $(this).find("input[name$='[time]']").val()
       if (time == undefined || time == null || time == "")
         alert("Time can't be empty")
-        return false
+        return (stepValid = false)
+    return true
   )
+  if (!stepValid)
+    return false
   if (stepCount == 0)
     alert("Must have at least one step")
     return false

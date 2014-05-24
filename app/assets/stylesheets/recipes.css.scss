@@ -101,12 +101,18 @@ input[value="Delete Recipe"] {
   width: 100%;
 }
 
-.step-number {
-  margin-top: 20px;
+.stepnum {
+  font-size: 48pt;
+  font-weight: bold;
+  color: Grey;
+  float: left;
+  min-width: 80px;
+  text-align: right;
+  padding-right: 5px;
 }
 
 .tabbed-margin-left {
-  margin-left: 40px;
+  margin-left: 85px;
 }
 
 .no-top-margin {
@@ -121,12 +127,8 @@ input[value="Delete Recipe"] {
   width: 50px;
 }
 
-.step-number {
-  margin-right: 230px;
-}
-
 .remove_nested_fields {
-  margin-left: 75px;
+  margin-left: 310px;
 }
 
 .unit-input-box {

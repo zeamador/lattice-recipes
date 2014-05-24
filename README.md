@@ -48,8 +48,7 @@
 - Ubuntu 14.04
 - Ruby version 2.1.2
 - Rails version 4.1.0
-- Sqlite3 for development
-- Postgresql for production
+- Postgresql database
 
 ### Supported Browsers
 - Chrome 34+

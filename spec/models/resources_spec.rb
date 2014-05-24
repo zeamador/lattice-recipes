@@ -78,7 +78,7 @@ describe Resources do
     resources.consume(step_chop_2).should be_false
   end
 
-  it "should be immune from downstream changes after being cloned" do
+  it "should be immune from downstream focus changes after being cloned" do
     step_a = StepObject.new("Step A", 1, 2, 123)
     step_b = StepObject.new("Step B", 1, 2, 123)
     resources = Resources.new(KitchenObject.new, 1)
@@ -88,5 +88,16 @@ describe Resources do
     resources_copy.release(step_a)
 
     expect(resources.consume(step_b)).to be_false
+  end
+
+  it "should be immune from downstream equipment changes after being cloned" do
+    step_a = StepObject.new("Step A", 1, 2, 123, equipment: :TOASTER)
+    step_b = StepObject.new("Step B", 1, 2, 123, equipment: :TOASTER)
+    resources = Resources.new(KitchenObject.new, 1)
+
+    resources_copy = resources.clone
+    resources_copy.consume(step_a)
+
+    expect(resources.consume(step_b)).to be_true
   end
 end

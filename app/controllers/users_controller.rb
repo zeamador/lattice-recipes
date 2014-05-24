@@ -24,7 +24,7 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(user_params)    # Not the final implementation!
+    @user = User.new(user_params)
     if @user.save
       @kitchen = Kitchen.new()
       @kitchen.save

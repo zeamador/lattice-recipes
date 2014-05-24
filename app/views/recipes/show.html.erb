@@ -43,16 +43,24 @@
 
   <p>Servings: <%= @recipe.serving %> </p>
 
-  <% if params[:showDetail] == "1" %>
-    <%= link_to "Less Info", recipe_path(@recipe) %>
-  <% else %>
-    <%= link_to "More Info", recipe_path(@recipe, showDetail: 1) %>
-  <% end %>
-
-  <h3>Ingredients</h3>
+  <div class="ingredient-header">
+    Ingredients
+  </div>
   <%= simple_format(@recipe.ingredients) %>
 
-  <h3>Steps</h3>
+  <div>
+    <div class="step-header">
+      Steps
+    </div>
+    <div class="show-detail">
+    <% if params[:showDetail] == "1" -%>
+      <%= link_to "Less Info", recipe_path(@recipe) %>
+    <% else -%>
+      <%= link_to "More Info", recipe_path(@recipe, showDetail: 1) %>
+    <% end -%>
+    </div>
+  </div>
+
   <% @recipe.steps.sort { |a, b| a.step_number <=> b.step_number }.each do |step| -%>
     <p>
       <strong><%= step.step_number %>) </strong>

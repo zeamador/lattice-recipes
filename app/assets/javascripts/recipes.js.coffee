@@ -95,7 +95,20 @@ validateRecipeForm = () ->
       if (time == undefined || time == null || time == "")
         alert("Time can't be empty")
         return (stepValid = false)
-      # TODO validate prereqs
+      # validate prereqs
+      prereqValid = true
+      prereqs = $(this).find("fieldset.prereq")
+      prereqs.each(->
+        # only validate if the prereq hasn't been removed
+        if ($(this).find("input[name$='[_destroy]']").val() != "1")
+          value = $(this).find("input[name$='[prereq_step_number]']").val()
+          if (value >= stepCount)
+            alert("Prereq step #{value} is not valid for step #{stepCount}")
+            return (prereqValid = false)
+        return true
+      )
+      if (!prereqValid)
+        return (stepValid = false)
     return true
   )
   if (!stepValid)

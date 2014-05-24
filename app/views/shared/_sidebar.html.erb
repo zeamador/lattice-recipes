@@ -15,8 +15,7 @@
       <% end %>
       </div>
         <ul>
-          <li><%= link_to "Kitchen Settings", current_user %></li>
-          <li><%= link_to "Account Settings", edit_user_path(current_user) %></li>
+         <li><%= link_to "Settings", current_user %></li> 
           <li><%= link_to "Your Recipes", myrecipes_user_path %></li>
           <li><%= link_to "Log out", signout_path, method: "delete" %></li>
         </ul>

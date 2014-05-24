@@ -18,6 +18,9 @@
 /log/*.log
 /tmp
 
+# Ignore test coverage files.
+coverage
+
 # Ignore other unneeded files.
 doc/
 *.swp

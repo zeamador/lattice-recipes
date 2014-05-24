@@ -10,9 +10,13 @@
     <%= f.text_field :tags %>
   </p>
 
-  <p>
-    <strong><%= f.check_box :secret %> <%= f.label :secret, "Secret" %></strong>
-  </p>
+  <%= f.check_box :secret %>
+  <span class="check-box-label"><strong>Secret</strong>
+    <a class="tooltips">
+      <img class="question-mark-icon" src="/assets/question-mark-icon.jpg"></img>
+      <span>Other users will not be able to see this recipe.</span>
+    </a>
+  </span>
 
   <p>
     <strong>Servings</strong><br />

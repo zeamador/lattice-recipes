@@ -78,25 +78,6 @@ describe MealScheduleFactory do
     expect(actual).to eq(expected)
   end
 
-  it "should complete n recipes at as close to the same time as possible" do
-    step_a = StepObject.new("Step A", 30, 2, 12)
-    recipe_a = RecipeObject.new(12, "Recipe A", nil, Set[step_a])
-
-    step_b = StepObject.new("Step B", 40, 2, 17)
-    recipe_b = RecipeObject.new(17, "Recipe B", nil, Set[step_b])
-
-    step_c = StepObject.new("Step C", 5, 2, 90)
-    step_d = StepObject.new("Step D", 5, 2, 90, prereqs: [step_c])
-    recipe_c = RecipeObject.new(90, "Recipe C", nil, Set[step_d])
-
-    expected = { 0 => Set[step_c], 5 => Set[step_b], 45 => Set[step_a], 
-                 75 => Set[step_d] }
-    actual = MealScheduleFactory.combine(
-               [recipe_a, recipe_b, recipe_c]).schedule
-
-    expect(actual).to eq(expected)
-  end
-
   it "should not allow the oven to be re-preheated before being used" do
     step_1a = StepObject.new("Preheat 1", 30, 0, 1, equipment: :OVEN)
     step_1b = StepObject.new("Use preheat 1", 5, 0, 1, equipment: :OVEN,
@@ -112,23 +93,6 @@ describe MealScheduleFactory do
     expected = { 0 => Set[step_2a], 35 => Set[step_2b], 45 => Set[step_1a], 
                 75 => Set[step_1b] }
     actual = MealScheduleFactory.combine([recipe_1, recipe_2]).schedule
-
-    expect(actual).to eq(expected)
-  end
-
-  it "should break mse ties by choosing the shorter overall cooking time" do
-    step_a = StepObject.new("Step A", 5, 1, 12)
-    recipe_a = RecipeObject.new(12, "Recipe A", nil, Set[step_a])
-
-    step_b = StepObject.new("Step B", 10, 1, 17)
-    recipe_b = RecipeObject.new(17, "Recipe B", nil, Set[step_b])
-
-    step_c = StepObject.new("Step C", 20, 1, 90)
-    recipe_c = RecipeObject.new(90, "Recipe C", nil, Set[step_c])
-   
-    expected = { 0 => Set[step_c], 5 => Set[step_b], 15 => Set[step_a] }
-    actual = MealScheduleFactory.combine(
-               [recipe_a, recipe_b, recipe_c]).schedule
 
     expect(actual).to eq(expected)
   end

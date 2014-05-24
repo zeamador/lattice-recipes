@@ -60,9 +60,14 @@ describe StepObject do
   end
 
   it "should only except nil or EquipmentType constants for equipment" do
-    StepObject.new("No Error", 20, 0, 1234, equipment: nil)
-    expect { StepObject.new("Error", 20, 0, 1234, 
-                            equipment: "dogs").to raise_error(
-        "Equipment must either be nil or an EquipmentType constant") }
+    expect { StepObject.new("Bad Equipment", 20, 0, 1234, 
+                            equipment: "dogs") }.to raise_error(
+        "Equipment must either be nil or an EquipmentType constant, is dogs")
+  end
+
+  it "should only print the step description" do
+    step = StepObject.new("Instructions for something", 20, 0, 1234)
+    expect(step.to_s).to eq("Instructions for something")
+    expect(step.inspect).to eq("Instructions for something")
   end
 end

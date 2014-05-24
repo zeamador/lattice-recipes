@@ -2,10 +2,12 @@
   <%= f.label :prereq_step_number %>: 
   <%= f.number_field :prereq_step_number, :class => "number-input-box", :min => 0 %>
 
-  <%= f.link_to_remove "Remove Prereq" %>
+  <% unless edit_flag -%>
+    <%= f.link_to_remove "Remove Prereq" %>
+  <% end -%>
   <br />
   <span class = "radio-buttons-label" > 
-    <%= f.check_box :immediate_prereq, { checked: false } %>
+    <%= f.check_box :immediate_prereq %>
     <%= f.label :immediate_prereq %>
     <a class="tooltips">
       <img class="question-mark-icon" src="/assets/question-mark-icon.jpg"></img>
@@ -14,7 +16,7 @@
   </span>
   <br />
   <span class = "radio-buttons-label preheat-prereq">
-    <%= f.check_box :preheat_prereq, { checked: false } %>
+    <%= f.check_box :preheat_prereq %>
     <%= f.label :preheat_prereq %>
     <a class="tooltips">
       <img class="question-mark-icon" src="/assets/question-mark-icon.jpg"></img>

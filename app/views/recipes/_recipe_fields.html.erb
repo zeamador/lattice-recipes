@@ -31,7 +31,7 @@
     <%= f.text_area :ingredients %>
   </p>
 
-  <div class="steps-container">
+  <div id="steps_container">
     <h3>Steps</h3>
     <% f.fields_for :steps -%>
     <p><%= f.link_to_add "Add Step", :steps %></p>

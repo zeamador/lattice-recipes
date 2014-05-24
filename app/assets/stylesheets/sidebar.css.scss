@@ -10,7 +10,7 @@
 
 .side-bar a {
   text-decoration: none;
-  padding: 5px;
+  padding: 0;
 }
 
 .side-bar-section {
@@ -33,17 +33,12 @@
 .content-side-bar ul {
   list-style-type: none;
   padding-left: 0;
+  margin: 0;
 }
 
-.content-side-bar .recipe-title {
+.content-side-bar .recipe-title, .recipe-tags {
   margin: 2px;
-  margin-left: 15px;
-  padding: 2px;
-}
-
-.content-side-bar .recipe-tags {
-  margin: 2px;
-  margin-left: 15px;
+  margin-left: 0;
   padding: 2px;
 }
 
@@ -51,6 +46,11 @@
   border-bottom-style: solid;
   border-bottom-width: thin;
   overflow: hidden;
+  padding: 5px;
+  margin-bottom: 5px;
+}
+
+.view-meal-link {
   padding: 5px;
 }
 

@@ -54,16 +54,18 @@
 	<ul>
         <% current_user.meal.recipes.each do |recipe| %>
           <li class="side-bar-recipe">
-            <%= link_to "Remove", recipe, method: :remove_from_meal, 
-		:class => "meal-recipe-link-side-bar"  %>
-            <%= link_to "Customize", recipe, 
-		:class => "meal-recipe-link-side-bar" %>
-            <strong><%= recipe.title %></strong></br>
+            <span class="meal-recipe-link-side-bar">
+              <%= link_to "Remove", recipe, method: :remove_from_meal %>
+            </span>
+            <span class="meal-recipe-link-side-bar">
+              <%= link_to "Customize", recipe %>
+            </span>
+            <strong><%= recipe.title %></strong><br />
             <%= recipe.tags %>
           </li>
         <% end %>
 	</ul>
-	<div>
+	<div class="view-meal-link">
         <%= link_to "View Meal", current_user.meal %>
 	</div>
       </div>
@@ -74,16 +76,18 @@
   <div class="side-bar-section">
     <div class="header-side-bar">Latest Recipes</div>
     <div class="content-side-bar">
-      <% recent_recipes.each do |recipe| %>
-        <div class="side-bar-recipe">
-          <p class="recipe-title"><%= link_to recipe.title, recipe %>
-            <% if recipe.secret %>
-              [SECRET]
-            <% end %>
-          </p>
-          <p class="recipe-tags"><%= recipe.tags %></p>
-        </div>
-      <% end %>
+      <ul>
+        <% recent_recipes.each do |recipe| %>
+          <li class="side-bar-recipe">
+            <p class="recipe-title"><%= link_to recipe.title, recipe %>
+              <% if recipe.secret %>
+                [SECRET]
+              <% end %>
+            </p>
+            <p class="recipe-tags"><%= recipe.tags %></p>
+          </li>
+        <% end %>
+      </ul>
     </div>
   </div>
   

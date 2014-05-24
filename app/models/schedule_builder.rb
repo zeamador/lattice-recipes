@@ -27,6 +27,12 @@ class ScheduleBuilder
     # Invariant - @significant_times is the sorted keyset of @schedule
     @significant_times = SortedSet.new
     @current_time = 0
+    # @pred_counts is a Hash from Steps to integer pred counts. A Steps' pred
+    # count is the number of unscheduled steps it is a prereq for.
+    # Invariant - A Step is never mapped to zero; instead, it is not a key at
+    # all. This allows us to quickly check whether or not any steps have pred
+    # counts greater than zero using empty?().
+    populate_pred_counts(starting_steps)
   end
 
   # Public: This method overrides the default initialize_copy method. It is
@@ -46,6 +52,7 @@ class ScheduleBuilder
       @schedule[time] = @schedule[time].clone
     end
     @significant_times = @significant_times.clone
+    @pred_counts = @pred_counts.clone
   end
 
   # Public: Add a step to the schedule being built such that the step ends at 
@@ -134,7 +141,9 @@ class ScheduleBuilder
     @schedule[@current_time].each do |step|
       @resources.release(step)
       step.prereqs.each do |prereq|
-        unless has_unscheduled_descendant?(prereq)
+        @pred_counts[prereq] -= 1
+        if @pred_counts[prereq] == 0
+          @pred_counts.delete(prereq)
           @possible_steps << prereq
         end
       end
@@ -181,44 +190,46 @@ class ScheduleBuilder
   #
   # Returns true if the schedule being built is complete, false otherwise.
   def schedule_complete?
-    @possible_steps.empty? && (@current_time == @significant_times.to_a.last)
+    @possible_steps.empty? && @pred_counts.empty?
   end
 
   private
-  # Internal: Check whether a step is a prerequisite for any other unscheduled
-  #           steps.
+  # internal: Populate the @pred_counts Hash by mapping each step in the
+  #           dependency tree defined by the passed starting_steps to the number
+  #           of steps it is a prereq for.
   #
-  # step - a Step object.
+  # starting_steps - The Steps that define a dependency graph of Steps. These
+  #                  steps must not be prerequisites for any other Step.
   #
-  # Returns true if the step has unscheduled descendants, false otherwise
-  def has_unscheduled_descendant?(step)
-    has_unscheduled_descendant_helper(step, possible_steps)
+  # Returns nothing.
+  def populate_pred_counts(starting_steps)
+    @pred_counts = Hash.new
+
+    populate_pred_counts_helper(starting_steps)
   end
 
-  # Internal: Check whether the passed step is in the step dependency graph
-  #           passed as a set of its last steps.
+  # Internal: Helper method that looks through the passed steps' prereqs
+  #           incrementing counts in @pred_counts and then recursively calls
+  #           this method with steps' prereqs.
   #
-  # step - a Step object.
-  # last_steps - a Set of the last steps of a step dependency graph.
+  # steps - A Collection of Steps that define a dependency graph.
   #
-  # Returns true if the passed step is in the passed dependency graph, false
-  # otherwise.
-  def has_unscheduled_descendant_helper(step, last_steps)
-    if (last_steps.empty?)
-      false
-    else
-      next_last_steps = Set[]
-      last_steps.each do |other_step|
-        if step == other_step
-          return true
-        end
-
-        other_step.prereqs.each do |prereq|
-          next_last_steps << prereq
+  # Returns nothing.
+  def populate_pred_counts_helper(steps)
+    next_steps = Set[]
+    steps.each do |step|
+      step.prereqs.each do |prereq|
+        next_steps << prereq
+        if @pred_counts.has_key?(prereq)
+          @pred_counts[prereq] += 1
+        else
+          @pred_counts[prereq] = 1
         end
       end
+    end
 
-      has_unscheduled_descendant_helper(step, next_last_steps)
+    unless next_steps.empty?
+      populate_pred_counts_helper(next_steps)
     end
   end
 

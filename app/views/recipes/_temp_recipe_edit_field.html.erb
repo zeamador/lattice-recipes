@@ -17,6 +17,7 @@
           <%= link_to @tag, recipes_path(:search => @tag)  %>
         <% end %>
       </p>
+      <p>Servings: <%= @recipe.serving %> </p>
 
       <h3>Ingredients</h3>
       <%= simple_format(@recipe.ingredients) %>

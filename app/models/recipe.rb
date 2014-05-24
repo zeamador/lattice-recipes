@@ -8,6 +8,7 @@ class Recipe < ActiveRecord::Base
   validates :tags, presence: true
   validates :ingredients, presence: true
   validates :steps, presence: true
+  validates :serving, numericality: { greater_than_or_equal_to: 1 }
 
   # sanitize case
   before_save do

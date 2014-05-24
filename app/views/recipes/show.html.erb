@@ -41,6 +41,8 @@
       <% end %>
     </p>
 
+  <p>Servings: <%= @recipe.serving %> </p>
+
   <% if params[:showDetail] == "1" %>
     <%= link_to "Less Info", recipe_path(@recipe) %>
   <% else %>

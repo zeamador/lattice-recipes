@@ -11,3 +11,13 @@ CASE 1: All recipes should have consistent casing
        tags: "one, two, three, four"
        ingredient: 4.0 "whole" "cats and dogs and fishes"
 		
+CASE 2: Secret Recipes should not be viewable by other users
+1. As a signed in user, add a recipe titled "Secret Recipe" with Secret marked 
+   as true.
+2. "Secret Recipe" should appear in the Latest Recipes sidebar and should be
+   found when the titel "Secret Recipe" is searched.
+2. Sign out.
+3. The newly uploaded recipe should not be in the Latest Recipes sidebar and 
+   should not be found when the title "Secret Recipe" is searched.
+4. Sign back in as a different user. The information in step 3 should still be 
+   true.

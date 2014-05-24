@@ -78,7 +78,6 @@ The most important use cases of Lattice are associated with recipes, meals, and 
 1. From their meal page, a signed in user clicks "Combine Recipes" on the bottom of the page.
 2. The system takes them to a Combined Recipes page which displays one of the following:
     -   Meal schedule for all of the recipes in the user's meal (Success End)
-    -   Error message "Recipe combination timed out. We're currently working to speed up this process, but for now, we cannot create this meal for you." (Failure End)
     -   Error message "Your recipes could not be combined because at least one of them requires a piece of kitchen equipment that you don't have." (Failure End)
     
 ## Kitchen

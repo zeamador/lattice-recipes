@@ -1,0 +1,16 @@
+Adding Recipes:
+
+CASE 1: Inputting invalid/missing data should not delete upload form 
+1. When not signed in, click “Add Recipe” button in menu bar. This should prompt
+   the user to register or sign in.
+2. Sign in on the right and the "Add Recipe" page should load.
+3. Fill in some of the fields, but leave the title blank.
+4. Click the “Create Recipe” button. A modal dialog box should inform you that
+   the title field cannot be left blank.
+5. Go back to the recipe and fill in a title.
+6. Can repeat steps 3 - 5 with other text box/area fields.
+7. Repeat steps 3 - 5 with negative time values, non-numeric time values, and
+   non-integral time values. A browser error message should inform you that
+   these values are invalid.
+8. Fix all problems and submit the recipe. At no point during this process should
+   your data have been erased.

@@ -3,7 +3,9 @@
     <span class="stepnum"></span>
     <%= f.hidden_field :step_number %>
 
-    <%= f.link_to_remove "Remove Step" %>
+    <span class="remove-step">
+      <%= f.link_to_remove "Remove Step" %>
+    </span>
   <% end -%>
 
   <div class = "tabbed-margin-left">

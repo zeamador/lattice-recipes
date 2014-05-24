@@ -30,6 +30,9 @@ class ScheduleBuilder
     @state = State.new
     # @pred_counts is a Hash from Steps to integer pred counts. A Steps' pred
     # count is the number of unscheduled steps it is a prereq for.
+    # Invariant - A Step is never mapped to zero; instead, it is not a key at
+    # all. This allows us to quickly check whether or not any steps have pred
+    # counts greater than zero using empty?().
     populate_pred_counts(starting_steps)
   end
 
@@ -154,8 +157,13 @@ class ScheduleBuilder
     @schedule[@current_time].each do |step|
       @resources.release(step)
       step.prereqs.each do |prereq|
+        # This is a prereq of a now-scheduled step, so decrement the prereq's
+        # pred count
         @pred_counts[prereq] -= 1
+        # If the pred count for the prereq is now zero, add it to possible steps
+        # and delete its entry in the pred_counts hash.
         if @pred_counts[prereq] == 0
+          @pred_counts.delete(prereq)
           @possible_steps << prereq
         end
       end
@@ -214,7 +222,7 @@ class ScheduleBuilder
   #
   # Returns true if the schedule being built is complete, false otherwise.
   def schedule_complete?
-    @possible_steps.empty? && (@current_time == @significant_times.to_a.last)
+    @possible_steps.empty? && @pred_counts.empty?
   end
 
   private

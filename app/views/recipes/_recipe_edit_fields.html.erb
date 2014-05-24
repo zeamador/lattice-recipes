@@ -20,11 +20,11 @@
     <h3>Steps</h3>
     <% @steps = @recipe.steps.sort { |a, b| a.step_number <=> b.step_number } %>
     <%= recipe_form.fields_for :steps, @steps do |step_form| %>
-      (
-      <%= step_form.object.step_number %>
-      )
+      <span class="stepnum">
+        <%= step_form.object.step_number %>
+      </span>
       <div class = "tabbed-margin-left">
-	<%= render partial: "step_fields", locals: {f: step_form, edit_flag: true} %>
+        <%= render partial: "step_fields", locals: {f: step_form, edit_flag: true} %>
       </div>
     <% end -%>
 

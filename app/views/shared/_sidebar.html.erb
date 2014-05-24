@@ -1,10 +1,12 @@
 <div class="side-bar">
   
-  <% if URI.parse(request.original_url).path != signup_path and URI.parse(request.original_url).path != users_path %>
-    <div class="user-side-bar" title=<%= users_path %>>
+  <!-- Welcome/User Sidebar -->
+  <% if URI.parse(request.original_url).path != signup_path and 
+     URI.parse(request.original_url).path != users_path %>
+    <div class="side-bar-section" title=<%= users_path %>>
     <% if signed_in? %>
-      <div class="user-header-side-bar">Welcome, <%= @current_user.name %>!</div>
-      <div class="user-content-side-bar">
+      <div class="header-side-bar">Welcome, <%= @current_user.name %>!</div>
+      <div class="content-side-bar">
       <div class="message-container">
       <% flash.each do |key, value| %>
         <% if key == "login_success" || key == "login_error" %>
@@ -13,14 +15,14 @@
       <% end %>
       </div>
         <ul>
-          <li><%= link_to "Kitchen Settings", current_user %></li> <!-- TODO: Make this a link to users/show -->
+          <li><%= link_to "Kitchen Settings", current_user %></li> 
           <li><%= link_to "Account Settings", edit_user_path(current_user) %></li>
           <li><%= link_to "Your Recipes", myrecipes_user_path %></li>
           <li><%= link_to "Log out", signout_path, method: "delete" %></li>
         </ul>
       </div>
     <% else %>
-    <div class="user-header-side-bar">Sign in</div>
+    <div class="header-side-bar">Sign in</div>
     <div class="user-content-side-bar">
       <div class="signin-form">
       <div class="message-container">
@@ -45,28 +47,36 @@
     </div>
   <% end %>
 
+  <!-- Meal Sidebar -->
   <% if signed_in? %>  
-    <div class="meal-side-bar">
-      <div class="meal-header-side-bar">Meal</div>
-      <div class="meal-content-side-bar">
+    <div class="side-bar-section">
+      <div class="header-side-bar">Meal</div>
+      <div class="content-side-bar">
+	<ul>
         <% current_user.meal.recipes.each do |recipe| %>
-          <div class="recipe">
-            <%= link_to "Remove", recipe, method: :remove_from_meal, :class => "meal-recipe-link-side-bar"  %>
-            <%= link_to "Customize", recipe, :class => "meal-recipe-link-side-bar" %>
+          <li class="side-bar-recipe">
+            <%= link_to "Remove", recipe, method: :remove_from_meal, 
+		:class => "meal-recipe-link-side-bar"  %>
+            <%= link_to "Customize", recipe, 
+		:class => "meal-recipe-link-side-bar" %>
             <strong><%= recipe.title %></strong></br>
             <%= recipe.tags %>
-          </div>
+          </li>
         <% end %>
+	</ul>
+	<div>
         <%= link_to "View Meal", current_user.meal %>
+	</div>
       </div>
     </div>
   <% end %>
   
-  <div class="recent-side-bar">
-    <div class="recent-header-side-bar">Latest Recipes</div>
-    <div class="recent-content-side-bar">
+  <!-- Latest Recipes Sidebar -->
+  <div class="side-bar-section">
+    <div class="header-side-bar">Latest Recipes</div>
+    <div class="content-side-bar">
       <% recent_recipes.each do |recipe| %>
-        <div class="recipe">
+        <div class="side-bar-recipe">
           <p class="recipe-title"><%= link_to recipe.title, recipe %>
             <% if recipe.secret %>
               [SECRET]

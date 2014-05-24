@@ -1,19 +1,66 @@
-<fieldset class="step">
-  <span class="step-number">
-    (
+<fieldset class="step">  
+  <% unless edit_flag -%>
     <span class="stepnum"></span>
     <%= f.hidden_field :step_number %>
-    )
-  </span>
-  
-  <%= f.link_to_remove "Remove Step" %>
+
+    <span class="remove-step">
+      <%= f.link_to_remove "Remove Step" %>
+    </span>
+  <% end -%>
 
   <div class = "tabbed-margin-left">
-    <%= render partial: "specific_step_fields", locals: {f: f} %>
+    <%= f.text_area :description %> 
+    <br />
 
-    <div class="prereqs">
-      <% f.fields_for :step_mappers -%>
-      <p><%= f.link_to_add "Add Prereq", :step_mappers %></p>
+    <div class="step-fields">
+      <span class="left-step-fields">
+        <%= f.label :time %>:
+        <a class="tooltips">
+          <img class="question-mark-icon" src="/assets/question-mark-icon.png"></img>
+          <span>Total time required to complete the step.</span>
+        </a>
+        <%= f.number_field :time, :class => "number-input-box", :min => 1 %> minutes
+        <div class="equipment-label">Equipment:
+          <% equip_array = [] -%>
+          <% EquipmentTypes.constants.each do |constant| -%>
+            <% equip_array << [constant.capitalize, constant.downcase] -%>
+          <% end -%>
+          <%= f.select(:equipment, equip_array, { prompt: true, :prompt => "None" }) %>
+        </div>
+        <br />
+      </span>
+  
+      <span class="right-step-fields">
+        <span class="radio-buttons-label">Attentiveness:
+          <a class="tooltips">
+            <img class="question-mark-icon" src="/assets/question-mark-icon.png"></img>
+            <span>How much of your attention does this step require? Examples:<br>
+            All) chopping or sauteing<br>
+            Some) stirring occasionally<br>
+            None) leaving water to boil.</span>
+          </a>
+        </span>
+        <br />
+        <%= f.radio_button :attentiveness, "2", { checked: true } %>
+        <%= f.label :attentiveness_2, "All" %>
+        <br />
+        <%= f.radio_button :attentiveness, "1" %>
+        <%= f.label :attentiveness_1, "Some" %>
+        <br />
+        <%= f.radio_button :attentiveness, "0" %>
+        <%= f.label :attentiveness_0, "None" %>
+        <br /> 
+      </span>
+
+      <div class="prereqs">
+	<%= f.fields_for :step_mappers do |mapper_form| %>
+          <%= render partial: "step_mapper_fields", locals: {f: mapper_form, edit_flag: edit_flag} %>
+        <% end -%>
+
+        <% unless edit_flag -%>
+          <p><%= f.link_to_add "Add Prereq", :step_mappers %></p>
+        <% end -%>
+      </div>
     </div>
   </div>
 </fieldset>

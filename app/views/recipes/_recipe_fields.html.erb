@@ -10,14 +10,23 @@
     <%= f.text_field :tags %>
   </p>
 
+  <%= f.check_box :secret %>
+  <span class="check-box-label"><strong>Secret</strong>
+    <a class="tooltips">
+      <img class="question-mark-icon" src="/assets/question-mark-icon.png"></img>
+      <span>Other users will not be able to see this recipe.</span>
+    </a>
+  </span>
+
   <p>
-    <strong><%= f.check_box :secret %> Secret</strong>
+    <strong>Servings</strong><br />
+    <%= f.number_field :serving, :class => "number-input-box", :min => 1 %>
   </p>
 
   <p>
     <strong><%= f.label :ingredients %></strong>
     <a class="tooltips">
-      <img class="question-mark-icon" src="/assets/question-mark-icon.jpg"></img>
+      <img class="question-mark-icon" src="/assets/question-mark-icon.png"></img>
       <span>List ingredients each on their own line. Examples:<br>
       1 cup water<br>
       3 apples<br>
@@ -26,9 +35,11 @@
     <%= f.text_area :ingredients %>
   </p>
 
-  <div class="steps-container">
+  <div id="steps_container">
     <h3>Steps</h3>
-    <% f.fields_for :steps -%>
+    <% f.fields_for :steps do |step_form| -%>
+      <%= render partial: "step_fields", locals: {f: step_form, edit_flag: false} %>
+    <% end -%>
     <p><%= f.link_to_add "Add Step", :steps %></p>
   </div>
   

@@ -1,24 +1,28 @@
-<p class = "no-top-margin" >
+<fieldset class = "no-top-margin prereq">
   <%= f.label :prereq_step_number %>: 
-  <%= f.number_field :prereq_step_number, :class => "number-input-box", :min => 0 %>
+  <%= f.number_field :prereq_step_number, :class => "number-input-box", :min => 1 %>
 
-  <%= f.link_to_remove "Remove Prereq" %>
+  <% unless edit_flag -%>
+    <span class="remove-prereq">
+      <%= f.link_to_remove "Remove Prereq" %>
+    </span>
+  <% end -%>
   <br />
   <span class = "radio-buttons-label" > 
-    <%= f.check_box :immediate_prereq, { checked: false } %>
+    <%= f.check_box :immediate_prereq %>
     <%= f.label :immediate_prereq %>
     <a class="tooltips">
-      <img class="question-mark-icon" src="/assets/question-mark-icon.jpg"></img>
-      <span>Mark as an immediate prereq if no action(s) should be preformed between the end of this prereq and the start of this step.</span>
+      <img class="question-mark-icon" src="/assets/question-mark-icon.png"></img>
+      <span>Mark as an immediate prereq if no action(s) should be performed between the end of this prereq and the start of this step.</span>
     </a>
   </span>
   <br />
   <span class = "radio-buttons-label preheat-prereq">
-    <%= f.check_box :preheat_prereq, { checked: false } %>
+    <%= f.check_box :preheat_prereq %>
     <%= f.label :preheat_prereq %>
     <a class="tooltips">
-      <img class="question-mark-icon" src="/assets/question-mark-icon.jpg"></img>
+      <img class="question-mark-icon" src="/assets/question-mark-icon.png"></img>
       <span>If this step uses the oven, is this prereq the one that preheated the oven?</span>
     </a>
   </span>
-</p>
+</fieldset>

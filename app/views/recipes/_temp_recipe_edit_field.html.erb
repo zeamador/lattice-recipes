@@ -1,10 +1,29 @@
 <div class="info-extra-bottom">
+  <div class="message-container">
+    <% flash.each do |key, value| %>
+      <% if key == "recipe_success" || key == "recipe_error" %>
+        <div class="alert alert-<%= key %>"><%= value %></div>
+      <% end %>
+    <% end %>
+  </div>
+  <div>
+    <% if current_user == @recipe.user -%>
+      <div class="back-to-meal">
+	<%= button_to "Back To Meal",
+	    meal_path(current_user.meal), method: :get %>	
+      </div>
+    <% end -%>
+    <h1><%= @recipe.title %></h1>
+  </div>
 <% if current_user == @recipe.user %>
   <%= form_for(@recipe) do |recipe_form| %>
-      <div>
-      <h1><%= @recipe.title %></h1>
-      </div>
-      <p>Tags: <%= @recipe.tags %></p>
+      <p>Tags:
+        <% @tags = @recipe.tags.split(%r{,\s*}) %>
+        <% for @tag in @tags %>
+          <%= link_to @tag, recipes_path(:search => @tag)  %>
+        <% end %>
+      </p>
+      <p>Servings: <%= @recipe.serving %> </p>
 
       <h3>Ingredients</h3>
       <%= simple_format(@recipe.ingredients) %>
@@ -13,14 +32,14 @@
       
         <%= recipe_form.fields_for :steps do |step_form| %>
         
-        <p>
+	<p>
           <strong><%= step_form.object.step_number %>) </strong>
             <%= step_form.object.description %>
             <br />
 
             <%= step_form.label :time %>:
 	    <a class="tooltips">
-	      <img class="question-mark-icon" src="/assets/question-mark-icon.jpg"></img>
+	      <img class="question-mark-icon" src="/assets/question-mark-icon.png"></img>
 	      <span>Total time required to complete the step.</span>
 	    </a>
           <%= step_form.number_field :time, :class => "number-input-box", :min => 0 %> minutes
@@ -28,7 +47,7 @@
           <br />
           <span class = "radio-buttons-label" >Attentiveness:
 	    <a class="tooltips">
-	      <img class="question-mark-icon" src="/assets/question-mark-icon.jpg"></img>
+	      <img class="question-mark-icon" src="/assets/question-mark-icon.png"></img>
 	      <span>How much of your attention does this step require? Examples:<br>
 	      All) chopping or sauteing<br>
 	      Some) stirring occasionally<br>

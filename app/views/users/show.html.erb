@@ -8,9 +8,9 @@
   </div>
   <h1>Username: <%= @user.name %></h1>
   <p>Email: <%= @user.email %></p>
-  
+
   <div class="kitchen-form">
-    <h3>Your Kitchen Settings:</h3>
+    <h3>Kitchen Settings:</h3>
     <%= form_for(@kitchen) do |f| %>
       <%= render 'shared/errors', object: @kitchen if @kitchen.errors.any? %>
       <table>
@@ -24,4 +24,17 @@
       <%= f.submit "Update Kitchen", class: "btn btn-large btn-primary" %>
     <% end %>
   </div>
+  <br />
+
+  <h3>Change Password</h3>
+  <%= form_for(@user) do |f| %>
+    <%= render 'shared/errors', object: @user if @user.errors.any? %>
+    <%= f.label :password, "New Password" %></br>
+    <%= f.password_field :password %></br>
+  
+    <%= f.label :password_confirmation, "Confirm New Password" %></br>
+    <%= f.password_field :password_confirmation %></br>
+  
+    <%= f.submit "Change Password", method: :patch %>
+  <% end %>
 </div>

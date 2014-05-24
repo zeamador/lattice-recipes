@@ -14,7 +14,7 @@
 <div class="info-extra-bottom">
   <div class="message-container">
     <% flash.each do |key, value| %>
-      <% if key == :recipe_success || key == :recipe_error %>
+      <% if key == "recipe_success" || key == "recipe_error" %>
         <div class="alert alert-<%= key %>"><%= value %></div>
       <% end %>
     <% end %>
@@ -26,7 +26,7 @@
 	    add_to_meal_path(meal_id: current_user.meal.id, id: @recipe.id) %>
       </div>
     <% end %>
-      <h1><%= @recipe.title %></h1>
+    <h1><%= @recipe.title %></h1>
   </div>
   
   <% if @recipe.secret %>
@@ -41,16 +41,26 @@
       <% end %>
     </p>
 
-  <% if params[:showDetail] == "1" %>
-    <%= link_to "Less Info", recipe_path(@recipe) %>
-  <% else %>
-    <%= link_to "More Info", recipe_path(@recipe, showDetail: 1) %>
-  <% end %>
+  <p>Servings: <%= @recipe.serving %> </p>
 
-  <h3>Ingredients</h3>
+  <div class="ingredient-header">
+    Ingredients
+  </div>
   <%= simple_format(@recipe.ingredients) %>
 
-  <h3>Steps</h3>
+  <div>
+    <div class="step-header">
+      Steps
+    </div>
+    <div class="show-detail">
+    <% if params[:showDetail] == "1" -%>
+      <%= link_to "Less Info", recipe_path(@recipe) %>
+    <% else -%>
+      <%= link_to "More Info", recipe_path(@recipe, showDetail: 1) %>
+    <% end -%>
+    </div>
+  </div>
+
   <% @recipe.steps.sort { |a, b| a.step_number <=> b.step_number }.each do |step| -%>
     <p>
       <strong><%= step.step_number %>) </strong>
@@ -78,7 +88,7 @@
         <% step_mapper.prereq_id = @recipe.steps.find_by(step_number: step_mapper.prereq_step_number).id %>
         <% step_mapper.save %>
         <strong>Immediate:</strong> <%= step_mapper.immediate_prereq %>
-        <!-- TODO: Add Preheat -->
+	<strong>Preheat:</strong> <%= step_mapper.preheat_prereq %>
         <br />
       <% end %>
       <% end %>

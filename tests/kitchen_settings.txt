@@ -30,29 +30,14 @@ CASE 1: Kitchen settings should persist between sessions
 7. Sign in with the information from step 2.
    The sidebar should display step 4's kitchen settings again.
 
-CASE 2: Users should not be able to input non-integer equipment values
+CASE 2: Users should not be able to input non-integer, negative, or blank 
+equipment values
 1. As a logged in user, select "Profile" in the sidebar.
    This should display your kitchen settings.
 2. Change the following data:
-   Oven: 0.4
+   Burners: 0.4
+   Ovens: -7
+   Microwaves:  (using backspace)
 3. Select "Update Kitchen".
-   This should produce an appropriate pop-error message instructing users to 
-   input whole numbers. The sidebar kitchen should not be updated.
-
-CASE 3: Users should not be able to input non-integer negative equipment values
-1. As a logged in user, select "Profile" in the sidebar.
-   This should display your kitchen settings.
-2. Change the following data:
-   Oven: -7
-3. Select "Update Kitchen".
-   This should produce an appropriate pop-error message instructing users to 
-   input non-negatives numbers. The sidebar kitchen should not be updated.
-
-CASE 4: Users should not be able to input blank equipment values
-1. As a logged in user, select "Profile" in the sidebar.
-   This should display your kitchen settings.
-2. Change the following data: (by using the backspace key)
-   Oven: 
-3. Select "Update Kitchen".
-   This should produce an appropriate pop-error message instructing users not 
-   to leave fields blank. The sidebar kitchen should not be updated.
+   This should produce an appropriate pop-error message. The sidebar kitchen 
+   should not be updated.

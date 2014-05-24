@@ -45,6 +45,9 @@ gem 'spring',        group: :development
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 
+# Use SimpleCov for test coverage analysis
+gem 'simplecov', :require => false, :group => :test
+
 # Gem for nested forms
 gem "nested_form"
 

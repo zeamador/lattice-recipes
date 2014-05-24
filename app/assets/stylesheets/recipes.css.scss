@@ -33,12 +33,34 @@
   margin-right: 20px;
 }
 
+.back-to-meal {
+  float: right;
+  margin-right: 20px;
+}
+
+.show-detail {
+  font-size: 18px;
+}
+
+.ingredient-header {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.step-header {
+  float: left;
+  margin-right: 20px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
 input[value="Edit Recipe"] {
   float: left;
 }
 
 input[value="Delete Recipe"] {
-  float: right;
+  float: left;
+  margin-left: 20px;
 }
 
 /* Ingredient Styling and Spacing */
@@ -49,7 +71,7 @@ input[value="Delete Recipe"] {
 }
 
 /* Step Styling and Spacing */
-.step {
+.step, .prereq {
   border: 0;
   padding: 0 0 15px 0;
   margin: 0;
@@ -79,12 +101,18 @@ input[value="Delete Recipe"] {
   width: 100%;
 }
 
-.step-number {
-  margin-top: 20px;
+.stepnum {
+  font-size: 48pt;
+  font-weight: bold;
+  color: Grey;
+  float: left;
+  min-width: 80px;
+  text-align: right;
+  padding-right: 5px;
 }
 
 .tabbed-margin-left {
-  margin-left: 40px;
+  margin-left: 85px;
 }
 
 .no-top-margin {
@@ -99,12 +127,12 @@ input[value="Delete Recipe"] {
   width: 50px;
 }
 
-.step-number {
-  margin-right: 230px;
+.remove-step {
+  margin-left: 310px;
 }
 
-.remove_nested_fields {
-  margin-left: 75px;
+.remove-prereq {
+  margin-left: 85px;
 }
 
 .unit-input-box {

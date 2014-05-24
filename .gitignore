@@ -18,7 +18,11 @@
 /log/*.log
 /tmp
 
+# Ignore test coverage files.
+coverage
+
 # Ignore other unneeded files.
+/config/database.yml
 doc/
 *.swp
 *~

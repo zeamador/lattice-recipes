@@ -56,6 +56,8 @@ module MealScheduleFactory
             schedule = create_meal_schedule_helper(schedule_builder_copy, 
                                                    all_states_seen)
             unless schedule.nil?
+              # Base case - success. Shortcircuiting upon discovery of first
+              #             successful schedule.
               return schedule
             end
           end
@@ -71,6 +73,8 @@ module MealScheduleFactory
               schedule = create_meal_schedule_helper(schedule_builder_copy, 
                                                      all_states_seen)
               unless schedule.nil?
+                # Base case - success. Shortcircuiting upon discovery of first
+                #             successful schedule.
                 return schedule
               end
             end
@@ -119,7 +123,6 @@ module MealScheduleFactory
       unless is_redundant
         seen << state
       end
-      is_redundant
     end
   end
 end

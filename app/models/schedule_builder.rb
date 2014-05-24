@@ -70,9 +70,6 @@ class ScheduleBuilder
       # Remove step from possible steps
       @possible_steps.delete(step)
 
-      # Add step to current state
-      @state.steps << step
-
       # Add step to schedule
       start_time = @current_time + step.time
       unless @significant_times.include?(start_time)
@@ -108,17 +105,6 @@ class ScheduleBuilder
     res = false
     unless @current_time <= old_current_time
       res = add_step(step)
-      if res
-        # add_step adds the step to @state.steps, but we only want it in the
-        # preemptive step map, so remove it.
-        @state.steps.delete(step)
-        # Add the step to @state's preemptive step map
-        if @state.preemptive_step_map.has_key?(@current_time)
-          @state.preemptive_step_map[@current_time] << step
-        else
-          @state.preemptive_step_map[@current_time] = Set[step]
-        end
-      end
     end
 
     @current_time = old_current_time
@@ -177,9 +163,6 @@ class ScheduleBuilder
       end
     end
 
-    # Reset state
-    @state = State.new
-
     true
   end
 
@@ -190,15 +173,6 @@ class ScheduleBuilder
   # doesn't change the internal state of this ScheduleBuilder.
   def possible_steps
     @possible_steps.clone
-  end
-
-  # Public: Get the state of this ScheduleBuilder since the last call to
-  #         advance_current_time.
-  #
-  # Returns a State. The returned State is a clone; modifying it doesn't change
-  # the internal state of this ScheduleBuilder.
-  def state
-    @state.clone
   end
 
   # Public: Get the schedule built so far by this ScheduleBuilder.
@@ -237,8 +211,8 @@ class ScheduleBuilder
   # Returns nothing.
   def populate_pred_counts(starting_steps)
     @pred_counts = Hash.new
-    
-    populate_pred_counts_helper(starting_steps)    
+
+    populate_pred_counts_helper(starting_steps)
   end
 
   # Internal: Helper method that looks through the passed steps' prereqs

@@ -21,7 +21,7 @@
           <img class="question-mark-icon" src="/assets/question-mark-icon.jpg"></img>
           <span>Total time required to complete the step.</span>
         </a>
-        <%= f.number_field :time, :class => "number-input-box", :min => 0 %> minutes
+        <%= f.number_field :time, :class => "number-input-box", :min => 1 %> minutes
         <div class="equipment-label">Equipment:
           <% equip_array = [] -%>
           <% EquipmentTypes.constants.each do |constant| -%>

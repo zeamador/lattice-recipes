@@ -96,11 +96,8 @@ Web URL:          http://lattice-recipes.herokuapp.com/
 All our releases are hosted on GitHub, and can be viewed [here][releases].
 
 ### Updating Documentation
-All of our documentation is located in this file or in ``lattice-recipes/docs/``.
-There is no product website to update when deploying a new release, but the
-requirements and design documentation should be kept up to date. All documentation
-prior to the feature complete release can be accessed in ``lattice-recipes/docs/``
-of our [Beta Release][beta].
+All of our developer documentation can be found and edited in this file or 
+in ``lattice-recipes/docs/``. There is no product website to update when deploying a new release, but the user facing documentation in ``lattice-recipes/app/views/about/index.html.erb`` should be kept up to date. All documentation prior to the feature complete release can be accessed in ``lattice-recipes/docs/`` of our [Beta Release][beta].
 
 ## Testing
 

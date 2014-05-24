@@ -92,6 +92,9 @@ Rails.application.routes.draw do
   
   # Contact page
   resources :contact
+
+  # Tutorial page
+  resources :tutorial
   
   # Meals pages
   resources :meals

@@ -14,9 +14,9 @@
  *= require_self
  */
 
-/* Global */
+/* Global text */
 
-html, body {
+html, body { /* main text */
   background-color: #1A3959;
   color: white;
   font-family: "Helvetica", sans-serif;
@@ -36,9 +36,15 @@ html, body {
   padding-bottom: 40px; /* Height of footer */
 }
 
-h1, h2, h3 {
+h1, h2, h3 { /* headings */
   font-family: "Calibri", sans-serif;
 }
+
+a { /* links */
+  text-decoration: none;
+}
+
+/* Main content boxes */
 
 .info {
   float: left;
@@ -59,10 +65,12 @@ h1, h2, h3 {
   background-color: #EAEEF8;
   color: Black;
   padding-top: 1px;
-  padding-bottom: 20px;
+  padding-bottom: 20px; /* only difference from standard info */
   padding-right: 15px;
   padding-left: 15px;
 }
+
+/* Alerts and errors */
 
 .alert {
   margin-top: 15px;
@@ -77,9 +85,13 @@ h1, h2, h3 {
   color: Red;
 }
 
+/* Text and number entry boxes */
+
 input[type="text"], input[type="number"] {
   font-family: "Helvetica", sans-serif;
 }
+
+/* Buttons */
 
 input[type="submit"] {
     background-color: #A34318;
@@ -93,18 +105,19 @@ input[type="submit"] {
 }
 
 /* Tooltips */
-.question-mark-icon {
+
+.question-mark-icon { /* icon used for tooltips */
   vertical-align: text-top;
   width: 17px;
   height: 17px;
 }
 
-a.tooltips {
+a.tooltips { /* tooltip anchor itself */
   position: relative;
   display: inline;
 }
 
-a.tooltips span {
+a.tooltips span { /* hidden values and defaults */
   position: absolute;
   width: 280px;
   color: #FFFFFF;
@@ -116,7 +129,7 @@ a.tooltips span {
   padding-bottom: 5px;
 }
 
-a:hover.tooltips span {
+a:hover.tooltips span { /* visible when hovered */
   visibility: visible;
   left: 100%;
   top: 50%;
@@ -125,11 +138,7 @@ a:hover.tooltips span {
   z-index: 999;
 }
 
-/* Global Colorings/Stylings */
-a {
-  color: #4054A9;
-  text-decoration: none;
-}
+/* Layout elements */
 
 hr {
   border-color: Black;

@@ -1,4 +1,8 @@
-/* Header */
+// Place all the styles related to the header here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+/* Header image and text */
 
 #header {
   text-align: center;
@@ -16,7 +20,7 @@
 
 /* Main Menu */
 
-.main-menu {
+.main-menu { //whole menu
   float: left;
   text-align: center;
   margin: 5px auto 5px auto;
@@ -26,14 +30,14 @@
   background-color: #A34318;
 }
 
-.main-menu ul {
+.main-menu ul { //menu buttons as a whole
   text-align: left;
   min-width: 840px;
   margin: 0;
   padding: 0;
 }
 
-.main-menu ul li {
+.main-menu ul li { //individual menu buttons
   float: left;
   color: White;
   padding: 0 20px 0 20px;
@@ -47,20 +51,15 @@
   font-weight: bold;
 }
 
-.main-menu ul li:hover {
+.main-menu ul li:hover { //color change for menu buttons when hovering
   background-color: #DE741D;
   color: Black;
 }
 
-.main-menu ul li a {
-  text-decoration: none;
-}
-
-.main-menu ul li a:visited {
+.main-menu ul li a:visited { //overrides anchor visited color
   color: White;
 }
 
-.main-menu ul a:visited li:hover {
+.main-menu ul a:visited li:hover { //overrides anchor visited color
   color: Black;
 }
-

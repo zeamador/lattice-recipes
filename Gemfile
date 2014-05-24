@@ -5,12 +5,13 @@ gem 'dotenv-rails', :groups => [:development, :test]
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.0'
 
+# Use postgres for all environments
+gem 'pg'
+
 group :production do
-  gem 'pg'
   gem 'rails_12factor'
 end
 group :development, :test do
-  gem 'sqlite3'
   gem 'rspec-rails'
   gem 'capybara'
 end
@@ -61,3 +62,4 @@ gem "nested_form"
 # gem 'debugger', group: [:development, :test]
 
 ruby "2.1.2"
+

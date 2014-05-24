@@ -62,7 +62,6 @@ module MealScheduleFactory
         end
       end
 
-      puts best_schedule
       MealSchedule.new(recipes, best_schedule)
     end
 

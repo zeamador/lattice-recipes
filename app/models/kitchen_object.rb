@@ -8,6 +8,11 @@ class KitchenObject
                    :SINK => 1, :TOASTER => 1 }
   end
 
+  def initialize_copy(other)
+    super
+    @equipment = @equipment.clone
+  end
+
   # Public: View quantity of the given equipment type in this kitchen.
   #
   # equipment_type - An equipment_types constant.

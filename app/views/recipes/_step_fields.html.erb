@@ -1,11 +1,7 @@
 <fieldset class="step">  
   <% unless edit_flag -%>
-    <span class="step-number">
-    (
     <span class="stepnum"></span>
     <%= f.hidden_field :step_number %>
-    )
-    </span>
 
     <%= f.link_to_remove "Remove Step" %>
   <% end -%>

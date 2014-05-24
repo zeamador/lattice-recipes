@@ -1,0 +1,14 @@
+Combining Recipes:
+
+CASE 1: Combination should fail without the proper equipment
+1. As a signed in user, edit your kitchen settings so that your number of
+   burners equals zero
+2. Upload a valid recipe with at least one step which specifies the
+   Equipment field as "Burner"
+3. Go to the newly added recipe's page and click "Add To Meal" in the upper
+   right corner of the page, which will take you to the "Recipes In Your
+   Meal" page
+4. Click "Combine Recipes" and expect to be taken to the "Combined Recipes"
+   page where you will see the error message:
+       "Your recipes could not be combined because at least one of them
+        requires a piece of kitchen equipment that you don't have."

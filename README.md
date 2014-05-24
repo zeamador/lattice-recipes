@@ -9,7 +9,7 @@
 - Bessie Song (`bessieyy@uw`)
 
 ## Important Links
-- [Release Website](http://lattice-recipes.herokuapp.com/)
+- [Release Website](https://lattice-recipes.herokuapp.com/)
 - [Documentation](https://github.com/zeamador/lattice-recipes/tree/master/docs)
 - [GitHub Repository](https://github.com/zeamador/lattice-recipes)
 - [Issue Tracker](https://github.com/zeamador/lattice-recipes/issues)

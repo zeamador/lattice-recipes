@@ -143,10 +143,11 @@ class ScheduleBuilder
   #
   # Returns true if the current time was successfully advanced, false otherwise.
   def advance_current_time
+    debug_curr_time = @current_time
     @current_time = get_next_time
 
     if @current_time.nil?
-      # There is not a next time to advance to, fail
+      # There is not a next time to advance to; fail
       return false
     end
 
@@ -315,23 +316,12 @@ class ScheduleBuilder
     end
 
     def eql?(other)
-      @steps == other.steps && 
-      @preemptive_step_map == other.preemptive_step_map
+      @steps == other.steps && @preemptive_step_map == other.preemptive_step_map
     end
 
     def hash
-      @steps.hash * 7 + @preemptive_step_map.hash
+      (@steps.hash * 11) ^ @preemptive_step_map.hash
     end
-
-    def inspect
-      str = "Steps: Set["
-      @steps.each do |step|
-        str << "#{step}, "
-      end
-      str << "] Preemptive Steps: #{@preemptive_step_map}\n"
-      str
-    end
-
   end
 end
 

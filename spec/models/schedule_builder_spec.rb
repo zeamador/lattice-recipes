@@ -92,4 +92,32 @@ describe ScheduleBuilder do
     end
     expect(actual).to match_array(expected)
   end
+
+  it "should always allow steps to be scheduled sequentially" do
+    resources = Resources.new(KitchenObject.new, 1)
+    step_a1 = StepObject.new("Step A1", 5, 2, 123)
+    step_a2 = StepObject.new("Step A2", 5, 2, 123, equipment: :BURNER,
+                             prereqs: Set[step_a1], immediate_prereq: step_a1)
+    step_a3 = StepObject.new("Step A3", 5, 2, 123)
+    
+    step_b1 = StepObject.new("Step B1", 5, 2, 456)
+    step_b2 = StepObject.new("Step B2", 5, 2, 456, equipment: :BURNER,
+                             prereqs: Set[step_b1], immediate_prereq: step_b1)
+    step_b3 = StepObject.new("Step B3", 5, 2, 123)
+
+    builder = ScheduleBuilder.new([step_b3, step_b2, step_a3, step_a2], 
+                                  resources)
+    builder.add_step(step_a3).should be_true
+    builder.advance_current_time.should be_true
+    builder.add_step(step_a2).should be_true
+    builder.advance_current_time.should be_true
+    builder.advance_current_time.should be_true
+    builder.add_step(step_b3).should be_true
+    builder.advance_current_time.should be_true
+    builder.add_step(step_b2).should be_true
+    builder.advance_current_time.should be_true
+    builder.schedule_complete?.should be_true
+    builder.advance_current_time.should be_true
+    builder.schedule_complete?.should be_true
+ end
 end

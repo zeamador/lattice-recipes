@@ -22,12 +22,9 @@ module MealScheduleFactory
 
       resources = Resources.new(kitchen, num_users)
       schedule_builder = ScheduleBuilder.new(final_steps, resources)
-      successful_schedules = [] #Set?
+      successful_schedules = Set[]
     
       create_meal_schedule_helper(schedule_builder, successful_schedules, Set[])
-      if successful_schedules.uniq.length != successful_schedules.length
-        raise "The combination algorithm created redundant successful schedules"
-      end
 
       # Pick the schedule for which the end times of all of the final steps of
       # every recipe passed to this method end at closest to the same times.

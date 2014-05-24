@@ -152,17 +152,17 @@ describe MealScheduleFactory do
   end
 
   it "should not produce a nil schedule if a combination is possible" do
-    step_a1 = StepObject.new("Step A1", 2, 2, 123)
-    step_a2 = StepObject.new("Step A2", 5, 2, 123)
-    step_a3 = StepObject.new("Step A3", 5, 2, 123, equipment: :BURNER,
-                             prereqs: Set[step_a2], immediate_prereq: step_a2)
-    recipe_a = RecipeObject.new(123, "Recipe A", nil, Set[step_a3])
+    step_a1 = StepObject.new("Step A1", 5, 2, 123)
+    step_a2 = StepObject.new("Step A2", 5, 2, 123, equipment: :BURNER,
+                             prereqs: Set[step_a1], immediate_prereq: step_a1)
+    step_a3 = StepObject.new("Step A3", 5, 2, 123)
+    recipe_a = RecipeObject.new(123, "Recipe A", nil, Set[step_a3, step_a2])
     
-    step_b1 = StepObject.new("Step B1", 2, 2, 456)
-    step_b2 = StepObject.new("Step B2", 5, 2, 456)
-    step_b3 = StepObject.new("Step B3", 5, 2, 456, equipment: :BURNER,
-                             prereqs: Set[step_b2], immediate_prereq: step_b2)
-    recipe_b = RecipeObject.new(456, "Recipe B", nil, Set[step_b3])
+    step_b1 = StepObject.new("Step B1", 5, 2, 456)
+    step_b2 = StepObject.new("Step B2", 5, 2, 456, equipment: :BURNER,
+                             prereqs: Set[step_b1], immediate_prereq: step_b1)
+    step_b3 = StepObject.new("Step B3", 5, 2, 123)
+    recipe_b = RecipeObject.new(456, "Recipe B", nil, Set[step_b3, step_b2])
 
     schedule = MealScheduleFactory.combine([recipe_a, recipe_b]).schedule
     schedule.should_not be_nil

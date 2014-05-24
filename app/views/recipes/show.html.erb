@@ -26,6 +26,7 @@
 	    add_to_meal_path(meal_id: current_user.meal.id, id: @recipe.id) %>
       </div>
     <% end %>
+    <p><%= image_tag(@recipe.avatar.url, alt: @recipe.title) %> </p>
     <h1><%= @recipe.title %></h1>
   </div>
   

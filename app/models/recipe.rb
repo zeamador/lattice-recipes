@@ -4,6 +4,8 @@ class Recipe < ActiveRecord::Base
   accepts_nested_attributes_for :steps, 
                                 :allow_destroy => true
 
+  mount_uploader :avatar, AvatarUploader
+
   validates :title, presence: true
   validates :tags, presence: true
   validates :ingredients, presence: true

@@ -48,6 +48,8 @@ class RecipesController < ApplicationController
     end
     @tmp_recipe.step_ids = @steps_arry
     @tmp_recipe.save
+    @tmp_recipe.avatar = @recipe.avatar
+    @tmp_recipe.save
     for @step in @tmp_recipe.steps
       for @sm in @step.step_mappers
         @sm.prereq_id = @steps_hash[@sm.prereq_step_number]
@@ -106,7 +108,7 @@ class RecipesController < ApplicationController
 
   def recipe_params
     params.require(:recipe).permit(:title, :secret, :tags, :meal_id, :serving,
-                                   :ingredients,
+                                   :ingredients, :avatar,
                                    steps_attributes: [:id, :step_number,
                                                       :description, :time,
                                                       :attentiveness,

@@ -60,6 +60,7 @@
             <span class="meal-recipe-link-side-bar">
               <%= link_to "Customize", recipe %>
             </span>
+            <p><%= image_tag(recipe.avatar.thumb.url, alt: recipe.title) %></p>
             <strong><%= recipe.title %></strong><br />
             <%= recipe.tags %>
           </li>
@@ -79,6 +80,7 @@
       <ul>
         <% recent_recipes.each do |recipe| %>
           <li class="side-bar-recipe">
+            <p><%= image_tag(recipe.avatar.thumb.url, alt: recipe.title) %></p>
             <p class="recipe-title"><%= link_to recipe.title, recipe %>
               <% if recipe.secret %>
                 [SECRET]

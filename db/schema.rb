@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140513235634) do
+ActiveRecord::Schema.define(version: 20140524215145) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,16 +32,24 @@ ActiveRecord::Schema.define(version: 20140513235634) do
   end
 
   create_table "recipes", force: true do |t|
-    t.boolean  "temp",        default: false
+    t.boolean  "temp",                default: false
     t.string   "title"
-    t.integer  "serving",     default: 1
-    t.boolean  "secret",      default: false
+    t.integer  "serving",             default: 1
+    t.boolean  "secret",              default: false
     t.string   "tags"
     t.text     "ingredients"
+    t.string   "image_name"
+    t.string   "imaage_content_type"
+    t.string   "image_size"
     t.integer  "user_id"
     t.integer  "meal_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
+    t.string   "avatar"
   end
 
   add_index "recipes", ["meal_id"], name: "index_recipes_on_meal_id", using: :btree

@@ -29,7 +29,7 @@
 4. Configure the development environment using the script:
    ``./ubuntu-dev-env.sh``
 5. Restart shell
-6. Ensure your ruby and rails versions match those listed below:
+6. Ensure your ruby and rails versions match those listed in the development environment below:
  - ``ruby -v``
  - ``rails -v``
 7. Create a password for the postgres account created by the script:

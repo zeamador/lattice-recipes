@@ -6,11 +6,17 @@
       <% end %>
     <% end %>
   </div>
+  <div>
+    <% if current_user == @recipe.user -%>
+      <div class="back-to-meal">
+	<%= button_to "Back To Meal",
+	    meal_path(current_user.meal), method: :get %>	
+      </div>
+    <% end -%>
+    <h1><%= @recipe.title %></h1>
+  </div>
 <% if current_user == @recipe.user %>
   <%= form_for(@recipe) do |recipe_form| %>
-      <div>
-      <h1><%= @recipe.title %></h1>
-      </div>
       <p>Tags:
         <% @tags = @recipe.tags.split(%r{,\s*}) %>
         <% for @tag in @tags %>
@@ -26,7 +32,7 @@
       
         <%= recipe_form.fields_for :steps do |step_form| %>
         
-        <p>
+	<p>
           <strong><%= step_form.object.step_number %>) </strong>
             <%= step_form.object.description %>
             <br />
@@ -64,7 +70,6 @@
 
       <% end %>
       <%= recipe_form.submit "Save Changes", method: :patch %>
-      <%= link_to "Back to My Meal", meal_path(current_user.meal) %>
     <% end %>
 <% else %>
 No right to see others' temp recipes.

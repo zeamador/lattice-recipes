@@ -15,7 +15,11 @@
       <% end %>
       </div>
         <ul>
+<<<<<<< HEAD
+          <li><%= link_to "Kitchen Settings", current_user %></li> 
+=======
           <li><%= link_to "Kitchen Settings", current_user %></li>
+>>>>>>> Fix #82; Clean up on-site text, move q/a to About
           <li><%= link_to "Account Settings", edit_user_path(current_user) %></li>
           <li><%= link_to "Your Recipes", myrecipes_user_path %></li>
           <li><%= link_to "Log out", signout_path, method: "delete" %></li>

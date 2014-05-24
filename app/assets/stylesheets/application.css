@@ -16,11 +16,24 @@
 
 /* Global */
 
-body {
+html, body {
   background-color: #1A3959;
   color: white;
   font-family: "Helvetica", sans-serif;
   min-width: 840px;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+#container {
+  min-height: 100%;
+  position: relative;
+}
+
+#content {
+  padding: 8px;
+  padding-bottom: 40px; /* Height of footer */
 }
 
 h1, h2, h3 {

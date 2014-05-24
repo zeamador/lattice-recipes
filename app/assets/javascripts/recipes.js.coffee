@@ -82,7 +82,7 @@ validateRecipeForm = () ->
     return false
   stepCount = 0
   stepValid = true
-  steps = $("#steps_container").find("div.fields")
+  steps = $("#steps_container").find("fieldset.step")
   steps.each(->
     # only validate if the step hasn't been removed
     if ($(this).find("input[name$='[_destroy]']").val() != "1")
@@ -95,6 +95,7 @@ validateRecipeForm = () ->
       if (time == undefined || time == null || time == "")
         alert("Time can't be empty")
         return (stepValid = false)
+      # TODO validate prereqs
     return true
   )
   if (!stepValid)

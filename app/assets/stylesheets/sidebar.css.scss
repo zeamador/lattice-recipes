@@ -2,47 +2,46 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.side-bar {
+.side-bar { //whole sidebar
   float: right;
   width: 26%;
   color: Black;
 }
 
-.side-bar a {
-  text-decoration: none;
+.side-bar a { //links in sidebar
   padding: 0;
 }
 
-.side-bar-section {
+.side-bar-section { //whole section of sidebar
   background-color: #EAEEF8;
   box-shadow: 0px 0px 10px #231105;
   margin-bottom: 10px;
 }
 
-.header-side-bar {
+.header-side-bar { //header of section
   padding: 5px 15px 5px 15px;
   background-color: #A34318;
   color: White;
 }
 
-.content-side-bar {
+.content-side-bar { //content of section
   padding: 5px;
   padding-left: 15px;
 }
 
-.content-side-bar ul {
+.content-side-bar ul { //lists
   list-style-type: none;
   padding-left: 0;
   margin: 0;
 }
 
-.content-side-bar .recipe-title, .recipe-tags {
+.content-side-bar .recipe-title, .recipe-tags { //important information
   margin: 2px;
   margin-left: 0;
   padding: 2px;
 }
 
-.side-bar-recipe {
+.side-bar-recipe { //recipe display
   border-bottom-style: solid;
   border-bottom-width: thin;
   overflow: hidden;
@@ -50,11 +49,11 @@
   margin-bottom: 5px;
 }
 
-.view-meal-link {
+.view-meal-link { //link to meal
   padding: 5px;
 }
 
-.meal-recipe-link-side-bar {
+.meal-recipe-link-side-bar { //options for reipes in meal
   float: right;
   padding-left: 15px;
 }

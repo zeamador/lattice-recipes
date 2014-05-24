@@ -41,6 +41,7 @@ h1, h2, h3 { /* headings */
 }
 
 a { /* links */
+  color: #33689D;
   text-decoration: none;
 }
 

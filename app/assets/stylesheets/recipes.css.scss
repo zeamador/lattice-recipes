@@ -2,15 +2,11 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+/* General styling for recipe pages and JS */
+
 .pages {
   font-weight: bold;
   padding-top: 10px;
-}
-
-.recipe {
-  border-bottom-style: solid;
-  border-bottom-width: thin;
-  overflow: hidden;
 }
 
 .input-append {
@@ -28,23 +24,73 @@
   font-weight: bold;
 }
 
-.add-to-meal {
-  float: right;
-  margin-right: 20px;
+.title-label {
+  font-size: 16pt;
+  font-weight: bold;
 }
 
-.back-to-meal {
-  float: right;
-  margin-right: 20px;
-}
-
-.show-detail {
+.show-detail { /* on view recipe page (link for more or less details) */
   font-size: 18px;
+}
+
+/* Recipe display in search and sidebar */
+
+.recipe {
+  border-bottom-style: solid;
+  border-bottom-width: thin;
+  overflow: hidden;
+}
+
+/* Buttons and their containers */
+
+input[value="Edit Recipe"] { /* Edit recipe button */
+  float: left;
+}
+
+input[value="Delete Recipe"] { /* Delete recipe button */
+  float: left;
+  margin-left: 20px;
+}
+
+.create-recipe-btn { /* Create recipe button location */
+  text-align: center;
+}
+
+.create-recipe-btn input { /* Create recipe button */
+  width: 140px;
+  height: 40px;
+  font-size: 2em;
+}
+
+.add-to-meal { /* Add to meal button */
+  float: right;
+  margin-right: 20px;
+}
+
+.back-to-meal { /* Back to meal button */
+  float: right;
+  margin-right: 20px;
+}
+
+/* Ingredients */
+
+.ingredient {
+  border: 0;
+  padding: 0 0 5px 0;
+  margin: 0;
 }
 
 .ingredient-header {
   font-size: 18px;
   font-weight: bold;
+}
+
+/* Steps */
+
+textarea { /* description and ingredients */
+  height: 100px;
+  width: 400px;
+  font-family: "Helvetica", sans-serif;
 }
 
 .step-header {
@@ -54,54 +100,32 @@
   font-weight: bold;
 }
 
-input[value="Edit Recipe"] {
-  float: left;
-}
-
-input[value="Delete Recipe"] {
-  float: left;
-  margin-left: 20px;
-}
-
-/* Ingredient Styling and Spacing */
-.ingredient {
-  border: 0;
-  padding: 0 0 5px 0;
-  margin: 0;
-}
-
-/* Step Styling and Spacing */
 .step, .prereq {
   border: 0;
   padding: 0 0 15px 0;
   margin: 0;
 }
 
-.title-label {
-  font-size: 16pt;
-  font-weight: bold;
-}
-
-.step-fields {
+.step-fields { /* contains left-step-fields and right-step-fields */
   display: block;
   width: 100%;
 }
 
-.left-step-fields {
+.left-step-fields { /* time and equipment */
   float: left;
   width: 280px;
 }
 
-.right-step-fields {
+.right-step-fields { /* attentiveness */
   width: 200px;
 }
 
-.prereqs {
+.prereqs { /* prereq steps */
   display: block;
   width: 100%;
 }
 
-.stepnum {
+.stepnum { /* number for this step */
   font-size: 48pt;
   font-weight: bold;
   color: Grey;
@@ -111,7 +135,7 @@ input[value="Delete Recipe"] {
   padding-right: 5px;
 }
 
-.tabbed-margin-left {
+.tabbed-margin-left { /* indentation for whole step */
   margin-left: 85px;
 }
 
@@ -133,24 +157,4 @@ input[value="Delete Recipe"] {
 
 .remove-prereq {
   margin-left: 85px;
-}
-
-.unit-input-box {
-  width: 100px;
-}
-
-.create-recipe-btn {
-  text-align: center;
-}
-
-.create-recipe-btn input {
-  width: 140px;
-  height: 40px;
-  font-size: 2em;
-}
-
-textarea {
-  height: 100px;
-  width: 400px;
-  font-family: "Helvetica", sans-serif;
 }

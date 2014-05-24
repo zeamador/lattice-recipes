@@ -2,7 +2,9 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-#error_explanation {
+/* Errors */
+
+#error_explanation { //error discription
   color: #f00;
   ul {
     list-style: none;
@@ -10,20 +12,24 @@
   }
 }
 
-.field_with_errors {
+.field_with_errors { //entry box with errors
   @extend .control-group;
   @extend .error;
   display: inline;
 }
 
-.field_with_errors label {
+.field_with_errors label { //label to box with error
   text-shadow: 0 0 0.05em Red;
 }
 
-.btn.btn-large.btn-primary {
+/* Buttons */
+
+.btn.btn-large.btn-primary { //submit button
   margin-top: 10px;
 }
 
-.edit_kitchen input[type="number"] {
+/* Input boxes */
+
+.edit_kitchen input[type="number"] { //inputing numbers in kitchen settings
   width: 50px;
 }

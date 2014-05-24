@@ -11,8 +11,8 @@ class KitchensController < ApplicationController
 
   private
 
-    def kitchen_params
-      params.require(:kitchen).permit(
-        EquipmentTypes.constants.map { |c| c.downcase } )
-    end
+  def kitchen_params
+    params.require(:kitchen).permit(
+      EquipmentTypes.constants.map { |c| c.downcase } )
+  end
 end

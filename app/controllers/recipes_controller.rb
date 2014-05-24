@@ -23,6 +23,8 @@ class RecipesController < ApplicationController
     end
   end
 
+  # For use with the user's meal, creates a temporary copy
+  # of the recipe for customization by the user.
   def add_to_meal
     @recipe = Recipe.find(params[:id])
 
@@ -102,20 +104,20 @@ class RecipesController < ApplicationController
 
   private
 
-    def recipe_params
-      params.require(:recipe).permit(:title, :secret, :tags, :meal_id, :serving,
-                                     :ingredients,
-                                     steps_attributes: [:id, :step_number,
-                                                        :description, :time,
-                                                        :attentiveness,
-                                                        :final_step, :equipment,
-                                                        :_destroy,
-                                     step_mappers_attributes: [:id,
-                                                               :preheat_prereq,
-                                                               :immediate_prereq,
-                                                               :prereq_id,
-                                                               :prereq_step_number,
-                                                               :_destroy]])
-    end
+  def recipe_params
+    params.require(:recipe).permit(:title, :secret, :tags, :meal_id, :serving,
+                                   :ingredients,
+                                   steps_attributes: [:id, :step_number,
+                                                      :description, :time,
+                                                      :attentiveness,
+                                                      :final_step, :equipment,
+                                                      :_destroy,
+                                   step_mappers_attributes: [:id,
+                                                             :preheat_prereq,
+                                                             :immediate_prereq,
+                                                             :prereq_id,
+                                                             :prereq_step_number,
+                                                             :_destroy]])
+  end
 
 end

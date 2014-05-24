@@ -32,8 +32,17 @@
 6. Ensure your ruby and rails versions match those listed below:
  - ``ruby -v``
  - ``rails -v``
-7. In the ``lattice-recipes/`` directory, migrate the development database
+7. Create a password for the postgres account created by the script:
+ - ``sudo -u postgres psql``
+ - postgres=# ``\password lattice``
+ - Enter new password: ``lattice``
+ - Enter it again: ``lattice``
+ - postgres=# ``\q``
+8. In the ``lattice-recipes/`` directory, create the development and test databases
+ - ``bin/rake db:create RAILS_ENV=development``
  - ``bin/rake db:migrate RAILS_ENV=development``
+ - ``bin/rake db:create RAILS_ENV=test``
+ - ``bin/rake db:migrate RAILS_ENV=test``
  
 ## Development Environment
 - Ubuntu 14.04

@@ -38,29 +38,26 @@ class UsersController < ApplicationController
     end
   end
 
-  def edit
-  end
-
   def update
     if @user.update_attributes(user_params)
       flash[:success] = "Password changed!"
     end
-      render 'edit'
+    redirect_to root_url
   end
 
   private
 
-    def user_params
-      params.require(:user).permit(:name, :email, :password,
-                                   :password_confirmation)
-    end
+  def user_params
+    params.require(:user).permit(:name, :email, :password,
+                                 :password_confirmation)
+  end
 
-    def signed_in_user
-       redirect_to root_url, notice: "Please sign in." unless signed_in?
-    end
+  def signed_in_user
+    redirect_to root_url, notice: "Please sign in." unless signed_in?
+  end
 
-    def correct_user
-      @user = User.find(params[:id])
-      redirect_to(root_url) unless current_user?(@user)
-    end
+  def correct_user
+    @user = User.find(params[:id])
+    redirect_to(root_url) unless current_user?(@user)
+  end
 end

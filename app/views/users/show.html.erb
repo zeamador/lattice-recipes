@@ -35,6 +35,6 @@
     <%= f.label :password_confirmation, "Confirm New Password" %></br>
     <%= f.password_field :password_confirmation %></br>
   
-    <%= f.submit "Change Password" %>
+    <%= f.submit "Change Password", method: :patch %>
   <% end %>
 </div>

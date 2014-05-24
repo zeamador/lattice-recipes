@@ -78,7 +78,7 @@ Web URL:          http://lattice-recipes.herokuapp.com/
 
 ## Running our Test Suite
 1. ``cd lattice-recipes``
-2. ``rspec spec`` 
+2. ``bundle exec rspec spec`` 
 
 ## Automated Testing
 We are using [Travis CI][travis]

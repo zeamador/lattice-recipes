@@ -41,47 +41,52 @@ Chris, Jake, and Sam wrote some supporting classes (Recipe, Ingredient, Step, Eq
 </tr>
 <tr>
   <td>5/5 - 5/9</td>
-  <td>Nick, Zach: Implement upload, search, display pages<br />
-  Jake: Implement basic upload controller functionality<br />
+  <td>Nick, Zach: Implement add, display pages<br />
+  Jake: Implement basic recipe addition controller functionality<br />
   Bessie: Implement user account creation and login<br />
-  Sam, Chris: Work on combination algorithm</td>
+  Sam: Write system tests<br />
+  Chris: Work on combination algorithm</td>
   <td>None</td>
 </tr>
 <tr>
   <td>5/12 - 5/16</td>
-  <td>Nick, Zach: Write basic recipe combination page, implement user meal sidebar display<br />
-  Jake: Finish and test upload controller<br />
-  Bessie: Add user meal support<br />
-  Chris: Implement recipe combination<br />
-  Sam: Test combination and supporting classes<br />
+  <td>Nick, Zach: Improve recipe addition form and site UI, add “latest recipes” to sidebar<br />
+  Jake: Finish and test addition controller<br />
+  Bessie: Add show recipe page, implement recipe search<br />
+  Chris: Implement recipe combination algorithm<br />
+  Sam: Test algorithm, improve documentation<br />
   All: Meet with customer (Isaac)</td>
   <td>Beta Release (5/16)</td>
 </tr>
 <tr>
   <td>5/19 - 5/23</td>
-  <td>Nick, Zach: Implement UI for combined recipes and search, add “latest recipes” sidebar feature<br />
-  Jake: Add user support, help with other back-end tasks<br />
-  Bessie: Support private recipes in search<br />
-  Sam, Chris: Bugfix combination<br />
-  All: Do more usability testing with customers and others</td><br />
+  <td>Nick: Implement UI for combined recipes and search<br />
+  Zach: Make recipe input dynamic, add client-side validation<br />
+  Jake: Add recipe edit functionality<br />
+  Bessie: Add user meal support, add user meal sidebar display<br />
+  Chris: Bugfix recipe combination, write basic recipe combination page<br />
+  Sam: Write system tests, improve documentation, setup test coverage<br />
+  All: Do more usability testing with customers and others</td>
   <td>Feature-Complete Release (5/23)</td>
 </tr>
 <tr>
   <td>5/26 - 5/30</td>
-  <td>Nick: Finish documentation<br />
-  Zach: Improve error handling/error messages<br />
-  All: Meet with customers to fix bugs, implement stretch features if time permits</td>
+  <td>Nick: Make recipe input tutorial<br />
+  Zach: Improve validation error messages, improve recipe input page UI<br />
+  Jake, Bessie: Improve meal schedule UI display<br />
+  All: Fix bugs, improve error handling, implement stretch features if time permits</td>
   <td>Release Candidate (5/30)</td>
 </tr>
 <tr>
   <td>6/2 - 6/6</td>
-  <td>All: Shore up any remaining issues, finish any chosen stretch features, polish UI and documentation</td>
+  <td>All: Fix any remaining issues, finish any chosen stretch features, polish UI and documentation</td>
   <td>Version 1.0 (6/4)</td>
 </tr>
 <tr>
-  <td>6/9</td>
-  <td>All: Celebrate, cook delicious meals!</td>
-  <td>Final Demo</td>
+  <td>6/9 - 6/13</td>
+  <td>Nick, Zach, Chris, Sam: Graduate!!!<br />
+  All: Celebrate, cook delicious meals!</td>
+  <td>Final Demo (6/9)</td>
 </tr>
 </table>
 
@@ -103,7 +108,7 @@ Only a few of our group members have done web design before, and even they are n
 
 ### Usability of Recipe Upload Form
 
-Because of the way our recipe combination algorithm will work, we need a fair bit of “metadata” about the recipes in the app. Because recipe upload is user-facing, this means users are required to do extra work and deal with a relatively complex interface when inputting recipes. It is possible that our input form will be too complicated for end users, which could result in them making mistakes when inputting recipes, or result in them simply not wanting to use the application. Based on our early customer feedback, this has a low likelihood of occurring. However, the impact of it occurring would be very high - our product would surely fail if our users could not use (or were not willing to use) this crucial feature of our application. We have already taken steps to make sure this will not happen, by making mock UI’s of the input form and testing it on our customers, and we are fairly confident that we will be able to come up with a useable design considering Isaac, our TA customer, told us he thought our input form made sense and would not be unreasonably difficult to use. 
+Because of the way our recipe combination algorithm will work, we need a fair bit of “metadata” about the recipes in the app. Because recipe addition is user-facing, this means users are required to do extra work and deal with a relatively complex interface when inputting recipes. It is possible that our input form will be too complicated for end users, which could result in them making mistakes when inputting recipes, or result in them simply not wanting to use the application. Based on our early customer feedback, this has a low likelihood of occurring. However, the impact of it occurring would be very high - our product would surely fail if our users could not use (or were not willing to use) this crucial feature of our application. We have already taken steps to make sure this will not happen, by making mock UI’s of the input form and testing it on our customers, and we are fairly confident that we will be able to come up with a useable design considering Isaac, our TA customer, told us he thought our input form made sense and would not be unreasonably difficult to use. 
 
 ### Clarity of Meal Schedules
 

@@ -33,7 +33,9 @@
 
   <div id="steps_container">
     <h3>Steps</h3>
-    <% f.fields_for :steps -%>
+    <% f.fields_for :steps do |step_form| -%>
+      <%= render partial: "step_fields", locals: {f: step_form, edit_flag: false} %>
+    <% end -%>
     <p><%= f.link_to_add "Add Step", :steps %></p>
   </div>
   

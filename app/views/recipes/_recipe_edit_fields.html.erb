@@ -22,8 +22,8 @@
       (
       <%= step_form.object.step_number %>
       )
-      <div>
-	<%= render partial: "specific_step_fields", locals: {f: step_form} %>
+      <div class = "tabbed-margin-left">
+	<%= render partial: "step_fields", locals: {f: step_form, edit_flag: true} %>
       </div>
     <% end -%>
 

@@ -111,6 +111,7 @@ class RecipesController < ApplicationController
                                                         :final_step, :equipment,
                                                         :_destroy,
                                      step_mappers_attributes: [:id,
+                                                               :preheat_prereq,
                                                                :immediate_prereq,
                                                                :prereq_id,
                                                                :prereq_step_number,

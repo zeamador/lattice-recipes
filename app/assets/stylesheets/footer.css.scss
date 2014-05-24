@@ -4,13 +4,18 @@
 
 #footer_container {
   clear: both;
-  position: relative;
+  position: absolute;
   width: 100%;
   bottom: 0;
   height: 40px; /* Height of footer */
 }
 
 #footer {
+  font-size: 10px;
   padding-top: 10px;
   text-align: center;
+}
+
+#footer a {
+  color: #657BD8;
 }

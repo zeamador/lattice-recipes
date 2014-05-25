@@ -1,0 +1,2 @@
+Install ImageMagick:(just for development)
+Follow this website: http://www.imagemagick.org/script/binary-releases.php

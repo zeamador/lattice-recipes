@@ -22,8 +22,8 @@
         <%= f.number_field :time, :class => "number-input-box", :min => 1 %> minutes
         <div class="equipment-label">Equipment:
           <% equip_array = [] -%>
-          <% EquipmentTypes.constants.each do |constant| -%>
-            <% equip_array << [constant.capitalize, constant.downcase] -%>
+          <% EquipmentTypes.constants.each do |equip_type| -%>
+            <% equip_array << [equip_type.capitalize, equip_type.downcase] -%>
           <% end -%>
           <%= f.select(:equipment, equip_array, { prompt: true, :prompt => "None" }) %>
         </div>
@@ -41,19 +41,15 @@
           </a>
         </span>
         <br />
-        <%= f.radio_button :attentiveness, "2", { checked: true } %>
-        <%= f.label :attentiveness_2, "All" %>
-        <br />
-        <%= f.radio_button :attentiveness, "1" %>
-        <%= f.label :attentiveness_1, "Some" %>
-        <br />
-        <%= f.radio_button :attentiveness, "0" %>
-        <%= f.label :attentiveness_0, "None" %>
-        <br /> 
+        <% FocusTypes.constants.each do |focus_type| -%>
+          <%= f.radio_button :attentiveness, focus_type.downcase, { :checked => focus_type == :ALL } %>
+          <%= f.label :attentiveness, focus_type.capitalize, :value => focus_type.downcase %>
+          <br />
+        <% end -%>
       </span>
 
       <div class="prereqs">
-	<%= f.fields_for :step_mappers do |mapper_form| %>
+        <%= f.fields_for :step_mappers do |mapper_form| %>
           <%= render partial: "step_mapper_fields", locals: {f: mapper_form, edit_flag: edit_flag} %>
         <% end -%>
 

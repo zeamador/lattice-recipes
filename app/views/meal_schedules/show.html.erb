@@ -27,16 +27,7 @@
           <strong>Description:</strong> <%= step.description %>
           <br />
           <strong>Time:</strong> <%= step.time %> minutes
-          <strong>Attentiveness:</strong>
-          <% if step.focus == 0 %>
-            None
-          <% else %>
-            <% if step.focus == 1 %>
-              Some
-            <% else %>
-              All
-            <% end %>
-          <% end %>
+          <strong>Attentiveness:</strong> <%= step.focus.capitalize %>
           <br />
           <% unless step.equipment.nil? %>
             <strong>Equipment:</strong> <%= step.equipment.capitalize %>

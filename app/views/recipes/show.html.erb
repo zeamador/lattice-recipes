@@ -71,16 +71,7 @@
       <br />
       <% if params[:showDetail] == "1" %>
       <strong>Time:</strong> <%= step.time %> minutes
-      <strong>Attentiveness:</strong> 
-      <% if step.attentiveness == 0 %>
-        None
-      <% else %>
-        <% if step.attentiveness == 1 %>
-          Some
-        <% else %>
-          All
-        <% end %>
-      <% end %>
+      <strong>Attentiveness:</strong> <%= step.attentiveness.capitalize %>
       <br />
       <% if step.equipment.present? %>
         <strong>Equipment:</strong> <%= step.equipment.capitalize %>
@@ -91,7 +82,7 @@
         <% step_mapper.prereq_id = @recipe.steps.find_by(step_number: step_mapper.prereq_step_number).id %>
         <% step_mapper.save %>
         <strong>Immediate:</strong> <%= step_mapper.immediate_prereq %>
-	<strong>Preheat:</strong> <%= step_mapper.preheat_prereq %>
+	      <strong>Preheat:</strong> <%= step_mapper.preheat_prereq %>
         <br />
       <% end %>
       <% end %>

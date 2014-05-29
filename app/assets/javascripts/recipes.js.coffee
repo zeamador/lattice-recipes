@@ -72,10 +72,6 @@ validateRecipeForm = () ->
   if (title == undefined || title == null || title == "")
     alert("Title can't be empty")
     return false
-  tags = $("#recipe_tags").val()
-  if (tags == undefined || tags == null || tags == "")
-    alert("Tags can't be empty")
-    return false
   ingredients = $("#recipe_ingredients").val()
   if (ingredients == undefined || ingredients == null || ingredients == "")
     alert("Ingredients can't be empty")

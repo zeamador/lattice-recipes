@@ -7,7 +7,6 @@ class Recipe < ActiveRecord::Base
   mount_uploader :avatar, AvatarUploader
 
   validates :title, presence: true
-  validates :tags, presence: true
   validates :ingredients, presence: true
   validates :steps, presence: true
   validates :serving, numericality: { greater_than_or_equal_to: 1 }

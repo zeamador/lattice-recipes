@@ -30,17 +30,19 @@
     <h1><%= @recipe.title %></h1>
   </div>
   
-  <% if @recipe.secret %>
+  <% if @recipe.secret -%>
     <p> <strong> SECRET </strong> </p>
-  <% else %>
+  <% else -%>
     <p>Uploader: <%= @recipe.user.name %></p>
-  <% end %>
+  <% end -%>
+  <% unless @recipe.tags.empty? -%>
     <p>Tags:
       <% @tags = @recipe.tags.split(%r{,\s*}) %>
       <% for @tag in @tags %>
         <%= link_to @tag, recipes_path(:search => @tag)  %>
       <% end %>
     </p>
+  <% end -%>
 
   <p>Servings: <%= @recipe.serving %> </p>
 

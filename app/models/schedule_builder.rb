@@ -199,6 +199,10 @@ class ScheduleBuilder
   def schedule_complete?
     @possible_steps.empty? && @pred_counts.empty?
   end
+  
+  def state
+    @state.clone
+  end
 
   private
   # Internal: Populate the @pred_counts Hash by mapping each step in the

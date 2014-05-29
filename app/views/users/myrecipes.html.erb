@@ -13,7 +13,6 @@
   <% end %>
   <% @my_recipes.each do |recipe| %>
     <div class="recipe">
-      <p><%= image_tag(recipe.avatar.thumb.url, alt: recipe.title) %></p>
       <p class="recipe-title"><%= link_to recipe.title, recipe %>
         <% if recipe.secret %>
           [SECRET]

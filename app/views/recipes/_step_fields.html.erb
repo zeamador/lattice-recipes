@@ -8,6 +8,17 @@
     </span>
   <% end -%>
 
+  <% if edit_flag -%>
+    <span class="stepnum">
+      <%= f.object.step_number %>
+    </span>
+    <span class="remove-step">
+      <!-- Keep this span here even though it doesn't do anything in order to
+           maintain the same alignment as an upload recipe form. The CSS is
+           looking at this class and using the format to align everything. -->
+    </span>
+  <% end -%>
+
   <div class = "tabbed-margin-left">
     <%= f.text_area :description %> 
     <br />

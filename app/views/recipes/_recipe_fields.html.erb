@@ -11,12 +11,11 @@
   </p>
 
   <%= f.check_box :secret %>
-  <span class="check-box-label"><strong>Secret</strong>
-    <a class="tooltips">
-      <img class="question-mark-icon" src="/assets/question-mark-icon.png"></img>
-      <span>Other users will not be able to see this recipe.</span>
-    </a>
-  </span>
+  <strong><%= f.label :secret %></strong>
+  <a class="tooltips">
+    <img class="question-mark-icon" src="/assets/question-mark-icon.png"></img>
+    <span>Other users will not be able to see this recipe.</span>
+  </a>
 
   <p>
     <strong><%= f.label :serving %></strong><br />

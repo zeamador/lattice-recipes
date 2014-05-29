@@ -32,23 +32,16 @@ ActiveRecord::Schema.define(version: 20140524215145) do
   end
 
   create_table "recipes", force: true do |t|
-    t.boolean  "temp",                default: false
+    t.boolean  "temp",        default: false
     t.string   "title"
-    t.integer  "serving",             default: 1
-    t.boolean  "secret",              default: false
+    t.integer  "serving",     default: 1
+    t.boolean  "secret",      default: false
     t.string   "tags"
     t.text     "ingredients"
-    t.string   "image_name"
-    t.string   "imaage_content_type"
-    t.string   "image_size"
     t.integer  "user_id"
     t.integer  "meal_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "avatar_file_name"
-    t.string   "avatar_content_type"
-    t.integer  "avatar_file_size"
-    t.datetime "avatar_updated_at"
     t.string   "avatar"
   end
 

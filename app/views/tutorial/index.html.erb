@@ -65,13 +65,14 @@
     </div>
   </div>
   <br />
+  <br />
 
   <!-- Step Basics -->
   <div class="tutorial-section">
     <div class="upload-form">
-      <p><strong>Typical Cookbook Step:</strong></p>
+      <p><strong>Typical Cookbook Step</strong></p>
       <p>Simmer sauce over medium-high heat for 5 minutes, then remove from heat and add cream.</p>
-      <p><strong>Lattice Recipe Steps:</strong></p>
+      <p><strong>Lattice Recipe Steps</strong></p>
       
       <!-- Step 1 -->
       <textarea disabled class="tutorial-textbox">Simmer sauce over medium-high heat for 5 minutes.
@@ -166,9 +167,158 @@
       <p>The <strong>time</strong> of a step is an estimate of the nubmer of minutes it takes for the entire step to finish. This includes time when the cook is not actively doing anything. These times do not need to be exact, but should be a reasonable guess of the time it would take an average cook to complete this task. Other users will be able to customize these times later.</p>
       <p>A key component of Lattice meal schedules is ensuring that a cook's kitchen <strong>equipment</strong> is not overused. In order to do this, we need to know if a step uses a limited kitchen resource, like the oven. We assume, however, that a cook won't run out of knives, bowls, pots, etc. while completing basic cooking tasks.</p>
       <h4>Breaking Up Steps</h4>
-      <p>Since Lattice meal schedules aim to optimize a cook's time and resources, it is critical that the steps in Lattice recipes are broken down into small, indivisible tasks. If a recipe's step contains multiple subactions, a Lattice meal schedule will be unable to schedule these actions at the same time or to schedule another action in between them.</p>
+      <p>Since Lattice meal schedules aim to optimize a cook's time and resources, it is critical that the steps in Lattice recipes are broken down into small, indivisible tasks. If a recipe's step contains multiple subactions, a Lattice meal schedule will be unable to schedule these actions at the same time or to schedule another action inbetween them.</p>
       <p>In general, a single step should not use more than one piece of equipment or use different amounts of attention. If the first part of a step uses some attention and the second part uses all attention, it should be split into separate steps.</p>
     </div>
   </div>
+  <br />
+  <br />
+ <!-- Attentiveness -->
+  <div class="tutorial-section">
+    <div class="upload-form">
+      <!-- All -->
+      <br /><strong>All Attention Required</strong><br />
+      <textarea disabled class="tutorial-textbox">Spread marinade over each chicken breast.
+      </textarea>
+      <br />
+      <div class="step-fields">
+	<span class="left-step-fields">
+	  Time
+	  <input class="number-input-box" value="5" disabled="true" />
+          <a class="tooltips">
+            <img class="question-mark-icon" 
+		 src="/assets/question-mark-icon.png"></img>
+            <span>Total time required to complete the step.</span>
+          </a>
+	  minutes
+	  
+          <div class="equipment-label">Equipment:
+            <select disabled>
+	      <option>None</option>
+	      <option>Microwave</option>
+	    </select>
+	    
+          </div>
+          <br />
+	</span>
+	
+	<span class="right-step-fields">
+          <span class="radio-buttons-label">Attentiveness:
+            <a class="tooltips">
+              <img class="question-mark-icon" 
+		   src="/assets/question-mark-icon.png"></img>
+              <span>How much of your attention does this step require? 
+		Examples:<br>
+		All) chopping or sauteing<br>
+		Some) stirring occasionally<br>
+		None) leaving water to boil.</span>
+            </a>
+          </span>
+          <br />
+	  <input disabled type="radio" name="all" checked>All<br />
+	  <input disabled type="radio" name="all">Some<br />
+	  <input disabled type="radio" name="all">None<br />
+	  <br />
+	</span>
+      </div>
+
+      <!-- Some -->
+      <strong>Some Attention Required</strong><br />
+      <textarea disabled class="tutorial-textbox">Place chicken in a pan, and lightly brown.
+      </textarea>
+      <br />
+      <div class="step-fields">
+	<span class="left-step-fields">
+	  Time
+	  <input class="number-input-box" value="10" disabled="true" />
+          <a class="tooltips">
+            <img class="question-mark-icon" 
+		 src="/assets/question-mark-icon.png"></img>
+            <span>Total time required to complete the step.</span>
+          </a>
+	  minutes
+	  
+          <div class="equipment-label">Equipment:
+            <select disabled>
+	      <option>Burner</option>
+	      <option>Microwave</option>
+	    </select>
+	    
+          </div>
+          <br />
+	</span>
+	
+	<span class="right-step-fields">
+          <span class="radio-buttons-label">Attentiveness:
+            <a class="tooltips">
+              <img class="question-mark-icon" 
+		   src="/assets/question-mark-icon.png"></img>
+              <span>How much of your attention does this step require? 
+		Examples:<br>
+		All) chopping or sauteing<br>
+		Some) stirring occasionally<br>
+		None) leaving water to boil.</span>
+            </a>
+          </span>
+          <br />
+	  <input disabled type="radio" name="some">All<br />
+	  <input disabled type="radio" name="some" checked>Some<br />
+	  <input disabled type="radio" name="some">None<br />
+	  <br />
+	</span>
+      </div>
+        
+      <!-- None -->
+      <strong>No Attention Required</strong><br />
+      <textarea disabled class="tutorial-textbox">Preheat oven to 350 F.
+      </textarea>
+      <br />
+      <div class="step-fields">
+	<span class="left-step-fields">
+	  Time
+	  <input class="number-input-box" value="10" disabled="true" />
+          <a class="tooltips">
+            <img class="question-mark-icon" 
+		 src="/assets/question-mark-icon.png"></img>
+            <span>Total time required to complete the step.</span>
+          </a>
+	  minutes
+	  
+          <div class="equipment-label">Equipment:
+            <select disabled>
+	      <option>Oven</option>
+	      <option>Microwave</option>
+	    </select>
+          </div>
+          <br />
+	</span>
+	<span class="right-step-fields">
+          <span class="radio-buttons-label">Attentiveness:
+            <a class="tooltips">
+              <img class="question-mark-icon" 
+		   src="/assets/question-mark-icon.png"></img>
+              <span>How much of your attention does this step require? 
+		Examples:<br>
+		All) chopping or sauteing<br>
+		Some) stirring occasionally<br>
+		None) leaving water to boil.</span>
+            </a>
+          </span>
+          <br />
+	  <input disabled type="radio" name="none">All<br />
+	  <input disabled type="radio" name="none">Some<br />
+	  <input disabled type="radio" name="none" checked>None<br />
+	  <br />
+	</span>
+      </div>
+    </div>
+    <div class="annotation">
+      <h3>Attentiveness</h3>
+      <p>Steps that use most or all of your attention should be marked as <strong>all attention</strong>. If it would be physically difficult to perform an identical task at the same time, then it most likely requires all of your attention. Examples include chopping vegetables, mixing ingredients, and stirring constantly.</p>
+      <p>Steps that only require periodic or passive attention should be marked as <strong>some attention</strong>. Many steps using the burner, for example, requre you to keep an eye on the cooking food, occasionally stirring. This takes up some of your attention, but does not prevent you from doing other tasks at the same time.</p>
+      <p><strong>No attention</strong> steps are those that a cook can completely ignore for the majority of their duration. Steps marked as none may use more attention during the first or last minute of the step, but if this higher attentiveness period is longer than a minute, the step should be broken up into multiple steps. Examples include preheating the oven, letting something stand, and boiling water.</p>
+    </div>
+  </div>
+  <br />
   <br />
 </div>

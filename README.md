@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/zeamador/lattice-recipes.svg?branch=master)](https://travis-ci.org/zeamador/lattice-recipes)
+
 # Lattice
 ## CSE 403 Spring 2014
 ### Team Ares

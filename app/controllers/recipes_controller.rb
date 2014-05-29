@@ -2,6 +2,10 @@ class RecipesController < ApplicationController
 
   def show
     @recipe = Recipe.find(params[:id])
+    @total_time = 0
+    for @step in @recipe.steps
+      @total_time += @step.time
+    end
   end
 
   def new

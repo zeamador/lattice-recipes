@@ -25,6 +25,8 @@
       </p>
       <p>Servings: <%= @recipe.serving %> </p>
 
+      <p>Total Estimated Time: <%= @total_time %> minutes</p>
+
       <h3>Ingredients</h3>
       <%= simple_format(@recipe.ingredients) %>
 

@@ -62,6 +62,3 @@ gem "nested_form"
 # gem 'debugger', group: [:development, :test]
 
 ruby "2.1.2"
-
-gem 'carrierwave'
-gem 'mini_magick'

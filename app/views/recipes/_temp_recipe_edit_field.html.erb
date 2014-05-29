@@ -12,7 +12,6 @@
 	      <%= button_to "Back To Meal", meal_path(current_user.meal), method: :get %>	
       </div>
     <% end -%>
-    <p><%= image_tag(@recipe.avatar.url, alt: @recipe.title) %> </p>
     <h1><%= @recipe.title %></h1>
   </div>
   <% if current_user == @recipe.user %>

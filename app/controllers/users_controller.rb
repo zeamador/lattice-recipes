@@ -46,6 +46,16 @@ class UsersController < ApplicationController
     redirect_to root_url
   end
 
+  def destroy
+    @user = User.find(params[:id])
+    @recipes = @user.recipes
+    @recipes.each do |recipe|
+      recipe.destroy
+    end
+    @user.destroy
+    redirect_to root_url
+  end
+
   private
 
   def user_params

@@ -37,4 +37,10 @@
   
     <%= f.submit "Change Password", method: :patch %>
   <% end %>
+
+  <p>
+    <%= button_to 'Delete User Account', @user, method: :delete,
+      data: { confirm: "Are you sure you want to delete? All recipes created 
+with this user will be deleted as well." } %>
+  </p>
 </div>

@@ -9,7 +9,8 @@ class User < ActiveRecord::Base
   # case insensitive
   VALID_NAME_REGEX = /\A[a-z\d\-.]+\z/i
   validates(:name, presence: true, length: { maximum: 20, minimum: 5}, 
-            format: { with: VALID_NAME_REGEX })
+            format: { with: VALID_NAME_REGEX }, 
+            uniqueness: { case_sensitive: false })
   
   # Valid email:
   # * @ * . *

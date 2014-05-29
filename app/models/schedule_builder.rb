@@ -70,6 +70,9 @@ class ScheduleBuilder
       # Remove step from possible steps
       @possible_steps.delete(step)
 
+      # Add step to this builder's state
+      @state.steps << step
+
       # Add step to schedule
       start_time = @current_time + step.time
       unless @significant_times.include?(start_time)
@@ -105,6 +108,16 @@ class ScheduleBuilder
     res = false
     unless @current_time <= old_current_time
       res = add_step(step)
+
+      # add_step also adds the step to this builder's state, so remove it
+      @state.steps.delete(step)
+
+      # Now add the step to this builder's state's preemptive step map
+      unless @state.preemptive_step_map.has_key?(@current_time)
+        @state.preemptive_step_map[@current_time] = Set[]
+      end
+
+      @state.preemptive_step_map[@current_time] << step
     end
 
     @current_time = old_current_time
@@ -129,13 +142,16 @@ class ScheduleBuilder
   #
   # Returns true if the current time was successfully advanced, false otherwise.
   def advance_current_time
-    debug_curr_time = @current_time
     @current_time = get_next_time
 
     if @current_time.nil?
       # There is not a next time to advance to; fail
       return false
     end
+
+    # Reset this builder's state, because it only stores the state of the
+    # builder between calls to advance_current_time.
+    @state = State.new
 
     # Add all prereqs of steps that start at the new current time to possible 
     # steps. @current_time is guaranteed to be a valid key in @schedule, because

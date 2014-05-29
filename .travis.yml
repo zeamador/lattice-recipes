@@ -8,6 +8,7 @@ notifications:
   on_failure: change # default: always
 before_script:
   - psql -c 'create database travis_ci_test;' -U postgres
+  - cp config/database.yml.travis config/database.yml
 # uncomment this line if your project needs to run something other than `rake`:
 script: bundle exec rspec spec
 # set environment variables, including creating a secret key

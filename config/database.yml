@@ -53,6 +53,8 @@ development:
   #min_messages: notice
 
 test:
-  adapter: postgresql
-  database: travis_ci_test
-  username: postgres
+  <<: *default
+  database: lattice-recipes_test
+  username: lattice
+  password: lattice
+  host: localhost

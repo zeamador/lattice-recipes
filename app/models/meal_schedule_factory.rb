@@ -123,6 +123,8 @@ module MealScheduleFactory
       unless is_redundant
         seen << state
       end
+
+      is_redundant
     end
   end
 end

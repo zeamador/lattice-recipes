@@ -42,8 +42,12 @@ class UsersController < ApplicationController
   def update
     if @user.update_attributes(user_params)
       flash[:success] = "Password changed!"
+      redirect_to @user
+    else
+      flash[:error] = "Password wasn't changed! Make sure the password is 6
+ to 20 characters. Letters, numbers, dashes, and periods are the allowed characters."
+      redirect_to @user
     end
-    redirect_to root_url
   end
 
   def destroy

@@ -38,8 +38,9 @@ class Resources
       @preheat_step = step.preheat_prereq
     end
 
-    if @free_focus >= step.focus
-      @free_focus -= step.focus
+    focus_val = FocusTypes.const_get(step.focus)
+    if @free_focus >= focus_val
+      @free_focus -= focus_val
       true
     else
       false
@@ -61,6 +62,6 @@ class Resources
       @free_equipment[step.equipment] += 1
     end
 
-    @free_focus += step.focus
+    @free_focus += FocusTypes.const_get(step.focus)
   end  
 end

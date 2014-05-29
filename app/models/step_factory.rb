@@ -32,7 +32,7 @@ class StepFactory < ObjectFactory
       equipment = db_step.equipment.upcase.to_sym
     end
 
-    focus = FocusTypes.const_get(db_step.attentiveness)
+    focus = db_step.attentiveness.upcase.to_sym
 
     StepObject.new(db_step.description, db_step.time, focus, db_step.recipe_id,
                    equipment: equipment, prereqs: prereqs, 

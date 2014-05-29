@@ -63,7 +63,7 @@ ActiveRecord::Schema.define(version: 20140524215145) do
   create_table "steps", force: true do |t|
     t.text     "description"
     t.integer  "time"
-    t.integer  "attentiveness"
+    t.string   "attentiveness"
     t.integer  "step_number"
     t.boolean  "final_step"
     t.string   "equipment"

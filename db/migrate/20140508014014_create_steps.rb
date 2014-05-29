@@ -4,7 +4,7 @@ class CreateSteps < ActiveRecord::Migration
 
       t.text :description
       t.integer :time
-      t.integer :attentiveness
+      t.string :attentiveness
       t.integer :step_number
       t.boolean :final_step
       t.string :equipment

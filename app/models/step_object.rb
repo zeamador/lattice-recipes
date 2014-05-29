@@ -10,10 +10,10 @@ class StepObject
   #
   # description - Human readable String description of the step.
   # time - Positive Integer number of minutes the step requires.
-  # focus - Integer value where 0 = NONE, 1 = SOME, 2 = ALL.
+  # focus - FocusTypes constant.
   # recipe_id - Integer uniquely identifying the recipe this step belongs to.
   #
-  # equipment - Single EquipmentTypes constants. 
+  # equipment - EquipmentTypes constant. 
   #             Default is nil.
   # prereqs - Set of Step objects representing unchained prerequisite steps. 
   #           Default is an empty Set.
@@ -37,18 +37,18 @@ class StepObject
       raise "Time was not given in positive minutes"
     end
       
-    # focus must be 0, 1, or 2
-    if(focus == 0 || focus == 1 || focus == 2)
-      @focus = focus
+    # focus must be a FocusType
+    if(!FocusTypes.constants.include?(focus))
+      raise "Focus must be a FocusTypes constant"
     else
-      raise "Focus must be integer value 0 = NONE, 1 = SOME, or 2 = ALL"
+      @focus = focus
     end
 
     @recipe_id = recipe_id
 
     # equipment must either be nil or an EquipmentType
     if(equipment && !EquipmentTypes.constants.include?(equipment))
-      raise "Equipment must either be nil or an EquipmentType constant, is #{equipment}"
+      raise "Equipment must either be nil or an EquipmentTypes constant"
     else
       @equipment = equipment
     end

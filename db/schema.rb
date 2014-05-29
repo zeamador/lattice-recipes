@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(version: 20140524215145) do
     t.boolean  "secret",      default: false
     t.string   "tags"
     t.text     "ingredients"
+    t.text     "notes"
     t.integer  "user_id"
     t.integer  "meal_id"
     t.datetime "created_at"

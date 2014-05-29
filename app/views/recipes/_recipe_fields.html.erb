@@ -45,6 +45,15 @@
     <p><%= f.link_to_add "Add Step", :steps %></p>
   </div>
   
+  <p>
+    <strong><%= f.label :notes %></strong>
+    <a class="tooltips">
+      <img class="question-mark-icon" src="/assets/question-mark-icon.png"></img>
+      <span>Optional information on scaling, alternatives, tips, etc.</span>
+    </a><br />
+    <%= f.text_area :notes %>
+  </p>
+  
   <div class="create-recipe-btn">
     <%= f.submit %>
   </div>

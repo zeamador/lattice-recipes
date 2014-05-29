@@ -26,7 +26,6 @@
 	    add_to_meal_path(meal_id: current_user.meal.id, id: @recipe.id) %>
       </div>
     <% end %>
-    <p><%= image_tag(@recipe.avatar.url, alt: @recipe.title) %> </p>
     <h1><%= @recipe.title %></h1>
   </div>
   
@@ -46,48 +45,58 @@
 
   <p>Servings: <%= @recipe.serving %> </p>
 
+  <br />
   <div class="ingredient-header">
     Ingredients
   </div>
   <%= simple_format(@recipe.ingredients) %>
-
+  
+  <br />
   <div>
     <div class="step-header">
       Steps
     </div>
     <div class="show-detail">
-    <% if params[:showDetail] == "1" -%>
-      <%= link_to "Less Info", recipe_path(@recipe) %>
-    <% else -%>
-      <%= link_to "More Info", recipe_path(@recipe, showDetail: 1) %>
-    <% end -%>
+      <% if params[:showDetail] == "1" -%>
+        <%= link_to "Less Info", recipe_path(@recipe) %>
+      <% else -%>
+        <%= link_to "More Info", recipe_path(@recipe, showDetail: 1) %>
+      <% end -%>
     </div>
   </div>
-
+  
+    
   <% @recipe.steps.sort { |a, b| a.step_number <=> b.step_number }.each do |step| -%>
     <p>
       <strong><%= step.step_number %>) </strong>
       <%= step.description %>
       <br />
       <% if params[:showDetail] == "1" %>
-      <strong>Time:</strong> <%= step.time %> minutes
-      <strong>Attentiveness:</strong> <%= step.attentiveness.capitalize %>
-      <br />
-      <% if step.equipment.present? %>
-        <strong>Equipment:</strong> <%= step.equipment.capitalize %>
+        <strong>Time:</strong> <%= step.time %> minutes
+        <strong>Attentiveness:</strong> <%= step.attentiveness.capitalize %>
         <br />
-      <% end %>
-      <% step.step_mappers.each do |step_mapper| %>
-        <strong>Prereq Step:</strong> <%= step_mapper.prereq_step_number %>
-        <% step_mapper.prereq_id = @recipe.steps.find_by(step_number: step_mapper.prereq_step_number).id %>
-        <% step_mapper.save %>
-        <strong>Immediate:</strong> <%= step_mapper.immediate_prereq %>
-	      <strong>Preheat:</strong> <%= step_mapper.preheat_prereq %>
-        <br />
-      <% end %>
+        <% if step.equipment.present? %>
+          <strong>Equipment:</strong> <%= step.equipment.capitalize %>
+          <br />
+        <% end %>
+        <% step.step_mappers.each do |step_mapper| %>
+          <strong>Prereq Step:</strong> <%= step_mapper.prereq_step_number %>
+          <% step_mapper.prereq_id = @recipe.steps.find_by(step_number: step_mapper.prereq_step_number).id %>
+          <% step_mapper.save %>
+          <strong>Immediate:</strong> <%= step_mapper.immediate_prereq %>
+          <strong>Preheat:</strong> <%= step_mapper.preheat_prereq %>
+          <br />
+        <% end %>
       <% end %>
     </p>
   <% end %>
+    
+  <br />
+  <div class="ingredient-header">
+    Notes
+  </div>
+  <%= simple_format(@recipe.notes) %>
+
   <p>
   <% if @recipe.user == current_user %>
     <%= button_to 'Edit Recipe', edit_recipe_path(@recipe), method: :get %>

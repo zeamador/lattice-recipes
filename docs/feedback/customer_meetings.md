@@ -1,5 +1,10 @@
 # Customer Meetings
 
+## 2014/05/29 Customer Meeting (Isaac)
+Attendees: Zach Amador, Chris Chalmers, Sam Courts, Jake Nash, Nick Parker, Bessie Song
+
+We discussed our Feature Complete Feedback with Isaac, specifically validation, case sanitation, and mandatory 1 minutes step times. We also asked for feedback on our tutorial page and meal schedule display. We've been having a fair amount of trouble getting prereqs displayed the way we would like, and Zach explained the challanges of this to Isaac. He suggested using AJAX, but noted that our current format is not overly problematic.
+
 ## 2014/05/23 Vendor Meeting (Team Zeus)
 Attendees: Zach Amador, Chris Chalmers, Sam Courts, Jake Nash
 

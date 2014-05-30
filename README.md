@@ -142,6 +142,7 @@ In general, we are using the standard [Rails directory structure][rails].
     - requirements documentation including feature descriptions for major releases
     - design documentation and diagrams
     - changelogs for documentation
+    - feedback from customers, users, and team-members
  - `lattice-recipes/tests/`
     - text file system tests with step by step instructions
  - `lattice-recipes/spec/`

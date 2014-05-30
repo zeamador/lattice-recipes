@@ -66,16 +66,20 @@ $(document).on('nested:fieldRemoved:step_mappers', (event) ->
   event.field.show().slideUp(animLength)
 )
 
-# Validate the recipe form data
+# Validate the recipe form data before it's sent to the server,
+# so users can correct errors without having their input
+# wiped out.
 validateRecipeForm = () ->
   title = $("#recipe_title").val()
   if (title == undefined || title == null || title == "")
     alert("Title can't be empty")
     return false
+
   ingredients = $("#recipe_ingredients").val()
   if (ingredients == undefined || ingredients == null || ingredients == "")
     alert("Ingredients can't be empty")
     return false
+
   stepCount = 0
   stepValid = true
   steps = $("#steps_container").find("fieldset.step")
@@ -83,34 +87,68 @@ validateRecipeForm = () ->
     # only validate if the step hasn't been removed
     if ($(this).find("input[name$='[_destroy]']").val() != "1")
       stepCount++
+
       description = $(this).find("textarea[name$='[description]']").val()
       if (description == undefined || description == null || description == "")
         alert("Description can't be empty")
         return (stepValid = false)
       time = $(this).find("input[name$='[time]']").val()
+
       if (time == undefined || time == null || time == "")
         alert("Time can't be empty")
         return (stepValid = false)
+
       # validate prereqs
       prereqValid = true
       prereqs = $(this).find("fieldset.prereq")
+      immediateCount = 0
+      preheatCount = 0
+      prereqArr = []
       prereqs.each(->
         # only validate if the prereq hasn't been removed
         if ($(this).find("input[name$='[_destroy]']").val() != "1")
-          value = $(this).find("input[name$='[prereq_step_number]']").val()
-          if (value >= stepCount)
-            alert("Prereq step #{value} is not valid for step #{stepCount}")
+          # get prereq number
+          prereqNum = $(this).find("input[name$='[prereq_step_number]']").val()
+
+          # fail if prereq number isn't less than the number of this step
+          if (prereqNum >= stepCount)
+            alert("Prereq step #{prereqNum} is not valid for step #{stepCount}")
             return (prereqValid = false)
+
+          # fail if this is a duplicate prereq
+          if (prereqArr[prereqNum] == undefined)
+            prereqArr[prereqNum] = 1
+          else
+            alert("Prereq step #{prereqNum} is set more than once on step #{stepCount}")
+            return (prereqValid = false)
+          
+          # fail if there's multiple immediate or preheat prereqs for this step
+          if ($(this).find("input[name$='[immediate_prereq]']").is(':checked'))
+            if (immediateCount > 0)
+              alert("Multiple immediate prereqs for step #{stepCount}")
+              return (prereqValid = false)
+            else
+              immediateCount++
+          if ($(this).find("input[name$='[preheat_prereq]']").is(':checked'))
+            if (preheatCount > 0)
+              alert("Multiple preheat prereqs for step #{stepCount}")
+              return (prereqValid = false)
+            else
+              preheatCount++
+
         return true
       )
       if (!prereqValid)
         return (stepValid = false)
+
     return true
   )
   if (!stepValid)
     return false
+
   if (stepCount == 0)
     alert("Must have at least one step")
     return false
+
   return true
 

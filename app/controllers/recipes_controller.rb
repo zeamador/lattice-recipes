@@ -80,7 +80,7 @@ class RecipesController < ApplicationController
   def remove
     @recipe = Recipe.find(params[:recipe_id])
     @recipe.destroy
-    redirect_to(:back)
+    redirect_to meal_path(current_user.meal)
   end
 
   def edit
@@ -91,13 +91,8 @@ class RecipesController < ApplicationController
     @recipe = Recipe.find(params[:id])
 
     if @recipe.update(recipe_params)
-      if @recipe.temp
-        flash[:meal_success] = "Your changes are saved."
-        redirect_to @recipe
-      else
-        flash[:recipe_success] = "Your changes are saved."
-        redirect_to @recipe
-      end
+      flash[:recipe_success] = "Your changes are saved."
+      redirect_to @recipe
     else
       render 'edit'
     end

@@ -1,6 +1,6 @@
 <% @title="Meal Schedule" -%>
 
-<div class="info-extra-bottom">
+<div class="info extra-bottom">
   <h1>Combined Recipes</h1>
   
   <% if @meal_schedule -%>
@@ -45,7 +45,7 @@
           <% col_schedule.each do |column| -%>
             <div class="column">
               <% column.each do |time, step| -%>
-                <div class="bar hidden-info attention-<%= step.focus.downcase %>"
+                <div class="bar tooltip attention-<%= step.focus.downcase %>"
                  style="height:<%= step.time * pixels_per_min - 5 %>px;top:<%= time * pixels_per_min %>px;">
                   <div class="bar-content">
                     <% unless step.time * pixels_per_min < 30 -%>

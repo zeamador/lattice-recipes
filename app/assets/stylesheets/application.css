@@ -51,25 +51,15 @@ a { /* links */
 .info {
   float: left;
   width: 70%;
-  overflow: hidden;
-  background-color: #EAEEF8;
-  color: Black;
-  padding-top: 1px;
-  padding-bottom: 1px;
-  padding-right: 15px;
-  padding-left: 15px;
-}
-
-.info-extra-bottom {
-  float: left;
-  width: 70%;
   overflow: visible;
   background-color: #EAEEF8;
   color: Black;
-  padding-top: 1px;
-  padding-bottom: 20px; /* only difference from standard info */
-  padding-right: 15px;
-  padding-left: 15px;
+  padding: 1px 15px;
+  box-shadow: 0px 0px 10px #231105
+}
+
+.extra-bottom {
+  padding-bottom: 20px;
 }
 
 /* Alerts and errors */
@@ -114,29 +104,33 @@ input[type="submit"], .add_nested_fields {
   height: 17px;
 }
 
-.tooltips { /* tooltip anchor itself */
+a.tooltip { /* tooltip anchor itself */
   position: relative;
   display: inline;
 }
 
-.tooltips span { /* hidden values and defaults */
+.tooltip span { /* hidden values and defaults */
   position: absolute;
   width: 280px;
+
   color: #FFFFFF;
-  background: #A34318;
+  background: #1A3959;
   line-height: 20px;
   text-align: left;
   visibility: hidden;
-  padding: 5px;
-}
+  outline: 1px dashed #011B3B;
 
-:hover.tooltips span { /* visible when hovered */
-  visibility: visible;
+  padding: 5px;
   left: 100%;
   top: 50%;
   margin-top: -15px;
   margin-left: 15px;
+
   z-index: 999;
+}
+
+.tooltip:hover span { /* visible when hovered */
+  visibility: visible;
 }
 
 /* Layout elements */

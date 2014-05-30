@@ -1,4 +1,6 @@
 <div class="info-extra-bottom">
+
+  <% #Recipe messages %>
   <div class="message-container">
     <% flash.each do |key, value| %>
       <% if key == "recipe_success" || key == "recipe_error" %>
@@ -6,6 +8,8 @@
       <% end %>
     <% end %>
   </div>
+  
+  <% #If from meal page, add button to go back %>
   <div>
     <% if current_user == @recipe.user -%>
       <div class="back-to-meal">
@@ -14,6 +18,8 @@
     <% end -%>
     <h1><%= @recipe.title %></h1>
   </div>
+  
+  <% #Recipe content %>
   <% if current_user == @recipe.user %>
     <%= form_for(@recipe) do |recipe_form| %>
       <p>Tags:
@@ -33,6 +39,7 @@
       
       <%= recipe_form.fields_for :steps do |step_form| %>
         
+        <% #Step info %>
         <p>
           <strong><%= step_form.object.step_number %>) </strong>
           <%= step_form.object.description %>
@@ -67,7 +74,9 @@
       <% end -%>
       <%= recipe_form.submit "Save Changes", method: :patch %>
     <% end -%>
+    
   <% else -%>
     No right to see others' temp recipes.
   <% end -%>
+  
 </div>

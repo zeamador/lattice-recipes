@@ -1,6 +1,7 @@
 <% @title="User Profile" %>
 
 <div class="info-extra-bottom">
+  <% #User notifications %>
   <div class="message-container">
     <% flash.each do |key, value| %>
       <div class="alert alert-<%= key %>"><%= value %></div>
@@ -9,6 +10,7 @@
   <h1>Username: <%= @user.name %></h1>
   <p>Email: <%= @user.email %></p>
 
+  <% #Kitchen Equpiment changing %>
   <div class="kitchen-form">
     <h3>Kitchen Settings:</h3>
     <%= form_for(@kitchen) do |f| %>
@@ -27,6 +29,7 @@
   <br />
 
   <h3>Change Password</h3>
+  <% #Password changing %>
   <%= form_for(@user) do |f| %>
     <%= render 'shared/errors', object: @user if @user.errors.any? %>
     <%= f.label :password, "New Password" %></br>
@@ -38,6 +41,7 @@
     <%= f.submit "Change Password", method: :patch %>
   <% end %>
 
+  <% #Delete Account %>
   <p>
     <%= button_to 'Delete User Account', @user, method: :delete,
       data: { confirm: "Are you sure you want to delete? All recipes created 

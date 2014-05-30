@@ -1,10 +1,11 @@
 <div class="side-bar">
   
-  <!-- Welcome/User Sidebar -->
+  <% #Welcome/User Sidebar %>
   <% if URI.parse(request.original_url).path != signup_path and 
      URI.parse(request.original_url).path != users_path %>
     <div class="side-bar-section" title=<%= users_path %>>
     <% if signed_in? %>
+      <% #If logged in, show user information %>
       <div class="header-side-bar">Welcome, <%= @current_user.name %>!</div>
       <div class="content-side-bar">
       <div class="message-container">
@@ -15,43 +16,40 @@
       <% end %>
       </div>
         <ul>
-<<<<<<< HEAD
-          <li><%= link_to "Kitchen Settings", current_user %></li> 
-=======
           <li><%= link_to "Kitchen Settings", current_user %></li>
->>>>>>> Fix #82; Clean up on-site text, move q/a to About
           <li><%= link_to "Account Settings", edit_user_path(current_user) %></li>
           <li><%= link_to "Your Recipes", myrecipes_user_path %></li>
           <li><%= link_to "Log out", signout_path, method: "delete" %></li>
         </ul>
       </div>
     <% else %>
-    <div class="header-side-bar">Sign in</div>
-    <div class="user-content-side-bar">
-      <div class="signin-form">
-      <div class="message-container">
-        <% flash.each do |key, value| %>
-          <div class="alert alert-<%= key %>"><%= value %></div>
-        <% end %>
-      </div>
-      <ul>
-      <%= form_for(:session, url: sessions_path) do |f| %>
-        <li><%= f.label :email %></li>
-        <li><%= f.text_field :email %></li>
+      <% #If not logged in, offer log in and sign up %>
+      <div class="header-side-bar">Sign in</div>
+      <div class="user-content-side-bar">
+	<div class="signin-form">
+	<div class="message-container">
+	  <% flash.each do |key, value| %>
+	    <div class="alert alert-<%= key %>"><%= value %></div>
+	  <% end %>
+	</div>
+	<ul>
+	<%= form_for(:session, url: sessions_path) do |f| %>
+	  <li><%= f.label :email %></li>
+	  <li><%= f.text_field :email %></li>
 
-        <li><%= f.label :password %></li>
-        <li><%= f.password_field :password %></li>
+	  <li><%= f.label :password %></li>
+	  <li><%= f.password_field :password %></li>
 
-        <li><%= f.submit "Sign in" %></li>
-        <li>New user? <%= link_to "Sign up now!", signup_path %></li>
-      <% end %>
+	  <li><%= f.submit "Sign in" %></li>
+	  <li>New user? <%= link_to "Sign up now!", signup_path %></li>
+	<% end %>
+	</div>
       </div>
-    </div>
     <% end %>
     </div>
   <% end %>
 
-  <!-- Meal Sidebar -->
+  <% #Meal Sidebar %>
   <% if signed_in? %>  
     <div class="side-bar-section">
       <div class="header-side-bar">Meal</div>
@@ -75,7 +73,7 @@
     </div>
   <% end %>
   
-  <!-- Latest Recipes Sidebar -->
+  <% #Latest Recipes Sidebar %>
   <div class="side-bar-section">
     <div class="header-side-bar">Latest Recipes</div>
     <div class="content-side-bar">

@@ -1,6 +1,8 @@
 <% @title="Meal" %>
 
 <div class="info-extra-bottom">
+
+  <% #Messages from controller %>
   <div class="message-container">
     <% flash.each do |key, value| %>
      <% if key == :meal_success || key == :meal_error %>
@@ -8,10 +10,13 @@
      <% end %>
    <% end %>
   </div>
+  
   <h1>Recipes In Your Meal</h1>
 
+  <% #Page break %>
   <hr>
   
+  <% #Show all recipes in meal %>
   <% @meal.recipes.each do |recipe| -%>
      <div class="recipe">
       <p class="recipe-title"><strong><%= recipe.title %></strong></p>

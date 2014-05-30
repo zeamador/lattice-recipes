@@ -6,106 +6,124 @@
 
 <% else %>
   <% if @recipe.secret && current_user != @recipe.user%>
+  
+    <% #incase of trying to view a secret recipe you did not create %>
     <div class="info-extra-bottom">
       Sorry! You don't have permission to view this recipe. =D
     </div>
+    
   <% else %>
 
-<div class="info-extra-bottom">
-  <div class="message-container">
-    <% flash.each do |key, value| %>
-      <% if key == "recipe_success" || key == "recipe_error" %>
-        <div class="alert alert-<%= key %>"><%= value %></div>
-      <% end %>
-    <% end %>
-  </div>
-  <div>
-    <% if signed_in? -%>
-      <div class="add-to-meal">
-        <%= button_to "Add To Meal", 
-	    add_to_meal_path(meal_id: current_user.meal.id, id: @recipe.id) %>
+    <div class="info-extra-bottom">
+    
+      <% #Recipe messages %>
+      <div class="message-container">
+	<% flash.each do |key, value| %>
+	  <% if key == "recipe_success" || key == "recipe_error" %>
+	    <div class="alert alert-<%= key %>"><%= value %></div>
+	  <% end %>
+	<% end %>
       </div>
-    <% end %>
-    <h1><%= @recipe.title %></h1>
-  </div>
-  
-  <% if @recipe.secret -%>
-    <p> <strong> SECRET </strong> </p>
-  <% else -%>
-    <p>Uploader: <%= @recipe.user.name %></p>
-  <% end -%>
-  <% unless @recipe.tags.empty? -%>
-    <p>Tags:
-      <% @tags = @recipe.tags.split(%r{,\s*}) %>
-      <% for @tag in @tags %>
-        <%= link_to @tag, recipes_path(:search => @tag)  %>
-      <% end %>
-    </p>
-  <% end -%>
-
-  <p>Servings: <%= @recipe.serving %> </p>
-
-  <p>Total Estimated Time: <%= @total_time %> minutes</p>
-
-  <br />
-  <div class="ingredient-header">
-    Ingredients
-  </div>
-  <%= simple_format(@recipe.ingredients) %>
-  
-  <br />
-  <div>
-    <div class="step-header">
-      Steps
-    </div>
-    <div class="show-detail">
-      <% if params[:showDetail] == "1" -%>
-        <%= link_to "Less Info", recipe_path(@recipe) %>
+      
+      <% #Add to meal if signed in %>
+      <div>
+	<% if signed_in? -%>
+	  <div class="add-to-meal">
+	    <%= button_to "Add To Meal", 
+		add_to_meal_path(meal_id: current_user.meal.id, id: @recipe.id) %>
+	  </div>
+	<% end %>
+	<h1><%= @recipe.title %></h1>
+      </div>
+      
+      <% #General information about recipe %>
+      <% if @recipe.secret -%>
+	<p> <strong> SECRET </strong> </p>
       <% else -%>
-        <%= link_to "More Info", recipe_path(@recipe, showDetail: 1) %>
+	<p>Uploader: <%= @recipe.user.name %></p>
       <% end -%>
-    </div>
-  </div>
-  
-    
-  <% @recipe.steps.sort { |a, b| a.step_number <=> b.step_number }.each do |step| -%>
-    <p>
-      <strong><%= step.step_number %>) </strong>
-      <%= step.description %>
-      <br />
-      <% if params[:showDetail] == "1" %>
-        <strong>Time:</strong> <%= step.time %> minutes
-        <strong>Attentiveness:</strong> <%= step.attentiveness.capitalize %>
-        <br />
-        <% if step.equipment.present? %>
-          <strong>Equipment:</strong> <%= step.equipment.capitalize %>
-          <br />
-        <% end %>
-        <% step.step_mappers.each do |step_mapper| %>
-          <strong>Prereq Step:</strong> <%= step_mapper.prereq_step_number %>
-          <% step_mapper.prereq_id = @recipe.steps.find_by(step_number: step_mapper.prereq_step_number).id %>
-          <% step_mapper.save %>
-          <strong>Immediate:</strong> <%= step_mapper.immediate_prereq %>
-          <strong>Preheat:</strong> <%= step_mapper.preheat_prereq %>
-          <br />
-        <% end %>
-      <% end %>
-    </p>
-  <% end %>
-    
-  <br />
-  <div class="ingredient-header">
-    Notes
-  </div>
-  <%= simple_format(@recipe.notes) %>
+      <% unless @recipe.tags.empty? -%>
+	<p>Tags:
+	  <% @tags = @recipe.tags.split(%r{,\s*}) %>
+	  <% for @tag in @tags %>
+	    <%= link_to @tag, recipes_path(:search => @tag)  %>
+	  <% end %>
+	</p>
+      <% end -%>
 
-  <p>
-  <% if @recipe.user == current_user %>
-    <%= button_to 'Edit Recipe', edit_recipe_path(@recipe), method: :get %>
-    <%= button_to 'Delete Recipe', @recipe, method: :delete,
-      data: { confirm: "Are you sure you want to delete?" } %>
-  </p>
+      <p>Servings: <%= @recipe.serving %> </p>
+
+      <p>Total Estimated Time: <%= @total_time %> minutes</p>
+
+      <% #Ingredients %>
+      <br />
+      <div class="ingredient-header">
+	Ingredients
+      </div>
+      <%= simple_format(@recipe.ingredients) %>
+      
+      <% #Expanding options %>
+      <br />
+      <div>
+	<div class="step-header">
+	  Steps
+	</div>
+	<div class="show-detail">
+	  <% if params[:showDetail] == "1" -%>
+	    <%= link_to "Less Info", recipe_path(@recipe) %>
+	  <% else -%>
+	    <%= link_to "More Info", recipe_path(@recipe, showDetail: 1) %>
+	  <% end -%>
+	</div>
+      </div>
+      
+      <% #Steps of recipe %>
+      <% @recipe.steps.sort { |a, b| a.step_number <=> b.step_number }.each do |step| -%>
+	<p>
+	  <% #Step number and description %>
+	  <strong><%= step.step_number %>) </strong>
+	  <%= step.description %>
+	  <br />
+	  <% #Step details %>
+	  <% if params[:showDetail] == "1" %>
+	    <strong>Time:</strong> <%= step.time %> minutes
+	    <strong>Attentiveness:</strong> <%= step.attentiveness.capitalize %>
+	    <br />
+	    <% #Equipment %>
+	    <% if step.equipment.present? %>
+	      <strong>Equipment:</strong> <%= step.equipment.capitalize %>
+	      <br />
+	    <% end %>
+	    <% #Prereqs %>
+	    <% step.step_mappers.each do |step_mapper| %>
+	      <strong>Prereq Step:</strong> <%= step_mapper.prereq_step_number %>
+	      <% step_mapper.prereq_id = @recipe.steps.find_by(step_number: step_mapper.prereq_step_number).id %>
+	      <% step_mapper.save %>
+	      <strong>Immediate:</strong> <%= step_mapper.immediate_prereq %>
+	      <strong>Preheat:</strong> <%= step_mapper.preheat_prereq %>
+	      <br />
+	    <% end %>
+	  <% end %>
+	</p>
+      <% end %>
+      
+      <% #Notes for recipe %>
+      <br />
+      <div class="ingredient-header">
+	Notes
+      </div>
+      <%= simple_format(@recipe.notes) %>
+
+      <% #Changes to recipe buttons %>
+      <p>
+      <% if @recipe.user == current_user %>
+	<%= button_to 'Edit Recipe', edit_recipe_path(@recipe), method: :get %>
+	<%= button_to 'Delete Recipe', @recipe, method: :delete,
+	  data: { confirm: "Are you sure you want to delete?" } %>
+      </p>
+      <% end %>
+    </div>
+    
   <% end %>
-</div>
-<% end %>
+  
 <% end %>

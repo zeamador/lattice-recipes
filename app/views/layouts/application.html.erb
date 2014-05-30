@@ -1,20 +1,26 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <title><%= "Lattice - " + @title %></title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
-<body>
 
-<div id="container">
-  <%= render "shared/header" %>
-  <div id="content">
-    <%= yield %>
-    <%= render "shared/sidebar" %>
+<body>
+  <div id="container">
+  
+    <%= render "shared/header" %>
+    
+    <div id="content">
+      <%= yield %>
+      <%= render "shared/sidebar" %>
+    </div>
+    
+    <%= render "shared/footer" %>
+    
   </div>
-  <%= render "shared/footer" %>
-</div>
 </body>
+
 </html>

@@ -1,8 +1,11 @@
 <% @title="Sign up" %>
 
 <div class="info">
+
   <h1>Sign up</h1>
+  
   <div>Already have an account? Sign in on the <%= link_to "Home Page", root_path %>.</div>
+  
   <div class="user-form">
     <%= form_for(@user) do |f| %>
     <%= render 'shared/errors', object: @user if @user.errors.any? %>

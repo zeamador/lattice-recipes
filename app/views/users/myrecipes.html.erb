@@ -1,7 +1,9 @@
 <% @title="Your Recipes" %>
 
 <div class="info-extra-bottom">
+
   <h1>Your Recipes</h1>
+  <% #Search user's recipes bar %>
   <%= form_tag(myrecipes_user_path, :method => "get", class: "navbar-form", id: "search-form") do %>
     <div class="input-append">
       Search Your Recipes: 
@@ -11,6 +13,8 @@
       <button class="btn" type="submit">Search<i class="icon-search"></i></button>
     </div>
   <% end %>
+  
+  <% #User's recipes %>
   <% @my_recipes.each do |recipe| %>
     <div class="recipe">
       <p class="recipe-title"><%= link_to recipe.title, recipe %>
@@ -21,4 +25,5 @@
       <p class="recipe-tags"><%= recipe.tags %></p>
     </div>
   <% end %>
+  
 </div>

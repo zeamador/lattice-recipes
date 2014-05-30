@@ -106,24 +106,28 @@
 	  <% end %>
 	</p>
       <% end %>
-      
-      <% #Notes for recipe %>
-      <br />
-      <div class="ingredient-header">
-	Notes
-      </div>
-      <%= simple_format(@recipe.notes) %>
-
-      <% #Changes to recipe buttons %>
-      <p>
-      <% if @recipe.user == current_user %>
-	<%= button_to 'Edit Recipe', edit_recipe_path(@recipe), method: :get %>
-	<%= button_to 'Delete Recipe', @recipe, method: :delete,
-	  data: { confirm: "Are you sure you want to delete?" } %>
-      </p>
-      <% end %>
-    </div>
-    
+    </p>
   <% end %>
-  
+
+  <% #Notes for recipes %>
+  <% unless @recipe.notes.empty? -%>
+    <br />
+    <div class="ingredient-header">
+      Notes
+    </div>
+    <%= simple_format(@recipe.notes) %>
+  <% end -%>
+
+  <% #Changes to recipe buttons %>
+  <p>
+    <% if @recipe.user == current_user %>
+      <%= button_to 'Edit Recipe', edit_recipe_path(@recipe), method: :get %>
+      <%= button_to 'Delete Recipe', @recipe, method: :delete,
+        data: { confirm: "Are you sure you want to delete?" } %>
+    <% end %>
+  </p>
+
+</div>
 <% end %>
+
+<% end -%>

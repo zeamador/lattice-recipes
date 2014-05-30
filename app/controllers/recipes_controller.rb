@@ -91,8 +91,13 @@ class RecipesController < ApplicationController
     @recipe = Recipe.find(params[:id])
 
     if @recipe.update(recipe_params)
-      flash[:recipe_success] = "Your changes are saved."
-      redirect_to @recipe
+      if @recipe.temp
+        flash[:meal_success] = "Your changes are saved."
+        redirect_to @recipe
+      else
+        flash[:recipe_success] = "Your changes are saved."
+        redirect_to @recipe
+      end
     else
       render 'edit'
     end

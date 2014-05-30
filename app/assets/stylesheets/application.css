@@ -125,10 +125,9 @@ input[type="submit"], .add_nested_fields {
   color: #FFFFFF;
   background: #A34318;
   line-height: 20px;
-  text-align: center;
+  text-align: left;
   visibility: hidden;
-  padding-top: 5px;
-  padding-bottom: 5px;
+  padding: 5px;
 }
 
 :hover.tooltips span { /* visible when hovered */

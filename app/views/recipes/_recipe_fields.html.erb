@@ -8,6 +8,14 @@
   <p>
     <strong><%= f.label :tags %></strong> (separate with commas)<br />
     <%= f.text_field :tags %>
+    <a class="tooltips">
+      <img class="question-mark-icon" src="/assets/question-mark-icon.png"></img>
+      <span>
+        Tags are words like "dinner", "vegetarian", and "spicy". You and other
+        users can use the search page to search for recipes by their tags, so
+        enter as many as you find useful.
+      </span>
+    </a>
   </p>
 
   <%= f.check_box :secret %>
@@ -26,7 +34,7 @@
     <strong><%= f.label :ingredients %></strong>
     <a class="tooltips">
       <img class="question-mark-icon" src="/assets/question-mark-icon.png"></img>
-      <span>List each of the ingredients required for this recipe on its own line. Examples:<br>
+      <span>List each of the ingredients required for this recipe on its own line. For example:<br>
       1 cup water<br>
       3 apples<br>
       A few dashes of sugar</span>
@@ -46,7 +54,7 @@
     <strong><%= f.label :notes %></strong>
     <a class="tooltips">
       <img class="question-mark-icon" src="/assets/question-mark-icon.png"></img>
-      <span>Optional information on scaling, alternatives, tips, etc.</span>
+      <span>Put any additional information you would like to include with the recipe in this section. You can mention an alternative vegetarian ingredient or suggest another similar recipe, it's up to you.</span>
     </a><br />
     <%= f.text_area :notes %>
   </p>

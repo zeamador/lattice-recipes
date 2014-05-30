@@ -20,6 +20,27 @@ module MealScheduleFactory
         end
       end
 
+      # Traverse the step dependency tree searching for steps that require
+      # equipment that the kitchen does not have any of, and fail early if
+      # found.
+      steps_to_check = final_steps
+      next_steps = nil
+      until steps_to_check.empty?
+        steps_to_check.each do |step|
+          if !step.equipment.nil? && kitchen[step.equipment] == 0
+            return MealSchedule.new(recipes, nil)
+          end
+
+          # Add all of the step's prereqs to the list of steps to check in the
+          # next iteration.
+          step.prereqs.each do |prereq|
+            next_steps << prereq
+          end
+        end
+
+        steps_to_check = next_steps
+      end
+
       resources = Resources.new(kitchen, num_users)
       schedule_builder = ScheduleBuilder.new(final_steps, resources)
     

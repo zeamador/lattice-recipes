@@ -1,10 +1,12 @@
 .tutorial-section {
   overflow: hidden;
+  padding-left: 452px;
 }
 
 .upload-form {
   float: left;
   padding-left: 20px;
+  margin-left: -452px;
   border-style: dashed;
   border-width: thin;
   width: 430px;
@@ -15,7 +17,6 @@
   float: left;
   padding-left: 20px;
   padding-right: 20px;
-  width: 40%;
 }
 
 .tutorial-textbox {

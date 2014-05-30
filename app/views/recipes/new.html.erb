@@ -1,6 +1,13 @@
 <% @title="Add Recipe" -%>
 
 <div class="info-extra-bottom">
+  <div class="message-container">
+    <% flash.each do |key, value| %>
+      <% if key == "recipe_success" || key == "recipe_error" %>
+        <div class="alert alert-<%= key %>"><%= value %></div>
+      <% end %>
+    <% end %>
+  </div>
   <% if signed_in? -%>
     <div class="recipe-form">
       <h1>Add Recipe</h1>

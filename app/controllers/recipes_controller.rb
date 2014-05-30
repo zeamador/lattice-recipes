@@ -16,13 +16,19 @@ class RecipesController < ApplicationController
 
   def create
     @recipe = Recipe.new(recipe_params)
-    if @recipe.save
-      @user = current_user
-      @recipe.user = @user
-      @recipe.save
-      flash[:recipe_success] = "Great! Your recipe is created!"
-      redirect_to recipe_path(@recipe)
+    valid = prereq_validation(recipe_params)
+    if valid
+      if @recipe.save
+        @user = current_user
+        @recipe.user = @user
+        @recipe.save
+        flash[:recipe_success] = "Great! Your recipe is created!"
+        redirect_to recipe_path(@recipe)
+      else
+        render 'new'
+      end
     else
+      flash[:recipe_error] = "There was a problem with your prerequisite step entry. Please press back to restore your input."
       render 'new'
     end
   end
@@ -66,7 +72,7 @@ class RecipesController < ApplicationController
   def remove
     @recipe = Recipe.find(params[:recipe_id])
     @recipe.destroy
-    redirect_to meal_path(current_user.meal)
+    redirect_to(:back)
   end
 
   def edit
@@ -122,6 +128,46 @@ class RecipesController < ApplicationController
                                                              :prereq_id,
                                                              :prereq_step_number,
                                                              :_destroy]])
+  end
+
+  def prereq_validation(given_params)
+    given_params[:steps_attributes].each do |attributes|
+      attributes.each do |step|
+        if step.include?("step_mappers_attributes")
+          nums = []
+          immeds = []
+          preheats = []
+          step[:step_mappers_attributes].each do |mapper|
+            if mapper[1][:_destroy] == "false"
+              nums.push(mapper[1][:prereq_step_number])
+              immeds.push(mapper[1][:immediate_prereq])
+              preheats.push(mapper[1][:preheat_prereq])
+            end
+            unless nums == nums.uniq
+              return false
+            end
+            num_immeds = 0
+            immeds.each do |immed|
+              if immed == "1"
+                num_immeds = num_immeds + 1
+              end
+              if num_immeds > 1
+                return false
+              end
+            end
+            num_preheats = 0
+            preheats.each do |preheat|
+              if preheat == "1"
+                num_preheats = num_preheats + 1
+              end
+              if num_preheats > 1
+                return false
+              end
+            end
+          end
+        end
+      end
+    end
   end
 
 end

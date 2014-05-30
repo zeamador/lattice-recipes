@@ -17,27 +17,63 @@
       </div>
       <% end %>
 
-      <h2>Steps</h2>
-      <% i = 1 -%>
-      <% @meal_schedule.schedule.keys.sort.each do |time| -%>
-        <% steps = @meal_schedule.schedule[time] -%>
-        <% steps.sort {|a, b| a.time <=> b.time}.each do |step| -%>
-          <p>
-          <strong><%= i -%>) </strong>
-          <strong>Description:</strong> <%= step.description %>
-          <br />
-          <strong>Time:</strong> <%= step.time %> minutes
-          <strong>Attentiveness:</strong> <%= step.focus.capitalize %>
-          <br />
-          <% unless step.equipment.nil? %>
-            <strong>Equipment:</strong> <%= step.equipment.capitalize %>
-            <br />
-          <% end %>
-          </p>
+      <% pixels_per_min = 5 -%>
+      <% schedule_height = @meal_schedule.length * pixels_per_min -%>
 
-          <% i += 1 -%>
+      <% sorted_times = @meal_schedule.schedule.keys.sort -%>
+      <% step_numbers = Hash.new -%>
+      <% step_start_times = Hash.new -%>
+      <% step_num = 1 -%>
+
+      <% sorted_schedule = Hash.new -%>
+      <% sorted_times.each do |time| -%>
+        <% sorted_steps = @meal_schedule.schedule[time].sort { |a, b| a.time <=> b.time }-%>
+        <% sorted_schedule[time] = sorted_steps -%>
+        <% sorted_steps.each do |step| -%>
+          <% step_numbers[step] = step_num -%>
+          <% step_start_times[step] = time -%>
+          <% step_num += 1 -%>
         <% end -%>
       <% end -%>
+
+      <% col_schedule = @meal_schedule.collimated_schedule -%>
+      <% col_schedule_width = col_schedule.length * (40 + 5) + 5-%>
+
+      <h2>Steps</h2>
+      <div id="schedule-display" style="height:<%= schedule_height %>px;padding-left:<%= col_schedule_width %>px;">
+
+        <div id="schedule-bars-pane" style="height:<%= schedule_height %>px;margin-left:-<%= col_schedule_width %>px;">
+          <% col_schedule.each do |column| -%>
+            <div class="column">
+              <% column.each do |time, step| -%>
+                <div class="bar attention-<%= step.focus.downcase %>"
+                 style="height:<%= step.time * pixels_per_min - 5 %>px;top:<%= time * pixels_per_min %>px;">
+                  <div class="bar-content">
+                    <% unless step.time * pixels_per_min < 30 -%>
+                      <%= step_numbers[step] %>
+                    <% end -%>
+                  </div>
+                </div>
+              <% end -%>
+            </div>
+          <% end -%>
+        </div>
+
+        <div id="schedule-steps-pane" style="height:<%= schedule_height %>px;">
+          <% sorted_times.each do |time| -%>
+            <% offset = 0 -%>
+            <% sorted_schedule[time].each do |step| -%>
+              <div class="step-info"
+                   style="top:<%= step_start_times[step] * pixels_per_min + offset %>px;">
+                <strong><%= step_numbers[step] %>) </strong>
+                <%= step.description %>
+              </div>
+              <% offset += 20 -%>
+            <% end -%>
+          <% end -%>
+        </div>
+      </div>
+
     <% end -%>
   <% else -%>
     <h2>No Recipes To Display</h2>

@@ -1,6 +1,6 @@
 # Immutable schedule of steps from multiple in recipes in a user's meal.
 class MealSchedule
-  attr_reader :recipes, :schedule
+  attr_reader :recipes, :schedule, :length
 
   # Public: Initialize a Meal with a set of recipes and a schedule of steps.
   #
@@ -10,6 +10,16 @@ class MealSchedule
   def initialize(recipes, schedule)
     @recipes = recipes
     @schedule = schedule
+
+    max_time = @schedule.keys.sort.reverse.first
+    longest_step_length = 0
+    @schedule[max_time].each do |step|
+      if step.time > longest_step_length
+        longest_step_length = step.time
+      end
+    end
+
+    @length = max_time + longest_step_length
   end
 
   # Public: Get a collimated version of this MealSchedule's schedule. A

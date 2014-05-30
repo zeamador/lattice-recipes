@@ -33,17 +33,26 @@
   <p>
     <strong><%= f.label :ingredients %></strong>
     <a class="tooltip">
-      <img class="question-mark-icon" src="/assets/question-mark-icon.png"></img>
-      <span>List each of the ingredients required for this recipe on its own line. For example:<br>
-      1 cup water<br>
-      3 apples<br>
-      A few dashes of sugar</span>
+      <img class="question-mark-icon"
+           src="/assets/question-mark-icon.png"></img>
+      <span>
+        List each of the ingredients required for this recipe on its own line.
+        For example:<br>
+        1 cup water<br>
+        3 apples<br>
+        A few dashes of sugar</span>
+      </span>
     </a><br />
     <%= f.text_area :ingredients %>
   </p>
 
   <div id="steps_container">
     <h3>Steps</h3>
+    <p id="step-label"> 
+      Make sure steps are small, indivisible tasks. You may need to break
+      apart steps if you're copying them from a conventional recipe. See the
+      tutorial page for detailed examples.
+    </p>
     <% f.fields_for :steps do |step_form| -%>
       <%= render partial: "step_fields", locals: {f: step_form, edit_flag: false} %>
     <% end -%>

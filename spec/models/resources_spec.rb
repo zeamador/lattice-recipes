@@ -46,34 +46,38 @@ describe Resources do
     resources.consume(step_2).should be_false
   end
 
-  it "one user should be able to consume at most 2 units of attention" do
+  it "one user should be able to consume at most 3 units of attention" do
     resources = Resources.new(KitchenObject.new, 1)
     step_stir_1 = StepObject.new("Stir 1", 10, :SOME, 123)
     step_stir_2 = StepObject.new("Stir 2", 10, :SOME, 123)
     step_stir_3 = StepObject.new("Stir 3", 10, :SOME, 123)
+    step_stir_4 = StepObject.new("Stir 4", 10, :SOME, 123)
     step_boil = StepObject.new("Boil water", 10, :NONE, 123)
     resources.consume(step_stir_1).should be_true
     resources.consume(step_stir_2).should be_true
-    resources.consume(step_stir_3).should be_false
+    resources.consume(step_stir_3).should be_true
+    resources.consume(step_stir_4).should be_false
     resources.consume(step_boil).should be_true
   end
 
-  it "two users should be able to consume at most 4 units of attention" do
+  it "two users should be able to consume at most 6 units of attention" do
     step_chop_1 = StepObject.new("Choppity chop", 10, :ALL, 123)
     step_stir_1 = StepObject.new("Stir 1", 20, :SOME, 123)
     step_stir_2 = StepObject.new("Stir 2", 30, :SOME, 123)
-    step_chop_2 = StepObject.new("Chop chop chop", 5, :ALL, 123)
+    step_chop_2 = StepObject.new("Chop chop", 5, :ALL, 123)
+    step_chop_3 = StepObject.new("Chop chop chop", 5, :ALL, 123)
     step_boil = StepObject.new("Boil water", 20, :NONE, 123)
 
     resources = Resources.new(KitchenObject.new, 2)
     resources.consume(step_chop_1).should be_true
     resources.consume(step_stir_1).should be_true
-    resources.consume(step_chop_2).should be_false
+    resources.consume(step_chop_2).should be_true
+    resources.consume(step_chop_3).should be_false
 
     resources = Resources.new(KitchenObject.new, 2)
     resources.consume(step_chop_1).should be_true
-    resources.consume(step_stir_1).should be_true
-    resources.consume(step_stir_2).should be_true
+    resources.consume(step_chop_2).should be_true
+    resources.consume(step_chop_3).should be_true
     resources.consume(step_boil).should be_true
     resources.consume(step_chop_2).should be_false
   end

@@ -1,5 +1,5 @@
 class Resources
-  FOCUS_PER_USER = 2
+  FOCUS_PER_USER = 3
 
   def initialize(kitchen, num_users)
     @free_equipment = kitchen.clone

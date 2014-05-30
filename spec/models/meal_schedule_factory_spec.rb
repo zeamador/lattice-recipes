@@ -69,7 +69,7 @@ describe MealScheduleFactory do
     step_a = StepObject.new("Step A", 15, :ALL, 12)
     recipe_a = RecipeObject.new(12, "Recipe A", nil, Set[step_a])
 
-    step_b = StepObject.new("Step B", 50, :SOME, 90)
+    step_b = StepObject.new("Step B", 50, :ALL, 90)
     step_c = StepObject.new("Step C", 5, :NONE, 90, 
                             prereqs: [step_b], immediate_prereq: step_b)
     recipe_b = RecipeObject.new(90, "Recipe B", nil, Set[step_c])

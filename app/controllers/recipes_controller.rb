@@ -2,6 +2,8 @@ class RecipesController < ApplicationController
 
   def show
     @recipe = Recipe.find(params[:id])
+
+    # Calculate the total estimated time
     @total_time = 0
     for @step in @recipe.steps
       @total_time += @step.time
@@ -19,6 +21,8 @@ class RecipesController < ApplicationController
     valid = prereq_validation(recipe_params)
     if valid
       if @recipe.save
+
+        # Save this recipe to belong to current_user
         @user = current_user
         @recipe.user = @user
         @recipe.save
@@ -38,13 +42,15 @@ class RecipesController < ApplicationController
   def add_to_meal
     @recipe = Recipe.find(params[:id])
 
-    # Make a copy of recipe
+    # Recursively make a copy of recipe
     @tmp_recipe = @recipe.dup
     @tmp_recipe.temp = true
     @tmp_recipe.user = current_user
     @steps_arry = Array.new
     @steps_hash = Hash.new
     @steps = @recipe.steps
+
+    # Make copies for steps and step_mappers
     for @step in @steps
       @tmp_step = @step.dup
       @tmp_step.save
@@ -56,6 +62,8 @@ class RecipesController < ApplicationController
         @tmp_sm.save
       end
     end
+
+    # Change prereq_step_id based on step_number
     @tmp_recipe.step_ids = @steps_arry
     @tmp_recipe.save
     for @step in @tmp_recipe.steps
@@ -91,22 +99,28 @@ class RecipesController < ApplicationController
   end
 
   def destroy
+    # Should recursively delete all steps and step_mappers belong to it.
     @recipe = Recipe.find(params[:id])
-    @recipe.destroy
+    @recipe.destroy 
     redirect_to root_url
   end
 
   def index
+
+    # Whether has query:
+    # if so, find by title or tag
+    # if not, display all
+    # Sort by created time with desc order
     if params[:search]
-      if signed_in?
+      if signed_in? # if signed_in, display secret recipes for current_user
         @recipes = Recipe.search(params[:search]).where("temp = ?", false).where("secret = ? OR user_id = ?", false, current_user.id).order(created_at: :desc)
-      else
+      else # otherwise, display public recipes only
         @recipes = Recipe.search(params[:search]).where("temp = ?", false).where("secret = ?", false).order(created_at: :desc)
       end
     else
-      if signed_in?
+      if signed_in? # if signed_in, display secret recipes for current_user
         @recipes = Recipe.where("temp = ?", false).where("secret = ? OR user_id = ?", false, current_user.id).order(created_at: :desc)
-      else
+      else # otherwise, display public recipes only
         @recipes = Recipe.where("temp = ?", false).where("secret = ?", false).order(created_at: :desc)
       end
     end
@@ -130,6 +144,9 @@ class RecipesController < ApplicationController
                                                              :_destroy]])
   end
 
+  # Validate the prereq:
+  # - only one immediate and preheat prereq
+  # - no dulplicate prereqs
   def prereq_validation(given_params)
     given_params[:steps_attributes].each do |attributes|
       attributes.each do |step|

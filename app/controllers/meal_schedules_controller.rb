@@ -1,4 +1,6 @@
 class MealSchedulesController < ApplicationController
+  
+  # Combines current_user's meal and display on Meal Schedule page
   def show
     recipe_factory = RecipeFactory.new
 
@@ -15,6 +17,7 @@ class MealSchedulesController < ApplicationController
           current_user.kitchen.send(constant.downcase)
       end
 
+      # Use algorithm to get meal_schedule of current meal
       @meal_schedule = 
         MealScheduleFactory.combine(@recipe_objects, kitchen_object, current_user.meal.cooks)
     end

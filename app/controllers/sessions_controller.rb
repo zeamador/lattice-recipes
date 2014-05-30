@@ -3,6 +3,8 @@ class SessionsController < ApplicationController
   def new
   end
 
+  # Authenticates password, creates session and signs the user in
+  # on success; otherwise, flash login_error
   def create
 	user = User.find_by(email: params[:session][:email].downcase)
 	if user && user.authenticate(params[:session][:password])
@@ -14,6 +16,7 @@ class SessionsController < ApplicationController
 	end
   end
 
+  # On destroy, sign out the current_user
   def destroy
     sign_out
 	redirect_to root_url

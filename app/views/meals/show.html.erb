@@ -24,8 +24,8 @@
   <%= form_for(@meal) do |f| %>
     <%= render 'shared/errors', object: @meal if @meal.errors.any? %>
     <p>
-      <%= f.label :cooks %>
-      <%= f.number_field :cooks, :min => 1 %>
+      <strong><%= f.label :cooks %></strong>
+      <%= f.number_field :cooks, :class => "number-input-box", :min => 1 %>
     </p>
 
     <%= f.submit "Combine Recipes" %>

@@ -21,6 +21,13 @@
      </div>
     <br />
   <% end -%>
+  <%= form_for(@meal) do |f| %>
+    <%= render 'shared/errors', object: @meal if @meal.errors.any? %>
+    <p>
+      <%= f.label :cooks %>
+      <%= f.number_field :cooks, :min => 1 %>
+    </p>
 
-  <%= button_to "Combine Recipes", meal_schedule_path, method: :get %>
+    <%= f.submit "Combine Recipes" %>
+  <% end %>
 </div>

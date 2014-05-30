@@ -16,7 +16,7 @@ class MealSchedulesController < ApplicationController
       end
 
       @meal_schedule = 
-        MealScheduleFactory.combine(@recipe_objects, kitchen_object)
+        MealScheduleFactory.combine(@recipe_objects, kitchen_object, current_user.meal.cooks)
     end
   end
 end

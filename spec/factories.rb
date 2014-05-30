@@ -3,6 +3,8 @@ FactoryGirl.define do
     name     "ExampleUser"
     email    "user@example.com"
     password "UserTest"
-    password_confirmation "UserTest"
   end
+
+  factory :meal do
+  end    
 end

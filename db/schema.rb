@@ -44,6 +44,7 @@ ActiveRecord::Schema.define(version: 20140530012208) do
     t.integer  "meal_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "avatar"
   end
 
   add_index "recipes", ["meal_id"], name: "index_recipes_on_meal_id", using: :btree

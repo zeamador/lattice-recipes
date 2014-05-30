@@ -45,21 +45,27 @@ module MealScheduleFactory
     # Returns a Hash from Integer start times to Steps, which is the first
     # successful schedule found.
     def create_meal_schedule_helper(schedule_builder, all_states_seen)
+      if redundant(schedule_builder, all_states_seen)
+        # Base case - failure. Redundant branch.
+        return nil
+      elsif schedule_builder.schedule_complete?
+        # Base case - success. This ScheduleBuilder has a complete schedule.
+        return schedule_builder.schedule
+      end
+
       schedule_builder.possible_steps.each do |step|
         # Make a copy of the schedule_builder to modify and pass to a new
         # recursive branch
         schedule_builder_copy = schedule_builder.clone   
         
         if schedule_builder_copy.add_step(step)
-          unless redundant(schedule_builder_copy, all_states_seen)
-            # Recursive case - add step
-            schedule = create_meal_schedule_helper(schedule_builder_copy, 
+          # Recursive case - add step
+          schedule = create_meal_schedule_helper(schedule_builder_copy, 
                                                    all_states_seen)
-            unless schedule.nil?
-              # Base case - success. Shortcircuiting upon discovery of first
-              #             successful schedule.
-              return schedule
-            end
+          unless schedule.nil?
+            # Base case - success. Shortcircuiting upon discovery of first
+            #             successful schedule.
+            return schedule
           end
         end
 
@@ -68,15 +74,13 @@ module MealScheduleFactory
           schedule_builder_copy = schedule_builder.clone
 
           if schedule_builder_copy.add_step_preemptive(step)
-            unless redundant(schedule_builder_copy, all_states_seen)
-              # Recursive case - add preemptive step
-              schedule = create_meal_schedule_helper(schedule_builder_copy, 
+            # Recursive case - add preemptive step
+            schedule = create_meal_schedule_helper(schedule_builder_copy, 
                                                      all_states_seen)
-              unless schedule.nil?
-                # Base case - success. Shortcircuiting upon discovery of first
-                #             successful schedule.
-                return schedule
-              end
+            unless schedule.nil?
+              # Base case - success. Shortcircuiting upon discovery of first
+              #             successful schedule.
+              return schedule
             end
           end
         end
@@ -93,12 +97,9 @@ module MealScheduleFactory
         unless schedule.nil?
           return schedule
         end
-      elsif schedule_builder.schedule_complete?
-        # Base case - success. This ScheduleBuilder has a complete schedule.
-        return schedule_builder.schedule
       else
-        # Base case - failure. Unable to advance sweep line, but there are steps
-        #             remaining.
+        # Base case - failure. Unable to advance sweep line, but there are
+        #             unscheduled steps.
         return nil
       end
     end

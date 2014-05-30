@@ -11,15 +11,17 @@ class MealSchedule
     @recipes = recipes
     @schedule = schedule
 
-    max_time = @schedule.keys.sort.reverse.first
-    longest_step_length = 0
-    @schedule[max_time].each do |step|
-      if step.time > longest_step_length
-        longest_step_length = step.time
+    unless schedule.nil?
+      max_time = @schedule.keys.sort.reverse.first
+      longest_step_length = 0
+      @schedule[max_time].each do |step|
+        if step.time > longest_step_length
+          longest_step_length = step.time
+        end
       end
-    end
 
-    @length = max_time + longest_step_length
+      @length = max_time + longest_step_length
+    end
   end
 
   # Public: Get a collimated version of this MealSchedule's schedule. A

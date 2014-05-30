@@ -24,7 +24,7 @@ module MealScheduleFactory
       # equipment that the kitchen does not have any of, and fail early if
       # found.
       steps_to_check = final_steps
-      next_steps = nil
+      next_steps = Set[]
       until steps_to_check.empty?
         steps_to_check.each do |step|
           if !step.equipment.nil? && kitchen[step.equipment] == 0
@@ -39,6 +39,7 @@ module MealScheduleFactory
         end
 
         steps_to_check = next_steps
+        next_steps = Set[]
       end
 
       resources = Resources.new(kitchen, num_users)

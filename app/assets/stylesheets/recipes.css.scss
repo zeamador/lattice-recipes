@@ -129,10 +129,13 @@ textarea { /* description and ingredients */
   font-size: 48pt;
   font-weight: bold;
   color: Grey;
+}
+
+.step-left-column {
   float: left;
   min-width: 80px;
-  text-align: right;
   padding-right: 5px;
+  text-align: right;
 }
 
 .tabbed-margin-left { /* indentation for whole step */
@@ -152,9 +155,14 @@ textarea { /* description and ingredients */
 }
 
 .remove-step {
-  margin-left: 310px;
+  margin-left: 280px;
 }
 
 .remove-prereq {
-  margin-left: 85px;
+  margin-left: 20px;
 }
+
+.remove-prereq img {
+  vertical-align: top;
+}
+

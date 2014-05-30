@@ -1,11 +1,13 @@
 <fieldset class="step">  
   <% unless edit_flag -%>
-    <span class="stepnum"></span>
-    <%= f.hidden_field :step_number %>
-
-    <span class="remove-step">
-      <%= f.link_to_remove "Remove Step" %>
+    <span class="step-left-column">
+      <span class="stepnum"></span>
+      <%= f.hidden_field :step_number %>
+      <div>
+      <%= f.link_to_remove raw("<img src=\"/assets/x-icon.png\" />") %>
+      </div>
     </span>
+
   <% end -%>
 
   <% if edit_flag -%>

@@ -17,21 +17,20 @@
       </div>
       <% end %>
 
-      <% pixels_per_min = 5 -%>
+      <% pixels_per_min = 10 -%>
       <% schedule_height = @meal_schedule.length * pixels_per_min -%>
 
       <% sorted_times = @meal_schedule.schedule.keys.sort -%>
       <% step_numbers = Hash.new -%>
       <% step_start_times = Hash.new -%>
+      <% ordered_steps = [] -%>
       <% step_num = 1 -%>
 
-      <% sorted_schedule = Hash.new -%>
       <% sorted_times.each do |time| -%>
-        <% sorted_steps = @meal_schedule.schedule[time].sort { |a, b| a.time <=> b.time }-%>
-        <% sorted_schedule[time] = sorted_steps -%>
-        <% sorted_steps.each do |step| -%>
+        <% @meal_schedule.schedule[time].sort { |a, b| a.time <=> b.time }.each do |step| -%>
           <% step_numbers[step] = step_num -%>
           <% step_start_times[step] = time -%>
+          <% ordered_steps << step -%>
           <% step_num += 1 -%>
         <% end -%>
       <% end -%>
@@ -46,30 +45,27 @@
           <% col_schedule.each do |column| -%>
             <div class="column">
               <% column.each do |time, step| -%>
-                <div class="bar attention-<%= step.focus.downcase %>"
+                <div class="bar hidden-info attention-<%= step.focus.downcase %>"
                  style="height:<%= step.time * pixels_per_min - 5 %>px;top:<%= time * pixels_per_min %>px;">
                   <div class="bar-content">
                     <% unless step.time * pixels_per_min < 30 -%>
                       <%= step_numbers[step] %>
                     <% end -%>
                   </div>
+                  <span> <%= step.description %> </span>
                 </div>
+
               <% end -%>
             </div>
           <% end -%>
         </div>
 
-        <div id="schedule-steps-pane" style="height:<%= schedule_height %>px;">
-          <% sorted_times.each do |time| -%>
-            <% offset = 0 -%>
-            <% sorted_schedule[time].each do |step| -%>
-              <div class="step-info"
-                   style="top:<%= step_start_times[step] * pixels_per_min + offset %>px;">
-                <strong><%= step_numbers[step] %>) </strong>
-                <%= step.description %>
-              </div>
-              <% offset += 20 -%>
-            <% end -%>
+        <div id="schedule-steps-pane">
+          <% ordered_steps.each do |step| -%>
+            <p>
+              <strong><%= step_numbers[step] %>) </strong>
+              <%= step.description %>
+            </p>
           <% end -%>
         </div>
       </div>

@@ -23,7 +23,7 @@
 }
 
 .column {
-  float: right;
+  float: left;
 
   width: 40px;
   height: 100%;
@@ -37,7 +37,28 @@
   width: 100%;
   border-radius: 3px;
   box-shadow: 0px 0px 10px #231105;
-  overflow: hidden;
+  overflow: visible;
+}
+
+.hidden-info span { /* hidden values and defaults */
+  position: absolute;
+  width: 300px;
+  color: #FFFFFF;
+  background: #A34318;
+  line-height: 20px;
+  text-align: center;
+  visibility: hidden;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.hidden-info:hover span { /* visible when hovered */
+  visibility: visible;
+  left: 100%;
+  top: 50%;
+  margin-top: -15px;
+  margin-left: 15px;
+  z-index: 999;
 }
 
 .bar-content {

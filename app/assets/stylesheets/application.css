@@ -63,7 +63,7 @@ a { /* links */
 .info-extra-bottom {
   float: left;
   width: 70%;
-  overflow: hidden;
+  overflow: visible;
   background-color: #EAEEF8;
   color: Black;
   padding-top: 1px;
@@ -114,12 +114,12 @@ input[type="submit"], .add_nested_fields {
   height: 17px;
 }
 
-a.tooltips { /* tooltip anchor itself */
+.tooltips { /* tooltip anchor itself */
   position: relative;
   display: inline;
 }
 
-a.tooltips span { /* hidden values and defaults */
+.tooltips span { /* hidden values and defaults */
   position: absolute;
   width: 280px;
   color: #FFFFFF;
@@ -131,7 +131,7 @@ a.tooltips span { /* hidden values and defaults */
   padding-bottom: 5px;
 }
 
-a:hover.tooltips span { /* visible when hovered */
+:hover.tooltips span { /* visible when hovered */
   visibility: visible;
   left: 100%;
   top: 50%;

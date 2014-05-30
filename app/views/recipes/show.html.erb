@@ -8,13 +8,13 @@
   <% if @recipe.secret && current_user != @recipe.user%>
   
     <% #incase of trying to view a secret recipe you did not create %>
-    <div class="info-extra-bottom">
+    <div class="info extra-bottom">
       Sorry! You don't have permission to view this recipe. =D
     </div>
     
   <% else %>
 
-    <div class="info-extra-bottom">
+    <div class="info extra-bottom">
     
       <% #Recipe messages %>
       <div class="message-container">

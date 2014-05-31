@@ -2,11 +2,16 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.welcome-content {
+  padding-left: 300px;
+}
+
 .bullets {
   list-style-type: none;
   float: left;
   padding-top: 15px;
   padding-left: 10px;
+  margin-left: -300px;
 }
 
 .bullets li {
@@ -24,7 +29,8 @@
   padding-top: 20px;
   padding-bottom: 20px;
   float: left;
-  width: 600px;
+  min-width: 240px;
+  max-width: 600px;
 }
 
 .center-image img {

@@ -47,7 +47,7 @@
         <p> <strong> SECRET </strong> </p>
       <% else -%>
         <% if @recipe.user == nil -%>
-          <p>Uploader: [Unkown]</p>
+          <p>Uploader: [Unknown]</p>
         <% else -%>
           <p>Uploader: <%= @recipe.user.name %></p>
         <% end -%>

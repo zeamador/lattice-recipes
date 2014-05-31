@@ -1,12 +1,25 @@
-# Chris' User
+# Chris's User
 ## Background
-???
+- 20-year-old male
+- Graduating senior in Chemistry at UW
+- Cooks ocassionaly
 
 ## Tasks
-???
+- Sign up and upload a recipe from AllRecipes.com
+- Search for recipes and combine a few of the ones found
 
 ## Feedback
-This user read all the information presented on him on each page. After logging in and being taken to the kitchen settings page, he was somewhat confused on about what it was and thought it was a confirmation page. After updating some of his kitchen information, he had trouble figuring out how to add a recipe. Once he found it he added tags easily and included multi-word tags, though he expected after reading the tooltip that there would be a list of precomputed tags to choose from. He went through the form sequentially, instinctively copied the ingredients directly and then reformated them after reading the tooltip. After looking over the Step information, he opened the Tutorial in a new tab. He didn't understand what the large decription box was for in each step, but looked through all the images in the Tutorial without reading the text. He didn't understand what out remove button did for steps and prereqs and wanted a tooltip on it, thinking it was trying to tell him he had an error. He made some mistakes in filling out steps involving breaking up steps, attention required, time requirements, and equipment selection. He didn't understand what prereqs were and didn't use them. When told to combine recipes he tried to hit the Combine Recipes button without adding recipes but fixed his own confusion by visiting the About page and used the Search feature. He tried the customize button but didn't interact with the page. He was confused by the graphical display of the schedule on the Meal Schedule page, but understood the text descriptions.
+This user read all of the text presented on him on most pages but skimmed text-heavy sections like the tutorial.
+
+After logging in and being taken to the kitchen settings page, he was somewhat confused on about what it was. He thought it might be a confirmation page or some kind of prompt for additional information. He aimlessly updated some of his kitchen settings and then expressed confusion about how to add a recipe. It took him longer than expected to notice the menu bar. He eventually found it and clicked "Add Recipe". 
+
+He went through the form sequentially, never skipping over an option. He didn't immediately notice the tooltips, but once he did he read through all of them. He added tags easily and included multi-word tags, though he expected after reading the tooltip that there would be a list of precomputed tags to choose from. He instinctively copy-pasted the ingredients from AllRecipes.
+
+After looking over the advice under the Step heading, he opened the Tutorial page in a new tab. He focused on the pictures, but they seemed to clarify the process a lot. He glanced at the text and seemed to skim it, but didn't take the time to actually read it. After returning to the Add Recipe page he didn't understand what the large decription box was for in each step despite having looked through the tutorial. It seems he looked at it for a general idea of what he was doing, not the specifics of how to do it.
+
+He thought the red "X" buttons for removing steps and prereqs might be remove buttons, but he wasn't sure. He hovered over it thinking a tooltip would appear to clarify. When a tooltip didn't pop up he worried that the button was actually an indication of an input error. He didn't try clicking on it because he was worried he would lose the data he had already inputted into the step. He eventually added a prereq to a step and tried clicking on the red "X" there, and observing itself behavior was clarifying. He made significant mistakes in filling out steps, including not breaking up large steps, not adding any prereqs, not selecting the oven as equipment for a preheat-the-oven step, and thinking "time" for the preheating-the-oven step was the time to just press the buttons on the oven. He didn't understand what prereqs were and didn't use them.
+
+When told to combine recipes he found the View Meal button in the sidebar, which took him to his empty meal. He tried to hit the Combine Recipes button and got a little confused at the message that came up saying he needed to add recipes. He immediately decided to visit the About page for guidance. He saw the "How Do I Use It?" section and everything seemed to become much clearer to him after skimming it. He clicked on the Search button to find recipes, and added a couple to his meal. He either knew where to find the Add To Meal button from reading the About page, or it was obvious enough that he knew to click it. He tried the customize button and didn't express any confusion about the customize page, but didn't interact with it either. He was confused by the graphical display of the schedule on the Meal Schedule page, but understood the text descriptions. He tested the site before the timeline was added to the Meal Schedule page.
 
 
 # Bessie's User

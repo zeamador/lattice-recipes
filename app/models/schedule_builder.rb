@@ -4,21 +4,33 @@
 #
 # Terminology:
 #
+# "Schedule"
+#   A schedule is a set of steps scheduled to start at certain times. It is
+#   represented as a Hash from Integer times, in minutes, to Sets of Steps that
+#   start at that time. A valid schedule does not overuse focus or kitchen
+#   resources at any time. If every prereq of every step in a schedule is also
+#   in the schedule, the schedule is complete. A ScheduleBuilder only produces
+#   valid schedules when operating in a defined state, but it can return
+#   incomplete schedules. See schedule() and schedule_complete?() for more
+#   information.
+#
 # "Preemption"
 #   In this context refers to scheduling a step to end at some time other than
 #   the current time. The purpose of this is to plan for a step's immediate 
 #   prerequisite by scheduling it to start at the next significant time.
+#
+# "Significant times"
+#   Significant times are times at which any scheduled Step starts. They are
+#   significant because when building a schedule backwards, Step start times
+#   are when something about the schedule changes. There's no point attempting
+#   to schedule steps at non-significant times because those times are always
+#   functionally equivalent to exactly one significant time. Steps are 
+#   scheduled to end at significant times with the exception of preemptive
+#   scheduling described below.
 class ScheduleBuilder
-  # Internal Terminology:
-  #
-  # "Significant times"
-  #   Significant times are times at which any scheduled Step starts. They are
-  #   significant because when building a schedule backwards, Step start times
-  #   are when something about the schedule changes. There's no point attempting
-  #   to schedule steps at non-significant times because those times are always
-  #   functionally equivalent to exactly one significant time. Steps are 
-  #   scheduled to end at significant times with the exception of preemptive
-  #   scheduling described below.
+  # A detailed explanation of how and why ScheduleBuilder works can be found in
+  # the lattice-recipes repository in
+  # docs/system_design/algorithm_explanation.md.
 
   def initialize(starting_steps, resources)
     @possible_steps = starting_steps
@@ -28,11 +40,13 @@ class ScheduleBuilder
     @significant_times = SortedSet.new
     @current_time = 0
     @state = State.new
-    # @pred_counts is a Hash from Steps to integer pred counts. A Steps' pred
-    # count is the number of unscheduled steps it is a prereq for.
+    # @pred_counts is a Hash from Steps to Integer pred counts. A Steps' pred
+    # count is the number of unscheduled steps it is a prereq for. A Steps' pred
+    # count is used to determine whether or not it can be added to
+    # @possible_steps; only a step with a pred count of zero can be scheduled.
     # Invariant - A Step is never mapped to zero; instead, it is not a key at
-    # all. This allows us to quickly check whether or not any steps have pred
-    # counts greater than zero using empty?().
+    #             all. This allows us to quickly check whether or not any steps
+    #             have pred counts greater than zero using empty?().
     populate_pred_counts(starting_steps)
   end
 
@@ -44,8 +58,10 @@ class ScheduleBuilder
   #
   # Returns nothing.
   def initialize_copy(other)
-    # Clone mutable structures
+    # Call the superclass's initialize_copy to perform a shallow-copy and
+    # populate this ScheduleBuilder's fields.
     super
+    # Deep clone mutable structures
     @possible_steps = @possible_steps.clone
     @resources = @resources.clone
     @schedule = @schedule.clone
@@ -66,6 +82,7 @@ class ScheduleBuilder
   #
   # Returns true if the step was successfully added, false otherwise.
   def add_step(step)
+    # Check that the step is in @possible_steps and @resources can consume it.
     if(@possible_steps.include?(step) && @resources.consume(step))
       # Remove step from possible steps
       @possible_steps.delete(step)
@@ -89,19 +106,31 @@ class ScheduleBuilder
   end
 
   # Public: Add the passed step to the schedule such that it starts at the next
-  #         significant time in the schedule.
+  #         significant time in the schedule. From the perspective of the
+  #         builder's mutating methods, but *not* its output schedules, the step
+  #         starts at the next significant time and *ends at the current time*.
+  #         Be careful about the order in which you make these calls; given the
+  #         above information, add_step can return false seemingly incorrectly.
   #
-  # step - The Step object to add.
+  # step - The StepObject to add.
   #
   # Returns true if the step was successfully added, false otherwise
   def add_step_preemptive(step)
+    # Explaining in precise terms why this method works as written is a lengthy
+    # process, so it is not done here. The explanation is in the lattice-recipes
+    # repository in docs/system_design/algorithm_explanation.md.
+
     old_current_time = @current_time
 
     next_time = get_next_time
     if next_time.nil?
-      # There are no more significant times, return failure
+      # There are no more significant times, so we can't schedule this step to
+      # start at one. Return failure
       return false
     else
+      # Set the current time such that if we schedule the step to end at it, the
+      # step's start time will be the next significant time. This allows us to
+      # reuse add_step and avoid redundant code.
       @current_time = next_time - step.time
     end
 
@@ -161,7 +190,7 @@ class ScheduleBuilder
       @resources.release(step)
       step.prereqs.each do |prereq|
         # This is a prereq of a now-scheduled step, so decrement the prereq's
-        # pred count
+        # pred count.
         @pred_counts[prereq] -= 1
         # If the pred count for the prereq is now zero, add it to possible steps
         # and delete its entry in the pred_counts hash.
@@ -286,7 +315,11 @@ class ScheduleBuilder
   end
 
   # public: A State wraps the state of a ScheduleBuilder *since the last call to
-  #         advance_current_time*.
+  #         advance_current_time*. A builder's state is defined by all of the
+  #         stpes that have been added to it since that call, as well as all the
+  #         steps that have been added preemptively and when, exactly, they
+  #         start. This allows users to determine whether or not two 
+  #         ScheduleBuilders are equivalent after a certain time.
   class State
     # Steps is a Set of Steps that have been added non-preemptively since the
     # last call to advance_current_time.

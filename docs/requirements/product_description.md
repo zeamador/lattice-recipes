@@ -4,11 +4,11 @@ Lattice is a web app that combines multiple recipes. It combines steps from mult
 
 ## Target Audience
 
-Lattice will appeal to amatuer chefs who love cooking, especially meals with several dishes. Anyone who has cooked a Thanksgiving dinner knows how challenging it is to coordinate multiple dishes in the kitchen and will appreciate a simpler way to organize their work. Professional chefs, conversely, don’t need an application to tell them how to cook many dishes at once, they have enough experience to do it easily themselves.
+Lattice will appeal to amatuer chefs who love cooking, especially meals with several dishes. Anyone who has cooked a Thanksgiving dinner knows how challenging it is to coordinate multiple dishes in the kitchen and will appreciate a simpler way to organize their work. Professional chefs, conversely, don’t need an application to tell them how to cook many dishes at once. They have enough experience to do it easily themselves.
 
 ## Problems Lattice Solves
 
-When preparing several dishes at the same time, people may take more time than is actually needed or finish one dish after another has already gone cold. Combining several recipes into a single list of steps provides users with a more efficient, simple workflow that guarantees all of the dishes to come out at as close to the same time as possible.
+When preparing several dishes at the same time, people may take more time than is actually needed or finish one dish after another has already gone cold. Combining several recipes into a single list of steps provides users with a more efficient, simple workflow that guarantees all of the dishes come out at as close to the same time as possible.
 
 ## Strengths and Weaknesses of Competitors
 
@@ -73,16 +73,14 @@ Lattice also knows whether a particular step can be interrupted, so it knows not
 
 ### Tutorial
 
-On our recipe entering form, we plan to have the option to view an example/tutorial. This tutorial will include a color coded side-by-side comparison of a recipe as a user might find it in a recipe book and how we would want them to enter the recipe into our form. Using this example we can clearly show how to deal with entering information that might be confusing to our users and what a finished entry will look like.
+There is a tutorial accessible from our menu bar, as well as a link to that tutorial on the Add Recipe page. This tutorial contains example snippets from the Add Recipe page with detailed instructions on how to fill out our recipe form.
 
 ### Mouse over Text
 
-At multiple places in our recipe enter form, we will include mouse over text to example and give brief examples of how to fill out particularly confusing part of the form. This will be especially key where the user must select from a pre-set or pre-generated list of things and we want to make sure they give the best answer for their intention and understanding of the recipe.
+At multiple places on our Add Recipe page, there are mouse over tooltips to explain and give brief examples of how to fill out particularly confusing part of the form. This should be especially helpful to users who do not read the tutorial, but misinterpret our intentions.
 
-### Front page
+### About/FAQ
 
-Our front page will include a general guide about our website and its purpose, as well as advertise our general features in a way such that our user can understand a basic idea of how and why they should use our website, before they start messing around with forms and searches. This gives our users a general idea of what to expect and an idea of the flow they should take through our website for the best experience possible. This is also where any future updates to the site (such as new features) would be advertised.
+Our About page includes a general guide to our website and its purpose. It advertises our general features such that our users can understand the basic idea of how and why they should use our website, before they start messing around with forms and searches. This gives our users a general idea of what to expect and an idea of the flow they should take through our website for the best experience possible. This is also where any future updates to the site (such as new features) would be advertised.
 
-### FAQ
-
-We will include an FAQ on our website, to be updated based on user feedback for questions that may be relevant to other users and are not caused by a fault in the design. This will have a clean layout of clear questions, and be easily accessed from the main menu bar.
+The About page also includes a brief FAQ, to be updated based on user feedback for questions that may be relevant to other users and are not caused by a fault in the design.

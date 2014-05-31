@@ -75,6 +75,11 @@
       <% col_schedule = @meal_schedule.collimated_schedule -%>
       <% col_schedule_width = col_schedule.length * (40 + 5) + 5 + 60 -%>
 
+      <% recipes_from_id = Hash.new -%>
+      <% @meal_schedule.recipes.each do |recipe| -%>
+        <% recipes_from_id[recipe.recipe_id] = recipe -%>
+      <% end -%>
+
       <div id="schedule-display" 
            style="padding-left:<%= col_schedule_width %>px;">
         <div id="schedule-bars-pane" 
@@ -124,7 +129,14 @@
                         <%= step_numbers[step] %>
                       <% end -%>
                     </div>
-                    <span> <%= step.description %> </span>
+                    <span>
+                      Step <%= step_numbers[step] %> -- 
+                      Duration: <%= step.time %> minutes<br />
+                      <br />
+                      <%= step.description %><br />
+                      <br />
+                      From recipe: <%= recipes_from_id[step.recipe_id].title %>
+                    </span>
                   </div>
 
                 <% end -%>
@@ -138,7 +150,9 @@
           <% ordered_steps.each do |step| -%>
             <p>
               <strong><%= step_numbers[step] %>) </strong>
-              <%= step.description %>
+              <%= step.description %><br />
+              Duration: <%= step.time %> minutes -- 
+              From recipe: <%= recipes_from_id[step.recipe_id].title %>
             </p>
           <% end -%>
         </div>

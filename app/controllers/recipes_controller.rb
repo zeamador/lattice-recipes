@@ -38,7 +38,7 @@ class RecipesController < ApplicationController
       unless @need_equipments.length() < 1
         @equipment_warning = "You don't have the following equipment:\n"
         @need_equipments.each do |equipment|
-          @equipment_warning += equipment + "\n"
+          @equipment_warning += equipment.titlecase + "\n"
         end
         @equipment_warning += "Are you sure to add this recipe to your meal?"
       end

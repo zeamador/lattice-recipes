@@ -28,6 +28,15 @@
         </a>
         <%= f.number_field :time, :class => "number-input-box", :min => 1 %> minutes
         <div class="equipment-label">Equipment:
+          <a class="tooltip">
+            <img class="question-mark-icon"
+                 src="/assets/question-mark-icon.png"></img>
+            <span>
+              What kitchen equipment is required to perform this step? Only one
+              piece of equipment can be selected. If your step requires more
+              than one, it must be split into multiple steps.
+            </span>
+          </a>
           <% equip_array = [] -%>
           <% EquipmentTypes.constants.each do |equip_type| -%>
             <% equip_array << [equip_type.capitalize, equip_type.downcase] -%>
@@ -77,6 +86,9 @@
                 boil the water should be added as a prereq.
               </span>
             </a>
+            <span id="prereq-prompt">
+              Are there steps that must <strong>precede</strong> this one?
+            </span>
           </p>
 
       </div>

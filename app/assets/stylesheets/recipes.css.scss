@@ -38,6 +38,7 @@
 
 #step-label {
   margin-top: -15px;
+  max-width: 500px;
 }
 
 /* Buttons and their containers */
@@ -117,6 +118,10 @@ textarea { /* description and ingredients */
 
 .right-step-fields { /* attentiveness */
   width: 200px;
+}
+
+#prereq-prompt {
+  max-width: 200px;
 }
 
 .prereqs { /* prereq steps */

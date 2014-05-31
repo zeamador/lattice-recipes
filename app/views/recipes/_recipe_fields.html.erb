@@ -49,9 +49,9 @@
   <div id="steps_container">
     <h3>Steps</h3>
     <p id="step-label"> 
-      Make sure steps are small, indivisible tasks. You may need to break
-      apart steps if you're copying them from a conventional recipe. See the
-      tutorial page for detailed examples.
+      Make sure steps are small, <strong>indivisible</strong> tasks. You may
+      need to <strong>break apart steps</strong> if you're copying them from a
+      conventional recipe.
     </p>
     <% if @recipe.steps.any? -%>
       <% @steps = @recipe.steps.sort { |a, b| a.step_number <=> b.step_number } -%>

@@ -11,7 +11,7 @@
   <h1>Settings</h1>
   <p>Username: <%= @user.name %></p>
   <p>Email: <%= @user.email %></p>
-   
+
 
   <% # Update Kitchen %>
   <div class="settings">
@@ -29,7 +29,7 @@
       <%= f.submit "Update Kitchen", class: "btn btn-large btn-primary" %>
       <% end %>
   </div>
-  
+
   <% # Change Password %>
   <div class="settings">
     <h3>Change Password</h3>
@@ -37,22 +37,22 @@
     <%= render 'shared/errors', object: @user if @user.errors.any? %>
     <%= f.label :password, "New Password" %></br>
     <%= f.password_field :password %></br>
-  
+
     <%= f.label :password_confirmation, "Confirm New Password" %></br>
     <%= f.password_field :password_confirmation %></br>
-    
+
     <%= f.submit "Change Password", method: :patch %>
     <% end %>
   </div>
 
-    
+
   <% # Delete Account %>
   <br />
   <div class="button">
   <p> <br />
     <%= button_to 'Delete User Account', @user, method: :delete,
-      data: { confirm: "Are you sure you want to delete? All recipes created 
-by this user will be deleted as well." } %>
+      data: { confirm: "Are you sure you want to delete? All secret recipes
+ created by this user will be deleted as well." } %>
   </p>
   </div>
 </div>

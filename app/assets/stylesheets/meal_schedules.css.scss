@@ -4,8 +4,12 @@
 
 /* Recipe actions */
 
-.recipe a {
-  margin-right: 20px;
+.ingredients-list {
+  margin-left: 20px
+}
+
+.ingredients-list>p {
+  margin-top: 5px;
 }
 
 #schedule-display>div {
@@ -74,18 +78,11 @@
   margin-top: -4px;
 }
 
-.attention-all {
-  color: #FFFFFF;
-  background-color: #333333;
+.color-key {
+  height: 20px;
+  width: 20px;
+  float: left;
+  margin-right: 5px;
+  outline: 1px solid black;
+  border: 1px solid white;
 }
-
-.attention-some {
-  color: #FFFFFF;
-  background-color: #B0B0B0;
-}
-
-.attention-none {
-  color: #000000;
-  background-color: #FFFFFF;
-}
-

@@ -11,12 +11,44 @@
       </div>
     <% else -%>
       Estimated total time: <%= @meal_schedule.length %> minutes
-      <h2>Ingredients</h2>
+
+      <% max_darkness = 223 -%>
+      <% recipe_darknesses = Hash.new -%>
+      <% num_recipes = @meal_schedule.recipes.length -%>
+      <% if num_recipes == 1 -%>
+        <% recipe_darknesses[@meal_schedule.recipes.first.recipe_id] = max_darkness -%>
+      <% else -%>
+        <% recipe_num = 0 -%>
+        <% @meal_schedule.recipes.each do |recipe| -%>
+          <% recipe_darknesses[recipe.recipe_id] = -%>
+          <%   ((recipe_num.to_f / (num_recipes - 1)) * max_darkness).round -%>
+          <% recipe_num += 1 -%>
+        <% end -%>
+      <% end -%>
+
+      <% recipe_colors = Hash.new -%>
+      <% recipe_darknesses.each do |recipe_id, darkness| -%>
+        <% color_string = "#" -%>
+        <% 3.times do |i| -%>
+          <% # Convert darkness to hex number and add it to the color string -%>
+          <% # three times, for RGB -%>
+          <% color_string << (255 - darkness).to_s(16) -%>
+        <% end -%>
+        <% recipe_colors[recipe_id] = color_string -%>
+      <% end -%>
+
+      <h2>Recipes</h2>
       <% @meal_schedule.recipes.each do |recipe| -%>
-      <div class="ingredient-list">
-        <h3><%= recipe.title %></h3>
-        <%= simple_format(recipe.ingredients) %>
-      </div>
+        <div>
+          <div class="color-key" 
+               style="background-color:<%= recipe_colors[recipe.recipe_id] %>">
+          </div>
+          <h3><%= recipe.title %></h3>
+          <div class="ingredients-list">
+            <strong>Ingredients</strong>
+            <%= simple_format(recipe.ingredients) %>
+          </div>
+        </div>
       <% end %>
 
       <% pixels_per_min = 10 -%>
@@ -79,8 +111,14 @@
             <% col_schedule.each do |column| -%>
               <div class="column">
                 <% column.each do |time, step| -%>
-                  <div class="bar tooltip attention-<%= step.focus.downcase %>"
-                       style="height:<%= step.time * pixels_per_min - 5 %>px;top:<%= time * pixels_per_min %>px;">
+                  <div class="bar tooltip"
+                       style="height:<%= step.time * pixels_per_min - 5 %>px;
+                              top:<%= time * pixels_per_min %>px;
+                              background-color:
+                                <%= recipe_colors[step.recipe_id] %>;
+                              <%- if recipe_darknesses[step.recipe_id] > 66 -%>
+                                color: #FFFFFF;
+                              <%- end -%>">
                     <div class="bar-content">
                       <% unless step.time * pixels_per_min < 30 -%>
                         <%= step_numbers[step] %>

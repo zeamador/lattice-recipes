@@ -23,7 +23,6 @@ This user read all the information presented on him on each page. After logging 
 - Free testing
 
 ## Feedback
-
 He realize to sign up before being asked. When making his recipe he made it secret, added ingredients in the wrong format without looking at the tool tip (which he refused to change after reading it), initially ignored attentiveness but filled it out after reading the tooltip,  and was initially confused by "Add Prereq". When changing his kitchen settings, he easily and quickly found them. When searching he went back to the home page and used the Search link there, instead of the Search on the main menu bar. Easily found the Tutorial when requested and liked the illustrations. During free testing he asked where to find all the recipes and said that it felt really easy to use.
 
 

@@ -20,7 +20,10 @@
       <% end %>
 
       <% pixels_per_min = 10 -%>
+      <% mins_per_section = 5 -%>
       <% schedule_height = @meal_schedule.length * pixels_per_min -%>
+      <% num_sections = (@meal_schedule.length / mins_per_section.to_f).ceil -%>
+      <% scale_height = num_sections * pixels_per_min * mins_per_section -%>
 
       <% sorted_times = @meal_schedule.schedule.keys.sort -%>
       <% step_numbers = Hash.new -%>
@@ -38,31 +41,62 @@
       <% end -%>
 
       <% col_schedule = @meal_schedule.collimated_schedule -%>
-      <% col_schedule_width = col_schedule.length * (40 + 5) + 5-%>
+      <% col_schedule_width = col_schedule.length * (40 + 5) + 5 + 60 -%>
 
-      <h2>Steps</h2>
-      <div id="schedule-display" style="height:<%= schedule_height %>px;padding-left:<%= col_schedule_width %>px;">
-
-        <div id="schedule-bars-pane" style="height:<%= schedule_height %>px;margin-left:-<%= col_schedule_width %>px;">
-          <% col_schedule.each do |column| -%>
-            <div class="column">
-              <% column.each do |time, step| -%>
-                <div class="bar tooltip attention-<%= step.focus.downcase %>"
-                 style="height:<%= step.time * pixels_per_min - 5 %>px;top:<%= time * pixels_per_min %>px;">
-                  <div class="bar-content">
-                    <% unless step.time * pixels_per_min < 30 -%>
-                      <%= step_numbers[step] %>
+      <div id="schedule-display" 
+           style="padding-left:<%= col_schedule_width %>px;">
+        <div id="schedule-bars-pane" 
+             style="margin-left:-<%= col_schedule_width %>px;">
+          <h2>Schedule</h2>
+          <div id="columns"
+               style="height:<%= scale_height %>px;">
+            <div id="timeline-scale">
+              <% num_sections.times do |i| -%>
+                <div class="timeline-section">
+                  <img class="timeline-section-image"
+                       src="/assets/timeline_section.png"
+                       style="height:<%= mins_per_section * pixels_per_min + 1 %>px;" />
+                  <div class="timeline-number">
+                    <% time = i * mins_per_section -%>
+                    <% if i % (30 / mins_per_section) == 0 -%>
+                      <strong><%= time %></strong><br />
+                      (min)
+                    <% else -%>
+                      <%= time %>
                     <% end -%>
                   </div>
-                  <span> <%= step.description %> </span>
                 </div>
-
               <% end -%>
+                
+              <div id="last-timeline-section" class="timeline-section">
+                <img class="timeline-section-image"
+                     src="/assets/timeline_section.png" />
+                <div class="timeline-number">
+                  <%= num_sections * mins_per_section %>
+                </div>
+              </div>
             </div>
-          <% end -%>
+            <% col_schedule.each do |column| -%>
+              <div class="column">
+                <% column.each do |time, step| -%>
+                  <div class="bar tooltip attention-<%= step.focus.downcase %>"
+                       style="height:<%= step.time * pixels_per_min - 5 %>px;top:<%= time * pixels_per_min %>px;">
+                    <div class="bar-content">
+                      <% unless step.time * pixels_per_min < 30 -%>
+                        <%= step_numbers[step] %>
+                      <% end -%>
+                    </div>
+                    <span> <%= step.description %> </span>
+                  </div>
+
+                <% end -%>
+              </div>
+            <% end -%>
+          </div>
         </div>
 
         <div id="schedule-steps-pane">
+          <h2>Steps</h2>
           <% ordered_steps.each do |step| -%>
             <p>
               <strong><%= step_numbers[step] %>) </strong>

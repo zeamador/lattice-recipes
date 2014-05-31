@@ -32,6 +32,33 @@
   margin-left: 5px;
 }
 
+#timeline-scale {
+  float: left;
+  height: 100%;
+}
+
+.timeline-section { /* For the divs that make up the step timescale */
+  margin-top: -6px;
+  text-align: right;
+  overflow: hidden;
+}
+
+#last-timeline-section>img {
+  visibility: hidden;
+}
+
+.timeline-section-image { /* For the images of the timescale */
+  margin-top: 5px;
+  float: right;
+  vertical-align: top;
+}
+
+.timeline-number {
+  float: right;
+  margin-top: -2px;
+  margin-right: 2px;
+}
+
 .bar {
   position: absolute;
   width: 100%;

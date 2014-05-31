@@ -20,8 +20,8 @@ onPageLoad = () ->
     $("#steps_container").find(".add_nested_fields").click()
 
   # add validation handler to form
-  $("#new_recipe").submit(-> validateRecipeForm())
-  $(".edit_recipe").submit(-> validateRecipeForm())
+  $("#new_recipe").submit(-> validateForm())
+  $(".edit_recipe").submit(-> validateForm())
 
 # Handle event when a step field is added
 $(document).on('nested:fieldAdded:steps', (event) ->
@@ -78,6 +78,29 @@ $(document).on('nested:fieldRemoved:step_mappers', (event) ->
 # Validate the recipe form data before it's sent to the server,
 # so users can correct errors without having their input
 # wiped out.
+validateForm = () ->
+  # check if this is a 'customize' page
+  titleField = $("#recipe_title")
+  if (titleField.length == 0)
+    return validateCustomizeForm()
+  else
+    return validateRecipeForm()
+
+# Validate the "customize recipe" form
+validateCustomizeForm = () ->
+  times = $("input[name$='[time]']")
+  timesValid = true
+  times.each(->
+    value = $(this).val()
+    if (value == undefined ||
+        value == null ||
+        value == "")
+      alert("Time can't be empty")
+      return (timesValid = false)
+  )
+  return timesValid
+
+# Validate the "add recipe" or "edit recipe" form
 validateRecipeForm = () ->
   title = $("#recipe_title").val()
   if (title == undefined || title == null || title == "")

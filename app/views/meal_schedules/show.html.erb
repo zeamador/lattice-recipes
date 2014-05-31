@@ -6,7 +6,8 @@
   <% if @meal_schedule -%>
     <% if @meal_schedule.schedule.nil? -%>
       <div id="error_explanation">
-        Your recipes could not be combined because at least one of them requires a piece of kitchen equipment that you don't have.
+        Your recipes could not be combined because at least one of them requires
+        a piece of kitchen equipment that you don't have.
       </div>
     <% else -%>
       Estimated total time: <%= @meal_schedule.length %> minutes
@@ -72,7 +73,16 @@
       </div>
 
     <% end -%>
+  <% elsif @error == :timeout -%>
+    <div id="error_explanation">
+      Your recipe combination took too long. our server has limited resources,
+      so to keep it responsive for other users we cannot allow you to combine
+      excessively complicated recipes. If this has occured as a result of
+      combining recipes with fewer than 60 total steps, please notify us.
+    </div>
   <% else -%>
-    <h2>No Recipes To Display</h2>
+    <div id="error_explanation">
+      There were no recipes in your meal to combine.
+    </div>
   <% end -%>
 </div>

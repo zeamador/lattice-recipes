@@ -1,3 +1,5 @@
+require 'timeout'
+
 class MealSchedulesController < ApplicationController
   
   # Combines current_user's meal and display on Meal Schedule page
@@ -17,9 +19,22 @@ class MealSchedulesController < ApplicationController
           current_user.kitchen.send(constant.downcase)
       end
 
-      # Use algorithm to get meal_schedule of current meal
-      @meal_schedule = 
-        MealScheduleFactory.combine(@recipe_objects, kitchen_object, current_user.meal.cooks)
+      # Wrap the algorithm in a timeout to keep the server responsive
+      begin
+        status = Timeout::timeout(10) {
+          # Get meal_schedule of current meal
+          @meal_schedule = MealScheduleFactory.combine(@recipe_objects, 
+                             kitchen_object, current_user.meal.cooks)
+          @error = nil
+        }
+      rescue Timeout::Error
+        @error = :timeout
+      end
+      
     end
+  end
+
+  def error
+    @error
   end
 end

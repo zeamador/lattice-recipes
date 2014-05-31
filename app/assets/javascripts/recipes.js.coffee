@@ -10,8 +10,11 @@ $(document).ready(-> onPageLoad()) # for normal page load
 
 # Do stuff once page is loaded
 onPageLoad = () ->
-  # reset step counter and add the first step to the page
+  # set step counter to number of steps on the page
   stepCounter = 0
+  $(".stepnum").each(->
+    stepCounter = parseInt($(this).html())
+  )
   $("#steps_container").find(".add_nested_fields").click()
   # add validation handler to form
   $("#new_recipe").submit(-> validateRecipeForm())
@@ -46,11 +49,13 @@ $(document).on('nested:fieldRemoved:steps', (event) ->
   # iterate through all fields after the removed step
   # and decrement their step numbers.
   while ((field = field.next("div.fields")).length)
-    stepNum = field.find("input[name$='[step_number]']")
-    value = parseInt(stepNum.val()) - 1
-    stepNum.val(value.toString())
+    fieldNum = field.find("input[name$='[step_number]']")
+    value = parseInt(fieldNum.val()) - 1
+    fieldNum.val(value.toString())
     # change value in html to match form
-    stepNum.prev(".stepnum").html(value.toString())
+    stepNum = field.find(".stepnum")
+    stepNumVal = parseInt(stepNum.html()) - 1
+    stepNum.html(stepNumVal.toString())
     # if this is now step #1, hide prereq input
     if (value == 1)
       field.find(".prereqs").hide()

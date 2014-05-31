@@ -11,7 +11,6 @@ class Recipe < ActiveRecord::Base
 
   # sanitize case
   before_save do
-    self.title = self.title.downcase.titleize 
     self.tags.downcase!
   end
 

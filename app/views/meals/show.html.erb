@@ -10,12 +10,18 @@
       <% end %>
    <% end %>
   </div>
-  
+
   <h1>Recipes In Your Meal</h1>
+
+  <div class="adding-more-recipes">
+    <p>Want to add more recipes? Click on recipes in the sidebar under Latest
+ Recipes, or <%= link_to "search", recipes_path %> for more. From any recipe's
+ page, you can press <em>Add To Meal</em> and it will show up here.</p>
+  </div>
 
   <% #Page break %>
   <hr>
-  
+
   <% #Show all recipes in meal %>
   <% @meal.recipes.each do |recipe| -%>
      <div class="recipe">

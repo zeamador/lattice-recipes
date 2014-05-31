@@ -15,9 +15,13 @@ onPageLoad = () ->
   $(".stepnum").each(->
     stepCounter = parseInt($(this).html())
   )
-  $("#steps_container").find(".add_nested_fields").click()
+  # add a step to the page if there are no steps
+  if (stepCounter == 0)
+    $("#steps_container").find(".add_nested_fields").click()
+
   # add validation handler to form
   $("#new_recipe").submit(-> validateRecipeForm())
+  $(".edit_recipe").submit(-> validateRecipeForm())
 
 # Handle event when a step field is added
 $(document).on('nested:fieldAdded:steps', (event) ->

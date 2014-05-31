@@ -1,52 +1,36 @@
-# Chris's User
-## Background
+# Users
+
+## User 1 (interviewed by Chris)
+### Background
 - 20-year-old male
 - Graduating senior in Chemistry at UW
-- Cooks occassionaly
+- Cooks ocassionally
 
-## Tasks
+### Tasks
 - Sign up and upload a recipe from AllRecipes.com
 - Search for recipes and combine a few of the ones found
 
-## Feedback
-This user read all of the text presented to him on most pages but skimmed text-heavy sections like the tutorial.
-
-After logging in and being taken to the kitchen settings page, he was somewhat confused about what it was. He thought it might be a confirmation page or some kind of prompt for additional information. He aimlessly updated some of his kitchen settings and then expressed confusion about how to add a recipe. It took him longer than expected to notice the menu bar. He eventually found it and clicked "Add Recipe". 
-
-He went through the form sequentially, never skipping over an option. He didn't immediately notice the tooltips, but once he did he read through all of them. He added tags easily and included multi-word tags, though he expected after reading the tooltip that there would be a list of precomputed tags to choose from. He instinctively copy-pasted the ingredients from AllRecipes.
-
-After looking over the advice under the Step heading, he opened the Tutorial page in a new tab. He focused on the pictures, but they seemed to clarify the process a lot. He glanced at the text and seemed to skim it, but didn't take the time to actually read it. After returning to the Add Recipe page he didn't understand what the large decription box was for in each step despite having looked through the tutorial. It seems he looked at it for a general idea of what he was doing, not the specifics of how to do it.
-
-He thought the red "X" buttons for removing steps and prereqs might be remove buttons, but he wasn't sure. He hovered over it thinking a tooltip would appear to clarify. When a tooltip didn't pop up he worried that the button was actually an indication of an input error. He didn't try clicking on it because he was worried he would lose the data he had already inputted into the step. He eventually added a prereq to a step and tried clicking on the red "X" there, and observing the behavior himself was clarifying. He made significant mistakes in filling out steps, including not breaking up large steps, not adding any prereqs, not selecting the oven as equipment for a preheat-the-oven step, and thinking "time" for the preheating-the-oven step was the time to just press the buttons on the oven. He didn't understand what prereqs were and didn't use them.
-
-When told to combine recipes he found the View Meal button in the sidebar, which took him to his empty meal. He tried to hit the Combine Recipes button and got a little confused at the message that came up saying he needed to add recipes. He immediately decided to visit the About page for guidance. He saw the "How Do I Use It?" section and everything seemed to become much clearer to him after skimming it. He clicked on the Search button to find recipes, and added a couple to his meal. He either knew where to find the Add To Meal button from reading the About page, or it was obvious enough that he knew to click it. He tried the customize button and didn't express any confusion about the customize page, but didn't interact with it either. He was confused by the graphical display of the schedule on the Meal Schedule page, but understood the text descriptions. He tested the site before the timeline was added to the Meal Schedule page.
-
-
-# Bessie's User
-## Background
+## User 2 (interviewed by Bessie)
+### Background
 - Uses a lot of online apps
 - Chinese
 - Student at UW
 
-## Tasks
+### Tasks
 - Add Recipe
 - Add to meal, change kitchen settings, customize and combine meal
 - Use Search and Your Recipes
 - Tutorial
 - Free testing
 
-## Feedback
-He realized he needed to sign up before being asked. When making his recipe he made it secret, added ingredients in the wrong format without looking at the tool tip (which he refused to change after reading it), initially ignored attentiveness but filled it out after reading the tooltip,  and was initially confused by "Add Prereq". When changing his kitchen settings, he easily and quickly found them. When searching he went back to the home page and used the Search link there, instead of the Search on the main menu bar. Easily found the Tutorial when requested and liked the illustrations. During free testing he asked where to find all the recipes and said that it felt really easy to use.
-
-
-# Jake's User
-## Background
+## User 3 (interviewed by Jake)
+### Background
 - 23 year old female
 - Graduating Senior in BioChemistry and Economics at UW
 - Cooks almost every day
 - Taiwanese
 
-## Tasks
+### Tasks
 - Create User, change Kitchen settings
 - Add Recipe, twice
 - Read Tutorial
@@ -55,34 +39,80 @@ He realized he needed to sign up before being asked. When making his recipe he m
 - Use Search to add another Recipe to Meal, combine again
 - Free Exploration
 
-## Feedback
-User requested that the Add Prereq button should be smaller than other buttons and that the name should be changed to imply that the prereqs already exist and you're just adding connections with the other steps. User also thought that new users should be prompted to view the Tutorial before uploading their first recipe. Also wanted a notification on the Meal page about how to add additional recipes.
 
-
-# Zach's User
-## Background
+## User 4  (interviewed by Zach)
+### Background
 - Master's student at UW in vocal performance
 - Cooks regularly
 - Used to reading recipes from cookbooks
 
-## Tasks
+### Tasks
 - Had user add a simple pasta recipe
 - Then add it to her meal and combine
 - Also looked at tutorial
 
-## Feedback
-The user added a whole step from the source recipe to the form, even when the step should be divided. She said it would've been helpful to have a tip on the Add Recipe form to tell you to only create steps that require one equipment source. She made mistakes with using prereqs, but said the inputting was mostly intuitive. When looking at the meal, she found the colors confusing, but liked the display otherwise and liked that it scaled with time. For the Tutorial page she said it had too much text and she wouldn't read it all.
 
+## User 5 (interviewed by Sam)
+### Background
+- 22 year old 
+- UW student
+- Does not cook regularly
 
-# Sam's User
-## Background
-???
+### Tasks
+- Had her create her own recipe
+- Then edit that recipe and
+- Add it to her meal twice
+- Also looked at tutorial
 
-## Tasks
-- Had her add a new recipe
+# General Feedback and Responses
 
-## Feedback
-User did not read the home page. When adding a recipe she wanted the tooltip for tags to explain what they were for and for the description to have a tooltip. She found the difference between All and Some attention to be confusing and didn't include times on her steps. The immediate prereq tooltip she found super confusing and wanted a general tooltip next to the Add Prereq button. Afterwards she also wanted a way to copy recipes and then edit a new copy of it.
+## Home page was boring and unscannable
+Both our real customer, Isaac, and User 5 said that the home page did not serve its purpose. User 5 specifically said the home page was oddly small and had too much text. She said she would never read the text on the page and saw only the two hyper links in the last sentence.
 
-Jake's user wanted more clarification on pages outside of tooltips (suggestions to read the Tutorial, instructions on adding to meal on the meal page) and this clarification has been added. Zach's user said tutorial was too wordy and she would never actually read the text, this has been addressed.
+### Response
+We created a custom image for our welcome page to fill it out and make it more attractive. We also replaced all of our text with a single large fragment and 3 - 4 bullet points.
 
+## Confusing Settings page
+User 1 did not realize he was directed to the settings page after creating an account. 
+
+### Response
+We added a "Settings" title to this page and reorganized its content to be more readable.
+
+## Tooltip explanations were unclear
+All five users expressed confusion over at least one tooltip. We also had users request more tooltips by tags, the Add Prereq button, and by the step description box. User 2 never read the tooltips at all and most other users needed prompting to read their first tooltip.
+
+### Response
+We rewrote all of our tooltips to increase clarity, added tooltips to tags and the Add Prereq button, and added on screen instructions for Steps and Prereqs so that even people who didn't hover over the tooltip would see the text. We also changed the color of our tooltips so that they would be easier on the eyes.
+
+## Times were excluded from recipe descriptions
+User 5 did not included important times (like how long to microwave something) in the step description because there was a time field right below it.
+
+### Response
+This was not fully addressed for the Release Candidate. We did add a scale to the meal schedule so it is possible to recover times from this, but it would be best to include times with the step descriptions. This will be fixed soon.
+
+## Tutorial would not be used
+Users 1 and 2 were the only ones to open the tutorial without being prompted. All five users said that the images on the tutorial were very helpful but that the text was too verbose and that they would never read it.
+
+### Response
+We added text to the top of the Add Recipe page to prompt new users to look at the tutorial. We also added more images to the tutorial and removed over half the text next to the images.
+
+## Unclear how to add more recipes to a meal
+User 4 could not figure out how to add more recipes to a meal once she was on the Meal page.
+
+### Response
+We added instructions on the Meal page for how to add more recipes to the meal.
+
+## Meal Schedule was not at all intuitive
+All five users needed verbal explanations of the meal schedule display. Once it was explained to them, they generally liked it, except for the colors.
+
+### Response
+We added a labeled time line to the left of the schedule and color coded the step boxes by the recipe they came from. We also reorganzied how we listed recipe ingredients so that it would be clearer which recipe the ingredients corresponded to and included a color key by the recipe titles. Finally, we changed the schedule so that when you hover over a step box, the step description appears.
+
+## Red X's for deleting look like error messages
+User 1 thought that the red X by each step indicated that he had made an error while adding a recipe. User 5 was also confused by why the red X was on the left of the step.
+
+### Response
+This was not addressed for the Release Candidate, but we will move the X to the right of the step and change its color very soon. We will also add hover text over this icon that says "Delete Step".
+
+# Overall Experience
+We were generally surprised by the things our users were confused by. We expected them to initially have trouble adding prereqs and breaking up steps, but we thought that there was ample information available on the site to clarify these. What we hadn't realized was how difficult that information is to find and how little text users are willing to read. Since we already knew our intentions and the location of all our documentation, we were too biased to realize this. Having actual users look at the site was far more helpful than even our peer customers have been. Our non-cs users had much higher expectations for the product and would simply fail to complete tasks when things were unclear.

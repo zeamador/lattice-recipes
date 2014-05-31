@@ -9,6 +9,7 @@
         Your recipes could not be combined because at least one of them requires a piece of kitchen equipment that you don't have.
       </div>
     <% else -%>
+      Estimated total time: <%= @meal_schedule.length %> minutes
       <h2>Ingredients</h2>
       <% @meal_schedule.recipes.each do |recipe| -%>
       <div class="ingredient-list">

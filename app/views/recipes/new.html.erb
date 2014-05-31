@@ -12,6 +12,13 @@
 
   <% if signed_in? -%>
 
+    <% if current_user.recipes.empty? -%>
+      <div class="send-to-tutorial">
+        <h3>First time here? Check out our
+          <%= link_to "Tutorial", tutorial_index_path %></h3>
+      </div>
+    <% end -%>
+
     <div class="recipe-form">
       <h1>Add Recipe</h1>
       <%= render 'recipe_fields' %>

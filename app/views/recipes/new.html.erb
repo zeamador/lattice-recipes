@@ -9,21 +9,21 @@
       <% end %>
     <% end %>
   </div>
-  
+
   <% if signed_in? -%>
-  
+
     <div class="recipe-form">
       <h1>Add Recipe</h1>
       <%= render 'recipe_fields' %>
     </div>
-    
-  <% else -%>
-  
-    <div class="need-signin">
-      <p>Please sign in using the sidebar or <%= link_to "register", signup_path %></p>
-    </div>
-    
-  <% end -%>
-  
-</div>
 
+  <% else -%>
+
+    <div class="need-signin">
+      <p>Please sign in using the sidebar or
+        <%= link_to "register", signup_path %></p>
+    </div>
+
+  <% end -%>
+
+</div>

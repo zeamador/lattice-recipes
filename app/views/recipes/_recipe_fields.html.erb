@@ -48,24 +48,17 @@
 
   <div id="steps_container">
     <h3>Steps</h3>
-    <p id="step-label"> 
+    <p id="step-label">
       Make sure steps are small, <strong>indivisible</strong> tasks. You may
       need to <strong>break apart steps</strong> if you're copying them from a
       conventional recipe.
     </p>
-    <% if @recipe.steps.any? -%>
-      <% @steps = @recipe.steps.sort { |a, b| a.step_number <=> b.step_number } -%>
-      <%= f.fields_for :steps, @steps do |step_form| %>
-        <%= render partial: "step_fields", locals: {f: step_form} %>
-      <% end -%>
-    <% else -%>
-      <% f.fields_for :steps do |step_form| -%>
-        <%= render partial: "step_fields", locals: {f: step_form} %>
-      <% end -%>
+    <% f.fields_for :steps do |step_form| -%>
+      <%= render partial: "step_fields", locals: {f: step_form} %>
     <% end -%>
     <p><%= f.link_to_add "Add Step", :steps %></p>
   </div>
-  
+
   <p>
     <strong><%= f.label :notes %></strong>
     <a class="tooltip">
@@ -74,9 +67,8 @@
     </a><br />
     <%= f.text_area :notes %>
   </p>
-  
+
   <div class="create-recipe-btn">
     <%= f.submit %>
   </div>
 <% end -%>
-

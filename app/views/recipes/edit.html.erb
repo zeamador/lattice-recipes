@@ -10,23 +10,23 @@
       <% end -%>
     <% end -%>
   </div>
-  
+
   <% if @recipe.user == current_user -%>
-  
+
     <% #Display Recipe %>
     <div>
       <h1><%= @recipe.title %></h1>
     </div>
 
-    <%= render 'recipe_fields' %>
-    
+    <%= render 'recipe_edit_fields' %>
+
   <% else -%>
-  
+
     <% #Need to be signed in as owner to edit %>
     <div class="need-signin">
       <p>Please sign in with the correct user using the sidebar</p>
     </div>
-    
+
   <% end -%>
-  
+
 </div>

@@ -8,6 +8,42 @@ class RecipesController < ApplicationController
     for @step in @recipe.steps
       @total_time += @step.time
     end
+
+    @equipment_warning = ""
+    unless current_user == nil
+
+      # Get all equipments in EquipmentTypes
+      @all_equipments = Set.new
+      EquipmentTypes.constants.each do |constant|
+        @all_equipments << "#{constant}".downcase()
+      end
+
+      # Get all missing equipment for current user
+      @missing_equipments = Set.new
+      @all_equipments.each do |equipment|
+        if current_user.kitchen.attributes[equipment] < 1
+          @missing_equipments << equipment
+        end
+      end
+
+      # Check through the recipe whether there's step that need missing equipment
+      @need_equipments = Set.new
+      @recipe.steps.each do |step|
+        if @missing_equipments.include? step.equipment
+          @need_equipments << step.equipment
+        end
+      end
+
+      # Generate warning
+      unless @need_equipments.length() < 1
+        @equipment_warning = "You don't have the following equipment:\n"
+        @need_equipments.each do |equipment|
+          @equipment_warning += equipment + "\n"
+        end
+        @equipment_warning += "Are you sure to add this recipe to your meal?"
+      end
+    end
+
   end
 
   def new

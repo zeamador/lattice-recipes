@@ -29,8 +29,14 @@
       <div>
 	<% if signed_in? -%>
 	  <div class="add-to-meal">
-	    <%= button_to "Add To Meal", 
-		add_to_meal_path(meal_id: current_user.meal.id, id: @recipe.id) %>
+	  	<% if @equipment_warning == "" %>
+	  		<%= button_to "Add To Meal", 
+	  		add_to_meal_path(meal_id: current_user.meal.id, id: @recipe.id) %>
+	  	<% else %>
+	    	<%= button_to "Add To Meal", 
+			add_to_meal_path(meal_id: current_user.meal.id, id: @recipe.id), 
+						 	 data: { confirm: @equipment_warning } %>
+		<% end %>
 	  </div>
 	<% end %>
 	<h1><%= @recipe.title %></h1>

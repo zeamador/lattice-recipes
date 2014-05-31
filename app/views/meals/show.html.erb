@@ -19,7 +19,20 @@
   <% #Show all recipes in meal %>
   <% @meal.recipes.each do |recipe| -%>
      <div class="recipe">
-      <p class="recipe-title"><strong><%= recipe.title %></strong></p>
+      <p class="recipe-title">
+        <strong><%= recipe.title %></strong>
+        <% unless @need_equipments_by_id[recipe.id].length() < 1 %>
+          <a class="tooltip">
+            <img class="question-mark-icon" src="/assets/question-mark-icon.png"></img>
+            <span>
+              You can't combine this recipe without the following equipment: </br>
+              <% for @equipment in @need_equipments_by_id[recipe.id] %>
+                - <%= @equipment %> </br>
+              <% end %>
+            </span>
+          </a>
+        <% end %>
+      </p>
       <p class="recipe-tags"><%= recipe.tags %></p>
       <%= link_to "Customize", recipe %>
       <%= link_to "Remove", recipe, method: :remove_from_meal %>

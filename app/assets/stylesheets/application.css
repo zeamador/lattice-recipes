@@ -104,6 +104,12 @@ input[type="submit"], .add_nested_fields {
   height: 17px;
 }
 
+.exclamation-mark-icon { /* icon used for tooltips */
+  vertical-align: text-top;
+  width: 17px;
+  height: 17px;
+}
+
 a.tooltip { /* tooltip anchor itself */
   position: relative;
   display: inline;

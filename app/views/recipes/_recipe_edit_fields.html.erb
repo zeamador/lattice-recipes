@@ -18,7 +18,7 @@
 
   <p>
     <strong><%= recipe_form.label :ingredients %></strong>
-    <a class="tooltips">
+    <a class="tooltip">
       <img class="question-mark-icon" src="/assets/question-mark-icon.png"></img>
       <span>List ingredients each on their own line. Examples:<br>
       1 cup water<br>
@@ -34,11 +34,12 @@
     <%= recipe_form.fields_for :steps, @steps do |step_form| %>
       <%= render partial: "step_fields", locals: {f: step_form, edit_flag: true} %>
     <% end -%>
+        <p><%= recipe_form.link_to_add "Add Step", :steps %></p>
   </div>
   
   <p>
     <strong><%= recipe_form.label :notes %></strong>
-    <a class="tooltips">
+    <a class="tooltip">
       <img class="question-mark-icon" src="/assets/question-mark-icon.png"></img>
       <span>Optional information on scaling, alternatives, tips, etc.</span>
     </a><br />

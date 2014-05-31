@@ -2,11 +2,10 @@
   <%= f.label :prereq_step_number %>: 
   <%= f.number_field :prereq_step_number, :class => "number-input-box", :min => 1 %>
 
-  <% unless edit_flag -%>
-    <span class="remove-prereq">
-      <%= f.link_to_remove raw("<img src=\"/assets/x-icon.png\" />") %>
-    </span>
-  <% end -%>
+  <span class="remove-prereq">
+    <%= f.link_to_remove raw("<img src=\"/assets/x-icon.png\" />") %>
+  </span>
+
   <br />
   <span class = "radio-buttons-label" > 
     <%= f.check_box :immediate_prereq %>

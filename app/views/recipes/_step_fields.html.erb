@@ -11,13 +11,18 @@
   <% end -%>
 
   <% if edit_flag -%>
-    <span class="stepnum">
-      <%= f.object.step_number %>
-    </span>
-    <span class="remove-step">
-      <!-- Keep this span here even though it doesn't do anything in order to
-           maintain the same alignment as an upload recipe form. The CSS is
-           looking at this class and using the format to align everything. -->
+    <span class="step-left-column">
+      <% if f.object.step_number -%>
+        <span class="stepnum">
+	  <%= f.object.step_number %>
+        </span>
+      <% else -%>
+        <span class="stepnum"></span>
+        <%= f.hidden_field :step_number %>
+      <% end -%>
+      <div>
+	<%= f.link_to_remove raw("<img src=\"/assets/x-icon.png\" />") %>
+      </div>
     </span>
   <% end -%>
 
@@ -72,7 +77,7 @@
           <%= render partial: "step_mapper_fields", locals: {f: mapper_form, edit_flag: edit_flag} %>
         <% end -%>
 
-        <% unless edit_flag -%>
+
           <p>
             <%= f.link_to_add "Add Prereq", :step_mappers %>
             
@@ -86,7 +91,7 @@
               </span>
             </a>
           </p>
-        <% end -%>
+
       </div>
     </div>
   </div>

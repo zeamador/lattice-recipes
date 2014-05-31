@@ -60,7 +60,12 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @recipes = @user.recipes
     @recipes.each do |recipe|
-      recipe.destroy
+      if recipe.secret
+        recipe.destroy
+      else
+        recipe.user = nil
+        recipe.save
+      end
     end
     @user.destroy
     redirect_to root_url

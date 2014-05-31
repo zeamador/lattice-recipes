@@ -38,9 +38,13 @@
       
       <% #General information about recipe %>
       <% if @recipe.secret -%>
-	<p> <strong> SECRET </strong> </p>
+		<p> <strong> SECRET </strong> </p>
       <% else -%>
-	<p>Uploader: <%= @recipe.user.name %></p>
+      	<% if @recipe.user == nil -%>
+      		<p>Uploader: [Unkown]</p>
+      	<% else -%>
+			<p>Uploader: <%= @recipe.user.name %></p>
+		<% end -%>
       <% end -%>
       <% unless @recipe.tags.empty? -%>
 	<p>Tags:

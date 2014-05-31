@@ -2,10 +2,17 @@
 
 <div class="info">
 
-  <h1>Welcome to Lattice!</h1>
-  
-  <p>Sharing meals can be a rewarding way to nourish your body and build community, but not if you're stuck in the kitchen finishing up dinner while your guests have already started eating. Let us take away the timing challenge of food preparation, so that you can sit down to a hot meal with your loved ones!</p>
-  
-  <p>Click <%= link_to "search", recipes_path %> to search for recipes, or <%= link_to "register", signup_path %> to start adding recipes and combining them!</p>
-  
+  <p>
+    <i><h2>Share recipes and organize your meals with Lattice!</h2></i>
+  </p>
+
+  <ul class="bullets">
+    <li><strong>Search</strong> our cookbook</li>
+    <li><strong>Add</strong> your own recipes</li>
+    <li><strong>Combine</strong> recipes for easy cookin'</li>
+    <li><%= link_to "Register now!", signup_path %></li>
+  </ul>
+
+  <img src="/assets/combo.png" class="center-image" >
+
 </div>

@@ -2,8 +2,9 @@
     <span class="step-left-column">
       <% if f.object.step_number -%>
         <span class="stepnum">
-	  <%= f.object.step_number %>
+          <%= f.object.step_number %>
         </span>
+        <%= f.hidden_field :step_number, :value => f.object.step_number %>
       <% else -%>
         <span class="stepnum"></span>
         <%= f.hidden_field :step_number %>

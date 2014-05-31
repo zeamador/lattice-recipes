@@ -2,17 +2,27 @@
 
 <div class="info">
 
-  <p>
-    <i><h2>Share recipes and organize your meals with Lattice!</h2></i>
-  </p>
+  <i><h1>Share recipes and organize your meals with Lattice!</h1></i>
 
+  <% #List of features %>
   <ul class="bullets">
-    <li><strong>Search</strong> our cookbook</li>
-    <li><strong>Add</strong> your own recipes</li>
-    <li><strong>Combine</strong> recipes for easy cookin'</li>
-    <li><%= link_to "Register now!", signup_path %></li>
+    <li class="bullet-1">
+      <img src="/assets/Search.png" class="bullet-image">
+      <strong>Search</strong> our cookbook</li>
+    <li class="bullet-2">
+      <img src="/assets/Add.png" class="bullet-image">
+      <strong>Add</strong> your own recipes</li>
+    <li class="bullet-3">
+      <img src="/assets/Combined.png" class="bullet-image">
+      <strong>Combine</strong> recipes for easy cookin'</li>
+    <% unless signed_in? %>
+      <li class="bullet-4">
+	<img src="/assets/Register.png" class="bullet-image">
+	<%= link_to "Register now!", signup_path %></li>
+    <% end %>
   </ul>
 
+  <% #Main image %>
   <img src="/assets/combo.png" class="center-image" >
 
 </div>

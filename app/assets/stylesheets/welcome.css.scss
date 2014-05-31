@@ -3,11 +3,36 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .bullets {
+  list-style-type: none;
   float: left;
+  padding-top: 15px;
+  padding-left: 10px;
+}
+
+.bullets li {
+  padding-bottom: 50px;
+}
+/*
+.bullet-2 {
+  padding-left: 10px;
+}
+
+.bullet-3 {
+  padding-left: 20px;
+}
+
+.bullet-4 {
+  padding-left: 30px;
+}
+*/
+.bullet-image {
+  width: 35px;
+  height: 35px;
+  vertical-align: middle;
 }
 
 .center-image {
-  padding-left: 50px;
+  padding-left: 40px;
   padding-top: 20px;
   padding-bottom: 20px;
   float: left;

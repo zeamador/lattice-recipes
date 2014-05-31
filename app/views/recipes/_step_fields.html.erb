@@ -1,16 +1,4 @@
 <fieldset class="step">  
-  <% unless edit_flag -%>
-    <span class="step-left-column">
-      <span class="stepnum"></span>
-      <%= f.hidden_field :step_number %>
-      <div>
-      <%= f.link_to_remove raw("<img src=\"/assets/x-icon.png\" />") %>
-      </div>
-    </span>
-
-  <% end -%>
-
-  <% if edit_flag -%>
     <span class="step-left-column">
       <% if f.object.step_number -%>
         <span class="stepnum">
@@ -24,7 +12,6 @@
 	<%= f.link_to_remove raw("<img src=\"/assets/x-icon.png\" />") %>
       </div>
     </span>
-  <% end -%>
 
   <div class = "tabbed-margin-left">
     <%= f.text_area :description %> 
@@ -74,7 +61,7 @@
 
       <div class="prereqs">
         <%= f.fields_for :step_mappers do |mapper_form| %>
-          <%= render partial: "step_mapper_fields", locals: {f: mapper_form, edit_flag: edit_flag} %>
+          <%= render partial: "step_mapper_fields", locals: {f: mapper_form} %>
         <% end -%>
 
 

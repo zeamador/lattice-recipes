@@ -30,9 +30,11 @@
 
   <div class="steps-container">
     <h3>Steps</h3>
-    <% @steps = @recipe.steps.sort { |a, b| a.step_number <=> b.step_number } -%>
-    <%= recipe_form.fields_for :steps, @steps do |step_form| %>
-      <%= render partial: "step_fields", locals: {f: step_form, edit_flag: true} %>
+    <% if @recipe.steps -%>
+      <% @steps = @recipe.steps.sort { |a, b| a.step_number <=> b.step_number } -%>
+      <%= recipe_form.fields_for :steps, @steps do |step_form| %>
+        <%= render partial: "step_fields", locals: {f: step_form} %>
+      <% end -%>
     <% end -%>
         <p><%= recipe_form.link_to_add "Add Step", :steps %></p>
   </div>

@@ -53,8 +53,15 @@
       apart steps if you're copying them from a conventional recipe. See the
       tutorial page for detailed examples.
     </p>
-    <% f.fields_for :steps do |step_form| -%>
-      <%= render partial: "step_fields", locals: {f: step_form, edit_flag: false} %>
+    <% if @recipe.steps.any? -%>
+      <% @steps = @recipe.steps.sort { |a, b| a.step_number <=> b.step_number } -%>
+      <%= f.fields_for :steps, @steps do |step_form| %>
+        <%= render partial: "step_fields", locals: {f: step_form} %>
+      <% end -%>
+    <% else -%>
+      <% f.fields_for :steps do |step_form| -%>
+        <%= render partial: "step_fields", locals: {f: step_form} %>
+      <% end -%>
     <% end -%>
     <p><%= f.link_to_add "Add Step", :steps %></p>
   </div>

@@ -159,7 +159,8 @@ textarea { /* description and ingredients */
 }
 
 .remove-step {
-  margin-left: 280px;
+  display: inline-block;
+  vertical-align: top;
 }
 
 .remove-prereq {

@@ -8,13 +8,13 @@
         <span class="stepnum"></span>
         <%= f.hidden_field :step_number %>
       <% end -%>
-      <div>
-	<%= f.link_to_remove raw("<img src=\"/assets/x-icon.png\" />") %>
-      </div>
     </span>
 
   <div class = "tabbed-margin-left">
     <%= f.text_area :description %> 
+    <div class="remove-step">
+      <%= f.link_to_remove raw("<img src=\"/assets/x-icon.png\" />") %>
+    </div>
     <br />
 
     <div class="step-fields">

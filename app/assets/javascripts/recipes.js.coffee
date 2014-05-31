@@ -18,6 +18,9 @@ onPageLoad = () ->
   # add a step to the page if there are no steps
   if (stepCounter == 0)
     $("#steps_container").find(".add_nested_fields").click()
+  else
+    # hide prereqs for first step
+    $("fieldset.step").first().find(".prereqs").hide()
 
   # add validation handler to form
   $("#new_recipe").submit(-> validateForm())

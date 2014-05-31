@@ -1,50 +1,58 @@
 <% @title="User Profile" %>
 
 <div class="info extra-bottom">
-  <% #User notifications %>
+  <% # User notifications %>
   <div class="message-container">
     <% flash.each do |key, value| %>
       <div class="alert alert-<%= key %>"><%= value %></div>
     <% end %>
   </div>
-  <h1>Username: <%= @user.name %></h1>
+
+  <h1>Settings</h1>
+  <p>Username: <%= @user.name %></p>
   <p>Email: <%= @user.email %></p>
+   
 
-  <% #Kitchen Equpiment changing %>
-  <div class="kitchen-form">
-    <h3>Kitchen Settings:</h3>
+  <% # Update Kitchen %>
+  <div class="settings">
+    <h3>Kitchen Settings</h3>
     <%= form_for(@kitchen) do |f| %>
-      <%= render 'shared/errors', object: @kitchen if @kitchen.errors.any? %>
-      <table>
-        <% EquipmentTypes.constants.each do |constant| %>
-        <tr>
-          <td><%= f.number_field constant.downcase, :min => 0 %></td>
-          <td><%= f.label constant.downcase %>s</td>
-        </tr>
-        <% end -%>
-      </table>
+    <%= render 'shared/errors', object: @kitchen if @kitchen.errors.any? %>
+    <table>
+      <% EquipmentTypes.constants.each do |constant| %>
+      <tr>
+        <td><%= f.number_field constant.downcase, :min => 0 %></td>
+        <td><%= f.label constant.downcase %>s</td>
+      </tr>
+      <% end -%>
+    </table>
       <%= f.submit "Update Kitchen", class: "btn btn-large btn-primary" %>
-    <% end %>
+      <% end %>
   </div>
-  <br />
-
-  <h3>Change Password</h3>
-  <% #Password changing %>
-  <%= form_for(@user) do |f| %>
+  
+  <% # Change Password %>
+  <div class="settings">
+    <h3>Change Password</h3>
+    <%= form_for(@user) do |f| %>
     <%= render 'shared/errors', object: @user if @user.errors.any? %>
     <%= f.label :password, "New Password" %></br>
     <%= f.password_field :password %></br>
   
     <%= f.label :password_confirmation, "Confirm New Password" %></br>
     <%= f.password_field :password_confirmation %></br>
-  
+    
     <%= f.submit "Change Password", method: :patch %>
-  <% end %>
+    <% end %>
+  </div>
 
-  <% #Delete Account %>
-  <p>
+    
+  <% # Delete Account %>
+  <br />
+  <div class="button">
+  <p> <br />
     <%= button_to 'Delete User Account', @user, method: :delete,
       data: { confirm: "Are you sure you want to delete? All recipes created 
-with this user will be deleted as well." } %>
+by this user will be deleted as well." } %>
   </p>
+  </div>
 </div>

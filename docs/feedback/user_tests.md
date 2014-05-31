@@ -11,9 +11,9 @@ This user read all the information presented on him on each page. After logging 
 
 # Bessie's User
 ## Background
-- Use a lot of online apps
+- Uses a lot of online apps
 - Chinese
-- Student in UW
+- Student at UW
 
 ## Tasks
 - Add Recipe
@@ -40,10 +40,14 @@ User requested that the Add Prereq button should be smaller than other buttons a
 
 # Zach's User
 ## Background
-???
+- Master's student at UW in vocal performance
+- Cooks regularly
+- Used to reading recipes from cookbooks
 
 ## Tasks
-- Had user add a simple pasta recipe, then add it to her meal and combine
+- Had user add a simple pasta recipe
+- Then add it to her meal and combine
+- Also looked at tutorial
 
 ## Feedback
 The user added a whole step from the source recipe to the form, even when the step should be divided. She said it would've been helpful to have a tip on the Add Recipe form to tell you to only create steps that require one equipement source. She made mistakes with using prereqs, but said the inputting was mostly intuitive. When looking at the meal, she found the colors confusing, but liked the display otherwise and liked that it scaled with time. For the Tutorial page she said it had too much text and she wouldn't read it all.
@@ -58,3 +62,6 @@ The user added a whole step from the source recipe to the form, even when the st
 
 ## Feedback
 User did not read the home page. When adding a recipe she wanted the tooltip for tags to explain what they were for and for the description to have a tooltip. She found the difference between All and Some attention to be confusing and didn't include times on her steps. The immediate prereq tooltip she found super confusing and wanted a general tooltip next to the Add Prereq button. Afterwards she also wanted a way to copy recipes and then edit a new copy of it.
+
+Zach's user said tutorial was too wordy and she would never actually read the text, this has been addressed.
+

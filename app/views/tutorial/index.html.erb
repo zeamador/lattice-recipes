@@ -913,7 +913,8 @@ Let dish cool for 15 minutes.
       <p>
 	Step 1 preheats the oven for Step 2 to use. This means that Step 1 is a 
 	<strong>preheat prereq</strong>	for Step 2. Steps that do not use the
-	oven should not have preheat prereqs.
+	oven should not have preheat prereqs. Each step can only have one preheat
+  prereq.
       </p>
 
       <h3>Immediate Prerequisites</h3>
@@ -922,7 +923,8 @@ Let dish cool for 15 minutes.
 	Step 2 finishes, which is why Step 2 is its 
 	<strong>immediate prereq</strong>. When an action is time sensitive (for
 	example, things will burn if the step is not immediately performed), it
-	should also have an immediate prereq.
+	should also have an immediate prereq. Each step can only have one
+  immediate prereq.
       </p>
     </div>
   </div>

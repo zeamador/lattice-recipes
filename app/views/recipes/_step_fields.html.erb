@@ -75,11 +75,10 @@
           <% end -%>
         </span>
 
-        <div class="prereqs">
+        <div id="prereqs">
           <%= f.fields_for :step_mappers do |mapper_form| %>
            <%= render partial: "step_mapper_fields", locals: {f: mapper_form} %>
           <% end -%>
-
 
           <p>
             <%= f.link_to_add "Add Prereq", :step_mappers %>

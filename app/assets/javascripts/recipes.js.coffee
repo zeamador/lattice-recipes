@@ -61,7 +61,7 @@ $(document).on('nested:fieldAdded:steps', (event) ->
   stepNum.prev(".stepnum").html(stepCounter.toString())
   # hide prereq input if this is step #1
   if (stepCounter == 1)
-    field.find(".prereqs").hide()
+    field.find("#prereqs").hide()
   # setup handler for equipment selection
   $("select[name$='[equipment]']").change( ->
     preheat = $(this).closest(".step").find(".preheat-prereq")
@@ -71,6 +71,19 @@ $(document).on('nested:fieldAdded:steps', (event) ->
       preheat.hide()
       preheat.find("input[id$='preheat_prereq']").attr("checked", false)
   )
+
+  # If there is more than one step, add a prereq to this step with the step
+  # number of the previous step
+  if (stepCounter != 1)
+    # Click on the "Add Prereq" button for this step
+    field.find(".add_nested_fields").click()
+
+    prevStepNum = stepCounter - 1
+    # Grab the prereq step number input field
+    prereqNumField = field.find("input[name$='[prereq_step_number]']")
+    # Set its value to the previous step number
+    prereqNumField.val(prevStepNum.toString())
+
   # animate insertion
   field.slideDown(animLength)
 )

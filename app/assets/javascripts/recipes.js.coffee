@@ -136,7 +136,7 @@ validateCustomizeForm = () ->
         value == null ||
         value == "")
       alert("Duration can't be empty")
-      return (durationssValid = false)
+      return (durationsValid = false)
   )
   return durationsValid
 

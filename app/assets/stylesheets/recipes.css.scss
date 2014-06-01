@@ -120,11 +120,11 @@ textarea { /* description and ingredients */
   width: 200px;
 }
 
-#prereq-prompt {
+.prereq-prompt {
   max-width: 200px;
 }
 
-#prereqs { /* prereq steps */
+.prereqs { /* prereq steps */
   display: block;
   width: 100%;
 }

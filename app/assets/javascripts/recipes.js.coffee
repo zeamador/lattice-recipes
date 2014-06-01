@@ -61,7 +61,7 @@ $(document).on('nested:fieldAdded:steps', (event) ->
   stepNum.prev(".stepnum").html(stepCounter.toString())
   # hide prereq input if this is step #1
   if (stepCounter == 1)
-    field.find("#prereqs").hide()
+    field.find(".prereqs").hide()
   # setup handler for equipment selection
   $("select[name$='[equipment]']").change( ->
     preheat = $(this).closest(".step").find(".preheat-prereq")

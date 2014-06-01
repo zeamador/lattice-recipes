@@ -75,7 +75,9 @@
           <% end -%>
         </span>
 
-        <div id="prereqs">
+        <div class="prereqs">
+          <h3>Prerequisite Steps:</h3>
+
           <%= f.fields_for :step_mappers do |mapper_form| %>
            <%= render partial: "step_mapper_fields", locals: {f: mapper_form} %>
           <% end -%>
@@ -92,7 +94,7 @@
                 boil the water should be added as a prereq.
               </span>
             </a>
-            <span id="prereq-prompt">
+            <span class="prereq-prompt">
               Are there steps that must <strong>precede</strong> this one?
             </span>
           </p>

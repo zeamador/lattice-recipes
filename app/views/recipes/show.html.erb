@@ -70,7 +70,7 @@
       <div class="ingredient-header">
         Ingredients
       </div>
-      <%= simple_format(@recipe.ingredients) %>
+      <%= simple_format h(@recipe.ingredients) %>
 
       <% #Expanding options %>
       <br />
@@ -127,7 +127,7 @@
     <div class="ingredient-header">
       Notes
     </div>
-    <%= simple_format(@recipe.notes) %>
+    <%= simple_format h(@recipe.notes) %>
   <% end -%>
 
   <% #Changes to recipe buttons %>

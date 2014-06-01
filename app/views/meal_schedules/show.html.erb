@@ -48,7 +48,7 @@
           <h3><%= recipe.title %></h3>
           <div class="ingredients-list">
             <strong>Ingredients</strong>
-            <%= simple_format(recipe.ingredients) %>
+            <%= simple_format h(recipe.ingredients) %>
           </div>
         </div>
       <% end %>

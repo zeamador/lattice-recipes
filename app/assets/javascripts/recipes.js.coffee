@@ -6,13 +6,13 @@ animLength = 250
 
 # Set page loaded handler for each way the page could be loaded
 $(document).on('page:load', -> onPageLoad()) # for turbolinks
-$(document).ready(-> onPageLoad()) # for normal page load
+$(document).ready( -> onPageLoad()) # for normal page load
 
 # Do stuff once page is loaded
 onPageLoad = () ->
   # set step counter to number of steps on the page
   stepCounter = 0
-  $(".stepnum").each(->
+  $(".stepnum").each( ->
     stepCounter = parseInt($(this).html())
   )
   # add a step to the page if there are no steps
@@ -43,8 +43,8 @@ onPageLoad = () ->
     )
 
   # add validation handler to form
-  $("#new_recipe").submit(-> validateForm())
-  $(".edit_recipe").submit(-> validateForm())
+  $("#new_recipe").submit( -> validateForm())
+  $(".edit_recipe").submit( -> validateForm())
 
 # Handle event when a step field is added
 $(document).on('nested:fieldAdded:steps', (event) ->
@@ -146,7 +146,7 @@ validateForm = () ->
 validateCustomizeForm = () ->
   durations = $("input[name$='[duration]']")
   durationsValid = true
-  durations.each(->
+  durations.each( ->
     value = $(this).val()
     if (value == undefined ||
         value == null ||
@@ -171,7 +171,7 @@ validateRecipeForm = () ->
   stepCount = 0
   stepValid = true
   steps = $("#steps_container").find("fieldset.step")
-  steps.each(->
+  steps.each( ->
     # only validate if the step hasn't been removed
     if ($(this).find("input[name$='[_destroy]']").val() != "1")
       stepCount++
@@ -192,7 +192,7 @@ validateRecipeForm = () ->
       immediateCount = 0
       preheatCount = 0
       prereqArr = []
-      prereqs.each(->
+      prereqs.each( ->
         # only validate if the prereq hasn't been removed
         if ($(this).find("input[name$='[_destroy]']").val() != "1")
           # get prereq number

@@ -1,5 +1,5 @@
 # recipes.js.coffee
-# Hooks for the recipe input form.
+# Hooks for the recipe input, edit, and customize forms.
 
 stepCounter = 0
 animLength = 250
@@ -19,8 +19,28 @@ onPageLoad = () ->
   if (stepCounter == 0)
     $("#steps_container").find(".add_nested_fields").click()
   else
+    # do edit form set up
     # hide prereqs for first step
     $("fieldset.step").first().find(".prereqs").hide()
+    # setup equipment selector handlers
+    $("select[name$='[equipment]'").change( ->
+      preheat = $(this).closest(".step").find(".preheat-prereq")
+      if (this.value == "oven")
+        preheat.show()
+      else
+        preheat.hide()
+        preheat.find("input[id$='preheat_prereq']").attr("checked", false)
+    )
+    # hide preheat prereqs if appropriate
+    $(".preheat-prereq").each( ->
+      equipField = $(this).closest("fieldset.step")
+                   .find("select[name$='[equipment]']")
+      if (equipField.val() == "oven")
+        $(this).show()
+      else
+        $(this).hide()
+        $(this).find("input[id$='preheat_prereq']").attr("checked", false)
+    )
 
   # add validation handler to form
   $("#new_recipe").submit(-> validateForm())
@@ -42,6 +62,15 @@ $(document).on('nested:fieldAdded:steps', (event) ->
   # hide prereq input if this is step #1
   if (stepCounter == 1)
     field.find(".prereqs").hide()
+  # setup handler for equipment selection
+  $("select[name$='[equipment]'").change( ->
+    preheat = $(this).closest(".step").find(".preheat-prereq")
+    if (this.value == "oven")
+      preheat.show()
+    else
+      preheat.hide()
+      preheat.find("input[id$='preheat_prereq']").attr("checked", false)
+  )
   # animate insertion
   field.slideDown(animLength)
 )
@@ -70,7 +99,15 @@ $(document).on('nested:fieldRemoved:steps', (event) ->
 
 # Handle event when prereq is added
 $(document).on('nested:fieldAdded:step_mappers', (event) ->
-  event.field.hide().slideDown(animLength)
+  field = event.field
+  equipField = field.closest("fieldset.step").find("select[name$='[equipment]']")
+  preheat = field.find(".preheat-prereq")
+  if (equipField.val() == "oven")
+    preheat.show()
+  else
+    preheat.hide()
+    preheat.find("input[id$='preheat_prereq']").attr("checked", false)
+  field.hide().slideDown(animLength)
 )
 
 # Handle event when prereq is removed

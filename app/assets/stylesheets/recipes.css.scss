@@ -102,8 +102,15 @@ textarea { /* description and ingredients */
 
 .step, .prereq {
   border: 0;
-  padding: 0 0 15px 0;
   margin: 0;
+}
+
+.step {
+  padding: 0 0 15px 0;
+}
+
+.prereq {
+  padding: 0 0 10px 0;
 }
 
 .step-fields { /* contains left-step-fields and right-step-fields */
@@ -120,8 +127,15 @@ textarea { /* description and ingredients */
   width: 200px;
 }
 
-.prereq-prompt {
-  max-width: 200px;
+.prereqs-title { /* title above prereqs list */
+  margin-bottom: 3px;
+  font-size: 1.1em;
+  font-weight: bold;
+}
+
+.prereqs>div.fields { /* container for list of prereq steps */
+  margin-top: 0px;
+  margin-left: 20px;
 }
 
 .prereqs { /* prereq steps */

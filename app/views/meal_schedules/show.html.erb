@@ -10,7 +10,7 @@
         a piece of kitchen equipment that you don't have.
       </div>
     <% else -%>
-      Estimated total time: <%= @meal_schedule.length %> minutes
+      Duration: <%= @meal_schedule.length %> minutes
 
       <% max_darkness = 223 -%>
       <% recipe_darknesses = Hash.new -%>
@@ -65,7 +65,7 @@
       <% step_num = 1 -%>
 
       <% sorted_times.each do |time| -%>
-        <% @meal_schedule.schedule[time].sort { |a, b| a.time <=> b.time }.each do |step| -%>
+        <% @meal_schedule.schedule[time].sort { |a, b| a.duration <=> b.duration }.each do |step| -%>
           <% step_numbers[step] = step_num -%>
           <% step_start_times[step] = time -%>
           <% ordered_steps << step -%>
@@ -118,7 +118,7 @@
               <div class="column">
                 <% column.each do |time, step| -%>
                   <div class="bar tooltip"
-                       style="height:<%= step.time * pixels_per_min - 5 %>px;
+                      style="height:<%= step.duration * pixels_per_min - 5 %>px;
                               top:<%= time * pixels_per_min %>px;
                               background-color:
                                 <%= recipe_colors[step.recipe_id] %>;
@@ -126,13 +126,13 @@
                                 color: #FFFFFF;
                               <%- end -%>">
                     <div class="bar-content">
-                      <% unless step.time * pixels_per_min < 30 -%>
+                      <% unless step.duration * pixels_per_min < 30 -%>
                         <%= step_numbers[step] %>
                       <% end -%>
                     </div>
                     <span>
                       Step <%= step_numbers[step] %> -- 
-                      Duration: <%= step.time %> minutes<br />
+                      Duration: <%= step.duration %> minutes<br />
                       <br />
                       <%= step.description %><br />
                       <br />
@@ -152,7 +152,7 @@
             <p>
               <strong><%= step_numbers[step] %>) </strong>
               <%= step.description %><br />
-              Duration: <%= step.time %> minutes -- 
+              Duration: <%= step.duration %> minutes -- 
               From recipe: <%= recipes_from_id[step.recipe_id].title %>
             </p>
           <% end -%>

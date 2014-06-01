@@ -3,13 +3,13 @@ require "set"
 # Immutable recipe step.
 class StepObject
 
-  attr_reader :description, :time, :focus, :recipe_id, :equipment,
+  attr_reader :description, :duration, :focus, :recipe_id, :equipment,
               :prereqs, :immediate_prereq, :preheat_prereq
 
   # Public: Initialize Step with required and optional features.
   #
   # description - Human readable String description of the step.
-  # time - Positive Integer number of minutes the step requires.
+  # duration - Positive Integer number of minutes the step requires.
   # focus - FocusTypes constant.
   # recipe_id - Integer uniquely identifying the recipe this step belongs to.
   #
@@ -26,13 +26,13 @@ class StepObject
   # Raise error if time is not positive, if attentiveness is not 0, 1, or 2,
   # if immediate/preheat prereqs are not in set of prereqs, or if equipment
   # is not an EquipmentType or nil.
-  def initialize(description, time, focus, recipe_id, equipment: nil,
+  def initialize(description, duration, focus, recipe_id, equipment: nil,
                  prereqs: Set[], immediate_prereq: nil, preheat_prereq: nil)
     @description = description
 
     # time must be positive
-    if(time > 0)
-      @time = time
+    if(duration > 0)
+      @duration = duration
     else
       raise "Time was not given in positive minutes"
     end

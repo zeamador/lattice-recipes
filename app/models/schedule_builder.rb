@@ -91,7 +91,7 @@ class ScheduleBuilder
       @state.steps << step
 
       # Add step to schedule
-      start_time = @current_time + step.time
+      start_time = @current_time + step.duration
       unless @significant_times.include?(start_time)
         # These lines must be paired to maintain @significant_time's invariant.
         # Note that concurrency can violate this invariant.
@@ -131,7 +131,7 @@ class ScheduleBuilder
       # Set the current time such that if we schedule the step to end at it, the
       # step's start time will be the next significant time. This allows us to
       # reuse add_step and avoid redundant code.
-      @current_time = next_time - step.time
+      @current_time = next_time - step.duration
     end
 
     res = false

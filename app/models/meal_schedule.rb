@@ -15,8 +15,8 @@ class MealSchedule
       max_time = @schedule.keys.sort.reverse.first
       longest_step_length = 0
       @schedule[max_time].each do |step|
-        if step.time > longest_step_length
-          longest_step_length = step.time
+        if step.duration > longest_step_length
+          longest_step_length = step.duration
         end
       end
 
@@ -47,7 +47,8 @@ class MealSchedule
 
       remainder.keys.sort.each do |time|
         if time >= next_open_time
-          longest_step = remainder[time].max { |a, b| a.time <=> b.time }
+          longest_step = 
+            remainder[time].max { |a, b| a.duration <=> b.duration }
 
           # Add the longest-time step at this time to the column. We take out
           # the longest step first to try to make the columns proceed from most
@@ -64,7 +65,7 @@ class MealSchedule
           end
 
           # Update next_open_time to reflect the new step in the column.
-          next_open_time = time + longest_step.time
+          next_open_time = time + longest_step.duration
         end
       end
 

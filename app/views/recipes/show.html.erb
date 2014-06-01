@@ -63,7 +63,7 @@
 
       <p>Servings: <%= @recipe.serving %> </p>
 
-      <p>Total Estimated Time: <%= @total_time %> minutes</p>
+      <p>Estimated total duration: <%= @total_duration %> minutes</p>
 
       <% #Ingredients %>
       <br />
@@ -97,7 +97,7 @@
           <br />
           <% #Step details %>
           <% if params[:showDetail] == "1" %>
-            <strong>Time:</strong> <%= step.time %> minutes
+            <strong>Duration:</strong> <%= step.duration %> minutes
             <strong>Attentiveness:</strong> <%= step.attentiveness.capitalize %>
             <br />
             <% #Equipment %>

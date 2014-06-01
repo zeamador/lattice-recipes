@@ -31,7 +31,7 @@
       </p>
       <p>Servings: <%= @recipe.serving %> </p>
 
-      <p>Total Estimated Time: <%= @total_time %> minutes</p>
+      <p>Estimated total duration: <%= @total_duration %> minutes</p>
 
       <h3>Ingredients</h3>
       <%= simple_format(@recipe.ingredients) %>
@@ -54,6 +54,14 @@
           </a>
           <%= step_form.number_field :time,
               :class => "number-input-box", :min => 1 %> minutes
+          <%= step_form.label :duration %>:
+	        <a class="tooltip">
+	          <img class="question-mark-icon"
+                 src="/assets/question-mark-icon.png"></img>
+	          <span>How long does this step take?</span>
+	        </a>
+          <%= step_form.number_field :duration,
+              :class => "number-input-box", :min => 0 %> minutes
 
           <br />
           <span class = "radio-buttons-label" >Attentiveness:

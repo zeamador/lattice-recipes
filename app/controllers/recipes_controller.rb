@@ -4,9 +4,9 @@ class RecipesController < ApplicationController
     @recipe = Recipe.find(params[:id])
 
     # Calculate the total estimated time
-    @total_time = 0
+    @total_duration = 0
     for @step in @recipe.steps
-      @total_time += @step.time
+      @total_duration += @step.duration
     end
 
     @equipment_warning = ""
@@ -176,7 +176,7 @@ class RecipesController < ApplicationController
     params.require(:recipe).permit(:title, :secret, :tags, :meal_id, :serving,
                                   :ingredients, :avatar, :notes,
                                   steps_attributes: [:id, :step_number,
-                                                     :description, :time,
+                                                     :description, :duration,
                                                      :attentiveness,
                                                      :final_step, :equipment,
                                                      :_destroy,

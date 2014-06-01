@@ -128,17 +128,17 @@ validateForm = () ->
 
 # Validate the "customize recipe" form
 validateCustomizeForm = () ->
-  times = $("input[name$='[time]']")
-  timesValid = true
-  times.each(->
+  durations = $("input[name$='[duration]']")
+  durationsValid = true
+  durations.each(->
     value = $(this).val()
     if (value == undefined ||
         value == null ||
         value == "")
-      alert("Time can't be empty")
-      return (timesValid = false)
+      alert("Duration can't be empty")
+      return (durationssValid = false)
   )
-  return timesValid
+  return durationsValid
 
 # Validate the "add recipe" or "edit recipe" form
 validateRecipeForm = () ->
@@ -164,10 +164,10 @@ validateRecipeForm = () ->
       if (description == undefined || description == null || description == "")
         alert("Description can't be empty")
         return (stepValid = false)
-      time = $(this).find("input[name$='[time]']").val()
+      duration = $(this).find("input[name$='[duration]']").val()
 
-      if (time == undefined || time == null || time == "")
-        alert("Time can't be empty")
+      if (duration == undefined || duration == null || duration == "")
+        alert("Duration can't be empty")
         return (stepValid = false)
 
       # validate prereqs

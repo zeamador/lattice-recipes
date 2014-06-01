@@ -54,6 +54,7 @@
 
 ### Supported Browsers
 - Chrome 34+
+- Firefox 25+
 
 ## Contributing to Lattice
 You will need to [contact us][contact] to 

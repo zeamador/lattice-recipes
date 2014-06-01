@@ -5,7 +5,7 @@ class MealSchedule
   # Public: Initialize a Meal with a set of recipes and a schedule of steps.
   #
   # recipes - Set of Recipe objects.
-  # schedule - Hash from Integer times in minutes to Sets of Steps beginning 
+  # schedule - Hash from Integer times in minutes to Sets of Steps beginning
   #            at that time.
   def initialize(recipes, schedule)
     @recipes = recipes
@@ -26,7 +26,7 @@ class MealSchedule
 
   # Public: Get a collimated version of this MealSchedule's schedule. A
   #         collimated schedule is an Array of schedules such that each schedule
-  #         has no overlapping steps. In this context a schedule is a Hash of 
+  #         has no overlapping steps. In this context a schedule is a Hash of
   #         Integers to single Steps, not Arrays of Steps.
   #
   # Returns an Array of Hashes from Integer start times to Steps.

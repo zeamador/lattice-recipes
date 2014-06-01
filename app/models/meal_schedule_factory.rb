@@ -44,7 +44,7 @@ module MealScheduleFactory
 
       resources = Resources.new(kitchen, num_users)
       schedule_builder = ScheduleBuilder.new(final_steps, resources)
-    
+
       successful_schedule = create_meal_schedule_helper(schedule_builder, Set[])
 
       MealSchedule.new(recipes, successful_schedule)
@@ -53,7 +53,7 @@ module MealScheduleFactory
     private
     # Internal: Recursive method that performs the interleaving of recipe steps.
     #
-    # schedule_builder - The ScheduleBuilder to which steps are added and 
+    # schedule_builder - The ScheduleBuilder to which steps are added and
     #                    removed to create new schedules.
     # all_states_seen - A Set of ScheduleBuilder::State that have been seen in
     #                   this section of the algorithm, where sections are
@@ -78,11 +78,11 @@ module MealScheduleFactory
       schedule_builder.possible_steps.each do |step|
         # Make a copy of the schedule_builder to modify and pass to a new
         # recursive branch
-        schedule_builder_copy = schedule_builder.clone   
-        
+        schedule_builder_copy = schedule_builder.clone
+
         if schedule_builder_copy.add_step(step)
           # Recursive case - add step
-          schedule = create_meal_schedule_helper(schedule_builder_copy, 
+          schedule = create_meal_schedule_helper(schedule_builder_copy,
                                                    all_states_seen)
           unless schedule.nil?
             # Base case - success. Shortcircuiting upon discovery of first
@@ -97,7 +97,7 @@ module MealScheduleFactory
 
           if schedule_builder_copy.add_step_preemptive(step)
             # Recursive case - add preemptive step
-            schedule = create_meal_schedule_helper(schedule_builder_copy, 
+            schedule = create_meal_schedule_helper(schedule_builder_copy,
                                                      all_states_seen)
             unless schedule.nil?
               # Base case - success. Shortcircuiting upon discovery of first
@@ -134,15 +134,15 @@ module MealScheduleFactory
     # seen - A Set of all States that have already been seen. The builder is
     #        redundant if this Set contains its state.
     #
-    # Returns true if the builder's state is redundant given the seen states, 
+    # Returns true if the builder's state is redundant given the seen states,
     # false otherwise.
-    def redundant(builder, seen)      
+    def redundant(builder, seen)
       state = builder.state
 
       # If the schedules seen so far includes the builder's schedule, the
       # builder is redundant
       is_redundant = seen.include?(state)
-      
+
       unless is_redundant
         seen << state
       end

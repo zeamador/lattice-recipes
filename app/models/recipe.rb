@@ -1,7 +1,7 @@
 class Recipe < ActiveRecord::Base
   has_many :steps, :dependent => :destroy
   belongs_to :user
-  accepts_nested_attributes_for :steps, 
+  accepts_nested_attributes_for :steps,
                                 :allow_destroy => true
 
   validates :title, presence: true
@@ -27,7 +27,7 @@ class Recipe < ActiveRecord::Base
 
     # Assemble a list of step numbers of steps that are not final
     self.steps.each do |step|
-      step.step_mappers.each do |step_mapper|        
+      step.step_mappers.each do |step_mapper|
         not_final << step_mapper.prereq_step_number
       end
     end

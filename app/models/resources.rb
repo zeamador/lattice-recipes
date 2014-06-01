@@ -8,7 +8,7 @@ class Resources
     @preheat_step = nil
   end
 
-  def initialize_copy(other)  
+  def initialize_copy(other)
     super
     @free_equipment = @free_equipment.clone
   end
@@ -21,7 +21,7 @@ class Resources
     # If this step's equipment is an oven, a preheat step owns the oven, the
     # step is not the preheat step that owns the oven, and the step's preheat
     # prereq is not the step that owns the oven, fail.
-    if(step.equipment == :OVEN && !@preheat_step.nil? && 
+    if(step.equipment == :OVEN && !@preheat_step.nil? &&
        step != @preheat_step && @preheat_step != step.preheat_prereq)
       return false
     end
@@ -63,5 +63,5 @@ class Resources
     end
 
     @free_focus += FocusTypes.const_get(step.focus)
-  end  
+  end
 end

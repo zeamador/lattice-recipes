@@ -8,7 +8,7 @@ class RecipeObject
   # recipe_id - Integer uniquely identifying this recipe.
   # title - String description of recipe.
   # ingredients - String list of all ingredients for this recipe.
-  # final_steps - Set of Step objects in the recipe that are not prereqs 
+  # final_steps - Set of Step objects in the recipe that are not prereqs
   #               for any other step in the recipe.
   #
   # Raises error if final_steps is empty.

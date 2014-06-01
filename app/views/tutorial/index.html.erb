@@ -2,8 +2,11 @@
 
 <div class="info extra-bottom">
   <h1>Tutorial</h1>
-  <p>In order to provide you with with best meal schedule, Lattice needs some information that isn't normally included in a recipe. Here are some examples to help you get started.<br /><br />
-    If you have any questions, comments, or concerns regarding this page, feel free to contact us.</p>
+  <p>In order to provide you with with best meal schedule, Lattice needs
+    some information that isn't normally included in a recipe. Here are
+    some examples to help you get started.<br /><br />
+    If you have any questions, comments, or concerns regarding this page,
+    feel free to contact us.</p>
   <h2>Adding a Recipe</h2>
 
   <% #Basic recipe information %>
@@ -17,30 +20,31 @@
         <strong>Tags</strong> (separate with commas)<br />
         <input type="text" value="dessert, spicy, chewy" disabled="true"/>
       </p>
-      
+
       <input type="checkbox" disabled="true" checked />
       <span>
         <strong>Secret</strong>
         <a class="tooltip">
-          <img class="question-mark-icon" 
+          <img class="question-mark-icon"
                src="/assets/question-mark-icon.png" />
           <span>
             Secret recipes cannot be searched for or viewed by other users.
           </span>
         </a>
       </span>
-      
+
       <p>
         <strong>Servings</strong><br />
         <input class="number-input-box" value="30" disabled="true" />
       </p>
-      
+
       <p>
         <strong>Ingredients</strong>
         <a class="tooltip">
-          <img class="question-mark-icon" 
+          <img class="question-mark-icon"
                src="/assets/question-mark-icon.png" />
-          <span>List each of the ingredients required for this recipe on its own line. For example:<br>
+          <span>List each of the ingredients required for this recipe on
+            its own line. For example:<br>
             1 cup water<br>
             3 apples<br>
             A few dashes of sugar</span>
@@ -60,27 +64,32 @@
         </textarea>
       </p>
     </div>
-    
+
     <div class="annotation">
       <h3>General Information</h3>
-      <p>Your recipe <strong>title</strong>, <strong>servings</strong>, and <strong>ingredients</strong> can be copied exactly from whatever format they are currently in.</p>
-      <p><strong>Tags</strong> are just single words that categorize or describe your recipe. These are optional, but will help other users find your recipe more easily.</p>
-      <p>Marking your recipe as <strong>secret</strong> means that you are the only user who will be able view or add this recipe to a meal.</p>
+      <p>Your recipe <strong>title</strong>, <strong>servings</strong>,
+        and <strong>ingredients</strong> can be copied exactly from
+        whatever format they are currently in.</p>
+      <p><strong>Tags</strong> are just single words that categorize or
+        describe your recipe. These are optional, but will help other users
+        find your recipe more easily.</p>
+      <p>Marking your recipe as <strong>secret</strong> means that you are
+        the only user who will be able view or add this recipe to a meal.</p>
     </div>
   </div>
   <br />
   <br />
-  
+
   <% #Step Basics %>
   <div class="tutorial-section">
     <div class="upload-form">
       <p><strong>Typical Cookbook Step</strong></p>
       <p>
-        3. Simmer sauce over medium-high heat for 5 minutes, 
+        3. Simmer sauce over medium-high heat for 5 minutes,
         then remove from heat and add cream.
       </p>
       <p><strong>Lattice Recipe Steps</strong></p>
-      
+
       <% #Step 1 %>
       Step 3. <br />
       <textarea disabled class="tutorial-textbox">
@@ -91,13 +100,13 @@ Simmer sauce over medium-high heat for 5 minutes.
         <span class="left-step-fields">
           Time:
           <a class="tooltip">
-            <img class="question-mark-icon" 
+            <img class="question-mark-icon"
                  src="/assets/question-mark-icon.png" />
             <span>How long does this step take?</span>
           </a>
           <input class="number-input-box" value="5" disabled="true" />
           minutes
-          
+
           <div>
             Equipment:
             <select disabled>
@@ -107,14 +116,14 @@ Simmer sauce over medium-high heat for 5 minutes.
           </div>
           <br />
         </span>
-        
+
         <span class="right-step-fields">
           Attentiveness:
           <a class="tooltip">
-            <img class="question-mark-icon" 
+            <img class="question-mark-icon"
                  src="/assets/question-mark-icon.png" />
             <span>
-              How much of your attention does this step require? 
+              How much of your attention does this step require?
               For example:<br />
               Chopping or sauteing - All<br />
               Stirring occasionally - Some<br />
@@ -128,7 +137,7 @@ Simmer sauce over medium-high heat for 5 minutes.
         <input disabled type="radio" name="attention1" checked/>None<br />
         <br />
       </div>
-      
+
       <% #Step 2 %>
       Step 4. <br />
       <textarea disabled class="tutorial-textbox">
@@ -139,13 +148,13 @@ Remove from heat and add cream.
         <span class="left-step-fields">
           Time:
           <a class="tooltip">
-            <img class="question-mark-icon" 
+            <img class="question-mark-icon"
                  src="/assets/question-mark-icon.png" />
             <span>How long does this step take?</span>
           </a>
           <input class="number-input-box" value="2" disabled="true" />
           minutes
-          
+
           <div>
             Equipment:
             <select disabled>
@@ -158,10 +167,10 @@ Remove from heat and add cream.
         <span class="right-step-fields">
           Attentiveness:
           <a class="tooltip">
-            <img class="question-mark-icon" 
+            <img class="question-mark-icon"
                  src="/assets/question-mark-icon.png" />
             <span>
-              How much of your attention does this step require? 
+              How much of your attention does this step require?
               For example:<br>
               Chopping or sauteing - All<br>
               Stirring occasionally - Some<br>
@@ -173,7 +182,7 @@ Remove from heat and add cream.
           <input disabled type="radio" name="attention2" />Some<br />
           <input disabled type="radio" name="attention2" />None<br />
         </span>
-        
+
         Prereq step number:
         <input class="number-input-box" value="3" disabled="true" />
         <% #Immediate Prereq %>
@@ -181,10 +190,10 @@ Remove from heat and add cream.
           <input type="checkbox" disabled="true" checked />
           Immediate prereq
           <a class="tooltip">
-            <img class="question-mark-icon" 
+            <img class="question-mark-icon"
                  src="/assets/question-mark-icon.png" />
             <span>
-              An immediate prereq must be performed immediately before this 
+              An immediate prereq must be performed immediately before this
               step, with no steps in between.
             </span>
           </a>
@@ -194,10 +203,10 @@ Remove from heat and add cream.
           <input type="checkbox" disabled="true" />
           Preheat prereq
           <a class="tooltip">
-            <img class="question-mark-icon" 
+            <img class="question-mark-icon"
                  src="/assets/question-mark-icon.png" />
             <span>
-              If this step uses the oven, is this prereq the one that 
+              If this step uses the oven, is this prereq the one that
               preheated the oven?
             </span>
           </a>
@@ -213,7 +222,8 @@ Remove from heat and add cream.
         the cook is not actively doing anything and does not need to be exact.
       </p>
       <p>
-        We want to ensure that a cook's <strong>equipment</strong> is not overused.
+        We want to ensure that a cook's <strong>equipment</strong> is not
+        overused.
         So we need to know if a step uses a limited kitchen resource,
         like the oven, sink, microwave, etc.
       </p>
@@ -226,14 +236,14 @@ Remove from heat and add cream.
       <p>
         In general, a single step should not use more than one piece of
         equipment or differing amounts of attention. If the first part of a
-        step uses some attention and the second part uses all attention, it 
+        step uses some attention and the second part uses all attention, it
         should be split into separate steps.
       </p>
     </div>
   </div>
   <br />
   <br />
- 
+
   <% #Attentiveness %>
   <div class="tutorial-section">
     <div class="upload-form">
@@ -247,13 +257,13 @@ Spread marinade over each steak.
         <span class="left-step-fields">
           Time
           <a class="tooltip">
-            <img class="question-mark-icon" 
+            <img class="question-mark-icon"
                 src="/assets/question-mark-icon.png" />
             <span>How long does this step take?</span>
           </a>
           <input class="number-input-box" value="5" disabled="true" />
           minutes
-          
+
           <div>
             Equipment:
             <select disabled>
@@ -263,14 +273,14 @@ Spread marinade over each steak.
           </div>
           <br />
         </span>
-        
+
         <span class="right-step-fields">
           Attentiveness:
           <a class="tooltip">
-            <img class="question-mark-icon" 
+            <img class="question-mark-icon"
                  src="/assets/question-mark-icon.png" />
             <span>
-              How much of your attention does this step require? 
+              How much of your attention does this step require?
               For example:<br />
               Chopping or sauteing - All<br />
               Stirring occasionally - Some<br />
@@ -295,13 +305,13 @@ Place chicken in a pan, and lightly brown.
         <span class="left-step-fields">
          Time
          <a class="tooltip">
-           <img class="question-mark-icon" 
+           <img class="question-mark-icon"
                 src="/assets/question-mark-icon.png" />
            <span>How long does this step take?</span>
          </a>
          <input class="number-input-box" value="10" disabled="true" />
          minutes
-         
+
          <div>
            Equipment:
            <select disabled>
@@ -311,14 +321,14 @@ Place chicken in a pan, and lightly brown.
          </div>
          <br />
         </span>
-        
+
         <span class="right-step-fields">
           Attentiveness:
           <a class="tooltip">
-            <img class="question-mark-icon" 
+            <img class="question-mark-icon"
                  src="/assets/question-mark-icon.png" />
            <span>
-             How much of your attention does this step require? 
+             How much of your attention does this step require?
              For example:<br>
              Chopping or sauteing - All<br>
              Stirring occasionally - Some<br>
@@ -332,7 +342,7 @@ Place chicken in a pan, and lightly brown.
           <br />
         </span>
       </div>
-        
+
       <% #None %>
       <strong>No Attention Required</strong><br />
       <textarea disabled class="tutorial-textbox">
@@ -343,12 +353,12 @@ Preheat oven to 350 F.
         <span class="left-step-fields">
           Time
           <a class="tooltip">
-            <img class="question-mark-icon" 
+            <img class="question-mark-icon"
                  src="/assets/question-mark-icon.png" />
             <span>How long does this step take?</span>
           </a>
           <input class="number-input-box" value="10" disabled="true" />minutes
-          
+
           <div>
             Equipment:
             <select disabled>
@@ -361,9 +371,9 @@ Preheat oven to 350 F.
         <span class="right-step-fields">
           Attentiveness:
           <a class="tooltip">
-            <img class="question-mark-icon" 
+            <img class="question-mark-icon"
                  src="/assets/question-mark-icon.png" />
-            <span>How much of your attention does this step require? 
+            <span>How much of your attention does this step require?
               For example:<br />
               Chopping or sauteing - All<br />
               Stirring occasionally - Some<br />
@@ -381,15 +391,16 @@ Preheat oven to 350 F.
     <div class="annotation">
       <h3>Attentiveness</h3>
       <p>
-        If it would be physically difficult to perform an identical task at the same time, 
-        then a step should be marked as using <strong>all of your attention</strong>. 
-        Examples include chopping vegetables, mixing ingredients, and stirring constantly.
+        If it would be physically difficult to perform an identical task
+        at the same time, then a step should be marked as using
+        <strong>all of your attention</strong>. Examples include chopping
+        vegetables, mixing ingredients, and stirring constantly.
       </p>
       <p>
         Steps that only require periodic or passive attention should be marked
         as <strong>some attention</strong>. Many steps that use the burner, for
-        example, require you to keep an eye on the cooking food, and may require 
-        occasionally stirring.
+        example, require you to keep an eye on the cooking food, and may
+        require occasionally stirring.
       </p>
       <p><strong>No attention</strong> steps are those that a cook can
         completely ignore for the majority of their duration. Examples include
@@ -403,7 +414,7 @@ Preheat oven to 350 F.
   <% #Prerequisites %>
   <div class="tutorial-section">
     <div class="upload-form">
-      
+
       <% #Step 1 %>
       <br />Step 1.<br />
       <textarea disabled class="tutorial-textbox">
@@ -414,13 +425,13 @@ Slice salami.
         <span class="left-step-fields">
           Time
           <a class="tooltip">
-            <img class="question-mark-icon" 
+            <img class="question-mark-icon"
                  src="/assets/question-mark-icon.png" />
             <span>How long does this step take?</span>
           </a>
           <input class="number-input-box" value="5" disabled="true" />
           minutes
-          
+
           <div>
             Equipment:
             <select disabled>
@@ -430,14 +441,14 @@ Slice salami.
           </div>
           <br />
         </span>
-        
+
         <span class="right-step-fields">
           Attentiveness:
           <a class="tooltip">
-            <img class="question-mark-icon" 
+            <img class="question-mark-icon"
                  src="/assets/question-mark-icon.png" />
             <span>
-              How much of your attention does this step require? 
+              How much of your attention does this step require?
               For example:<br />
               Chopping or sauteing - All<br />
               Stirring occasionally - Some<br />
@@ -462,13 +473,13 @@ Slice cheese.
         <span class="left-step-fields">
           Time
           <a class="tooltip">
-            <img class="question-mark-icon" 
+            <img class="question-mark-icon"
                  src="/assets/question-mark-icon.png" />
             <span>How long does this step take?</span>
           </a>
           <input class="number-input-box" value="5" disabled="true" />
           minutes
-          
+
           <div>
             Equipment:
             <select disabled>
@@ -478,14 +489,14 @@ Slice cheese.
           </div>
           <br />
         </span>
-        
+
         <span class="right-step-fields">
           Attentiveness:
           <a class="tooltip">
-            <img class="question-mark-icon" 
+            <img class="question-mark-icon"
                  src="/assets/question-mark-icon.png" />
             <span>
-              How much of your attention does this step require? 
+              How much of your attention does this step require?
               For example:<br />
               Chopping or sauteing - All<br />
               Stirring occasionally - Some<br />
@@ -510,13 +521,13 @@ Lay salami and cheese on bread.
               <span class="left-step-fields">
                 Time
           <a class="tooltip">
-            <img class="question-mark-icon" 
+            <img class="question-mark-icon"
                  src="/assets/question-mark-icon.png" />
             <span>How long does this step take?</span>
           </a>
           <input class="number-input-box" value="2" disabled="true" />
           minutes
-          
+
           <div>
             Equipment:
             <select disabled>
@@ -526,14 +537,14 @@ Lay salami and cheese on bread.
           </div>
           <br />
         </span>
-        
+
         <span class="right-step-fields">
           Attentiveness:
           <a class="tooltip">
-            <img class="question-mark-icon" 
+            <img class="question-mark-icon"
                  src="/assets/question-mark-icon.png" />
             <span>
-              How much of your attention does this step require? 
+              How much of your attention does this step require?
               For example:<br />
               Chopping or sauteing - All<br />
               Stirring occasionally - Some<br />
@@ -553,10 +564,10 @@ Lay salami and cheese on bread.
           <input type="checkbox" disabled="true" />
           Immediate prereq
           <a class="tooltip">
-            <img class="question-mark-icon" 
+            <img class="question-mark-icon"
                  src="/assets/question-mark-icon.png" />
             <span>
-              An immediate prereq must be performed immediately before this 
+              An immediate prereq must be performed immediately before this
               step, with no steps in between.
             </span>
           </a>
@@ -566,16 +577,16 @@ Lay salami and cheese on bread.
           <input type="checkbox" disabled="true" />
           Preheat prereq
           <a class="tooltip">
-            <img class="question-mark-icon" 
+            <img class="question-mark-icon"
                  src="/assets/question-mark-icon.png" />
             <span>
-              If this step uses the oven, is this prereq the one that 
+              If this step uses the oven, is this prereq the one that
               preheated the oven?
             </span>
           </a>
         </div>
         <br />
-  
+
         Prereq step number:
         <input class="number-input-box" value="1" disabled="true" />
         <% #Immediate Prereq %>
@@ -583,10 +594,10 @@ Lay salami and cheese on bread.
           <input type="checkbox" disabled="true" />
           Immediate prereq
           <a class="tooltip">
-            <img class="question-mark-icon" 
+            <img class="question-mark-icon"
                  src="/assets/question-mark-icon.png" />
             <span>
-              An immediate prereq must be performed immediately before this 
+              An immediate prereq must be performed immediately before this
               step, with no steps in between.
             </span>
           </a>
@@ -596,16 +607,16 @@ Lay salami and cheese on bread.
           <input type="checkbox" disabled="true" />
           Preheat prereq
           <a class="tooltip">
-            <img class="question-mark-icon" 
+            <img class="question-mark-icon"
                  src="/assets/question-mark-icon.png" />
             <span>
-              If this step uses the oven, is this prereq the one that 
+              If this step uses the oven, is this prereq the one that
               preheated the oven?
             </span>
           </a>
         </div>
         <br />
-      </div>  
+      </div>
 
       <% #Step 4 %>
       Step 4.<br />
@@ -617,13 +628,13 @@ Toast sandwich on stove.
         <span class="left-step-fields">
           Time
           <a class="tooltip">
-            <img class="question-mark-icon" 
+            <img class="question-mark-icon"
                  src="/assets/question-mark-icon.png" />
             <span>How long does this step take?</span>
           </a>
           <input class="number-input-box" value="5" disabled="true" />
           minutes
-          
+
           <div>
             Equipment:
             <select disabled>
@@ -633,14 +644,14 @@ Toast sandwich on stove.
           </div>
           <br />
         </span>
-              
+
         <span class="right-step-fields">
           Attentiveness:
           <a class="tooltip">
-            <img class="question-mark-icon" 
+            <img class="question-mark-icon"
                  src="/assets/question-mark-icon.png" />
             <span>
-              How much of your attention does this step require? 
+              How much of your attention does this step require?
               For example:<br />
               Chopping or sauteing - All<br />
               Stirring occasionally - Some<br />
@@ -660,10 +671,10 @@ Toast sandwich on stove.
           <input type="checkbox" disabled="true" />
           Immediate prereq
           <a class="tooltip">
-            <img class="question-mark-icon" 
+            <img class="question-mark-icon"
                  src="/assets/question-mark-icon.png" />
             <span>
-              An immediate prereq must be performed immediately before this 
+              An immediate prereq must be performed immediately before this
               step, with no steps in between.
             </span>
           </a>
@@ -673,28 +684,28 @@ Toast sandwich on stove.
           <input type="checkbox" disabled="true" />
           Preheat prereq
           <a class="tooltip">
-            <img class="question-mark-icon" 
+            <img class="question-mark-icon"
                  src="/assets/question-mark-icon.png" />
             <span>
-              If this step uses the oven, is this prereq the one that 
+              If this step uses the oven, is this prereq the one that
               preheated the oven?
             </span>
           </a>
         </div>
         <br />
       </div>
-    </div>    
+    </div>
     <div class="annotation">
       <h3>Prerequisites</h3>
       <p>
         Any step that must be completed before this step can be started should
-	be added as a <strong>prereq</strong> for this step. For example, 
-	vegetables must be chopped before they can be cooked.
+        be added as a <strong>prereq</strong> for this step. For example,
+        vegetables must be chopped before they can be cooked.
       </p>
       <p>
-	If a prereq for this step has its own prereqs, those do not need to be
-	added again. See how Step 4 has Step 3 as a prereq, but not Steps 1 and
-	2.
+        If a prereq for this step has its own prereqs, those do not need to be
+        added again. See how Step 4 has Step 3 as a prereq, but not Steps 1 and
+        2.
       </p>
     </div>
   </div>
@@ -704,7 +715,7 @@ Toast sandwich on stove.
   <% # Special Prerequisites %>
   <div class="tutorial-section">
     <div class="upload-form">
-      
+
       <% #Step 1 %>
       <br />Step 1.<br />
       <textarea disabled class="tutorial-textbox">
@@ -715,13 +726,13 @@ Preheat oven to 400 F.
         <span class="left-step-fields">
           Time
           <a class="tooltip">
-            <img class="question-mark-icon" 
+            <img class="question-mark-icon"
                  src="/assets/question-mark-icon.png" />
             <span>How long does this step take?</span>
           </a>
           <input class="number-input-box" value="15" disabled="true" />
           minutes
-          
+
           <div>
             Equipment:
             <select disabled>
@@ -731,14 +742,14 @@ Preheat oven to 400 F.
           </div>
           <br />
         </span>
-        
+
         <span class="right-step-fields">
           Attentiveness:
           <a class="tooltip">
-            <img class="question-mark-icon" 
+            <img class="question-mark-icon"
                  src="/assets/question-mark-icon.png" />
             <span>
-              How much of your attention does this step require? 
+              How much of your attention does this step require?
               For example:<br />
               Chopping or sauteing - All<br />
               Stirring occasionally - Some<br />
@@ -763,13 +774,13 @@ Bake dish for one hour.
         <span class="left-step-fields">
           Time
           <a class="tooltip">
-            <img class="question-mark-icon" 
+            <img class="question-mark-icon"
                  src="/assets/question-mark-icon.png" />
             <span>How long does this step take?</span>
           </a>
           <input class="number-input-box" value="60" disabled="true" />
           minutes
-          
+
           <div>
             Equipment:
             <select disabled>
@@ -779,14 +790,14 @@ Bake dish for one hour.
           </div>
           <br />
         </span>
-        
+
         <span class="right-step-fields">
           Attentiveness:
           <a class="tooltip">
-            <img class="question-mark-icon" 
+            <img class="question-mark-icon"
                  src="/assets/question-mark-icon.png" />
             <span>
-              How much of your attention does this step require? 
+              How much of your attention does this step require?
               For example:<br />
               Chopping or sauteing - All<br />
               Stirring occasionally - Some<br />
@@ -807,10 +818,10 @@ Bake dish for one hour.
         <input type="checkbox" disabled="true" />
         Immediate prereq
           <a class="tooltip">
-            <img class="question-mark-icon" 
+            <img class="question-mark-icon"
                  src="/assets/question-mark-icon.png" />
             <span>
-              An immediate prereq must be performed immediately before this 
+              An immediate prereq must be performed immediately before this
               step, with no steps in between.
             </span>
           </a>
@@ -820,16 +831,16 @@ Bake dish for one hour.
         <input type="checkbox" disabled="true" checked />
         Preheat prereq
         <a class="tooltip">
-            <img class="question-mark-icon" 
+            <img class="question-mark-icon"
                  src="/assets/question-mark-icon.png" />
             <span>
-              If this step uses the oven, is this prereq the one that 
+              If this step uses the oven, is this prereq the one that
               preheated the oven?
             </span>
         </a>
         </div>
       <br />
-      
+
       <% #Step 3 %>
       Step 3.<br />
       <textarea disabled class="tutorial-textbox">
@@ -840,13 +851,13 @@ Let dish cool for 15 minutes.
         <span class="left-step-fields">
           Time
           <a class="tooltip">
-            <img class="question-mark-icon" 
+            <img class="question-mark-icon"
                  src="/assets/question-mark-icon.png" />
             <span>How long does this step take?</span>
           </a>
           <input class="number-input-box" value="15" disabled="true" />
           minutes
-          
+
           <div>
             Equipment:
             <select disabled>
@@ -856,14 +867,14 @@ Let dish cool for 15 minutes.
           </div>
           <br />
         </span>
-        
+
         <span class="right-step-fields">
           Attentiveness:
           <a class="tooltip">
-            <img class="question-mark-icon" 
+            <img class="question-mark-icon"
                  src="/assets/question-mark-icon.png" />
             <span>
-              How much of your attention does this step require? 
+              How much of your attention does this step require?
               For example:<br />
               Chopping or sauteing - All<br />
               Stirring occasionally - Some<br />
@@ -883,10 +894,10 @@ Let dish cool for 15 minutes.
           <input type="checkbox" disabled="true" checked />
           Immediate prereq
           <a class="tooltip">
-            <img class="question-mark-icon" 
+            <img class="question-mark-icon"
                  src="/assets/question-mark-icon.png" />
             <span>
-              An immediate prereq must be performed immediately before this 
+              An immediate prereq must be performed immediately before this
               step, with no steps in between.
             </span>
           </a>
@@ -896,38 +907,37 @@ Let dish cool for 15 minutes.
           <input type="checkbox" disabled="true" />
           Preheat prereq
           <a class="tooltip">
-            <img class="question-mark-icon" 
+            <img class="question-mark-icon"
                  src="/assets/question-mark-icon.png" />
             <span>
-              If this step uses the oven, is this prereq the one that 
+              If this step uses the oven, is this prereq the one that
               preheated the oven?
             </span>
           </a>
         </div>
         <br />
-      </div>  
+      </div>
     </div>
-    
+
     <div class="annotation">
       <h3>Preheat Prerequisites</h3>
       <p>
-	Step 1 preheats the oven for Step 2 to use. This means that Step 1 is a 
-	<strong>preheat prereq</strong>	for Step 2. Steps that do not use the
-	oven should not have preheat prereqs. Each step can only have one preheat
-  prereq.
+        Step 1 preheats the oven for Step 2 to use. This means that Step 1 is a
+        <strong>preheat prereq</strong>	for Step 2. Steps that do not use the
+        oven should not have preheat prereqs. Each step can only have one
+        preheat prereq.
       </p>
 
       <h3>Immediate Prerequisites</h3>
       <p>
-	Step 3 only makes sense if it starts right when 
-	Step 2 finishes, which is why Step 2 is its 
-	<strong>immediate prereq</strong>. When an action is time sensitive (for
-	example, things will burn if the step is not immediately performed), it
-	should also have an immediate prereq. Each step can only have one
-  immediate prereq.
+        Step 3 only makes sense if it starts right when
+        Step 2 finishes, which is why Step 2 is its
+        <strong>immediate prereq</strong>. When an action is time sensitive (for
+        example, things will burn if the step is not immediately performed), it
+        should also have an immediate prereq. Each step can only have one
+        immediate prereq.
       </p>
     </div>
   </div>
   <br />
 </div>
-

@@ -8,17 +8,18 @@
       <% end %>
     <% end %>
   </div>
-  
+
   <% #If from meal page, add button to go back %>
   <div>
     <% if current_user == @recipe.user -%>
       <div class="back-to-meal">
-	      <%= button_to "Back To Meal", meal_path(current_user.meal), method: :get %>	
+        <%= button_to "Back To Meal",
+            meal_path(current_user.meal), method: :get %>
       </div>
     <% end -%>
     <h1><%= @recipe.title %></h1>
   </div>
-  
+
   <% #Recipe content %>
   <% if current_user == @recipe.user %>
     <%= form_for(@recipe) do |recipe_form| %>
@@ -36,9 +37,9 @@
       <%= simple_format(@recipe.ingredients) %>
 
       <h3>Steps</h3>
-      
+
       <%= recipe_form.fields_for :steps do |step_form| %>
-        
+
         <% #Step info %>
         <p>
           <strong><%= step_form.object.step_number %>) </strong>
@@ -46,26 +47,31 @@
           <br />
 
           <%= step_form.label :time %>:
-	        <a class="tooltip">
-	          <img class="question-mark-icon" src="/assets/question-mark-icon.png"></img>
-	          <span>How long does this step take?</span>
-	        </a>
-          <%= step_form.number_field :time, :class => "number-input-box", :min => 0 %> minutes
+          <a class="tooltip">
+            <img class="question-mark-icon"
+                 src="/assets/question-mark-icon.png"></img>
+            <span>How long does this step take?</span>
+          </a>
+          <%= step_form.number_field :time,
+              :class => "number-input-box", :min => 0 %> minutes
 
           <br />
           <span class = "radio-buttons-label" >Attentiveness:
-	        <a class="tooltip">
-	          <img class="question-mark-icon" src="/assets/question-mark-icon.png"></img>
-	          <span>How much of your attention does this step require? For example:<br>
-	                Chopping or sauteing - All<br>
-	                Stirring occasionally - Some<br>
-	                Leaving water to boil - None</span>
+            <a class="tooltip">
+              <img class="question-mark-icon"
+                   src="/assets/question-mark-icon.png"></img>
+              <span>How much of your attention does this step
+                require? For example:<br>
+                Chopping or sauteing - All<br>
+                Stirring occasionally - Some<br>
+                Leaving water to boil - None</span>
           </a>
           </span>
-          
+
           <% FocusTypes.constants.each do |focus_type| -%>
             <%= step_form.radio_button :attentiveness, focus_type.downcase %>
-            <%= step_form.label :attentiveness, focus_type.capitalize, :value => focus_type.downcase %>
+            <%= step_form.label :attentiveness,
+                focus_type.capitalize, :value => focus_type.downcase %>
           <% end -%>
           <br />
 
@@ -74,9 +80,9 @@
       <% end -%>
       <%= recipe_form.submit "Save Changes", method: :patch %>
     <% end -%>
-    
+
   <% else -%>
     No right to see others' temp recipes.
   <% end -%>
-  
+
 </div>

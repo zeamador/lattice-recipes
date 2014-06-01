@@ -5,7 +5,7 @@ describe KitchenObject do
     kitchen = KitchenObject.new
     expect(kitchen[:BURNER]).to eq(4)
   end
-  
+
   it "should be intialized with one oven" do
     kitchen = KitchenObject.new
     expect(kitchen[:OVEN]).to eq(1)

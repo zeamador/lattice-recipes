@@ -1,7 +1,7 @@
 require 'timeout'
 
 class MealSchedulesController < ApplicationController
-  
+
   # Combines current_user's meal and display on Meal Schedule page
   def show
     recipe_factory = RecipeFactory.new
@@ -15,7 +15,7 @@ class MealSchedulesController < ApplicationController
       kitchen_object = KitchenObject.new
 
       EquipmentTypes.constants.each do |constant|
-        kitchen_object[constant] = 
+        kitchen_object[constant] =
           current_user.kitchen.send(constant.downcase)
       end
 
@@ -23,14 +23,14 @@ class MealSchedulesController < ApplicationController
       begin
         status = Timeout::timeout(10) {
           # Get meal_schedule of current meal
-          @meal_schedule = MealScheduleFactory.combine(@recipe_objects, 
+          @meal_schedule = MealScheduleFactory.combine(@recipe_objects,
                              kitchen_object, current_user.meal.cooks)
           @error = nil
         }
       rescue Timeout::Error
         @error = :timeout
       end
-      
+
     end
   end
 

@@ -16,7 +16,7 @@
 #
 # "Preemption"
 #   In this context refers to scheduling a step to end at some time other than
-#   the current time. The purpose of this is to plan for a step's immediate 
+#   the current time. The purpose of this is to plan for a step's immediate
 #   prerequisite by scheduling it to start at the next significant time.
 #
 # "Significant times"
@@ -24,7 +24,7 @@
 #   significant because when building a schedule backwards, Step start times
 #   are when something about the schedule changes. There's no point attempting
 #   to schedule steps at non-significant times because those times are always
-#   functionally equivalent to exactly one significant time. Steps are 
+#   functionally equivalent to exactly one significant time. Steps are
 #   scheduled to end at significant times with the exception of preemptive
 #   scheduling described below.
 class ScheduleBuilder
@@ -73,12 +73,12 @@ class ScheduleBuilder
     @pred_counts = @pred_counts.clone
   end
 
-  # Public: Add a step to the schedule being built such that the step ends at 
+  # Public: Add a step to the schedule being built such that the step ends at
   #         the current time. To be successfully added, the passed step must be
-  #         in this ScheduleBuilder's list of possible steps and the step's 
+  #         in this ScheduleBuilder's list of possible steps and the step's
   #         required resources must be available at the current time.
   #
-  # step - The Step to add to the schedule. 
+  # step - The Step to add to the schedule.
   #
   # Returns true if the step was successfully added, false otherwise.
   def add_step(step)
@@ -155,9 +155,9 @@ class ScheduleBuilder
 
   # Public: Advances this ScheduleBuilder's current time to the next
   #         significant time in the schedule, moving backwards from the end. To
-  #         successfully advance the current time, there must be a significant 
-  #         time to advance to and immediate prereqs of all steps starting at 
-  #         that time must be able to be scheduled. If successful, those 
+  #         successfully advance the current time, there must be a significant
+  #         time to advance to and immediate prereqs of all steps starting at
+  #         that time must be able to be scheduled. If successful, those
   #         immediate prereqs will be scheduled by this call. If unsuccessful,
   #         this call leaves the schedule builder in an UNDEFINED STATE.
   #
@@ -182,7 +182,7 @@ class ScheduleBuilder
     # builder between calls to advance_current_time.
     @state = State.new
 
-    # Add all prereqs of steps that start at the new current time to possible 
+    # Add all prereqs of steps that start at the new current time to possible
     # steps. @current_time is guaranteed to be a valid key in @schedule, because
     # it is invariantly non-nil by the above check and get_next_time guarantees
     # its return value to be nil or a valid key.
@@ -244,7 +244,7 @@ class ScheduleBuilder
   def schedule_complete?
     @possible_steps.empty? && @pred_counts.empty?
   end
-  
+
   def state
     @state.clone
   end
@@ -295,8 +295,9 @@ class ScheduleBuilder
   # Returns the next significant time in the schedule, or nil if there isn't
   # one. If non-nil, this value is guaranteed to be a key in @schedule
   def get_next_time
-    # Advance an iterator over significant_times until we reach the current 
-    # time. If the current time is 0, it isn't in the list of significant times,    # but the sorted set's first element will be the next significant time.
+    # Advance an iterator over significant_times until we reach the current
+    # time. If the current time is 0, it isn't in the list of significant times,
+    # but the sorted set's first element will be the next significant time.
     e = @significant_times.each
     unless @current_time == 0
       until e.next == @current_time
@@ -305,7 +306,7 @@ class ScheduleBuilder
 
     # The next element in the iterator is the next significant time to consider.
     # If there are no more elements, there are no more significant times, so
-    # return false. Otherwise set the current time to the next significant 
+    # return false. Otherwise set the current time to the next significant
     # time.
     begin
       e.next
@@ -318,7 +319,7 @@ class ScheduleBuilder
   #         advance_current_time*. A builder's state is defined by all of the
   #         stpes that have been added to it since that call, as well as all the
   #         steps that have been added preemptively and when, exactly, they
-  #         start. This allows users to determine whether or not two 
+  #         start. This allows users to determine whether or not two
   #         ScheduleBuilders are equivalent after a certain time.
   class State
     # Steps is a Set of Steps that have been added non-preemptively since the
@@ -351,4 +352,3 @@ class ScheduleBuilder
     end
   end
 end
-

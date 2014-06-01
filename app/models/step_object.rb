@@ -3,7 +3,7 @@ require "set"
 # Immutable recipe step.
 class StepObject
 
-  attr_reader :description, :time, :focus, :recipe_id, :equipment, 
+  attr_reader :description, :time, :focus, :recipe_id, :equipment,
               :prereqs, :immediate_prereq, :preheat_prereq
 
   # Public: Initialize Step with required and optional features.
@@ -13,9 +13,9 @@ class StepObject
   # focus - FocusTypes constant.
   # recipe_id - Integer uniquely identifying the recipe this step belongs to.
   #
-  # equipment - EquipmentTypes constant. 
+  # equipment - EquipmentTypes constant.
   #             Default is nil.
-  # prereqs - Set of Step objects representing unchained prerequisite steps. 
+  # prereqs - Set of Step objects representing unchained prerequisite steps.
   #           Default is an empty Set.
   # immediate_prereq - Step object representing this step's immediate prereq.
   #                    Default is nil.
@@ -26,7 +26,7 @@ class StepObject
   # Raise error if time is not positive, if attentiveness is not 0, 1, or 2,
   # if immediate/preheat prereqs are not in set of prereqs, or if equipment
   # is not an EquipmentType or nil.
-  def initialize(description, time, focus, recipe_id, equipment: nil, 
+  def initialize(description, time, focus, recipe_id, equipment: nil,
                  prereqs: Set[], immediate_prereq: nil, preheat_prereq: nil)
     @description = description
 
@@ -36,7 +36,7 @@ class StepObject
     else
       raise "Time was not given in positive minutes"
     end
-      
+
     # focus must be a FocusType
     if(!FocusTypes.constants.include?(focus))
       raise "Focus must be a FocusTypes constant"
@@ -81,4 +81,3 @@ class StepObject
     prereq
   end
 end
-

@@ -3,4 +3,3 @@ module FocusTypes
   SOME = 1
   NONE = 0
 end
-

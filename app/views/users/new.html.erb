@@ -3,15 +3,17 @@
 <div class="info">
 
   <h1>Sign up</h1>
-  
-  <div>Already have an account? Sign in on the <%= link_to "Home Page", root_path %>.</div>
-  
+
+  <div>Already have an account?
+    Sign in on the <%= link_to "Home Page", root_path %>.</div>
+
   <div class="user-form">
     <%= form_for(@user) do |f| %>
     <%= render 'shared/errors', object: @user if @user.errors.any? %>
     <p>
       <strong><%= f.label :name, "Username" %></strong><br />
-      5 to 20 characters. Letters, numbers, dashes, and periods are allowed.</br>
+      5 to 20 characters. Letters, numbers, dashes,
+      and periods are allowed.</br>
       <%= f.text_field :name %>
     </p>
     <p>
@@ -20,11 +22,13 @@
     </p>
     <p>
       <strong><%= f.label :password, "New Password" %></strong><br />
-      6 to 20 characters. Letters, numbers, dashes, and periods are allowed.</br>
+      6 to 20 characters. Letters, numbers, dashes,
+      and periods are allowed.</br>
       <%= f.password_field :password %>
     </p>
     <p>
-      <strong><%= f.label :password_confirmation, "Confirm Password" %></strong></br>
+      <strong><%= f.label :password_confirmation,
+                  "Confirm Password" %></strong></br>
       <%= f.password_field :password_confirmation %>
     </p>
     <p>

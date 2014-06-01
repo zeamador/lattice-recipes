@@ -26,7 +26,8 @@ class RecipesController < ApplicationController
         end
       end
 
-      # Check through the recipe whether there's step that need missing equipment
+      # Check through the recipe whether there's a step that
+      # needs missing equipment
       @need_equipments = Set.new
       @recipe.steps.each do |step|
         if @missing_equipments.include? step.equipment
@@ -68,7 +69,8 @@ class RecipesController < ApplicationController
         render 'new'
       end
     else
-      flash[:recipe_error] = "There was a problem with your prerequisite step entry. Please press back to restore your input."
+      flash[:recipe_error] = "There was a problem with your prerequisite
+       step entry. Please press back to restore your input."
       render 'new'
     end
   end
@@ -137,7 +139,7 @@ class RecipesController < ApplicationController
   def destroy
     # Should recursively delete all steps and step_mappers belong to it.
     @recipe = Recipe.find(params[:id])
-    @recipe.destroy 
+    @recipe.destroy
     redirect_to root_url
   end
 
@@ -149,15 +151,21 @@ class RecipesController < ApplicationController
     # Sort by created time with desc order
     if params[:search]
       if signed_in? # if signed_in, display secret recipes for current_user
-        @recipes = Recipe.search(params[:search]).where("temp = ?", false).where("secret = ? OR user_id = ?", false, current_user.id).order(created_at: :desc)
+        @recipes = Recipe.search(params[:search]).where("temp = ?",
+         false).where("secret = ?
+          OR user_id = ?", false, current_user.id).order(created_at: :desc)
       else # otherwise, display public recipes only
-        @recipes = Recipe.search(params[:search]).where("temp = ?", false).where("secret = ?", false).order(created_at: :desc)
+        @recipes = Recipe.search(params[:search]).where("temp = ?",
+         false).where("secret = ?", false).order(created_at: :desc)
       end
     else
       if signed_in? # if signed_in, display secret recipes for current_user
-        @recipes = Recipe.where("temp = ?", false).where("secret = ? OR user_id = ?", false, current_user.id).order(created_at: :desc)
+        @recipes = Recipe.where("temp = ?",
+         false).where("secret = ? OR user_id = ?",
+          false, current_user.id).order(created_at: :desc)
       else # otherwise, display public recipes only
-        @recipes = Recipe.where("temp = ?", false).where("secret = ?", false).order(created_at: :desc)
+        @recipes = Recipe.where("temp = ?",
+         false).where("secret = ?", false).order(created_at: :desc)
       end
     end
   end
@@ -166,18 +174,18 @@ class RecipesController < ApplicationController
 
   def recipe_params
     params.require(:recipe).permit(:title, :secret, :tags, :meal_id, :serving,
-                                   :ingredients, :avatar, :notes,
-                                   steps_attributes: [:id, :step_number,
-                                                      :description, :time,
-                                                      :attentiveness,
-                                                      :final_step, :equipment,
-                                                      :_destroy,
-                                   step_mappers_attributes: [:id,
-                                                             :preheat_prereq,
-                                                             :immediate_prereq,
-                                                             :prereq_id,
-                                                             :prereq_step_number,
-                                                             :_destroy]])
+                                  :ingredients, :avatar, :notes,
+                                  steps_attributes: [:id, :step_number,
+                                                     :description, :time,
+                                                     :attentiveness,
+                                                     :final_step, :equipment,
+                                                     :_destroy,
+                                  step_mappers_attributes: [:id,
+                                                            :preheat_prereq,
+                                                            :immediate_prereq,
+                                                            :prereq_id,
+                                                            :prereq_step_number,
+                                                            :_destroy]])
   end
 
   # Validate the prereq:

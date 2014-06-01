@@ -16,7 +16,7 @@ class RecipeFactory < ObjectFactory
       end
     end
 
-    RecipeObject.new(db_recipe.id, db_recipe.title, 
+    RecipeObject.new(db_recipe.id, db_recipe.title,
                      db_recipe.ingredients, final_steps)
   end
 end

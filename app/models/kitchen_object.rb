@@ -4,7 +4,7 @@ class KitchenObject
 
   # Public: Initialize kitchen with default equipment settings.
   def initialize
-    @equipment = { :BURNER => 4, :OVEN => 1, :MICROWAVE => 1, 
+    @equipment = { :BURNER => 4, :OVEN => 1, :MICROWAVE => 1,
                    :SINK => 1, :TOASTER => 1 }
   end
 
@@ -19,7 +19,7 @@ class KitchenObject
   #
   # Example: my_kitchen[:SINK]
   #
-  # Returns quantity of the given equipment type in this kitchen. 
+  # Returns quantity of the given equipment type in this kitchen.
   # Raises an exception if input is not an equipment_type constant.
   def [](equipment_type)
     if(!EquipmentTypes.constants.include?(equipment_type))
@@ -27,7 +27,7 @@ class KitchenObject
     end
 
     res = @equipment[equipment_type]
-    res ? res : 0     
+    res ? res : 0
   end
 
   # Public: Modify quantity of the given equipment type in this kitchen.
@@ -37,7 +37,7 @@ class KitchenObject
   #
   # Example: my_kitchen[:SINK] = 7
   #
-  # Returns the updated quantity of the given equipment type in this kitchen. 
+  # Returns the updated quantity of the given equipment type in this kitchen.
   # Raises an exception if equipment_type parameter is not a valid
   # equipment_type constant or if quantity is negative.
   def []=(equipment_type, quantity)

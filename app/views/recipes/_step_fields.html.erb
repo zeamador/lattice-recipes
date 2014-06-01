@@ -1,4 +1,4 @@
-<fieldset class="step">  
+<fieldset class="step">
     <span class="step-left-column">
       <% if f.object.step_number -%>
         <span class="stepnum">
@@ -11,73 +11,79 @@
       <% end -%>
     </span>
 
-  <div class = "tabbed-margin-left">
-    <%= f.text_area :description %> 
-    <div class="remove-step">
-      <%= f.link_to_remove raw("<img src=\"/assets/x-icon.png\" title=\"Remove Step\"/>") %>
-    </div>
-    <br />
+    <div class = "tabbed-margin-left">
+      <%= f.text_area :description %>
+      <div class="remove-step">
+        <%= f.link_to_remove raw("<img src=\"/assets/x-icon.png\"
+            title=\"Remove Step\"/>") %>
+      </div>
+      <br />
 
-    <div class="step-fields">
-      <span class="left-step-fields">
-        <%= f.label :time %>:
-        <a class="tooltip">
-          <img class="question-mark-icon" src="/assets/question-mark-icon.png"></img>
-          <span>How long does this step take? Steps must take at least one
-                minute. If you are trying to add a step that takes less than one
-                minute, consider incorporating it into another step.</span>
-        </a>
-        <%= f.number_field :time, :class => "number-input-box", :min => 1 %> minutes
-        <div class="equipment-label">Equipment:
+      <div class="step-fields">
+        <span class="left-step-fields">
+          <%= f.label :time %>:
           <a class="tooltip">
             <img class="question-mark-icon"
                  src="/assets/question-mark-icon.png"></img>
-            <span>
+            <span>How long does this step take? Steps must take at least one
+              minute. If you are trying to add a step that takes less than one
+              minute, consider incorporating it into another step.</span>
+          </a>
+          <%= f.number_field :time,
+              :class => "number-input-box", :min => 1 %> minutes
+          <div class="equipment-label">Equipment:
+            <a class="tooltip">
+              <img class="question-mark-icon"
+                   src="/assets/question-mark-icon.png"></img>
+              <span>
               What kitchen equipment is required to perform this step? Only one
               piece of equipment can be selected. If your step requires more
               than one, it must be split into multiple steps.
-            </span>
-          </a>
-          <% equip_array = [] -%>
-          <% EquipmentTypes.constants.each do |equip_type| -%>
-            <% equip_array << [equip_type.capitalize, equip_type.downcase] -%>
-          <% end -%>
-          <%= f.select(:equipment, equip_array, { prompt: true, :prompt => "None" }) %>
-        </div>
-        <br />
-      </span>
-  
-      <span class="right-step-fields">
-        <span class="radio-buttons-label">Attentiveness:
-          <a class="tooltip">
-            <img class="question-mark-icon"
-                 src="/assets/question-mark-icon.png"></img>
-            <span>
-               How much of your attention does this step require?
-               For example:</br>
-               Chopping or sauteing: All</br>
-               Stirring occasionally: Some</br>
-               Boiling water: None
-            </span>
-          </a>
-        </span>
-        <br />
-        <% FocusTypes.constants.each do |focus_type| -%>
-          <%= f.radio_button :attentiveness, focus_type.downcase, { :checked => focus_type == :ALL } %>
-          <%= f.label :attentiveness, focus_type.capitalize, :value => focus_type.downcase %>
+              </span>
+            </a>
+            <% equip_array = [] -%>
+            <% EquipmentTypes.constants.each do |equip_type| -%>
+              <% equip_array << [equip_type.capitalize, equip_type.downcase] -%>
+            <% end -%>
+            <%= f.select(:equipment,
+                equip_array, { prompt: true, :prompt => "None" }) %>
+                 </div>
           <br />
-        <% end -%>
-      </span>
+        </span>
 
-      <div class="prereqs">
-        <%= f.fields_for :step_mappers do |mapper_form| %>
-          <%= render partial: "step_mapper_fields", locals: {f: mapper_form} %>
-        <% end -%>
+        <span class="right-step-fields">
+          <span class="radio-buttons-label">Attentiveness:
+            <a class="tooltip">
+              <img class="question-mark-icon"
+                   src="/assets/question-mark-icon.png"></img>
+              <span>
+                How much of your attention does this step require?
+                For example:</br>
+                Chopping or sauteing: All</br>
+                Stirring occasionally: Some</br>
+                Boiling water: None
+              </span>
+            </a>
+          </span>
+          <br />
+          <% FocusTypes.constants.each do |focus_type| -%>
+            <%= f.radio_button :attentiveness,
+                focus_type.downcase, { :checked => focus_type == :ALL } %>
+            <%= f.label :attentiveness,
+                focus_type.capitalize, :value => focus_type.downcase %>
+            <br />
+          <% end -%>
+        </span>
+
+        <div class="prereqs">
+          <%= f.fields_for :step_mappers do |mapper_form| %>
+           <%= render partial: "step_mapper_fields", locals: {f: mapper_form} %>
+          <% end -%>
 
 
           <p>
             <%= f.link_to_add "Add Prereq", :step_mappers %>
-            
+
             <a class="tooltip">
               <img class="question-mark-icon"
                    src="/assets/question-mark-icon.png"></img>
@@ -96,4 +102,3 @@
     </div>
   </div>
 </fieldset>
-

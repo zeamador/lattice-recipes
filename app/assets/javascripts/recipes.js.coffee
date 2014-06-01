@@ -156,7 +156,7 @@ validateRecipeForm = () ->
           else
             alert("Prereq step #{prereqNum} is set more than once on step #{stepCount}")
             return (prereqValid = false)
-          
+
           # fail if there's multiple immediate or preheat prereqs for this step
           if ($(this).find("input[name$='[immediate_prereq]']").is(':checked'))
             if (immediateCount > 0)
@@ -186,4 +186,3 @@ validateRecipeForm = () ->
     return false
 
   return true
-

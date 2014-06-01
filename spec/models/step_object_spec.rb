@@ -11,7 +11,7 @@ describe StepObject do
 
   it "should allow for initialization of subset of keyword arguments" do
     step_a = StepObject.new("Let meat stand", 30, :NONE, 1234)
-    step_b = StepObject.new("Dip meat in sauce", 2, :ALL, 1234, 
+    step_b = StepObject.new("Dip meat in sauce", 2, :ALL, 1234,
                             immediate_prereq: step_a, prereqs: Set[step_a])
     expect(step_b.equipment).to eq(nil)
     expect(step_b.prereqs).to eq(Set[step_a])
@@ -42,19 +42,19 @@ describe StepObject do
 
   it "should disallow preheat/immediate prereqs not in the prereqs set" do
     step = StepObject.new("Let meat stand", 30, :NONE, 1234)
-    expect { StepObject.new("Dip meat in sauce", 2, :ALL, 1234, 
+    expect { StepObject.new("Dip meat in sauce", 2, :ALL, 1234,
                             immediate_prereq: step) }.to raise_error(
         "Not all special prereqs were in the given set of prereqs")
 
     other_step = StepObject.new("Let meat stand", 30, :NONE, 1234)
-    expect { StepObject.new("Dip meat in sauce", 2, :ALL, 1234, 
-                            preheat_prereq: step, 
+    expect { StepObject.new("Dip meat in sauce", 2, :ALL, 1234,
+                            preheat_prereq: step,
                             prereqs: Set[other_step]) }.to raise_error(
         "Not all special prereqs were in the given set of prereqs")
   end
 
   it "should only except nil or EquipmentType constants for equipment" do
-    expect { StepObject.new("Bad Equipment", 20, :NONE, 1234, 
+    expect { StepObject.new("Bad Equipment", 20, :NONE, 1234,
                             equipment: "dogs") }.to raise_error(
         "Equipment must either be nil or an EquipmentTypes constant")
   end

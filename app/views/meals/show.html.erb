@@ -29,9 +29,10 @@
         <strong><%= recipe.title %></strong>
         <% unless @need_equipments_by_id[recipe.id].length() < 1 %>
           <a class="tooltip">
-            <img class="exclamation-mark-icon" src="/assets/exclamation-mark-icon.png"></img>
+            <img class="exclamation-mark-icon"
+                 src="/assets/exclamation-mark-icon.png"></img>
             <span>
-              You can't combine this recipe without the following equipment: </br>
+            You can't combine this recipe without the following equipment: </br>
               <% for @equipment in @need_equipments_by_id[recipe.id] %>
                 - <%= @equipment %> </br>
               <% end %>

@@ -1,10 +1,10 @@
-# An ObjectFactory is a non-instantiable class that defines common behavior of 
-# classes that construct algorithm objects from database objects. Those classes 
+# An ObjectFactory is a non-instantiable class that defines common behavior of
+# classes that construct algorithm objects from database objects. Those classes
 # should inherit from this one. Subclasses must define a "construct_new_object"
 # method described below.
 class ObjectFactory
   def initialize
-    # raise "ObjectFactory is abstract and cannot be instantiated" 
+    # raise "ObjectFactory is abstract and cannot be instantiated"
     @objects = Hash.new
   end
 
@@ -28,7 +28,7 @@ class ObjectFactory
     unless @objects.has_key?(db_object.id)
       @objects[db_object.id] = construct_new_object(db_object)
     end
-    
+
     @objects[db_object.id]
   end
 
@@ -42,4 +42,3 @@ class ObjectFactory
   def construct_new_object(db_object)
   end
 end
-

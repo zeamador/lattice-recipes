@@ -11,5 +11,3 @@ module Units
   OUNCES = "ounces"
   POUNDS = "pounds"
 end
-  
-  

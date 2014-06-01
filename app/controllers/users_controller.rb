@@ -10,9 +10,14 @@ class UsersController < ApplicationController
     # Sort by created time in desc order
     if params[:search]
       lowered = params[:search].downcase # => case insensitive
-      @my_recipes = Recipe.where("user_id = ? AND temp = ? AND (lower(title) like ? OR tags like ?)", current_user.id, false, "%#{lowered}%", "%#{lowered}%")
+      @my_recipes =
+       Recipe.where(
+        "user_id = ? AND temp = ? AND (lower(title) like ? OR tags like ?)",
+         current_user.id, false, "%#{lowered}%", "%#{lowered}%")
     else
-      @my_recipes = Recipe.where("user_id = ? AND temp = ?", current_user.id, false).order(created_at: :desc)
+      @my_recipes =
+       Recipe.where("user_id = ? AND temp = ?",
+        current_user.id, false).order(created_at: :desc)
     end
   end
 
@@ -51,7 +56,8 @@ class UsersController < ApplicationController
       redirect_to @user
     else
       flash[:error] = "Password wasn't changed! Make sure the password is 6
- to 20 characters. Letters, numbers, dashes, and periods are the allowed characters."
+ to 20 characters. Letters, numbers, dashes, and periods are the allowed
+ characters."
       redirect_to @user
     end
   end

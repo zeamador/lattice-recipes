@@ -19,7 +19,8 @@ class MealsController < ApplicationController
         end
       end
 
-      # Check through the recipe whether there's step that need missing equipment
+      # Check through the recipe whether there's a step that
+      #  needs missing equipment
       @need_equipments = Set.new
       recipe.steps.each do |step|
         if @missing_equipments.include? step.equipment
@@ -39,10 +40,9 @@ class MealsController < ApplicationController
   end
 
   private
-    
-    def meal_params
-      params.require(:meal).permit(:cooks)
-    end
+
+  def meal_params
+    params.require(:meal).permit(:cooks)
+  end
 
 end
-

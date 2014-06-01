@@ -23,7 +23,7 @@ onPageLoad = () ->
     # hide prereqs for first step
     $("fieldset.step").first().find(".prereqs").hide()
     # setup equipment selector handlers
-    $("select[name$='[equipment]'").change( ->
+    $("select[name$='[equipment]']").change( ->
       preheat = $(this).closest(".step").find(".preheat-prereq")
       if (this.value == "oven")
         preheat.show()
@@ -63,7 +63,7 @@ $(document).on('nested:fieldAdded:steps', (event) ->
   if (stepCounter == 1)
     field.find(".prereqs").hide()
   # setup handler for equipment selection
-  $("select[name$='[equipment]'").change( ->
+  $("select[name$='[equipment]']").change( ->
     preheat = $(this).closest(".step").find(".preheat-prereq")
     if (this.value == "oven")
       preheat.show()

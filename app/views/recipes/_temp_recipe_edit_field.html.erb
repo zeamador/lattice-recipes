@@ -46,22 +46,14 @@
           <%= step_form.object.description %>
           <br />
 
-          <%= step_form.label :time %>:
+          <%= step_form.label :duration %>:
           <a class="tooltip">
             <img class="question-mark-icon"
                  src="/assets/question-mark-icon.png"></img>
             <span>How long does this step take?</span>
           </a>
-          <%= step_form.number_field :time,
-              :class => "number-input-box", :min => 1 %> minutes
-          <%= step_form.label :duration %>:
-	        <a class="tooltip">
-	          <img class="question-mark-icon"
-                 src="/assets/question-mark-icon.png"></img>
-	          <span>How long does this step take?</span>
-	        </a>
           <%= step_form.number_field :duration,
-              :class => "number-input-box", :min => 0 %> minutes
+              :class => "number-input-box", :min => 1 %> minutes
 
           <br />
           <span class = "radio-buttons-label" >Attentiveness:

@@ -107,7 +107,10 @@ $(document).on('nested:fieldRemoved:steps', (event) ->
     stepNum.html(stepNumVal.toString())
     # if this is now step #1, hide prereq input
     if (value == 1)
-      field.find(".prereqs").hide()
+      prereqs = field.find(".prereqs")
+      prereqs.hide()
+      # Remove all the prereqs this step had
+      prereqs.find(".remove_nested_fields").click()
 )
 
 # Handle event when prereq is added

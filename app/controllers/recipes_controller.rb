@@ -41,7 +41,7 @@ class RecipesController < ApplicationController
         @need_equipments.each do |equipment|
           @equipment_warning += equipment.titlecase + "\n"
         end
-        @equipment_warning += "Are you sure to add this recipe to your meal?"
+        @equipment_warning += "You won't be able to combine this meal unless you update your kitchen settings."
       end
     end
 

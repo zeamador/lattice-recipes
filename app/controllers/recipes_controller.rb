@@ -37,11 +37,13 @@ class RecipesController < ApplicationController
 
       # Generate warning
       unless @need_equipments.length() < 1
-        @equipment_warning = "You don't have the following equipment:\n"
+        @equipment_warning = "You don't have the following equipment:\n\n"
         @need_equipments.each do |equipment|
           @equipment_warning += equipment.titlecase + "\n"
         end
-        @equipment_warning += "You won't be able to combine this meal unless you update your kitchen settings."
+        @equipment_warning += "\nYou can add this recipe to your meal, but you "
+        @equipment_warning += "won't be able to combine it with other recipes "
+        @equipment_warning += "unless you update your kitchen settings."
       end
     end
 

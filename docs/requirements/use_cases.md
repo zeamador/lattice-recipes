@@ -94,7 +94,7 @@ The most important use cases of Lattice are associated with recipes, meals, and 
 3. Steps 1 - 2 may be repeated multiple times.
 4. The system takes the user to a Combined Recipes page which displays one of the following:
     -   Meal schedule for all of the recipes in the user's meal (Success End)
-    -   Error message "You don't have the equuipment required to prepare this meal. Update your kitchen settings or remove the recipes marked with red exclamation points from your meal" (Failure End)
+    -   Error message "You don't have the equipment required to prepare this meal. Update your kitchen settings or remove the recipes marked with red exclamation points from your meal" (Failure End)
     -   Error message "Your recipe combination took too long. Our server has limited resources, so to keep it responsive for other users we cannot allow you to combine excessively complicated recipes. If this has occurred as a result of combining recipes with fewer than 60 total steps, please notify us." (Failure End)
     
 ## Settings

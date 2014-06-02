@@ -69,19 +69,19 @@ actual release website, you will also need to set up Heroku (below).
 4. Double check that this all worked correctly by running
    ``heroku info --app lattice-recipes``,
    which should produce the following output:  
-```
-=== lattice-recipes
-Addons:           heroku-postgresql:hobby-dev
-Collaborators:    < .... >
-                  <your email>
-Git URL:          git@heroku.com:lattice-recipes.git
-Owner Email:      <email>
-Region:           us
-Repo Size:        784k
-Slug Size:        22M
-Stack:            cedar
-Web URL:          http://lattice-recipes.herokuapp.com/
-```
+    ```
+    === lattice-recipes
+    Addons:           heroku-postgresql:hobby-dev
+    Collaborators:    < .... >
+                      <your email>
+    Git URL:          git@heroku.com:lattice-recipes.git
+    Owner Email:      <email>
+    Region:           us
+    Repo Size:        784k
+    Slug Size:        22M
+    Stack:            cedar
+    Web URL:          http://lattice-recipes.herokuapp.com/
+    ```
 5. After cloning our repository, run
    ``heroku git:remote -a lattice-recipes``
    
@@ -96,11 +96,10 @@ Web URL:          http://lattice-recipes.herokuapp.com/
 
 ## Deploying a Release
 1. Make sure dev repo reflects all desired changes
-2. cd into lattice-recipes directory
-3. Using appropriate version number and release name:
-    ``./deploy.sh <version number> "<release name>"``
-4. Draft a new release on [GitHub][releases] using the commit tagged with the above version number 
-(tagged automatically by the deployment script)
+2. ``git push heroku master -f``
+3. ``git tag -a <version number> -m "<release name>"``
+4. ``git push --tags``
+5. Draft a new release on [GitHub][releases] using the commit tagged with the above version number 
     
 ### Accessing Old Releases
 All our releases are hosted on GitHub, and can be viewed [here][releases].
@@ -139,7 +138,7 @@ In general, we are using the standard [Rails directory structure][rails].
     - application specific code
     - divided into models, views, and controllers folders
  - `lattice-recipes/docs/`
-    - requirements documentation including feature descriptions for major releases
+    - requirements documentation including both descriptions and reflections
     - design documentation and diagrams
     - changelogs for documentation
     - feedback from customers, users, and team-members

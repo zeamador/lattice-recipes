@@ -139,27 +139,8 @@ textarea { /* description and ingredients */
 }
 
 .prereqs { /* prereq steps */
+  display: block;
   width: 100%;
-}
-
-.prereqs-checkboxes {
-  overflow: hidden;  
-}
-
-.prereqs-checkboxes>label {
-  display: block;
-  float: left;
-  text-align: center;
-  margin-right: 5px;
-  margin-top: 5px;
-}
-
-.prereq-checkbox {
-  display: block;
-}
-
-.prereqs-form { /* the form input elements container */
-  display: none;
 }
 
 .stepnum { /* number for this step */

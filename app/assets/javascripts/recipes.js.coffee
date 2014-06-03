@@ -26,9 +26,9 @@ onPageLoad = () ->
     $("select[name$='[equipment]']").change( ->
       preheat = $(this).closest(".step").find(".preheat-prereq")
       if (this.value == "oven")
-        preheat.show()
+        preheat.slideDown(animLength)
       else
-        preheat.hide()
+        preheat.slideUp(animLength)
         preheat.find("input[id$='preheat_prereq']").attr("checked", false)
     )
     # hide preheat prereqs if appropriate
@@ -66,9 +66,9 @@ $(document).on('nested:fieldAdded:steps', (event) ->
   $("select[name$='[equipment]']").change( ->
     preheat = $(this).closest(".step").find(".preheat-prereq")
     if (this.value == "oven")
-      preheat.show()
+      preheat.slideDown(animLength)
     else
-      preheat.hide()
+      preheat.slideUp(animLength)
       preheat.find("input[id$='preheat_prereq']").attr("checked", false)
   )
 

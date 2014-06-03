@@ -1,5 +1,4 @@
-<fieldset class = "no-top-margin prereq">
-  <%= f.label :prereq_step_number, "Step number" %>:
+<fieldset class="no-top-margin prereq">
   <%= f.number_field :prereq_step_number,
       :class => "number-input-box", :min => 1 %>
 
@@ -7,30 +6,10 @@
     <%= f.link_to_remove raw("<img src=\"/assets/x-icon.png\" title=\"Remove Prereq\"/>") %>
   </span>
 
-  <br />
-  <span class = "radio-buttons-label" >
+  <span class="radio-buttons-label" >
     <%= f.check_box :immediate_prereq %>
-    <%= f.label :immediate_prereq %>
-    <a class="tooltip">
-      <img class="question-mark-icon"
-           src="/assets/question-mark-icon.png"></img>
-      <span>
-        An immediate prereq must be performed immediately before this step, with
-        no steps in between.
-      </span>
-    </a>
   </span>
-  <br />
-  <span class = "radio-buttons-label preheat-prereq">
+  <span class="radio-buttons-label preheat-prereq">
     <%= f.check_box :preheat_prereq %>
-    <%= f.label :preheat_prereq %>
-    <a class="tooltip">
-      <img class="question-mark-icon"
-           src="/assets/question-mark-icon.png"></img>
-      <span>
-        If this step uses the oven, is this prereq the one that preheated the
-        oven?
-      </span>
-    </a>
   </span>
 </fieldset>

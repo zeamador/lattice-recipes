@@ -50,8 +50,13 @@
     <%= render 'shared/errors', object: @meal if @meal.errors.any? %>
     <p>
       <strong><%= f.label :cooks %></strong>
-      <%= f.number_field :cooks, :class => "number-input-box", :min => 1 %>
-    </p>
+      <%= f.number_field :cooks, :class => "number-input-box", :min => 1 %>   
+        <a class="tooltip">
+          <img class="question-mark-icon"
+               src="/assets/question-mark-icon.png" />
+          <span>How many people are helping to prepare this meal?</span>
+        </a>
+      </p>
 
     <%= f.submit "Combine Recipes" %>
   <% end %>

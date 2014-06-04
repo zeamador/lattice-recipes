@@ -67,10 +67,9 @@
           </span>
           <br />
           <% FocusTypes.constants.each do |focus_type| -%>
-            <%= f.radio_button :attentiveness,
-                focus_type.downcase, { :checked => focus_type == :ALL } %>
-            <%= f.label :attentiveness,
-                focus_type.capitalize, :value => focus_type.downcase %>
+            <%= f.radio_button :attentiveness, focus_type.downcase %>
+            <%= f.label :attentiveness, focus_type.capitalize,
+                        :value => focus_type.downcase %>
             <br />
           <% end -%>
         </span>

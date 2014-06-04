@@ -5,5 +5,6 @@ class Step < ActiveRecord::Base
                                 :allow_destroy => true
 
   validates :description, presence: true
+  validates :attentiveness, presence: true
   validates :duration, numericality: { greater_than_or_equal_to: 1 }
 end

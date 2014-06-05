@@ -1,0 +1,41 @@
+  <div class="tutorial-section">
+    <div class="upload-form">
+
+      <% #Step 1 %>
+      <br />
+      <%= render partial: 'step', locals: {:step_name => "Step 1.", :step_name_bold => false, :step_description => "Preheat oven to 400 F.", :step_duration => 15, :step_equipment => "Oven", :step_attention => "None"} %>
+
+      <% #Step 2 %>
+      <%= render partial: 'step', locals: {:step_name => "Step 2.", :step_name_bold => false, :step_description => "Bake dish for one hour.", :step_duration => 60, :step_equipment => "Oven", :step_attention => "None"} %>
+
+      <%= render partial: 'prereq', locals: {:prereq_num => 1, :prereq_immediate => false, :prereq_preheat => true} %>
+
+      <% #Step 3 %>
+
+      <%= render partial: 'step', locals: {:step_name => "Step 3.", :step_name_bold => false, :step_description => "Let dish cool for 15 minutes.", :step_duration => 15, :step_equipment => "None", :step_attention => "None"} %>
+
+      <%= render partial: 'prereq', locals: {:prereq_num => 2, :prereq_immediate => true, :prereq_preheat => false} %>
+    </div>
+
+    <div class="annotation">
+      <h3>Preheat Prerequisites</h3>
+      <p>
+        Step 1 preheats the oven for Step 2 to use. This means that Step 1 is a
+        <strong>preheat prereq</strong>	for Step 2. Steps that do not use the
+        oven should not have preheat prereqs. Each step can only have one
+        preheat prereq.
+      </p>
+
+      <h3>Immediate Prerequisites</h3>
+      <p>
+        Step 3 only makes sense if it starts right when
+        Step 2 finishes, which is why Step 2 is its
+        <strong>immediate prereq</strong>. When an action is time sensitive (for
+        example, things will burn if the step is not immediately performed), it
+        should also have an immediate prereq. Each step can only have one
+        immediate prereq.
+      </p>
+    </div>
+  </div>
+  <br />
+</div>

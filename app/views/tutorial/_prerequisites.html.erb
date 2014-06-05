@@ -1,0 +1,39 @@
+<div class="tutorial-section">
+    <div class="upload-form">
+
+      <% #Step 1 %>
+      <br />
+      <%= render partial: 'step', locals: {:step_name => "Step 1.", :step_name_bold => false, :step_description => "Slice salami.", :step_duration => 5, :step_equipment => "None", :step_attention => "All"} %>
+
+      <% #Step 2 %>
+      <%= render partial: 'step', locals: {:step_name => "Step 2.", :step_name_bold => false, :step_description => "Slice cheese.", :step_duration => 5, :step_equipment => "None", :step_attention => "All"} %>
+
+      <% #Step 3 %>
+      <%= render partial: 'step', locals: {:step_name => "Step 3.", :step_name_bold => false, :step_description => "Lay salami and cheese on bread.", :step_duration => 2, :step_equipment => "None", :step_attention => "All"} %>
+
+      <%= render partial: 'prereq', locals: {:prereq_num => 2, :prereq_immediate => false, :prereq_preheat => false} %>
+
+      <%= render partial: 'prereq', locals: {:prereq_num => 1, :prereq_immediate => false, :prereq_preheat => false} %>
+
+      <% #Step 4 %>
+      <%= render partial: 'step', locals: {:step_name => "Step 4.", :step_name_bold => false, :step_description => "Toast sandwich on stove.", :step_duration => 5, :step_equipment => "Burner", :step_attention => "Some"} %>
+
+      <%= render partial: 'prereq', locals: {:prereq_num => 3, :prereq_immediate => false, :prereq_preheat => false} %>
+    </div>
+    
+    <div class="annotation">
+      <h3>Prerequisites</h3>
+      <p>
+        Any step that must be completed before this step can be started should
+        be added as a <strong>prereq</strong> for this step. For example,
+        vegetables must be chopped before they can be cooked.
+      </p>
+      <p>
+        If a prereq for this step has its own prereqs, those do not need to be
+        added again. See how Step 4 has Step 3 as a prereq, but not Steps 1 and
+        2.
+      </p>
+    </div>
+  </div>
+  <br />
+  <br />

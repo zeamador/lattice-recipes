@@ -1,0 +1,46 @@
+<div class="tutorial-section">
+    <div class="upload-form">
+      <p><strong>Typical Cookbook Step</strong></p>
+      <p>
+        3. Simmer sauce over medium-high heat for 5 minutes,
+        then remove from heat and add cream.
+      </p>
+      <p><strong>Lattice Recipe Steps</strong></p>
+
+      <% #Step 1 %>
+      <%= render partial: 'step', locals: {:step_name => "Step 3.", :step_name_bold => false, :step_description => "Simmer sauce over medium-high heat for 5 minutes.", :step_duration => 5, :step_equipment => "Burner", :step_attention => "None"} %>
+      
+      <% #Step 2 %>
+      <%= render partial: 'step', locals: {:step_name => "Step 4.", :step_name_bold => false, :step_description => "Remove from heat and add cream.", :step_duration => 2, :step_equipment => "None", :step_attention => "All"} %>
+
+      <%= render partial: 'prereq', locals: {:prereq_num => 3, :prereq_immediate => true, :prereq_preheat => false} %>
+    </div>
+    <div class="annotation">
+      <h3>Step Basics</h3>
+      <p>
+        The <strong>duration</strong> of a step is an estimate of the number of
+        minutes it takes for the entire step to finish. This includes time when
+        the cook is not actively doing anything and does not need to be exact.
+      </p>
+      <p>
+        We want to ensure that a cook's <strong>equipment</strong> is not
+        overused.
+        So we need to know if a step uses a limited kitchen resource,
+        like the oven, sink, microwave, etc.
+      </p>
+      <h4>Breaking Up Steps</h4>
+      <p>
+        Steps should be broken up into small, indivisible tasks. If parts of
+        the step could be done at the same time, or something else could be
+        performed inbetween these parts, the step should be split up.
+      </p>
+      <p>
+        In general, a single step should not use more than one piece of
+        equipment or differing amounts of attention. If the first part of a
+        step uses some attention and the second part uses all attention, it
+        should be split into separate steps.
+      </p>
+    </div>
+  </div>
+  <br />
+  <br />

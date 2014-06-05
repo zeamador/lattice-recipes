@@ -1,0 +1,34 @@
+  <div class="tutorial-section">
+    <div class="upload-form">
+      <!-- All -->
+      <br />
+      <%= render partial: 'step', locals: {:step_name => "All Attention Required", :step_name_bold => true, :step_description => "Spread marinade over each steak.", :step_duration => 5, :step_equipment => "None", :step_attention => "All"} %>
+
+      <% #Some %>
+      <%= render partial: 'step', locals: {:step_name => "Some Attention Required", :step_name_bold => true, :step_description => "Place chicken in a pan, and lightly brown.", :step_duration => 10, :step_equipment => "Burner", :step_attention => "Some"} %>
+
+      <% #None %>
+      <%= render partial: 'step', locals: {:step_name => "No Attention Required", :step_name_bold => true, :step_description => "Preheat oven to 350 F.", :step_duration => 10, :step_equipment => "Oven", :step_attention => "None"} %>
+    </div>
+    <div class="annotation">
+      <h3>Attentiveness</h3>
+      <p>
+        If it would be physically difficult to perform an identical task
+        at the same time, then a step should be marked as using
+        <strong>all of your attention</strong>. Examples include chopping
+        vegetables, mixing ingredients, and stirring constantly.
+      </p>
+      <p>
+        Steps that only require periodic or passive attention should be marked
+        as <strong>some attention</strong>. Many steps that use the burner, for
+        example, require you to keep an eye on the cooking food, and may
+        require occasionally stirring.
+      </p>
+      <p><strong>No attention</strong> steps are those that a cook can
+        completely ignore for the majority of their duration. Examples include
+        preheating the oven, letting something cool, and boiling water.
+      </p>
+    </div>
+  </div>
+  <br />
+  <br />

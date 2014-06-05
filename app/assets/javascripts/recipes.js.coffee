@@ -146,26 +146,24 @@ validateForm = () ->
 validateCustomizeForm = () ->
   durations = $("input[name$='[duration]']")
   durationsValid = true
+  stepCount = 0
   durations.each( ->
+    stepCount++
     value = $(this).val()
-    if (value == undefined ||
-        value == null ||
-        value == "")
-      alert("Duration can't be empty")
+    if (value == "")
+      alert("Error: Missing duration for step #{stepCount}")
       return (durationsValid = false)
   )
   return durationsValid
 
 # Validate the "add recipe" or "edit recipe" form
 validateRecipeForm = () ->
-  title = $("#recipe_title").val()
-  if (title == undefined || title == null || title == "")
-    alert("Title can't be empty")
+  if ($("#recipe_title").val() == "")
+    alert("Error: Title is empty")
     return false
 
-  ingredients = $("#recipe_ingredients").val()
-  if (ingredients == undefined || ingredients == null || ingredients == "")
-    alert("Ingredients can't be empty")
+  if ($("#recipe_ingredients").val() == "")
+    alert("Error: Ingredients is empty")
     return false
 
   stepCount = 0
@@ -176,14 +174,23 @@ validateRecipeForm = () ->
     if ($(this).find("input[name$='[_destroy]']").val() != "1")
       stepCount++
 
-      description = $(this).find("textarea[name$='[description]']").val()
-      if (description == undefined || description == null || description == "")
-        alert("Description can't be empty")
+      if ($(this).find("textarea[name$='[description]']").val() == "")
+        alert("Error: Missing description for step #{stepCount}")
         return (stepValid = false)
-      duration = $(this).find("input[name$='[duration]']").val()
 
-      if (duration == undefined || duration == null || duration == "")
-        alert("Duration can't be empty")
+      if ($(this).find("input[name$='[duration]']").val() == "")
+        alert("Error: Missing duration for step #{stepCount}")
+        return (stepValid = false)
+
+      # ensure an attentiveness radio button is selected
+      attentivenessButtons = $(this).find("input[name$='[attentiveness]']")
+      attentivenessValid = false
+      attentivenessButtons.each( ->
+        if ($(this).is(':checked'))
+          return (attentivenessValid = true)
+      )
+      if (!attentivenessValid)
+        alert("Error: No attentiveness selected for step #{stepCount}")
         return (stepValid = false)
 
       # validate prereqs
@@ -198,34 +205,42 @@ validateRecipeForm = () ->
           # get prereq number
           prereqNum = $(this).find("input[name$='[prereq_step_number]']").val()
 
+          # fail if prereq number is empty
+          if (prereqNum == "")
+            alert("Error: Empty prereq number on step #{stepCount}")
+            return (prereqValid = false)
+
           # fail if prereq number isn't less than the number of this step
           if (prereqNum >= stepCount)
-            alert("Prereq step #{prereqNum} is not valid for step #{stepCount}")
+            alert("Error: Prereq step #{prereqNum} is not valid for step #{stepCount}")
             return (prereqValid = false)
 
           # fail if this is a duplicate prereq
           if (prereqArr[prereqNum] == undefined)
             prereqArr[prereqNum] = 1
           else
-            alert("Prereq step #{prereqNum} is set more than once on step #{stepCount}")
+            alert("Error: Prereq step #{prereqNum} is set more than once on step #{stepCount}")
             return (prereqValid = false)
 
-          # fail if there's multiple immediate or preheat prereqs for this step
+          # fail if there's multiple immediate prereqs for this step
           if ($(this).find("input[name$='[immediate_prereq]']").is(':checked'))
             if (immediateCount > 0)
-              alert("Multiple immediate prereqs for step #{stepCount}")
+              alert("Error: Multiple immediate prereqs for step #{stepCount}")
               return (prereqValid = false)
             else
               immediateCount++
+
+          # fail if there's multiple preheat prereqs for this step
           if ($(this).find("input[name$='[preheat_prereq]']").is(':checked'))
             if (preheatCount > 0)
-              alert("Multiple preheat prereqs for step #{stepCount}")
+              alert("Error: Multiple preheat prereqs for step #{stepCount}")
               return (prereqValid = false)
             else
               preheatCount++
 
         return true
       )
+
       if (!prereqValid)
         return (stepValid = false)
 
@@ -235,7 +250,8 @@ validateRecipeForm = () ->
     return false
 
   if (stepCount == 0)
-    alert("Must have at least one step")
+    alert("Error: Recipe has no steps")
     return false
 
   return true
+

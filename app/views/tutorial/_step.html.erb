@@ -4,58 +4,70 @@
   <%= step_name %>
 <% end %>
 <br />
-      <textarea disabled class="tutorial-textbox">
+<textarea disabled class="tutorial-textbox">
 <%= step_description %>
-      </textarea>
-      <br />
-      <div class="step-fields">
-        <span class="left-step-fields">
-          Duration:
-          <a class="tooltip">
-            <img class="question-mark-icon"
-                 src="/assets/question-mark-icon.png" />
-            <span>How long does this step take?</span>
-          </a>
-          <input class="number-input-box" value="<%= step_duration %>" disabled="true" />
-          minutes
-
-          <div>
-            Equipment:
-            <select disabled>
-              <option><%= step_equipment %></option>
-              <option>Microwave</option>
-            </select>
-          </div>
-          <br />
+</textarea>
+<br />
+<div class="step-fields">
+  <span class="left-step-fields">
+    Duration:
+    <a class="tooltip">
+      <img class="question-mark-icon"
+           src="/assets/question-mark-icon.png" />
+      <span>How long does this step take? Steps must take at least one
+        minute. If you are trying to add a step that takes less than one
+        minute, consider incorporating it into another step.</span>
+    </a>
+    <input class="number-input-box" 
+           value="<%= step_duration %>" disabled="true" />
+    minutes
+    
+    <div>
+      Equipment:
+      <a class="tooltip">
+        <img class="question-mark-icon"
+             src="/assets/question-mark-icon.png"></img>
+        <span>
+          What kitchen equipment is required to perform this step? Only one
+          piece of equipment can be selected. If your step requires more
+          than one, it must be split into multiple steps.
         </span>
-
-        <span class="right-step-fields">
-          Attentiveness:
-          <a class="tooltip">
-            <img class="question-mark-icon"
-                 src="/assets/question-mark-icon.png" />
-            <span>
-              How much of your attention does this step require?
-              For example:<br />
-              Chopping or sauteing - All<br />
-              Stirring occasionally - Some<br />
-              Boiling water - None
-            </span>
-          </a>
-        </span>
-        <br />
-        <% if step_attention == "All" %>
-          <input disabled type="radio" checked/>All<br />
-          <input disabled type="radio" />Some<br />
-          <input disabled type="radio" />None<br />
-        <% elsif step_attention == "Some" %>
-          <input disabled type="radio" />All<br />
-          <input disabled type="radio" checked/>Some<br />
-          <input disabled type="radio" />None<br />
-        <% else %>
-          <input disabled type="radio" />All<br />
-          <input disabled type="radio" />Some<br />
-          <input disabled type="radio" checked/>None<br />
-        <% end %>
-        <br />
-      </div>
+      </a>
+      <select disabled>
+        <option><%= step_equipment %></option>
+        <option>Microwave</option>
+      </select>
+    </div>
+    <br />
+  </span>
+  
+  <span class="right-step-fields">
+    Attentiveness:
+    <a class="tooltip">
+      <img class="question-mark-icon"
+           src="/assets/question-mark-icon.png" />
+      <span>
+        How much of your attention does this step require?
+        For example:<br />
+        Chopping or sauteing: All<br />
+        Stirring occasionally: Some<br />
+        Boiling water: None
+      </span>
+    </a>
+  </span>
+  <br />
+  <% if step_attention == "All" %>
+  <input disabled type="radio" checked/>All<br />
+  <input disabled type="radio" />Some<br />
+  <input disabled type="radio" />None<br />
+  <% elsif step_attention == "Some" %>
+  <input disabled type="radio" />All<br />
+  <input disabled type="radio" checked/>Some<br />
+  <input disabled type="radio" />None<br />
+  <% else %>
+  <input disabled type="radio" />All<br />
+  <input disabled type="radio" />Some<br />
+  <input disabled type="radio" checked/>None<br />
+  <% end %>
+  <br />
+</div>

@@ -1,36 +1,43 @@
-
-      Prereq step number:
-      <input class="number-input-box" value="<%= prereq_num %>" disabled="true" />
+<div class="prereqs">
+  <div class="fields">
+    <fieldset class="no-top-margin prereq">
+      Step number:
+      <input class="number-input-box" 
+             value="<%= prereq_num %>" 
+             disabled="true" />
+  
       <% #Immediate Prereq %>
       <div>
         <% if prereq_immediate %>
-          <input type="checkbox" disabled="true" checked/>
+        <input type="checkbox" disabled="true" checked/>
         <% else %>
-          <input type="checkbox" disabled="true" />
+        <input type="checkbox" disabled="true" />
         <% end %>
         Immediate prereq
-          <a class="tooltip">
-            <img class="question-mark-icon"
-                 src="/assets/question-mark-icon.png" />
-            <span>
+        <a class="tooltip">
+          <img class="question-mark-icon"
+               src="/assets/question-mark-icon.png" />
+          <span>
               An immediate prereq must be performed immediately before this
               step, with no steps in between.
-            </span>
-          </a>
+          </span>
+        </a>
       </div>
       <% if prereq_preheat %>
       <% #Preheat Prereq %>
-	<div>
-	  <input type="checkbox" disabled="true" checked />
-	  Preheat prereq
-	  <a class="tooltip">
-	      <img class="question-mark-icon"
-		  src="/assets/question-mark-icon.png" />
-	      <span>
-		If this step uses the oven, is this prereq the one that
-		preheated the oven?
-	      </span>
-	  </a>
-	</div>
+	    <div>
+	      <input type="checkbox" disabled="true" checked />
+	      Preheat prereq
+	      <a class="tooltip">
+	        <img class="question-mark-icon"
+		           src="/assets/question-mark-icon.png" />
+	        <span>
+		        If this step uses the oven, is this prereq the one that
+		        preheated the oven?
+	        </span>
+	      </a>
+	    </div>
       <% end %>
-      <br />
+    </fieldset>
+  </div>
+</div>

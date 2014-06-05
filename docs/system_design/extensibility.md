@@ -8,7 +8,7 @@ Successfully clicking the "Combine Recipes" button from the meal show page will 
 
 ## Design Changes
 
-### ``lattice-recipes/app/models/meal_schedule.rb``
+### ``app/models/meal_schedule.rb``
 
 1. Set meal schedules to inherit from ActiveRecord:  
     ``class MealSchedule < ActiveRecord::Base``
@@ -19,16 +19,25 @@ Successfully clicking the "Combine Recipes" button from the meal show page will 
 4. Add serialization for complex fields:  
     ``serialize :recipes, :schedule, :kitchen``
   
-### ``lattice-recipes/app/models/user.rb``
+### ``app/models/user.rb``
 
 1. Add the following database relationship: 
     ``has_many :meal_schedules``
 
-### Migration Files
+### ``db/migrate/``
 
-Update the migration files??? Jake???
+1. Run ``$ rails generate migration CreateMealSchedules``
+2. In the newly generated ``*create_meal_schedules.rb``, add a reference to users:  
+    ``t.references :user, index: true``
+3. Add columns for the length of the meal schedule and number of cooks:  
+    ``t.integer :length``  
+    ``t.integer :cooks``
+4. Add text columns for the serialized fields:  
+    ``t.text :recipes``  
+    ``t.text :schedule``  
+    ``t.text :kitchen``
 
-### ``lattice-recipes/app/controllers/meal_schedule_controller.rb``
+### ``app/controllers/meal_schedule_controller.rb``
 
 1. Move all of the logic currently in ``show`` to the ``create`` method.
 2. After getting a meal schedule ``ms`` back from the meal factory, if it isn't nil, save the schedule (``ms.save``).
@@ -37,7 +46,7 @@ Update the migration files??? Jake???
 5. Change ``show`` to just set the local meal schedule variable:  
     ``@meal_schedule = MealSchedule.find(params[:id])``
     
-### ``lattice-recipes/app/views/meal_schedules/``
+### ``app/views/meal_schedules/``
 
 1. Add an index page for meal schedules 
 2. For each of the user's meal scheudles, lists titles of the recipes in the scheudule
@@ -45,7 +54,10 @@ Update the migration files??? Jake???
 4. Add a "View Schedule" button next to each meal schedule description that directs the user to that schedules show page.
 5. There should also be a "Delete Schedule" button that after modal dialog confirmation permanantly deletes the entire meal schedule from the database.
 
-### Frontend and User Documentation
+### ``app/views/shared/_sidebar.html.erb``
 
-1. Add a link underneath "Your Recipes" in the user's sidebar to "Your Schedules" that directs the user to the meal schedule index page
-2. Add documentation on the About page about saving meal schedules
+1. Add a link underneath "Your Recipes" in the user's sidebar to "Your Schedules" that directs the user to the meal schedule index page.
+
+### ``app/views/about/index.html.erb``
+
+1. Add documentation to the About page that explains how saving meal schedules works.

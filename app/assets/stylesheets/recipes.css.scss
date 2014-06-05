@@ -113,6 +113,11 @@ textarea { /* description and ingredients */
   padding: 0 0 10px 0;
 }
 
+.prereqs>.add_nested_fields {
+  display: block;
+  float: left;
+}
+
 .step-fields { /* contains left-step-fields and right-step-fields */
   display: block;
   width: 100%;

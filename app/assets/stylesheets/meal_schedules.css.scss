@@ -69,6 +69,14 @@
   border-radius: 3px;
   box-shadow: 0px 0px 10px #231105;
   overflow: visible;
+  -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+  -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+  box-sizing: border-box;         /* Opera/IE 8+ */
+}
+
+.bar:hover {
+  outline: 2px solid #000000;
+  border-radius: 0px;
 }
 
 .bar-content {

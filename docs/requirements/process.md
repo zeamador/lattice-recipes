@@ -109,12 +109,19 @@ This schedule reflects how the group actually spent its time.
 ### End-Of-Project Schedule Discussion
 
 There were many discrepancies between the schedule we made at the beginning of the quarter and how each team member actually spent their time. Some things took much less time than we expected, and some things took much longer.
+
 Recipe search we predicted would take perhaps a week to implement, but it ended up taking only about 3 developer-days; Rails made this a pretty straightforward thing to do and writing the corresponding view was not complicated.
+
 Recipe input we predicted would take about a week for two developers to implement (one for the database support and one for the front-end). While implementing the controller and model took only about 3 developer-days, creating and polishing the recipe input form took a long time, upwards of 14 developer-days. We also implemented recipe editing (which took about 4 developer-days to get totally working), which we either took for granted or didn't consider when initially estimating the time of tasks.
+
 The "meat" of our application, recipe combination, took about 10 developer-days to implement. This was approximately how long we expected it to take. After the planning phase, the implementation of the algorithm was done almost entirely by Chris. This was the project section that he "owned", which was on the whole a good thing because it meant nobody else had to worry about it. Chris also implemented the visualization of meal schedules, which took about 4 developer-days.
+
 Implementing user account support, including login, logout, user creation and user deletion, took about 5 developer-days. This was mostly done by Bessie. We ended up doing this earlier than we expected as we realized we needed user accounts to work before we could make much of our other functionality work.
+
 One feature we intended to support was recipe image upload. Bessie began working on this and spent about 4 developer-days on it but we did not get it working to our satisfaction so we scrapped it in favor of improving existing features. It probably would only have taken another 3 developer-days to get working but we did not feel it was worth it.
+
 In general, we ended up spending much more time on the user interface than we predicted. The bulk of this effort went into making the creation of recipes user-friendly. We knew this would be a concern when we started, because of the complicated information we needed users to input, but even so we underestimated how long it would take to create, polish, and debug the UI. The backend functionality, on the other hand, took about as long as we predicted to implement in most cases.
+
 These time estimates don't represent all the work we put in. We spent many developer-days on things that aren't features, like improving the look and feel of our website, writing documentation, and writing test code.
 
 ## Risk Summary

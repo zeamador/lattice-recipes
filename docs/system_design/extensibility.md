@@ -60,4 +60,4 @@ Successfully clicking the "Combine Recipes" button from the meal show page will 
 
 ### ``app/views/about/index.html.erb``
 
-1. Add documentation to the About page that explains how saving meal schedules work.
+1. Add documentation to the About page that explains how saving meal schedules works.

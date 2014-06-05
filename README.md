@@ -138,10 +138,11 @@ In general, we are using the standard [Rails directory structure][rails].
     - application specific code
     - divided into models, views, and controllers folders
  - `lattice-recipes/docs/`
-    - requirements documentation including both descriptions and reflections
-    - design documentation and diagrams including extensibility docs
+    - requirements documentation
+    - design documentation and diagrams
     - changelogs for documentation
     - feedback from customers, users, and team-members (code review)
+    - postpartum reflection
  - `lattice-recipes/tests/`
     - text file system tests with step by step instructions
  - `lattice-recipes/spec/`

@@ -2,7 +2,8 @@
 class MealSchedule
   attr_reader :recipes, :schedule, :length
 
-  # Public: Initialize a Meal with a set of recipes and a schedule of steps.
+  # Public: Initialize a MealSchedule with a set of recipes and a 
+  #         schedule of steps.
   #
   # recipes - Set of Recipe objects.
   # schedule - Hash from Integer times in minutes to Sets of Steps beginning

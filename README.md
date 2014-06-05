@@ -82,7 +82,7 @@ Slug Size:        22M
 Stack:            cedar  
 Web URL:          http://lattice-recipes.herokuapp.com/  
 ```
-5. After cloning our repository, run
+After cloning our repository, run
    ``heroku git:remote -a lattice-recipes``
    
 ### Viewing Local Copy of Website

@@ -104,4 +104,47 @@ describe Resources do
 
     expect(resources.consume(step_b)).to be_true
   end
+
+  it "should allow multiple ovens to be used simultaneously" do
+    # When reading this test, keep in mind that the logic in Resources assumes
+    # steps are consumed in reverse order.
+
+    # Control case, expect to fail
+    kitchen = KitchenObject.new
+    resources = Resources.new(kitchen, 1)
+
+    step_a1 = StepObject.new("Preheat oven", 1, :NONE, 123, equipment: :OVEN)
+    step_a2 = StepObject.new("Use oven", 1, :NONE, 123, equipment: :OVEN,
+                             prereqs: [step_a1], preheat_prereq: step_a1)
+    step_b1 = StepObject.new("Preheat oven", 1, :NONE, 234, equipment: :OVEN)
+    step_b2 = StepObject.new("Use oven", 1, :NONE, 234, equipment: :OVEN,
+                             prereqs: [step_b1], preheat_prereq: step_b1)
+    # Start using A
+    resources.consume(step_a2).should be_true
+    # Finish using A
+    resources.release(step_a2).should be_true
+    # Start using B
+    resources.consume(step_b2).should be_false
+
+    # Test case, expect to succeed
+    kitchen[:OVEN] = 2
+    resources = Resources.new(kitchen, 1)
+
+    # Start using A
+    resources.consume(step_a2).should be_true
+    # Start using B
+    resources.consume(step_b2).should be_true
+    # Finish using A
+    resources.release(step_a2).should be_true
+    # Finish using B
+    resources.release(step_b2).should be_true
+    # Start preheating A
+    resources.consume(step_a1).should be_true
+    # Finish preheating A
+    resources.release(step_a1).should be_true
+    # Start preheating B
+    resources.consume(step_b1).should be_true
+    # Finish preheating B
+    resources.release(step_b1).should be_true
+  end
 end

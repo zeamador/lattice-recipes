@@ -18,7 +18,9 @@ Chris and Sam are responsible for designing, writing, and testing the recipe com
 
 Chris, Jake, and Sam wrote some supporting classes (Recipe, Ingredient, Step, Equipment, Kitchen, and Meal) together to establish a consistent coding style, patterns for using our version control system, and give everyone some experience writing in Ruby. These classes have only trivial functionality, but writing them was valuable for everyone. Chris wrote the MealFactory, ScheduleBuilder, and Resources classes, and Sam wrote the bulk of the tests for the same. Bessie implemented the user accounts system, and Jake and Bessie both wrote the database classes for recipes, recipe steps, and kitchens and the controllers that allow the front-end to interact with those items. As our lead tester, Sam has also been writing manual system tests for our major use cases and maintaining our documentation.
 
-## Schedule/Timeline
+## Schedule
+
+This schedule reflects how the group actually spent its time.
 
 <table border="1">
 <tr>
@@ -36,7 +38,8 @@ Chris, Jake, and Sam wrote some supporting classes (Recipe, Ingredient, Step, Eq
   Nick: Implement skeleton UI<br />
   Zach: Link UI to backend, setup Continuous Integration<br />
   Jake: Get Heroku deployment working<br />
-  Sam, Chris, Jake: Implement models (recipe, kitchen, etc.)</td>
+  Sam, Chris, Jake: Implement models (recipe, kitchen, etc.)
+  </td>
   <td>Zero-Feature Release (5/2)</td>
 </tr>
 <tr>
@@ -45,7 +48,8 @@ Chris, Jake, and Sam wrote some supporting classes (Recipe, Ingredient, Step, Eq
   Jake: Implement basic recipe addition controller functionality<br />
   Bessie: Implement user account creation and login<br />
   Sam: Write system tests<br />
-  Chris: Work on combination algorithm</td>
+  Chris: Work on combination algorithm
+  </td>
   <td>None</td>
 </tr>
 <tr>
@@ -55,40 +59,63 @@ Chris, Jake, and Sam wrote some supporting classes (Recipe, Ingredient, Step, Eq
   Bessie: Add show recipe page, implement recipe search<br />
   Chris: Implement recipe combination algorithm<br />
   Sam: Test algorithm, improve documentation<br />
-  All: Meet with customer (Isaac)</td>
+  All: Meet with customer (Isaac)
+  </td>
   <td>Beta Release (5/16)</td>
 </tr>
 <tr>
   <td>5/19 - 5/23</td>
-  <td>Nick: Implement UI for combined recipes and search<br />
+  <td>Nick: Improve site look & feel, add comments to CSS<br />
   Zach: Make recipe input dynamic, add client-side validation<br />
   Jake: Add recipe edit functionality<br />
   Bessie: Add user meal support, add user meal sidebar display<br />
   Chris: Bugfix recipe combination, write basic recipe combination page<br />
-  Sam: Write system tests, improve documentation, setup test coverage<br />
-  All: Do more usability testing with customers and others</td>
+  Sam: Write system tests, improve documentation, setup test coverage
+  </td>
   <td>Feature-Complete Release (5/23)</td>
 </tr>
 <tr>
   <td>5/26 - 5/30</td>
-  <td>Nick: Make recipe input tutorial<br />
-  Zach: Improve validation error messages, improve recipe input page UI<br />
-  Jake, Bessie: Improve meal schedule UI display<br />
-  All: Fix bugs, improve error handling, implement stretch features if time permits</td>
+  <td>Nick: Clean up views, improve recipe input tutorial<br />
+  Zach: Add more complete client-side validation, make validation work for edit<br />
+  Jake: Complete recipe edit page (implement adding/removing steps and prereqs)<br />
+  Chris: Test and improve schedule builder, make meal schedule visualization<br />
+  Sam: Make recipe input tutorial, update documentation<br />
+  Bessie: Add recipe image upload (scrapped)<br />
+  All: Do usability testing with customers and others
+  </td>
   <td>Release Candidate (5/30)</td>
 </tr>
 <tr>
   <td>6/2 - 6/6</td>
-  <td>All: Fix any remaining issues, finish any chosen stretch features, polish UI and documentation</td>
+  <td>Zach: Improve recipe form UI, bugfix recipe edit and customize<br />
+  Chris: Improve meal schedule visualization<br />
+  Jake: Help with extension exercise<br />
+  Sam: Add controller tests<br />
+  All: Fix last bugs, Prepare for presentation
+  </td>
   <td>Version 1.0 (6/4)</td>
 </tr>
 <tr>
   <td>6/9 - 6/13</td>
-  <td>Nick, Zach, Chris, Sam: Graduate!!!<br />
-  All: Celebrate, cook delicious meals!</td>
+  <td>Zach, Sam, Bessie: Give project demonstration<br />
+  Nick, Zach, Chris, Sam: Graduate!!!<br />
+  All: Celebrate, cook delicious meals!
+  </td>
   <td>Final Demo (6/9)</td>
 </tr>
 </table>
+
+### End-Of-Project Schedule Discussion
+
+There were many discrepancies between the schedule we made at the beginning of the quarter and how each team member actually spent their time. Some things took much less time than we expected, and some things took much longer.
+Recipe search we predicted would take perhaps a week to implement, but it ended up taking only about 3 developer-days; Rails made this a pretty straightforward thing to do and writing the corresponding view was not complicated.
+Recipe input we predicted would take about a week for two developers to implement (one for the database support and one for the front-end). While implementing the controller and model took only about 3 developer-days, creating and polishing the recipe input form took a long time, upwards of 14 developer-days. We also implemented recipe editing (which took about 4 developer-days to get totally working), which we either took for granted or didn't consider when initially estimating the time of tasks.
+The "meat" of our application, recipe combination, took about 10 developer-days to implement. This was approximately how long we expected it to take. After the planning phase, the implementation of the algorithm was done almost entirely by Chris. This was the project section that he "owned", which was on the whole a good thing because it meant nobody else had to worry about it. Chris also implemented the visualization of meal schedules, which took about 4 developer-days.
+Implementing user account support, including login, logout, user creation and user deletion, took about 5 developer-days. This was mostly done by Bessie. We ended up doing this earlier than we expected as we realized we needed user accounts to work before we could make much of our other functionality work.
+One feature we intended to support was recipe image upload. Bessie began working on this and spent about 4 developer-days on it but we did not get it working to our satisfaction so we scrapped it in favor of improving existing features. It probably would only have taken another 3 developer-days to get working but we did not feel it was worth it.
+In general, we ended up spending much more time on the user interface than we predicted. The bulk of this effort went into making the creation of recipes user-friendly. We knew this would be a concern when we started, because of the complicated information we needed users to input, but even so we underestimated how long it would take to create, polish, and debug the UI. The backend functionality, on the other hand, took about as long as we predicted to implement in most cases.
+These time estimates don't represent all the work we put in. We spent many developer-days on things that aren't features, like improving the look and feel of our website, writing documentation, and writing test code.
 
 ## Risk Summary
 

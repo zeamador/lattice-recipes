@@ -13,7 +13,8 @@
     <% else -%>
       Duration: <%= @meal_schedule.length %> minutes
 
-      <% max_darkness = 223 -%>
+      <% max_darkness = 220 -%>
+      <% min_darkness = 30 -%>
       <% recipe_darknesses = Hash.new -%>
       <% num_recipes = @meal_schedule.recipes.length -%>
       <% if num_recipes == 1 -%>
@@ -23,7 +24,8 @@
         <% recipe_num = 0 -%>
         <% @meal_schedule.recipes.each do |recipe| -%>
           <% recipe_darknesses[recipe.recipe_id] = -%>
-          <%   ((recipe_num.to_f / (num_recipes - 1)) * max_darkness).round -%>
+          <%   ((recipe_num.to_f / (num_recipes - 1)) * -%>
+          <%   (max_darkness - min_darkness) + min_darkness).round -%>
           <% recipe_num += 1 -%>
         <% end -%>
       <% end -%>
@@ -31,11 +33,13 @@
       <% recipe_colors = Hash.new -%>
       <% recipe_darknesses.each do |recipe_id, darkness| -%>
         <% color_string = "#" -%>
-        <% 3.times do |i| -%>
-          <% # Convert darkness to hex number and add it to the color string -%>
-          <% # three times, for RGB -%>
-          <% color_string << (255 - darkness).to_s(16) -%>
-        <% end -%>
+        
+        <% color_string << -%>
+        <%   [(255 - darkness - 100), 0].max.to_s(16).rjust(2, '0') -%>
+        <% color_string << -%>
+        <%   [(255 - darkness - 50), 0].max.to_s(16).rjust(2, '0') -%>
+        <% color_string << -%>
+        <%   (255 - darkness).to_s(16).rjust(2, '0') -%>
         <% recipe_colors[recipe_id] = color_string -%>
       <% end -%>
 
